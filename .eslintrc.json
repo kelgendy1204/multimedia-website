@@ -1,0 +1,48 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "jquery": true
+    },
+    "globals": {
+        "AdobeEdge": true,
+        "Elastic": true,
+        "FB": true,
+        "gapi": true,
+        "google": true,
+        "require": true,
+        "onYouTubeIframeAPIReady": true,
+        "ga": true,
+        "youTubeApp": true,
+        "describe": true,
+        "process": true,
+        "Draggable": true,
+        "it": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "sourceType": "module"
+    },
+    "rules": {
+        "indent": [
+            "warn",
+            "tab",
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "linebreak-style": [
+            "off",
+            "windows"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "no-undef": ["error"]
+    }
+}

@@ -42,8 +42,6 @@ const notifier = require('node-notifier');
 const mainSrcFolder = './src/';
 const mainDestFolder = './dist/';
 
-// dotenv.config();
-
 const notify = (title, message) => {
 	notifier.notify({ title, message });
 };
@@ -191,8 +189,6 @@ function lintSass(file) {
 }
 
 gulp.task('clean', function() {
-	// return gulp.src([`${mainDestFolder}`, `${mainViewsDistFolder}`], { read: false })
-	// 	.pipe(clean({ force: true }));
 	return gulp.src([`${mainDestFolder}`], { read: false })
 		.pipe(clean({ force: true }));
 });
@@ -264,57 +260,6 @@ function minifyImages() {
 		.pipe(gulp.dest(`${mainDestFolder}images`));
 }
 
-// gulp.task('copyandminifyviews', function(){
-
-// 	let stream = merge();
-
-// 	stream.add(gulp.src(`${mainViewsSrcFolder}**/*.cshtml`)
-// 		.pipe(minifyCshtml({
-// 			comments: true,
-// 			razorComments: true,
-// 			whitespace: true
-// 		}))
-// 		.pipe(bom())
-// 		.pipe(gulp.dest(`${mainViewsDistFolder}`)));
-
-// 	stream.add(gulp.src(`${mainViewsSrcFolder}web.config`)
-// 			.pipe(bom())
-// 			.pipe(gulp.dest(`${mainViewsDistFolder}`)));
-
-// 	return stream;
-// });
-
-// function copyViews() {
-// 	return gulp.src(`${mainViewsSrcFolder}**/*.*`)
-// 		.pipe(newer(`${mainViewsDistFolder}`))
-// 		.on('error', swallowError)
-// 		.pipe(bom())
-// 		.pipe(gulp.dest(`${mainViewsDistFolder}`));
-// }
-
-// function syncViews() {
-// 	return gulp.src(`${mainViewsDistFolder}**/*.*`)
-// 		.pipe(newer(`${mainViewsSrcFolder}`))
-// 		.on('error', swallowError)
-// 		.pipe(bom())
-// 		.pipe(gulp.dest(`${mainViewsSrcFolder}`));
-// }
-
-// gulp.task('copyviews', () => {
-// 	gutil.log(gutil.colors.magenta('All views copied'));
-// 	copyViews();
-// });
-
-// gulp.task('watch:copyviews', () => {
-// 	if (!fs.existsSync(mainViewsDistFolder)){
-// 		fs.mkdirSync(mainViewsDistFolder);
-// 	}
-// 	watch(`${mainViewsDistFolder}**/*`, {events: ['add', 'change'] }, function () {
-// 		gutil.log(gutil.colors.magenta('View changed'));
-// 		syncViews();
-// 	});
-// });
-
 gulp.task('imagemin', () => {
 	minifyImages();
 });
@@ -333,80 +278,6 @@ gulp.task('watch:imagemin', () => {
 // 	],
 // 		cb
 // 	);
-// });
-
-// gulp.task('rev', function () {
-// 	fs.unlink('./rev-manifest.json');
-// 	let stream = merge();
-
-// 	stream.add(gulp.src(`${mainDestFolder}css/**/*.css`)
-// 		.pipe(rev())
-// 		.pipe(revdel())
-// 		.pipe(gulp.dest(`${mainDestFolder}css`))
-// 		.pipe(rev.manifest('rev-manifest.json', {
-// 			merge: true,
-// 			path: '.'
-// 		}))
-// 		.pipe(gulp.dest('.')));
-
-// 	stream.add(gulp.src([`${mainDestFolder}js/**/*.js`, `!${mainDestFolder}js/animations/*.js`])
-// 		.pipe(rev())
-// 		.pipe(revdel())
-// 		.pipe(gulp.dest(`${mainDestFolder}js`))
-// 		.pipe(rev.manifest('rev-manifest.json', {
-// 			merge: true,
-// 			path: '.'
-// 		}))
-// 		.pipe(gulp.dest('.')));
-
-// 	stream.add(gulp.src(`${mainDestFolder}fonts/**/*.*`)
-// 		.pipe(rev())
-// 		.pipe(revdel())
-// 		.pipe(gulp.dest(`${mainDestFolder}fonts`))
-// 		.pipe(rev.manifest('rev-manifest.json', {
-// 			merge: true,
-// 			path: '.'
-// 		}))
-// 		.pipe(gulp.dest('.')));
-
-// 	return stream;
-// });
-
-// gulp.task('revreplace', ['revrepcshtml', 'revrepcss', 'revrepjs']);
-
-// gulp.task('cache', gulpSequence('rev', 'revreplace'));
-
-// gulp.task('revrepcshtml', () => {
-// 	let manifest = gulp.src('rev-manifest.json');
-// 	return gulp.src(`${mainViewsDistFolder}**/*.cshtml`)
-// 		.pipe(revReplace({
-// 			manifest,
-// 			replaceInExtensions: ['.cshtml']
-// 		}))
-// 		.pipe(bom())
-// 		.pipe(gulp.dest(`${mainViewsDistFolder}`));
-// });
-
-// gulp.task('revrepcss', () => {
-// 	let manifest = gulp.src('rev-manifest.json');
-// 	return gulp.src(`${mainDestFolder}css/**/*.css`)
-// 		.pipe(revReplace({
-// 			manifest,
-// 			replaceInExtensions: ['.css']
-// 		}))
-// 		.pipe(bom())
-// 		.pipe(gulp.dest(`${mainDestFolder}css`));
-// });
-
-// gulp.task('revrepjs', () => {
-// 	let manifest = gulp.src('rev-manifest.json');
-// 	return gulp.src(`${mainDestFolder}js/**/*.js`)
-// 		.pipe(revReplace({
-// 			manifest,
-// 			replaceInExtensions: ['.js']
-// 		}))
-// 		.pipe(bom())
-// 		.pipe(gulp.dest(`${mainDestFolder}js`));
 // });
 
 gulp.task('copyFonts', () => {

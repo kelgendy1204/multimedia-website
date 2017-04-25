@@ -145,11 +145,37 @@ body{
                     background-color: #6d7688;
                     border-radius: 16px;
                     margin-left: 30px;
-                    .cir{
-                        width: 28px;
-                        height: 28px;
-                        border-radius: 50%;
-                        background-color: #b0bfd3;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    .right{
+                        width: 15%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        .cir{
+                            width: 27px;
+                            height: 27px;
+                            border-radius: 50%;
+                            background-color: #b0bfd3;
+                        }
+                    }
+                    .left{
+                        width: 84%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        input{
+                            width: 80%;
+                            height: 100%;
+                            border: 0;
+                            text-align: center;
+                            font-size: 30px;
+                            background: transparent;
+                            color: white;
+                            font-size: 17px;
+                            font-family: jf;
+                        }
                     }
                 }
                 .default2{
@@ -158,11 +184,40 @@ body{
                     background-color: #6d7688;
                     border-radius: 16px;
                     margin-left: 30px;
-                    .cir{
-                        width: 28px;
-                        height: 28px;
-                        border-radius: 50%;
-                        background-color: #b0bfd3;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    .right{
+                        width: 84%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        input{
+                            width: 80%;
+                            height: 100%;
+                            border: 0;
+                            text-align: center;
+                            font-size: 30px;
+                            background: transparent;
+                            color: white;
+                            font-size: 17px;
+                            font-family: jf;
+                            placeholder{
+                                color: red;
+                            }
+                        }
+                    }
+                    .left{
+                        width: 15%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        .cir{
+                            width: 26px;
+                            height: 26px;
+                            border-radius: 50%;
+                            background-color: #b0bfd3;
+                        }
                     }
                 }
                 .default3{

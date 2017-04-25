@@ -176,6 +176,9 @@ body{
                             font-size: 17px;
                             font-family: jf;
                         }
+                        input::placeholder {
+                            color: white;
+                        }
                     }
                 }
                 .default2{
@@ -202,9 +205,9 @@ body{
                             color: white;
                             font-size: 17px;
                             font-family: jf;
-                            placeholder{
-                                color: red;
-                            }
+                        }
+                        input::placeholder {
+                            color: white;
                         }
                     }
                     .left{

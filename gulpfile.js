@@ -249,7 +249,7 @@ gulp.task('clean', function() {
 // });
 
 function minifyImages() {
-	return gulp.src(`${mainSrcFolder}images/**/*.{jpg,png,svg,gif,ico}`)
+	return gulp.src(`${mainSrcFolder}images/**/*.*`)
 		.on('error', swallowError)
 		.pipe(newer(`${mainDestFolder}images`))
 		.pipe(imagemin({

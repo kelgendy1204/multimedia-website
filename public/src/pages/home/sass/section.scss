@@ -2,8 +2,8 @@ body{
     direction: rtl;
     header{
         width: 100%;
-        height: 60px;
         background-color: #3a3f48;
+        position: relative;
         .block-header{
             width: 100%;
             height: 60px;
@@ -18,7 +18,7 @@ body{
                 align-items: center;
                 .default1{
                     width: 30%;
-                    height: 40px;
+                    height: 43px;
                     display: flex;
                     align-items: center;
                     .pic{
@@ -54,7 +54,7 @@ body{
                 }
                 .default2{
                     width: 30%;
-                    height: 40px;
+                    height: 43px;
                     display: flex;
                     align-items: center;
                     margin-right: 30px;
@@ -170,11 +170,11 @@ body{
                             height: 100%;
                             border: 0;
                             text-align: center;
-                            font-size: 30px;
                             background: transparent;
                             color: white;
                             font-size: 17px;
                             font-family: jf;
+                            outline: 0;
                         }
                         input::placeholder {
                             color: white;
@@ -200,11 +200,11 @@ body{
                             height: 100%;
                             border: 0;
                             text-align: center;
-                            font-size: 30px;
                             background: transparent;
                             color: white;
                             font-size: 17px;
                             font-family: jf;
+                            outline: 0;
                         }
                         input::placeholder {
                             color: white;
@@ -241,6 +241,462 @@ body{
         }
     }
     section{
+        width: 100%;
+        margin: 0 auto;
+        .banner{
+            width: 100%;
+            height: 336px;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .sectioncontainer{
+            width: 100%;
+            background-color: #3a3f48;
+            .container-header{
+                height: 45px;
+                display: flex;
+                align-items: center;
+                .section{
+                    width: 80%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    .song{
+                        width: 14.2%;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        .pic{
+                            width: 30%;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: #e84e3d;
+                            border-bottom-right-radius: 5px;
+                            border-top-right-radius: 5px;
+                            img{
+                                width: 80%;
+                                height: 80%;
+                            }
+                        }
+                        .content{
+                            width: 70%;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: #e84e3d;
+                            border-bottom-left-radius: 5px;
+                            border-top-left-radius: 5px;
+                            p{
+                                color: white;
+                                font-size: 20px;
+                                font-weight: bold;
+                                font-family: jf;
+                            }
+                        }
+                    }
+                    .movies{
+                        width: 14.2%;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        .pic{
+                            width: 30%;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: #fcb040;
+                            border-bottom-right-radius: 5px;
+                            border-top-right-radius: 5px;
+                            img{
+                                width: 80%;
+                                height: 80%;
+                            }
+                        }
+                        .content{
+                            width: 70%;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: #fcb040;
+                            border-bottom-left-radius: 5px;
+                            border-top-left-radius: 5px;
+                            p{
+                                color: white;
+                                font-size: 20px;
+                                font-weight: bold;
+                                font-family: jf;
+                            }
+                        }
+                    }
+                    .games{
+                        width: 14.2%;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        .pic{
+                            width: 30%;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: #1d8386;
+                            border-bottom-right-radius: 5px;
+                            border-top-right-radius: 5px;
+                            img{
+                                width: 80%;
+                                height: 80%;
+                            }
+                        }
+                        .content{
+                            width: 70%;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: #1d8386;
+                            border-bottom-left-radius: 5px;
+                            border-top-left-radius: 5px;
+                            p{
+                                color: white;
+                                font-size: 20px;
+                                font-weight: bold;
+                                font-family: jf;
+                            }
+                        }
+                    }
+                    .app{
+                        width: 14.2%;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        .pic{
+                            width: 30%;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: #efc316;
+                            border-bottom-right-radius: 5px;
+                            border-top-right-radius: 5px;
+                            img{
+                                width: 80%;
+                                height: 80%;
+                            }
+                        }
+                        .content{
+                            width: 70%;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: #efc316;
+                            border-bottom-left-radius: 5px;
+                            border-top-left-radius: 5px;
+                            p{
+                                color: white;
+                                font-size: 20px;
+                                font-weight: bold;
+                                font-family: jf;
+                            }
+                        }
+                    }
+                    .tv{
+                        width: 14.2%;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        .pic{
+                            width: 30%;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: #2581bc;
+                            border-bottom-right-radius: 5px;
+                            border-top-right-radius: 5px;
+                            img{
+                                width: 80%;
+                                height: 80%;
+                            }
+                        }
+                        .content{
+                            width: 70%;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: #2581bc;
+                            border-bottom-left-radius: 5px;
+                            border-top-left-radius: 5px;
+                            p{
+                                color: white;
+                                font-size: 20px;
+                                font-weight: bold;
+                                font-family: jf;
+                            }
+                        }
+                    }
+                    .wwe{
+                        width: 14.2%;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        .pic{
+                            width: 30%;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: #342c34;
+                            border-bottom-right-radius: 5px;
+                            border-top-right-radius: 5px;
+                            img{
+                                width: 80%;
+                                height: 80%;
+                            }
+                        }
+                        .content{
+                            width: 70%;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: #32333a;
+                            border-bottom-left-radius: 5px;
+                            border-top-left-radius: 5px;
+                            p{
+                                color: white;
+                                font-size: 20px;
+                                font-weight: bold;
+                                font-family: jf;
+                            }
+                        }
+                    }
+                    .other{
+                        width: 14.2%;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        .pic{
+                            width: 30%;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: #3ab29c;
+                            border-bottom-right-radius: 5px;
+                            border-top-right-radius: 5px;
+                            img{
+                                width: 80%;
+                                height: 80%;
+                            }
+                        }
+                        .content{
+                            width: 70%;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: #3ab29c;
+                            border-bottom-left-radius: 5px;
+                            border-top-left-radius: 5px;
+                            p{
+                                color: white;
+                                font-size: 20px;
+                                font-weight: bold;
+                                font-family: jf;
+                            }
+                        }
+                    }
+                }
+                .search{
+                    width: 20%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .section{
+                        width: 85%;
+                        height: 70%;
+                        border-radius: 30px;
+                        background-color: white;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        input{
+                            width: 80%;
+                            border: 0;
+                            text-align: center;
+                            background: transparent;
+                            color: #3a3f48;
+                            font-size: 20px;
+                            font-weight: bold;
+                            font-family: jf;
+                            outline: 0;
+                        }
+                        input::placeholder {
+                            color: #3a3f48;
+                            font-size: 20px;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
 
+        }
+        .ads{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+        }
+        .list-container{
+            width: 100%;
+            height: 100%;
+            padding: 8px;
+            position: relative;
+            .ads-right{
+                width: 160px;
+                height: 600px;
+                top: 233px;
+                position: fixed;
+                right: 5px;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .items{
+                width: 100%;
+                display: flex;
+                display: -webkit-flex;
+                flex-wrap: wrap;
+                -webkit-flex-wrap: wrap;
+                justify-content: space-around;
+                -webkit-justify-content: space-around;
+                .item{
+                    margin: 10px 4px;
+                    padding: 4px;
+                    border: 2px solid #83BF17;
+                    color: black;
+                    text-decoration: none;
+                    width: 200px;
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    background: white;
+                    z-index: 4;
+                    img{
+                        width: 99%;
+                        height: 300px;
+                        z-index: 5;
+                    }
+                    p{
+                        width: 99%;
+                        min-height: 90px;
+                        z-index: 5;
+                        display: block;
+                        font-size: 18px;
+                        padding: 8px;
+                        font-family: cursive;
+                    }
+                    &.song{
+                        border: 2px solid #e84e3d;
+                    }
+                    &.movies{
+                        border: 2px solid #fcb040;
+                    }
+                    &.games{
+                        border: 2px solid #107c7f;
+                    }
+                    &.app{
+                        border: 2px solid #efc316;
+                    }
+                    &.tv{
+                        border: 2px solid #2581bc;
+                    }
+                    &.wwe{
+                        border: 2px solid #32333a;
+                    }
+                    &.other{
+                        border: 2px solid #3ab29c;
+                    }
+                }
+            }
+            .ads-left{
+                width: 160px;
+                height: 600px;
+                top: 233px;
+                position: fixed;
+                left: 5px;
+                z-index: 2;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+    footer{
+        width: 100%;
+        background-color: #3a3f48;
+        position: relative;
+        .block-footer{
+            width: 100%;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            background-color: #3a3f48;
+            justify-content: flex-end;
+            .content{
+                width: 27%;
+                height: 43px;
+                margin-left: 5px;
+                display: flex;
+                align-items: center;
+                .pic{
+                    width: 30%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: #1d8386;
+                    border-bottom-right-radius: 5px;
+                    border-top-right-radius: 5px;
+                    img{
+                        width: 80%;
+                        height: 80%;
+                    }
+                }
+                .content{
+                    width: 70%;
+                    height: 100%;
+                    display: flex;
+                    padding: 5px;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: #32333a;
+                    border-bottom-left-radius: 5px;
+                    border-top-left-radius: 5px;
+                    p{
+                        text-align: center;
+                        color: white;
+                        font-size: 15px;
+                        font-weight: bold;
+                        font-family: jf;
+                    }
+                }
+            }
+        }
     }
 }

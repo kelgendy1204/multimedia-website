@@ -39,8 +39,8 @@ const notifier = require('node-notifier');
 // const revdel = require('gulp-rev-delete-original');
 // const minifyCshtml = require('gulp-minify-cshtml');
 
-const mainSrcFolder = './src/';
-const mainDestFolder = './dist/';
+const mainSrcFolder = './public/src/';
+const mainDestFolder = './public/dist/';
 
 const notify = (title, message) => {
 	notifier.notify({ title, message });

@@ -1,6 +1,6 @@
 body{
     direction: rtl;
-     header{
+    header{
         width: 100%;
         background-color: #3a3f48;
         position: relative;
@@ -585,7 +585,6 @@ body{
                 -webkit-justify-content: space-around;
                 .item{
                     margin: 10px 4px;
-                    padding: 4px;
                     border: 2px solid #83BF17;
                     color: black;
                     text-decoration: none;
@@ -603,7 +602,7 @@ body{
                     }
                     p{
                         width: 99%;
-                        min-height: 90px;
+                        min-height: 67px;
                         z-index: 5;
                         display: block;
                         font-size: 18px;

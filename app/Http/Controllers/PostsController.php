@@ -17,15 +17,21 @@ class PostsController extends Controller
 		return view('posts.posts', ['posts' => $posts]);
 	}
 
-	// public function show($id) {
-	// 	// $post = DB::table('posts')->find($id);
-
-	// 	$post = Post::find($id);
-	// 	return view('posts.show', ['post' => $post]);
-	// }
+/*	public function show($id) {
+		$post = DB::table('posts')->find($id);
+		$post = Post::find($id);
+		return view('posts.show', ['post' => $post]);
+	}*/
 
 	public function show(Post $post) {
 		return view('posts.show', ['post' => $post]);
 	}
 
+	public function create() {
+		return view('posts.create');
+	}
+
+	public function store() {
+
+	}
 }

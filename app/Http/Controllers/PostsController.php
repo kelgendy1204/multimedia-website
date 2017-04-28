@@ -32,6 +32,19 @@ class PostsController extends Controller
 	}
 
 	public function store() {
+		$post = new Post;
+		$post->title = request('title');
+		$post->description = request('description');
+		$post->short_description = request('short_description');
+		$post->visible = request('visible') == "on" ? true : false;
+		$post->pinned = request('pinned') == "on" ? true : false;
 
+		// Post::create([
+		// 	'title' => request('title')
+		// ]);
+
+		$post->save();
+
+		return redirect('/');
 	}
 }

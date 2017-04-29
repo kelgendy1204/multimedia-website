@@ -5,11 +5,14 @@
 	<title></title>
 </head>
 <body>
-	<h1> {{ $post->id }} </h1>
-	<p> {{ $post->name }} </p>
-	<p> {{ $post->description }} </p>
-	<p> {{ $post->short_description }} </p>
-	<p> {{ $post->visits }} </p>
+	<h1> id - {{ $post->id }} </h1>
+	<p> name - {{ $post->title }} </p>
+	<p> description - {{ $post->description }} </p>
+	<p> short_description - {{ $post->short_description }} </p>
+	<p> visits - {{ $post->visits }} </p>
+	<p> Visible - {{ $post->visible }} </p>
+	<p> Pinned - {{ $post->pinned }} </p>
+	<p> Category - {{ $category }} </p>
 	<img src="{{ $post->photo_url }}" />
 </body>
 </html>

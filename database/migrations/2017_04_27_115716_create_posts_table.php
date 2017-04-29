@@ -22,8 +22,7 @@ class CreatePostsTable extends Migration
             $table->boolean('visible')->default(true);
             $table->boolean('pinned')->default(false);
             $table->integer('visits')->default(0);
-            // $table->integer('category_id')->default(0);
-            $table->integer('sub_category_id')->default(0);
+            $table->integer('category_id')->default(0);
             $table->timestamps();
         });
     }

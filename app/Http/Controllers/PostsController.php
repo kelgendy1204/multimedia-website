@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-// use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use App\Post;
+use App\Category;
 
 class PostsController extends Controller
 {
@@ -24,25 +25,32 @@ class PostsController extends Controller
 	}*/
 
 	public function show(Post $post) {
-		return view('posts.show', ['post' => $post]);
+		$category = Category::find($post->category_id);
+		return view('posts.show', ['post' => $post, 'category' => $category->name]);
 	}
 
 	public function create() {
-		return view('posts.create');
+		$categories = Category::all();
+		return view('posts.create', ['categories' => $categories]);
 	}
 
-	public function store() {
+	// post
+	public function store(Request $request) {
 		$post = new Post;
 		$post->title = request('title');
 		$post->description = request('description');
 		$post->short_description = request('short_description');
 		$post->visible = request('visible') == "on" ? true : false;
 		$post->pinned = request('pinned') == "on" ? true : false;
+		$post->category_id = request('category');
+		$post->save();
 
-		// Post::create([
-		// 	'title' => request('title')
-		// ]);
+		$uniqid = uniqid($post->id, true) . ".png";
+		if($request->hasFile('postimage') && $request->file('postimage')->isValid()){
+			$request->file('postimage')->move('postimages/', $uniqid);
+		}
 
+		$post->photo_url = "/postimages/" . $uniqid;
 		$post->save();
 
 		return redirect('/');

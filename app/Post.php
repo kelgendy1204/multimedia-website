@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
 
+	// public function category()
+	// {
+	// 	return $this->hasOne('App\Category');
+	// }
+
 	public static function get_all_visible()
 	{
 		return static::where('visible', 1)->get();

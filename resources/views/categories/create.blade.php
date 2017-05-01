@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create Category</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<form method="POST" action="/categories">
+			{{ csrf_field() }}
+			<div class="form-group">
+				<label for="category">Enter category name</label>
+				<input type="text" name="category" class="form-control" id="category" placeholder="Enter category name">
+			</div>
+			<div class="form-group">
+				<label for="parent">Choose parent</label>
+				<select class="form-control" name="parent" id="parent">
+					<option value="0">No parent</option>
+					@foreach ($categories as $category)
+						<option value="{{$category->id}}"> {{ $category->name }} </option>
+					@endforeach
+				</select>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+
+	</div>
+</body>
+</html>

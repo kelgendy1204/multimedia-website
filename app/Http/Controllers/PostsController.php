@@ -45,13 +45,13 @@ class PostsController extends Controller
 		$post->category_id = request('category');
 		$post->save();
 
-		$uniqid = uniqid($post->id, true) . ".png";
-		if($request->hasFile('postimage') && $request->file('postimage')->isValid()){
-			$request->file('postimage')->move('postimages/', $uniqid);
+		$imageFile = $request->file('postimage');
+		$uniqid = uniqid($post->id, true) . "." . $imageFile->getClientOriginalExtension();
+		if($request->hasFile('postimage') && $imageFile->isValid()) {
+			$imageFile->move('postimages/', $uniqid);
+			$post->photo_url = "/postimages/" . $uniqid;
+			$post->save();
 		}
-
-		$post->photo_url = "/postimages/" . $uniqid;
-		$post->save();
 
 		return redirect('/');
 	}

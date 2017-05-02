@@ -7,12 +7,15 @@
 </head>
 <body>
 	<div class="container">
-		<form method="POST" action="/categories">
+		<form method="POST" action="/categories" enctype="multipart/form-data">
+
 			{{ csrf_field() }}
+
 			<div class="form-group">
 				<label for="category">Enter category name</label>
 				<input type="text" name="category" class="form-control" id="category" placeholder="Enter category name">
 			</div>
+
 			<div class="form-group">
 				<label for="parent">Choose parent</label>
 				<select class="form-control" name="parent" id="parent">
@@ -22,7 +25,14 @@
 					@endforeach
 				</select>
 			</div>
+
+			<div class="form-group">
+				<label for="categoryimage">upload image</label>
+				<input type="file" class="form-control-file" name="categoryimage" id="categoryimage">
+			</div>
+
 			<button type="submit" class="btn btn-primary">Submit</button>
+
 		</form>
 
 	</div>

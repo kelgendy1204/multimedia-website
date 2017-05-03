@@ -270,6 +270,7 @@ body{
                         height: 100%;
                         display: flex;
                         align-items: center;
+                        text-decoration: none;
                         .pic{
                             width: 30%;
                             height: 100%;
@@ -299,7 +300,7 @@ body{
                             }
                         }
                     }
-                     .songs{
+                    .songs{
                         .pic{
                             background-color: #e84e3d;
                         }
@@ -390,7 +391,7 @@ body{
                     }
                 }
             }
-         }
+        }
         .ads{
             width: 100%;
             display: flex;

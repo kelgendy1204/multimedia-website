@@ -486,6 +486,13 @@ body{
             }
         }
     }
+    .pagination{
+        height: 50px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     footer{
         width: 100%;
         background-color: #3a3f48;

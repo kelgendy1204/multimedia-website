@@ -17,6 +17,11 @@
 			</div>
 
 			<div class="form-group">
+				<label for="category_en">Enter category english name</label>
+				<input type="text" name="category_en" class="form-control" id="category_en" placeholder="Enter category english name">
+			</div>
+
+			<div class="form-group">
 				<label for="parent">Choose parent</label>
 				<select class="form-control" name="parent" id="parent">
 					<option value="0">No parent</option>

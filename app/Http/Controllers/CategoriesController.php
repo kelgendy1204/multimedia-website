@@ -13,10 +13,10 @@ class CategoriesController extends Controller
 		return view('categories.create', ['categories' => $categories ]);
 	}
 
-
 	public function store(Request $request) {
 		$category = new Category;
 		$category->name = request("category");
+		$category->name_en = request("category_en");
 		$category->parent_id = request("parent");
 		$category->save();
 
@@ -28,6 +28,6 @@ class CategoriesController extends Controller
 			$category->save();
 		}
 
-		return redirect('/');
+		return redirect('/categories/create');
 	}
 }

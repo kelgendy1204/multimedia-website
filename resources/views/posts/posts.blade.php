@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
@@ -8,9 +8,9 @@
         <li> <a href="/posts/{{ $post->id }}"> {{ $post->title }} </a> </li>
     @endforeach
 </body>
-</html>
+</html> --}}
 
-{{--
+
 <!doctype html>
 <html>
     <head>
@@ -55,13 +55,9 @@
                 <div class="elementscontainer">
                     <div class="container-header">
                         <div class="section">
-                            <a class="song"><div class="pic"><img src="dist/images/icons/aghani.svg"></div><div class="content"><p>أغانى</p></div></a>
-                            <a class="movies"><div class="pic"><img src="dist/images/icons/aflam.svg"></div><div class="content"><p>افلام</p></div></a>
-                            <a class="games"><div class="pic"><img src="dist/images/icons/al3ab.svg"></div><div class="content"><p>ألعاب</p></div></a>
-                            <a class="app"><div class="pic"><img src="dist/images/icons/brameg.svg"></div><div class="content"><p>برامـــج</p></div></a>
-                            <a class="tv"><div class="pic"><img src="dist/images/icons/tv.svg"></div><div class="content"><p>Tv</p></div></a>
-                            <a class="wwe"><div class="pic"><img src="dist/images/icons/wwe-1200x1200.png"></div><div class="content"><p>  المصارعـــة </p></div></a>
-                            <a class="other"><div class="pic"><img src="dist/images/icons/okhra.svg"></div><div class="content"><p>منوعــات</p></div></a>
+                            @foreach ($categories as $category)
+                                @include('layouts.category')
+                            @endforeach
                         </div>
                         <div class="search">
                             <div class="section"><input type="text" placeholder="بـــحـــث"></div>
@@ -149,4 +145,4 @@
             </div>
         </footer>
     </body>
-</html> --}}
+</html>

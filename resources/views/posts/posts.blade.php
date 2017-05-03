@@ -56,7 +56,7 @@
                     <div class="container-header">
                         <div class="section">
                             @foreach ($categories as $category)
-                                @include('layouts.category')
+                                @include('layouts.categorylayout')
                             @endforeach
                         </div>
                         <div class="search">
@@ -72,62 +72,9 @@
                 <a class="ads-right"><img src="dist/images/ads/123.PNG"></a>
                 <div class="elementscontainer">
                     <div class="items">
-                        <a class="item song"><img src="dist/images/items/1.jpg"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item movies"><img src="dist/images/items/2.jpg"><p>فيلم صابر جوجل بطولة محمد رجب و سارة سلامة نسخه HDRip</p></a>
-                        <a class="item app"><img src="dist/images/items/3.jpg"><p>Split 2016 480p & 720p BluRay مترجم</p></a>
-                        <a class="item tv"><img src="dist/images/items/4.jpg"><p>البوم نانسي عجرم -حاسه بيك 2017 Cd Q 320Kpbs</p></a>
-                        <a class="item wwe"><img src="dist/images/items/5.jpg"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item other"><img src="dist/images/items/6.jpg"><p>sleepless 2017 720p WEB-DL مترجم </p></a>
-                        <a class="item games"><img src="dist/images/items/7.png"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item song"><img src="dist/images/items/1.jpg"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item movies"><img src="dist/images/items/2.jpg"><p>فيلم صابر جوجل بطولة محمد رجب و سارة سلامة نسخه HDRip</p></a>
-                        <a class="item app"><img src="dist/images/items/3.jpg"><p>Split 2016 480p & 720p BluRay مترجم</p></a>
-                        <a class="item tv"><img src="dist/images/items/4.jpg"><p>البوم نانسي عجرم -حاسه بيك 2017 Cd Q 320Kpbs</p></a>
-                        <a class="item wwe"><img src="dist/images/items/5.jpg"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item other"><img src="dist/images/items/6.jpg"><p>sleepless 2017 720p WEB-DL مترجم </p></a>
-                        <a class="item games"><img src="dist/images/items/7.png"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item song"><img src="dist/images/items/1.jpg"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item movies"><img src="dist/images/items/2.jpg"><p>فيلم صابر جوجل بطولة محمد رجب و سارة سلامة نسخه HDRip</p></a>
-                        <a class="item app"><img src="dist/images/items/3.jpg"><p>Split 2016 480p & 720p BluRay مترجم</p></a>
-                        <a class="item tv"><img src="dist/images/items/4.jpg"><p>البوم نانسي عجرم -حاسه بيك 2017 Cd Q 320Kpbs</p></a>
-                        <a class="item wwe"><img src="dist/images/items/5.jpg"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item other"><img src="dist/images/items/6.jpg"><p>sleepless 2017 720p WEB-DL مترجم </p></a>
-                        <a class="item games"><img src="dist/images/items/7.png"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item song"><img src="dist/images/items/1.jpg"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item movies"><img src="dist/images/items/2.jpg"><p>فيلم صابر جوجل بطولة محمد رجب و سارة سلامة نسخه HDRip</p></a>
-                        <a class="item app"><img src="dist/images/items/3.jpg"><p>Split 2016 480p & 720p BluRay مترجم</p></a>
-                        <a class="item tv"><img src="dist/images/items/4.jpg"><p>البوم نانسي عجرم -حاسه بيك 2017 Cd Q 320Kpbs</p></a>
-                        <a class="item wwe"><img src="dist/images/items/5.jpg"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item other"><img src="dist/images/items/6.jpg"><p>sleepless 2017 720p WEB-DL مترجم </p></a>
-                        <a class="item games"><img src="dist/images/items/7.png"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item song"><img src="dist/images/items/1.jpg"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item movies"><img src="dist/images/items/2.jpg"><p>فيلم صابر جوجل بطولة محمد رجب و سارة سلامة نسخه HDRip</p></a>
-                        <a class="item app"><img src="dist/images/items/3.jpg"><p>Split 2016 480p & 720p BluRay مترجم</p></a>
-                        <a class="item tv"><img src="dist/images/items/4.jpg"><p>البوم نانسي عجرم -حاسه بيك 2017 Cd Q 320Kpbs</p></a>
-                        <a class="item wwe"><img src="dist/images/items/5.jpg"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item other"><img src="dist/images/items/6.jpg"><p>sleepless 2017 720p WEB-DL مترجم </p></a>
-                        <a class="item games"><img src="dist/images/items/7.png"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item song"><img src="dist/images/items/1.jpg"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item movies"><img src="dist/images/items/2.jpg"><p>فيلم صابر جوجل بطولة محمد رجب و سارة سلامة نسخه HDRip</p></a>
-                        <a class="item app"><img src="dist/images/items/3.jpg"><p>Split 2016 480p & 720p BluRay مترجم</p></a>
-                        <a class="item tv"><img src="dist/images/items/4.jpg"><p>البوم نانسي عجرم -حاسه بيك 2017 Cd Q 320Kpbs</p></a>
-                        <a class="item wwe"><img src="dist/images/items/5.jpg"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item other"><img src="dist/images/items/6.jpg"><p>sleepless 2017 720p WEB-DL مترجم </p></a>
-                        <a class="item games"><img src="dist/images/items/7.png"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item song"><img src="dist/images/items/1.jpg"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item movies"><img src="dist/images/items/2.jpg"><p>فيلم صابر جوجل بطولة محمد رجب و سارة سلامة نسخه HDRip</p></a>
-                        <a class="item app"><img src="dist/images/items/3.jpg"><p>Split 2016 480p & 720p BluRay مترجم</p></a>
-                        <a class="item tv"><img src="dist/images/items/4.jpg"><p>البوم نانسي عجرم -حاسه بيك 2017 Cd Q 320Kpbs</p></a>
-                        <a class="item wwe"><img src="dist/images/items/5.jpg"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item other"><img src="dist/images/items/6.jpg"><p>sleepless 2017 720p WEB-DL مترجم </p></a>
-                        <a class="item games"><img src="dist/images/items/7.png"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item song"><img src="dist/images/items/1.jpg"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item movies"><img src="dist/images/items/2.jpg"><p>فيلم صابر جوجل بطولة محمد رجب و سارة سلامة نسخه HDRip</p></a>
-                        <a class="item app"><img src="dist/images/items/3.jpg"><p>Split 2016 480p & 720p BluRay مترجم</p></a>
-                        <a class="item tv"><img src="dist/images/items/4.jpg"><p>البوم نانسي عجرم -حاسه بيك 2017 Cd Q 320Kpbs</p></a>
-                        <a class="item wwe"><img src="dist/images/items/5.jpg"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
-                        <a class="item other"><img src="dist/images/items/6.jpg"><p>sleepless 2017 720p WEB-DL مترجم </p></a>
-                        <a class="item games"><img src="dist/images/items/7.png"><p>اغنية اصالة نصري - لا تروح CD Q 320 Kbps</p></a>
+                        @foreach ($posts as $post)
+                            @include('layouts.postlayout')
+                        @endforeach
                     </div>
                 </div>
                 <a class="ads-left"><img src="dist/images/ads/123.PNG"></a>
@@ -139,7 +86,6 @@
         <footer>
             <div class="elementscontainer">
                 <div class="block-footer">
-
                     <div class="content"><div class="pic"><img src="dist/images/home.svg"></div><div class="content"><p>جميع الحقوق محفوظة  لدى منتديات مزيكا تو داي</p></div></div>
                 </div>
             </div>

@@ -10,13 +10,14 @@ class PostsController extends Controller
 {
 
 	// get : / home page
-	public function index() {
+	public function index(Request $request) {
 		// $posts = DB::table('posts')->latest()->get();
 		// $posts = Post::all();
 		// $posts = Post::where('visible', 0)->get();
 
 		$categories = Category::all();
-		$posts = Post::get_all_visible();
+		$category = $request->input('category');
+		$posts = Post::get_all_visible($category);
 
 		return view('posts.posts', [
 			'posts' => $posts,

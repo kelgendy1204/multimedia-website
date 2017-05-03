@@ -270,6 +270,7 @@ body{
                         height: 100%;
                         display: flex;
                         align-items: center;
+                        text-decoration: none;
                         .pic{
                             width: 30%;
                             height: 100%;
@@ -299,7 +300,7 @@ body{
                             }
                         }
                     }
-                     .song{
+                    .songs{
                         .pic{
                             background-color: #e84e3d;
                         }
@@ -390,7 +391,7 @@ body{
                     }
                 }
             }
-         }
+        }
         .ads{
             width: 100%;
             display: flex;
@@ -448,7 +449,7 @@ body{
                         padding: 8px;
                         font-family: cursive;
                     }
-                    &.song{
+                    &.songs{
                         border: 2px solid #e84e3d;
                     }
                     &.movies{

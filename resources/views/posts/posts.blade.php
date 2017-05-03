@@ -26,7 +26,7 @@
             <div class="elementscontainer">
                 <div class="block-header">
                     <div class="right">
-                        <a class="default1"><div class="pic"><img src="dist/images/home.svg"></div><div class="content"><p>الرئيسية</p></div></a>
+                        <a href="{{Request::url()}}" class="default1"><div class="pic"><img src="dist/images/home.svg"></div><div class="content"><p>الرئيسية</p></div></a>
                         <a class="default2"><div class="pic"><img src="dist/images/montadayat.svg"></div><div class="content"><p>المنتديات</p></div></a>
                     </div>
                     <div class="center">

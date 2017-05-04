@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Post;
 use App\Category;
+use App\Advertisement;
 
 class PostsController extends Controller
 {
@@ -17,12 +18,14 @@ class PostsController extends Controller
 		$search = $request->input('search');
 
 		$categories = Category::all();
+		$advertisements = Advertisement::all()->keyBy('name');
 		$posts = Post::get_all_visible($category, $search);
 
 		return view('posts.posts', [
 			'posts' => $posts,
 			'categories' => $categories,
-			'parameters' => $parameters
+			'parameters' => $parameters,
+			'advertisements' => $advertisements,
 		]);
 	}
 

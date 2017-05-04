@@ -70,10 +70,10 @@
                 </div>
             </div>
             <div class="elementscontainer">
-                <a class="ads"><img src="/dist/images/ads/12.jpg"></a>
+                <a class="ads"><img src="{{$advertisements->get('home_top')->photo_url}}" alt="{{$advertisements->get('home_top')->name}}"></a>
             </div>
             <div class="list-container">
-                <a class="ads-right"><img src="/dist/images/ads/123.png"></a>
+                <a class="ads-right"><img src="{{$advertisements->get('home_right')->photo_url}}" alt="{{$advertisements->get('home_right')->name}}"></a>
                 <div class="elementscontainer">
                     <div class="items">
                         @foreach ($posts as $post)
@@ -81,10 +81,10 @@
                         @endforeach
                     </div>
                 </div>
-                <a class="ads-left"><img src="/dist/images/ads/123.png"></a>
+                <a class="ads-left"><img src="{{$advertisements->get('home_left')->photo_url}}" alt="{{$advertisements->get('home_left')->name}}"></a>
             </div>
             <div class="elementscontainer">
-                <a class="ads"><img src="dist/images/ads/12.jpg"></a>
+                <a class="ads"><img src="{{$advertisements->get('home_bottom')->photo_url}}" alt="{{$advertisements->get('home_bottom')->name}}"></a>
             </div>
         </section>
         <div class="pagination">

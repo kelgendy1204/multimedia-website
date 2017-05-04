@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-	public static $paginate = 1;
+	public static $paginate = 50;
 
 	// public function category()
 	// {
@@ -16,7 +16,7 @@ class Post extends Model
 	public static function get_all_visible($category_name_en, $search)
 	{
 
-		$query = static::where('visible', 1)->join('categories', 'categories.id', '=', 'posts.category_id')->select('posts.*', 'categories.name_en as category_name_en', 'categories.name as category_name');
+		$query = static::where('visible', 1)->leftJoin('categories', 'categories.id', '=', 'posts.category_id')->select('posts.*', 'categories.name_en as category_name_en', 'categories.name as category_name');
 
 		if($category_name_en) {
 			$query->where('categories.name_en', $category_name_en);

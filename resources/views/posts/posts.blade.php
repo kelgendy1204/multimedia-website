@@ -83,6 +83,9 @@
                 <a class="ads"><img src="dist/images/ads/12.jpg"></a>
             </div>
         </section>
+        <div class="pagination">
+            {{ $posts->links() }}
+        </div>
         <footer>
             <div class="elementscontainer">
                 <div class="block-footer">

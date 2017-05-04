@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use App\Post;
 use App\Category;
 
@@ -11,17 +12,17 @@ class PostsController extends Controller
 
 	// get : / home page
 	public function index(Request $request) {
-		// $posts = DB::table('posts')->latest()->get();
-		// $posts = Post::all();
-		// $posts = Post::where('visible', 0)->get();
+		$parameters = Input::except('page');
+		$category = $request->input('category');
+		$search = $request->input('search');
 
 		$categories = Category::all();
-		$category = $request->input('category');
-		$posts = Post::get_all_visible($category);
+		$posts = Post::get_all_visible($category, $search);
 
 		return view('posts.posts', [
 			'posts' => $posts,
-			'categories' => $categories
+			'categories' => $categories,
+			'parameters' => $parameters
 		]);
 	}
 

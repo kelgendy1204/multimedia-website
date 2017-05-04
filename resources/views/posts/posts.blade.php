@@ -60,16 +60,20 @@
                             @endforeach
                         </div>
                         <div class="search">
-                            <div class="section"><input type="text" placeholder="بـــحـــث"></div>
+                            <div class="section">
+                                <form method="get" action="{{Request::url()}}">
+                                    <input name="search" type="text" placeholder="بـــحـــث">
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="elementscontainer">
-                <a class="ads"><img src="dist/images/ads/12.jpg"></a>
+                <a class="ads"><img src="/dist/images/ads/12.jpg"></a>
             </div>
             <div class="list-container">
-                <a class="ads-right"><img src="dist/images/ads/123.PNG"></a>
+                <a class="ads-right"><img src="/dist/images/ads/123.png"></a>
                 <div class="elementscontainer">
                     <div class="items">
                         @foreach ($posts as $post)
@@ -77,14 +81,14 @@
                         @endforeach
                     </div>
                 </div>
-                <a class="ads-left"><img src="dist/images/ads/123.PNG"></a>
+                <a class="ads-left"><img src="/dist/images/ads/123.png"></a>
             </div>
             <div class="elementscontainer">
                 <a class="ads"><img src="dist/images/ads/12.jpg"></a>
             </div>
         </section>
         <div class="pagination">
-            {{ $posts->links() }}
+            {{ $posts->appends($parameters)->links() }}
         </div>
         <footer>
             <div class="elementscontainer">

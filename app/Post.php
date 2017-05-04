@@ -13,13 +13,17 @@ class Post extends Model
 	// 	return $this->hasOne('App\Category');
 	// }
 
-	public static function get_all_visible($category_name_en)
+	public static function get_all_visible($category_name_en, $search)
 	{
 
 		$query = static::where('visible', 1)->join('categories', 'categories.id', '=', 'posts.category_id')->select('posts.*', 'categories.name_en as category_name_en', 'categories.name as category_name');
 
 		if($category_name_en) {
-			return $query->where('categories.name_en', $category_name_en)->paginate(static::$paginate);
+			$query->where('categories.name_en', $category_name_en);
+		}
+
+		if($search) {
+			$query->where('posts.title', 'like', '%' . $search . '%');
 		}
 
 		return $query->paginate(static::$paginate);

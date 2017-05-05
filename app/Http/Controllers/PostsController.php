@@ -29,16 +29,22 @@ class PostsController extends Controller
 		]);
 	}
 
-/*	public function show($id) {
-		$post = DB::table('posts')->find($id);
-		$post = Post::find($id);
-		return view('posts.show', ['post' => $post]);
-	}*/
-
 	// get : posts/{id} - show a post
 	public function show(Post $post) {
 		$category = Category::find($post->category_id);
-		return view('posts.show', ['post' => $post, 'category' => $category->name]);
+		return view('posts.show', ['post' => $post, 'category' => $category]);
+	}
+
+	// get : posts/{id}/download - show a post
+	public function download(Post $post) {
+		$category = Category::find($post->category_id);
+		return view('posts.download', ['post' => $post, 'category' => $category]);
+	}
+
+	// get : posts/{id}/online - show a post
+	public function online(Post $post) {
+		$category = Category::find($post->category_id);
+		return view('posts.online', ['post' => $post, 'category' => $category]);
 	}
 
 	// get : posts/create - create a post view
@@ -52,7 +58,8 @@ class PostsController extends Controller
 		$post = new Post;
 		$post->title = request('title');
 		$post->description = request('description');
-		$post->short_description = request('short_description');
+		$post->download_page = request('download_page');
+		$post->online_page = request('online_page');
 		$post->visible = request('visible') == "on" ? true : false;
 		$post->pinned = request('pinned') == "on" ? true : false;
 		$post->category_id = request('category');

@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<title></title>
-</head>
-<body>
-	<h1> id - {{ $post->id }} </h1>
-	<p> name - {{ $post->title }} </p>
-	<p> description - {{ $post->description }} </p>
-	<p> short_description - {{ $post->short_description }} </p>
-	<p> visits - {{ $post->visits }} </p>
-	<p> Visible - {{ $post->visible }} </p>
-	<p> Pinned - {{ $post->pinned }} </p>
-	<p> Category - {{ $category }} </p>
-	<img src="{{ $post->photo_url }}" />
-</body>
-</html>
+@extends('layouts.showpost')
+
+@section('content')
+    <div class="download">
+        <div class="right"><a href="/posts/{{$post->id}}/online"><img src="/dist/images/second/01.svg"></a></div>
+        <div class="left"><a href="/posts/{{$post->id}}/download"><img src="/dist/images/second/02.svg"></a></div>
+    </div>
+@endsection

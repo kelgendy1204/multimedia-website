@@ -1,0 +1,1 @@
+{"version":3,"sources":["section.scss"],"names":[],"mappings":"AAAA,WACI,eACA,8DACA,mBACA,iBAAkB,CAAA","file":"post.css","sourcesContent":["@font-face {\r\n    font-family: jf;\r\n    src: url('../fonts/JF-Flat-Regular-en.ttf') format('truetype');\r\n    font-weight: normal;\r\n    font-style: normal;\r\n}\r\n"]}

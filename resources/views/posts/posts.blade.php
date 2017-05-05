@@ -1,16 +1,3 @@
-{{-- <!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-    @foreach ($posts as $key => $post)
-        <li> <a href="/posts/{{ $post->id }}"> {{ $post->title }} </a> </li>
-    @endforeach
-</body>
-</html> --}}
-
-
 <!doctype html>
 <html>
     <head>
@@ -19,6 +6,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <link rel="stylesheet" href="dist/css/home.css">
     </head>
     <body>
@@ -87,9 +75,9 @@
                 <a class="ads"><img src="{{$advertisements->get('home_bottom')->photo_url}}" alt="{{$advertisements->get('home_bottom')->name}}"></a>
             </div>
         </section>
-        <div class="pagination">
+        {{-- <div class="pagination"> --}}
             {{ $posts->appends($parameters)->links() }}
-        </div>
+        {{-- </div> --}}
         <footer>
             <div class="elementscontainer">
                 <div class="block-footer">

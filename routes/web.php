@@ -13,4 +13,4 @@ Route::post('/categories', 'CategoriesController@store');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/mzk_admin_area', 'AdminController@index');

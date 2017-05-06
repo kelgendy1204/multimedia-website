@@ -10,3 +10,7 @@ Route::post('/posts', 'PostsController@store');
 
 Route::get('/categories/create', 'CategoriesController@create');
 Route::post('/categories', 'CategoriesController@store');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

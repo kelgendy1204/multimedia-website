@@ -13,4 +13,7 @@ Route::post('/categories', 'CategoriesController@store');
 
 Auth::routes();
 
-Route::get('/mzk_admin_area', 'AdminController@index');
+// Route::get('/mzk_admin_login', 'AdminController@login');
+// Route::get('/mzk_admin_adduser', 'AdminController@addUser');
+// Route::get('/mzk_admin_logout', 'AdminController@logout');
+Route::get('/mzk_admin_panel', 'AdminController@index');

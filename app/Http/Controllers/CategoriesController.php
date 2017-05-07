@@ -7,6 +7,12 @@ use App\Category;
 
 class CategoriesController extends Controller
 {
+
+	public function __construct()
+	{
+		$this->middleware('IsAdmin');
+	}
+
 	public function create()
 	{
 		$categories = Category::all();
@@ -30,4 +36,5 @@ class CategoriesController extends Controller
 
 		return redirect('/categories/create');
 	}
+
 }

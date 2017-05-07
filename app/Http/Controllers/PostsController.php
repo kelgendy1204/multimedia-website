@@ -11,6 +11,11 @@ use App\Advertisement;
 class PostsController extends Controller
 {
 
+	public function __construct()
+	{
+		$this->middleware('IsAdmin')->only(['create', 'store']);
+	}
+
 	// get : / home page
 	public function index(Request $request) {
 		$parameters = Input::except('page');
@@ -35,13 +40,13 @@ class PostsController extends Controller
 		return view('posts.show', ['post' => $post, 'category' => $category]);
 	}
 
-	// get : posts/{id}/download - show a post
+	// get : posts/{id}/download - show a post links
 	public function download(Post $post) {
 		$category = Category::find($post->category_id);
 		return view('posts.download', ['post' => $post, 'category' => $category]);
 	}
 
-	// get : posts/{id}/online - show a post
+	// get : posts/{id}/online - watch post online
 	public function online(Post $post) {
 		$category = Category::find($post->category_id);
 		return view('posts.online', ['post' => $post, 'category' => $category]);

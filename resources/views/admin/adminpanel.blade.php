@@ -21,6 +21,15 @@
                   </a>
                 </div>
             </div>
+            <hr />
+            <div class="panel panel-primary">
+                <div class="panel-heading text-center"><strong>Shorten a url</strong></div>
+                <div class="list-group">
+                  <a href="/links/create" class="list-group-item">
+                    Create link
+                  </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

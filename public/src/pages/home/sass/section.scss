@@ -309,10 +309,10 @@ body{
 					}
 					.tv{
 						.pic{
-							background-color: #efc316;
+							background-color: #dcb310;
 						}
 						.content{
-							background-color: #efc316;
+							background-color: #dcb310;
 						}
 					}
 					.wwe{
@@ -325,10 +325,10 @@ body{
 					}
 					.other{
 						.pic{
-							background-color: #636a79;
+							background-color: #c74571;
 						}
 						.content{
-							background-color: #636a79;
+							background-color: #c74571;
 						}
 					}
 
@@ -343,6 +343,8 @@ body{
 			align-items: center;
 			margin: 10px;
 		}
+
+
 		.center-search{
 			display: flex;
 			justify-content: center;
@@ -365,44 +367,54 @@ body{
 					justify-content: space-between;
 					align-items: center;
 					background-color: white;
-					.logo{
-						width: 8%;
-						height: 100%;
-						background-color: #eb4c82;
-						display: flex;
-						justify-content: center;
-						align-items: center;
-						img{
-							width: 50%;
-							height: 90%;
-						}
-					}
-					.down-logo{
-						width: 5%;
+					form{
+						width: 100%;
 						height: 100%;
 						display: flex;
-						justify-content: center;
-						align-items: center;
-						img{
-							width: 60%;
-							height: 90%;
+						flex-direction: row-reverse;
+						justify-content: space-between;
+						.logo{
+							width: 8%;
+							height: 100%;
+							background-color: #eb4c82;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							height: 100%;
+							border: 0;
+							display: inline-block;
+							img{
+								width: 50%;
+								height: 90%;
+							}
 						}
-					}
-					input{
-						width: 90%;
-						border: 0;
-						text-align: center;
-						background: transparent;
-						color: #3a3f48;
-						font-size: 20px;
-						font-weight: bold;
-						font-family: jf;
-						outline: 0;
-					}
-					input::placeholder {
-						color: #3a3f48;
-						font-size: 20px;
-						font-weight: bold;
+						.down-logo{
+							width: 5%;
+							height: 100%;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							img{
+								width: 60%;
+								height: 90%;
+							}
+						}
+						input{
+							width: 90%;
+							border: 0;
+							text-align: center;
+							background: transparent;
+							color: #3a3f48;
+							font-size: 20px;
+							font-weight: bold;
+							font-family: jf;
+							outline: 0;
+						}
+						input::placeholder {
+							color: #3a3f48;
+							font-size: 20px;
+							font-weight: bold;
+						}
 					}
 				}
 			}
@@ -443,10 +455,13 @@ body{
 					justify-content: space-between;
 					background: white;
 					z-index: 4;
-					img{
+					.img{
+						background-image: url(../images/items/1.jpg);
 						width: 99%;
 						height: 300px;
 						z-index: 5;
+						background-size: cover;
+						background-repeat: no-repeat;
 					}
 					p{
 						width: 99%;
@@ -457,26 +472,39 @@ body{
 						padding: 8px;
 						font-family: cursive;
 					}
-					&.songs{
+
+					&.movies-ara{
 						border: 2px solid #e84e3d;
 					}
-					&.movies{
-						border: 2px solid #fcb040;
+					&.movies-eng{
+						border: 2px solid #636a79;
 					}
-					&.games{
-						border: 2px solid #107c7f;
-					}
-					&.app{
-						border: 2px solid #efc316;
-					}
-					&.tv{
+					&.songs-ara{
 						border: 2px solid #2581bc;
 					}
+					&.songs-eng{
+						border: 2px solid #fcb040;
+					}
+					&.series-ara{
+						border: 2px solid #075456;
+					}
+					&.series-eng{
+						border: 2px solid #2581bc;
+					}
+					&.games{
+						border: 2px solid #1d8386;
+					}
+					&.app{
+						border: 2px solid #3ab29c;
+					}
+					&.tv{
+						border: 2px solid #dcb310;
+					}
 					&.wwe{
-						border: 2px solid #32333a;
+						border: 2px solid #342c34;
 					}
 					&.other{
-						border: 2px solid #3ab29c;
+						border: 2px solid #c74571;
 					}
 				}
 			}

@@ -13,7 +13,7 @@ class PostsController extends Controller
 
 	public function __construct()
 	{
-		$this->middleware('IsAdmin')->only(['create', 'store']);
+		$this->middleware('IsAdmin')->only(['create', 'store', 'edit', 'update']);
 	}
 
 	// get : / home page
@@ -52,27 +52,52 @@ class PostsController extends Controller
 		return view('posts.online', ['post' => $post, 'category' => $category]);
 	}
 
-	// get : posts/create - create a post view
+	// // get : admin/posts/{id}/edit - edit a post view
+	public function edit(Post $post) {
+		$categories = Category::all();
+		return view('posts.edit', ['categories' => $categories, 'post' => $post]);
+	}
+
+	// // post : admin/posts/{id}/update - edit a post view
+	public function update(Post $post) {
+		$categories = Category::all();
+		$post->title = request('title');
+		$post->description = request('description');
+		$post->download_page = request('download_page');
+		$post->visible = request('visible') == "on" ? true : false;
+		$post->pinned = request('pinned') == "on" ? true : false;
+		$post->category_id = request('category');
+		$imageFile = request()->file('postimage');
+		if(request()->hasFile('postimage') && $imageFile->isValid()) {
+			$uniqid = uniqid($post->id, true) . "." . $imageFile->getClientOriginalExtension();
+			$imageFile->move('postimages/', $uniqid);
+			$post->photo_url = "/postimages/" . $uniqid;
+		}
+		$post->save();
+
+		return redirect("/admin/posts/" . $post->id . "/edit")->with(['categories' => $categories, 'post' => $post]);
+	}
+
+	// get : admin/posts/create - create a post view
 	public function create() {
 		$categories = Category::all();
 		return view('posts.create', ['categories' => $categories]);
 	}
 
-	// post : posts/store - save a post
+	// post : admin/posts - save a post
 	public function store(Request $request) {
 		$post = new Post;
 		$post->title = request('title');
 		$post->description = request('description');
 		$post->download_page = request('download_page');
-		$post->online_page = request('online_page');
 		$post->visible = request('visible') == "on" ? true : false;
 		$post->pinned = request('pinned') == "on" ? true : false;
 		$post->category_id = request('category');
 		$post->save();
 
 		$imageFile = $request->file('postimage');
-		$uniqid = uniqid($post->id, true) . "." . $imageFile->getClientOriginalExtension();
 		if($request->hasFile('postimage') && $imageFile->isValid()) {
+			$uniqid = uniqid($post->id, true) . "." . $imageFile->getClientOriginalExtension();
 			$imageFile->move('postimages/', $uniqid);
 			$post->photo_url = "/postimages/" . $uniqid;
 			$post->save();

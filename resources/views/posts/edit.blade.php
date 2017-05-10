@@ -25,27 +25,34 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-primary">
-				<div class="panel-heading text-center"><h4>Posts</h4></div>
+				<div class="panel-heading text-center"><h4>Edit Post</h4></div>
 				<div class="panel-body">
-					<form method="POST" action="/admin/posts" enctype="multipart/form-data">
+
+					<div class="row">
+						<div class="col-md-4 col-md-offset-4">
+							<img src="{{$post->photo_url}}" alt="{{$post->description}}" class="img-rounded img-responsive">
+						</div>
+					</div>
+
+					<form method="POST" action="/admin/posts/{{$post->id}}/update" enctype="multipart/form-data">
 
 					{{ csrf_field() }}
 
 						<div class="form-group">
 							<label for="post-title">Post Title</label>
-							<input name="title" type="text" class="form-control" id="post-title" placeholder="Enter Post Title">
+							<input name="title" type="text" class="form-control" id="post-title" placeholder="Enter Post Title" value="{{$post->title}}">
 						</div>
 
 						<div class="form-group">
 							<label for="description">Description</label>
-							<input name="description" class="form-control" id="description">
+							<input name="description" class="form-control" id="description" value="{{$post->description}}">
 						</div>
 
 						<div class="form-group">
 							<label for="category">Category</label>
 							<select class="form-control" name="category" id="category">
 								@foreach ($categories as $category)
-									<option value="{{$category->id}}"> {{ $category->name }} </option>
+									<option value="{{$category->id}}" {{$category->id == $post->category_id ? 'selected' : ''}}> {{ $category->name }} </option>
 								@endforeach
 							</select>
 						</div>
@@ -60,7 +67,7 @@
 						<hr />
 
 						<div class="form-group">
-							<label for="postimage">Upload image</label>
+							<label for="postimage">Change image</label>
 							<input type="file" class="form-control-file" name="postimage" id="postimage">
 						</div>
 
@@ -68,14 +75,14 @@
 
 						<div class="form-check">
 							<label class="form-check-label">
-								<input name="visible" type="checkbox" class="form-check-input">
+								<input name="visible" type="checkbox" class="form-check-input" {{ $post->visible ? 'checked' : ''}}>
 								Is Visible?
 							</label>
 						</div>
 
 						<div class="form-check">
 							<label class="form-check-label">
-								<input name="pinned" type="checkbox" class="form-check-input">
+								<input name="pinned" type="checkbox" class="form-check-input" {{ $post->pinned ? 'checked' : ''}}>
 								Is pinned?
 							</label>
 						</div>

@@ -14,25 +14,14 @@
             <div class="elementscontainer">
                 <div class="block-header">
                     <div class="right">
-                        <a href="{{Request::url()}}" class="default1"><div class="pic"><img src="dist/images/home.svg"></div><div class="content"><p>الرئيسية</p></div></a>
+                        <a class="default1"><div class="pic"><img src="dist/images/home.svg"></div><div class="content"><p>الرئيسية</p></div></a>
                         <a class="default2"><div class="pic"><img src="dist/images/montadayat.svg"></div><div class="content"><p>المنتديات</p></div></a>
                     </div>
-                    <div class="center">
+                    <div class="left">
                         <a class="instgram"><img src="dist/images/instgram.svg"></a>
                         <a class="google-plus"><img src="dist/images/google.svg"></a>
                         <a class="twitter"><img src="dist/images/twitter.svg"></a>
                         <a class="facebook"><img src="dist/images/facebook.svg"></a>
-                    </div>
-                    <div class="left">
-                        <div class="default1">
-                            <div class="right"><div class="cir"></div></div>
-                            <div class="left"><input type="text" placeholder="اسم المستخدم"></div>
-                        </div>
-                        <div class="default2">
-                            <div class="right"><input type="text" placeholder="كلمة المرور"></div>
-                            <div class="left"><div class="cir"></div></div>
-                        </div>
-                        <a class="default3"><p>تسجيل دخول</p></a>
                     </div>
                 </div>
             </div>
@@ -47,21 +36,30 @@
                                 @include('layouts.categorylayout')
                             @endforeach
                         </div>
+                    </div>
+                </div>
+                <div class="elementscontainer">
+                    @if ($advertisements->get('home_top'))
+                        <a class="ads"><img src="{{$advertisements->get('home_top')->photo_url}}" alt="{{$advertisements->get('home_top')->name}}"></a>
+                    @endif
+                    <div class="center-search">
                         <div class="search">
                             <div class="section">
                                 <form method="get" action="{{Request::url()}}">
-                                    <input name="search" type="text" placeholder="بـــحـــث">
+                                    <input name="search" type="text" placeholder="بـــحـــث" />
+                                    <button class="logo">
+                                        <img src="/dist/images/search-icon.svg">
+                                    </button>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="elementscontainer">
-                <a class="ads"><img src="{{$advertisements->get('home_top')->photo_url}}" alt="{{$advertisements->get('home_top')->name}}"></a>
-            </div>
             <div class="list-container">
-                <a class="ads-right"><img src="{{$advertisements->get('home_right')->photo_url}}" alt="{{$advertisements->get('home_right')->name}}"></a>
+                @if ($advertisements->get('home_right'))
+                    <a class="ads-right"><img src="{{$advertisements->get('home_right')->photo_url}}" alt="{{$advertisements->get('home_right')->name}}"></a>
+                @endif
                 <div class="elementscontainer">
                     <div class="items">
                         @foreach ($posts as $post)
@@ -69,15 +67,17 @@
                         @endforeach
                     </div>
                 </div>
-                <a class="ads-left"><img src="{{$advertisements->get('home_left')->photo_url}}" alt="{{$advertisements->get('home_left')->name}}"></a>
+                @if ($advertisements->get('home_left'))
+                    <a class="ads-left"><img src="{{$advertisements->get('home_left')->photo_url}}" alt="{{$advertisements->get('home_left')->name}}"></a>
+                @endif
             </div>
             <div class="elementscontainer">
-                <a class="ads"><img src="{{$advertisements->get('home_bottom')->photo_url}}" alt="{{$advertisements->get('home_bottom')->name}}"></a>
+                @if ($advertisements->get('home_bottom'))
+                    <a class="ads"><img src="{{$advertisements->get('home_bottom')->photo_url}}" alt="{{$advertisements->get('home_bottom')->name}}"></a>
+                @endif
             </div>
         </section>
-        {{-- <div class="pagination"> --}}
-            {{ $posts->appends($parameters)->links() }}
-        {{-- </div> --}}
+        {{ $posts->appends($parameters)->links() }}
         <footer>
             <div class="elementscontainer">
                 <div class="block-footer">

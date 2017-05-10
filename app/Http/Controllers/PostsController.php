@@ -55,7 +55,7 @@ class PostsController extends Controller
 	// // get : admin/posts/{id}/edit - edit a post view
 	public function edit(Post $post) {
 		$categories = Category::all();
-		return view('posts.edit', ['categories' => $categories, 'post' => $post]);
+		return view('posts.create', ['categories' => $categories, 'post' => $post]);
 	}
 
 	// // post : admin/posts/{id}/update - edit a post view

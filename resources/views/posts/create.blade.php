@@ -25,27 +25,37 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-primary">
-				<div class="panel-heading text-center"><h4>Posts</h4></div>
+				<div class="panel-heading text-center"><h4>{{ isset($post) ? 'Edit Posts' : 'Posts'}}</h4></div>
 				<div class="panel-body">
-					<form method="POST" action="/admin/posts" enctype="multipart/form-data">
+
+					@if (isset($post))
+						<div class="row">
+							<div class="col-md-4 col-md-offset-4">
+								<img src="{{$post->photo_url}}" alt="{{$post->description}}" class="img-rounded img-responsive">
+							</div>
+						</div>
+					@endif
+
+
+					<form method="POST" action="{{isset($post)? '/admin/posts/' . $post->id . '/update' : '/admin/posts'}}" enctype="multipart/form-data">
 
 					{{ csrf_field() }}
 
 						<div class="form-group">
 							<label for="post-title">Post Title</label>
-							<input name="title" type="text" class="form-control" id="post-title" placeholder="Enter Post Title">
+							<input name="title" type="text" class="form-control" id="post-title" placeholder="Enter Post Title" value="{{isset($post)? $post->title : ''}}">
 						</div>
 
 						<div class="form-group">
 							<label for="description">Description</label>
-							<input name="description" class="form-control" id="description">
+							<input name="description" class="form-control" id="description" value="{{isset($post)? $post->description: ''}}">
 						</div>
 
 						<div class="form-group">
 							<label for="category">Category</label>
 							<select class="form-control" name="category" id="category">
 								@foreach ($categories as $category)
-									<option value="{{$category->id}}"> {{ $category->name }} </option>
+									<option value="{{$category->id}}"  {{ (isset($post) && ($category->id == $post->category_id)) ? 'selected' : ''}}> {{ $category->name }} </option>
 								@endforeach
 							</select>
 						</div>
@@ -54,12 +64,16 @@
 
 						<div class="form-group">
 							<label for="download_page">Download page</label>
-							<textarea id="download_page" name="download_page"></textarea>
+							<textarea id="download_page" name="download_page">
+								@if (isset($post))
+									{!! $post->download_page !!}
+								@endif
+							</textarea>
 						</div>
 
 						<hr />
 
-						<div class="form-group">
+						<div class="">
 							<label for="postimage">Upload image</label>
 							<input type="file" class="form-control-file" name="postimage" id="postimage">
 						</div>
@@ -68,21 +82,21 @@
 
 						<div class="form-check">
 							<label class="form-check-label">
-								<input name="visible" type="checkbox" class="form-check-input">
+								<input name="visible" type="checkbox" class="form-check-input" {{ (isset($post) && $post->visible ) ? 'checked' : ''}}>
 								Is Visible?
 							</label>
 						</div>
 
 						<div class="form-check">
 							<label class="form-check-label">
-								<input name="pinned" type="checkbox" class="form-check-input">
+								<input name="pinned" type="checkbox" class="form-check-input" {{ (isset($post) && $post->pinned) ? 'checked' : ''}}>
 								Is pinned?
 							</label>
 						</div>
 
 						<hr />
 						<div class="form-check text-center">
-							<button type="submit" class="btn btn-primary btn-lg">Create Post</button>
+							<button type="submit" class="btn btn-primary btn-lg">{{ isset($post) ? 'Edit post' : 'Create Post' }}</button>
 						</div>
 					</form>
 				</div>

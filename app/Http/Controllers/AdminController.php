@@ -25,19 +25,19 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    // get - /mzk_admin_panel
+    // get - /admin/mzk_admin_panel
     public function index(Request $request)
     {
         return view('admin.adminpanel');
     }
 
-    // get - /mzk_admin_login
+    // get - /admin/mzk_admin_login
     public function login(Request $request)
     {
         return view('admin.adminlogin');
     }
 
-    // post - /mzk_admin_login
+    // post - /admin/mzk_admin_login
     public function authUser(Request $request)
     {
         // attempt to auth user
@@ -47,16 +47,16 @@ class AdminController extends Controller
             ]);
         }
 
-        return redirect('/mzk_admin_panel');
+        return redirect('/admin/mzk_admin_panel');
     }
 
-    // get - /mzk_admin_adduser
+    // get - /admin/mzk_admin_adduser
     public function addUser(Request $request)
     {
         return view('admin.adminadduser');
     }
 
-    // post - /mzk_admin_adduser
+    // post - /admin/mzk_admin_adduser
     public function storeUser(Request $request)
     {
         //validate
@@ -78,10 +78,10 @@ class AdminController extends Controller
         auth()->login($user);
 
         //redirect
-        return redirect('/mzk_admin_panel');
+        return redirect('/admin/mzk_admin_panel');
     }
 
-    // post - /mzk_admin_logout
+    // post - /admin/mzk_admin_logout
     public function logout(Request $request)
     {
         auth()->logout();

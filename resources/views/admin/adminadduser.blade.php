@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Add User</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="/mzk_admin_adduser">
+                    <form class="form-horizontal" role="form" method="POST" action="/admin/mzk_admin_adduser">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

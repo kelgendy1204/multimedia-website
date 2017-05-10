@@ -7,7 +7,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading text-center"><strong>Posts</strong></div>
                 <div class="list-group">
-                  <a href="/posts/create" class="list-group-item">
+                  <a href="/admin/posts/create" class="list-group-item">
                     Create Post
                   </a>
                 </div>
@@ -16,7 +16,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading text-center"><strong>Categories</strong></div>
                 <div class="list-group">
-                  <a href="/categories/create" class="list-group-item">
+                  <a href="/admin/categories/create" class="list-group-item">
                     Create Category
                   </a>
                 </div>
@@ -25,7 +25,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading text-center"><strong>Shorten a url</strong></div>
                 <div class="list-group">
-                  <a href="/links/create" class="list-group-item">
+                  <a href="/admin/links/create" class="list-group-item">
                     Create link
                   </a>
                 </div>

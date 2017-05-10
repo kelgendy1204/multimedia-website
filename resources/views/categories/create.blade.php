@@ -7,7 +7,7 @@
 			<div class="panel panel-primary">
 				<div class="panel-heading text-center"><h4>Categories</h4></div>
 				<div class="panel-body">
-					<form method="POST" action="/categories" enctype="multipart/form-data">
+					<form method="POST" action="/admin/categories" enctype="multipart/form-data">
 
 						{{ csrf_field() }}
 

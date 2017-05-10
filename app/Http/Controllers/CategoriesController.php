@@ -34,7 +34,7 @@ class CategoriesController extends Controller
 			$category->save();
 		}
 
-		return redirect('/categories/create');
+		return redirect('/admin/categories/create');
 	}
 
 }

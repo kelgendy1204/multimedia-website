@@ -8,6 +8,11 @@ use App\Link;
 class LinksController extends Controller
 {
 
+	function __construct()
+	{
+		$this->middleware('IsAdmin')->only(['create', 'store']);
+	}
+
 	public function create()
 	{
 		return view('links.create');
@@ -22,7 +27,7 @@ class LinksController extends Controller
 		$link = Link::where('url','=', $request->link)->first();
 			//If we have the URL saved in our database already, we provide that information back to view.
 		if($link) {
-			return redirect('/links/create')->withInput()->with('link', $link->hash);
+			return redirect('/admin/links/create')->withInput()->with('link', $link->hash);
 			//Else we create a new unique URL
 		} else {
 			//First we create a new unique Hash
@@ -34,7 +39,7 @@ class LinksController extends Controller
 			Link::create(array('url' => $request->link, 'hash' => $newHash));
 
 			//And then we return the new shortened URL info to our action
-			return redirect('links/create')->withInput()->with('link', $newHash);
+			return redirect('/admin/links/create')->withInput()->with('link', $newHash);
 		}
 	}
 

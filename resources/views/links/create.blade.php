@@ -7,7 +7,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading text-center"><h4>Create a url</h4></div>
                 <div class="panel-body">
-                    <form method="post" action="/links">
+                    <form method="post" action="/admin/links">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <input type="text" class="form-control" name="link" id="link" placeholder="Type a link" />

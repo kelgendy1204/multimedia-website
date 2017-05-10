@@ -13,9 +13,9 @@ class RoleTableSeeder extends Seeder
     {
         DB::table('roles')->delete();
         DB::table('roles')->insert(array(
-        	 array('name'=>'super_admin'),
-        	 array('name'=>'admin'),
-        	 array('name'=>'normal')
+        	 array('id' => 1 ,'name'=>'super_admin'),
+        	 array('id' => 2 ,'name'=>'admin'),
+        	 array('id' => 3 ,'name'=>'normal')
         ));
     }
 }

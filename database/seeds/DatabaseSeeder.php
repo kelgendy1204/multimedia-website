@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PostTableSeeder::class);
         $this->call(AdvertisementTableSeeder::class);
         $this->call(RoleTableSeeder::class);
-        $this->command->info("Category and Post tables seeded...");
+        $this->call(UserTableSeeder::class);
+        $this->command->info("All tables are seeded...");
     }
 }

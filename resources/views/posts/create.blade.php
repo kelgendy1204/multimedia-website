@@ -27,7 +27,7 @@
 			<div class="panel panel-primary">
 				<div class="panel-heading text-center"><h4>Posts</h4></div>
 				<div class="panel-body">
-					<form method="POST" action="/posts" enctype="multipart/form-data">
+					<form method="POST" action="/admin/posts" enctype="multipart/form-data">
 
 					{{ csrf_field() }}
 

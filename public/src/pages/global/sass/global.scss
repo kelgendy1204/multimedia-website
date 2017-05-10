@@ -7,7 +7,7 @@ $mobile_media_query: 767px;
     font-family: jf;
     src: url('../fonts/JF-Flat-regular.eot');
     src: url('../fonts/JF-Flat-regular.eot') format('embedded-opentype'),
-        url('../fonts/JF-Flat-regular.ttf') format('truetype');
+        url('../fonts/JF-Flat-Regular-en.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -31,8 +31,8 @@ p {
 }
 
 .elementscontainer {
-    min-width: 1024px;
-    max-width: 1525px;
+    min-width: 1250px;
+    max-width: 1575px;
     margin: 0 auto;
     height: 100%;
     user-select: none;

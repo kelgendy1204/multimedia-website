@@ -15,9 +15,9 @@ class IsSuperAdmin
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user() && $request->user()->checkRole('super_admin')) {
+        if ($request->user() && $request->user()->hasRole('super_admin')) {
             return $next($request);
-        } elseif ($request->user()->checkRole('admin')) {
+        } elseif ($request->user()->hasRole('admin')) {
             return redirect('/admin/mzk_admin_panel');
         }
         return redirect('/');

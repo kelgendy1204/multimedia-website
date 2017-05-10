@@ -27,16 +27,15 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function role()
+    public function roles()
     {
-        return $this->hasOne('App\Role', 'id', 'role_id');
+        return $this->belongsToMany('App\Role', 'role_user');
+        // return $this->belongsToMany('App\Role', 'role_user', 'user_id', 'role_id');
     }
 
-    public function checkRole($roleName)
+    public function hasRole($check)
     {
-        if ($this->role->name == $roleName) {
-            return true;
-        }
-        return false;
+        return in_array($check, array_pluck($this->roles->toArray(), 'name'));
     }
+
 }

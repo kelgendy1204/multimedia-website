@@ -70,12 +70,12 @@ class AdminController extends Controller
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->role_id = $request->role_id;
         $user->password = bcrypt($request->password);
         $user->save();
+        $user->roles()->attach($request->role_ids);
 
-        //sign in
-        auth()->login($user);
+        // //sign in
+        // auth()->login($user);
 
         //redirect
         return redirect('/admin/mzk_admin_panel');

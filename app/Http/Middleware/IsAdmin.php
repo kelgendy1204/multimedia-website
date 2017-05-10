@@ -15,7 +15,7 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user() && ($request->user()->checkRole('admin') || $request->user()->checkRole('super_admin'))) {
+        if ($request->user() && ($request->user()->hasRole('admin') || $request->user()->hasRole('super_admin'))) {
             return $next($request);
         }
         return redirect('/');

@@ -3,11 +3,11 @@
 // const fs = require('fs');
 const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
-// const browserify = require('browserify');
-// const watchify = require('watchify');
-// const babelify = require('babelify');
-// const source = require('vinyl-source-stream');
-// const buffer = require('vinyl-buffer');
+const browserify = require('browserify');
+const watchify = require('watchify');
+const babelify = require('babelify');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
 const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
 const cssnext = require('postcss-cssnext');
@@ -26,7 +26,7 @@ const rename = require('gulp-rename');
 const gulpSequence = require('gulp-sequence');
 const eslint = require('gulp-eslint');
 const sassLint = require('gulp-sass-lint');
-// const envify = require('envify');
+const envify = require('envify');
 const clean = require('gulp-clean');
 const gutil = require('gulp-util');
 const watch = require('gulp-watch');
@@ -46,7 +46,7 @@ const notify = (title, message) => {
 	notifier.notify({ title, message });
 };
 
-const pagesArr = ['home', 'post'];
+const pagesArr = ['home', 'post', 'online'];
 
 (function() {
 
@@ -59,29 +59,29 @@ const pagesArr = ['home', 'post'];
 	for (let i = 0; i < pagesArr.length; i++) {
 		let page = pagesArr[i];
 
-	// 	let b = browserify({
-	// 		entries: [`${mainSrcFolder}pages/${page}/js/main.js`],
-	// 		debug: true,
-	// 		cache: {},
-	// 		packageCache: {},
-	// 		plugin: [watchify]
-	// 	});
-	// 	b.transform(babelify, { 'compact': false });
-	// 	b.transform(envify);
+		let b = browserify({
+			entries: [`${mainSrcFolder}pages/${page}/js/main.js`],
+			debug: true,
+			cache: {},
+			packageCache: {},
+			plugin: [watchify]
+		});
+		b.transform(babelify, { 'compact': false });
+		b.transform(envify);
 
-	// 	let bundle = function () {
-	// 		return b.bundle()
-	// 			.on('error', swallowError)
-	// 			.pipe(source(`${page}.js`))
-	// 			.pipe(buffer())
-	// 			.pipe(gulp.dest(`${mainDestFolder}js/`));
-	// 	};
+		let bundle = function () {
+			return b.bundle()
+				.on('error', swallowError)
+				.pipe(source(`${page}.js`))
+				.pipe(buffer())
+				.pipe(gulp.dest(`${mainDestFolder}js/`));
+		};
 
-	// 	gulp.task(`js:dev:${page}`, bundle);
-	// 	b.on('update', bundle);
-	// 	b.on('log', function (msg) {
-	// 		gutil.log(gutil.colors.yellow(msg));
-	// 	});
+		gulp.task(`js:dev:${page}`, bundle);
+		b.on('update', bundle);
+		b.on('log', function (msg) {
+			gutil.log(gutil.colors.yellow(msg));
+		});
 
 		gulp.task(`css:dev:${page}`, () => {
 			return gulp.src(`${mainSrcFolder}pages/${page}/sass/style.scss`)
@@ -99,13 +99,13 @@ const pagesArr = ['home', 'post'];
 				lintSass(vinyle.path);
 			});
 
-			// gulp.watch(`${mainSrcFolder}pages/${page}/**/*.js`, (vinyle) => {
-			// 	lintFile(vinyle.path);
-			// });
+			gulp.watch(`${mainSrcFolder}pages/${page}/**/*.js`, (vinyle) => {
+				lintFile(vinyle.path);
+			});
 		});
 
-		// gulp.task(`${page}`, [`css:dev:${page}`, `js:dev:${page}`, `watch:${page}`]);
-		gulp.task(`${page}`, [`css:dev:${page}`, `watch:${page}`]);
+		gulp.task(`${page}`, [`css:dev:${page}`, `js:dev:${page}`, `watch:${page}`]);
+		// gulp.task(`${page}`, [`css:dev:${page}`, `watch:${page}`]);
 	}
 }());
 
@@ -120,19 +120,19 @@ gulp.task('watch:global', () => {
 		lintSass(vinyle.path);
 	});
 
-	// gulp.watch(`${mainSrcFolder}pages/global/js/**/*.js`, (vinyle) => {
-	// 	lintFile(vinyle.path);
-	// });
+	gulp.watch(`${mainSrcFolder}pages/global/js/**/*.js`, (vinyle) => {
+		lintFile(vinyle.path);
+	});
 
 });
 
-// function lintFile(file) {
-// 	return gulp.src(file)
-// 		.pipe(eslint({
-// 			configFile: './.eslintrc.json'
-// 		}))
-// 		.pipe(eslint.format());
-// }
+function lintFile(file) {
+	return gulp.src(file)
+		.pipe(eslint({
+			configFile: './.eslintrc.json'
+		}))
+		.pipe(eslint.format());
+}
 
 gulp.task('lint', ['lintjs', 'lintscss']);
 

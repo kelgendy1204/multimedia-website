@@ -8,12 +8,12 @@ class Post extends Model
 {
 	public static $paginate = 50;
 
-	// public function category()
-	// {
-	// 	return $this->hasOne('App\Category');
-	// }
+	public function subposts()
+	{
+		return $this->hasMany('App\Subpost', 'post_id', 'id');
+	}
 
-	public static function get_all_visible($category_name_en, $search)
+	public static function get_all_visible($category_name_en, $search, $limit)
 	{
 
 		$query = static::where('visible', 1)->leftJoin('categories', 'categories.id', '=', 'posts.category_id')->select('posts.*', 'categories.name_en as category_name_en', 'categories.name as category_name');
@@ -24,6 +24,10 @@ class Post extends Model
 
 		if($search) {
 			$query->where('posts.title', 'like', '%' . $search . '%');
+		}
+
+		if($limit){
+			return $query->limit($limit)->latest()->get();
 		}
 
 		return $query->paginate(static::$paginate);

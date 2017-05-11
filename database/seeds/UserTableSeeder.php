@@ -14,8 +14,8 @@ class UserTableSeeder extends Seeder
     {
         DB::table('users')->delete();
         DB::table('users')->insert(
-        	 array('name'=>'khaled', 'email'=>'user@domain.com',
-                'password'=>bcrypt('11111111'))
+        	 array('id' => 1 ,'name' => 'khaled', 'email' => 'user@domain.com',
+                'password' => bcrypt('11111111'))
         );
     }
 }

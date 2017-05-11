@@ -37,19 +37,14 @@ class PostsController extends Controller
 	// get : posts/{id} - show a post
 	public function show(Post $post) {
 		$category = Category::find($post->category_id);
-		return view('posts.show', ['post' => $post, 'category' => $category]);
+		$subpost = $post->subposts()->latest()->first();
+		return view('posts.show', ['post' => $post, 'category' => $category, 'subpost' => $subpost]);
 	}
 
 	// get : posts/{id}/download - show a post links
 	public function download(Post $post) {
 		$category = Category::find($post->category_id);
 		return view('posts.download', ['post' => $post, 'category' => $category]);
-	}
-
-	// get : posts/{id}/online - watch post online
-	public function online(Post $post) {
-		$category = Category::find($post->category_id);
-		return view('posts.online', ['post' => $post, 'category' => $category]);
 	}
 
 	// // get : admin/posts/{id}/edit - edit a post view
@@ -105,4 +100,5 @@ class PostsController extends Controller
 
 		return redirect('/');
 	}
+
 }

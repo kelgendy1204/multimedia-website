@@ -5,10 +5,14 @@ Route::get('/', 'PostsController@index');
 Route::get('/admin/posts/create', 'PostsController@create');
 Route::get('/admin/posts/{post}/edit', 'PostsController@edit');
 Route::post('/admin/posts/{post}/update', 'PostsController@update');
+Route::post('/admin/posts', 'PostsController@store');
+
+Route::get('/admin/posts/{post}/online/create', 'SubpostsController@create');
+Route::post('/admin/posts/{post}/online/create', 'SubpostsController@store');
+
 Route::get('/posts/{post}', 'PostsController@show');
 Route::get('/posts/{post}/download', 'PostsController@download');
-Route::get('/posts/{post}/online', 'PostsController@online');
-Route::post('/admin/posts', 'PostsController@store');
+Route::get('/posts/{post}/online/{subpost}', 'SubpostsController@show');
 
 Route::get('/admin/categories/create', 'CategoriesController@create');
 Route::post('/admin/categories', 'CategoriesController@store');

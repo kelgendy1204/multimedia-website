@@ -16,14 +16,13 @@
                     <a><img src="{{$category->photo_url}}"></a>
                 </div>
                 <div class="title-left">
-                    <a> MaZiKa<span>2</span>daY  </a>
+                    <a> MaZiKa<span>2</span>daY</a>
                 </div>
             </div>
         </header>
         <section>
             <div class="sectioncontainer2">
-                <div class="title"><p>{{ $post->description }}</p></div>
-                <div class="img"><img src="{{ $post->photo_url }}"></div>
+                <div class="title"><p> {{ $post->description }} {{ isset($activesubpost) ? " - " . $activesubpost->title : ''}} </p></div>
                 @yield('content')
             </div>
         </section>

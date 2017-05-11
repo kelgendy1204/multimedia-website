@@ -29,7 +29,7 @@
 				<div class="panel-body">
 
 					@if (isset($post))
-						<div class="row">
+						<div class="row form-group">
 							<div class="col-md-4 col-md-offset-4">
 								<img src="{{$post->photo_url}}" alt="{{$post->description}}" class="img-rounded img-responsive">
 							</div>
@@ -37,7 +37,7 @@
 					@endif
 
 
-					<form method="POST" action="{{isset($post)? '/admin/posts/' . $post->id . '/update' : '/admin/posts'}}" enctype="multipart/form-data">
+					<form method="POST" action="{{isset($post)? '/admin/posts/' . $post->id . '/update' : '/admin/posts'}}" enctype="multipart/form-data" class="{{isset($post) ? "well": ""}}">
 
 					{{ csrf_field() }}
 
@@ -61,6 +61,17 @@
 						</div>
 
 						<hr />
+
+						@if (isset($post))
+							<div class="row">
+								<h5 class="col-md-4"><strong>Add online watch:</strong></h5>
+								<div class="col-md-8">
+									<a class="btn btn-primary btn-sm" href="/admin/posts/3/online/create" role="button">Add online watch post</a>
+								</div>
+							</div>
+							<hr />
+						@endif
+
 
 						<div class="form-group">
 							<label for="download_page">Download page</label>

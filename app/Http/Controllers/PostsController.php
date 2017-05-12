@@ -98,7 +98,9 @@ class PostsController extends Controller
 			$post->save();
 		}
 
-		return redirect('/');
+		return redirect()->action(
+			'PostsController@edit', ['post' => $post]
+		);
 	}
 
 }

@@ -61,7 +61,10 @@ class SubpostsController extends Controller
 			}
 		}
 		$subpost->servers()->saveMany($servers);
-		return back()->with(['post' => $post]);
+
+		return redirect()->action(
+			'PostsController@edit', ['post' => $post]
+		);
 	}
 
 	// get : admin/posts/{post_id}/online/{subpost_id}/edit - edit a post view

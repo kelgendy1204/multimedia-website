@@ -66,7 +66,7 @@
 							<div class="row">
 								<h5 class="col-md-4"><strong>Add online watch:</strong></h5>
 								<div class="col-md-8">
-									<a class="btn btn-primary btn-sm" href="/admin/posts/3/online/create" role="button">Add online watch post</a>
+									<a class="btn btn-primary btn-sm" href="{{"/admin/posts/" . $post->id . "/online/create"}}" role="button">Add online watch post</a>
 								</div>
 							</div>
 							<hr />

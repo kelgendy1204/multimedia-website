@@ -24,7 +24,7 @@ class PostsController extends Controller
 
 		$categories = Category::all();
 		$advertisements = Advertisement::all()->keyBy('name');
-		$posts = Post::get_all_visible($category, $search);
+		$posts = Post::get_all_visible($category, $search, null);
 
 		return view('posts.posts', [
 			'posts' => $posts,

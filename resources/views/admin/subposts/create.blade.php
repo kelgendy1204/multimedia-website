@@ -6,7 +6,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-primary">
-				<div class="panel-heading text-center"><h4>Add Subposts</h4></div>
+				<div class="panel-heading text-center"><h4>{{isset($subpost) ? "Edit Subpost" : "Add Subposts"}}</h4></div>
 				<div class="panel-body">
 
 					<div class="row form-group">
@@ -15,16 +15,18 @@
 						</div>
 					</div>
 
-					<form method="POST" action="{{'/admin/posts/' . $post->id . '/online/create'}}" class="well form-horizontal">
+					<form method="POST" action="{{isset($subpost) ? '/admin/posts/' . $post->id . '/online/' . $subpost->id . '/edit' : '/admin/posts/' . $post->id . '/online/create'}}" class="well form-horizontal">
 
 					{{ csrf_field() }}
 
 						<div class="form-group">
 							<label for="post-title" class="col-sm-2 control-label">
-								Online title
+								<div class="text-left">
+									Online title
+								</div>
 							</label>
 							<div class="col-sm-10">
-								<input name="title" type="text" class="form-control" id="post-title" placeholder="Enter Post Title">
+								<input name="title" type="text" class="form-control" id="post-title" placeholder="Enter Post Title" value="{{isset($subpost) ? $subpost->title : ""}}" />
 							</div>
 						</div>
 
@@ -35,14 +37,20 @@
 						</div>
 
 						<div class="servers">
-							{{-- <div class="form-group server">
-								<div class="col-sm-4">
-									<input name="servername[]" type="text" class="form-control" placeholder="Server name" />
-								</div>
-								<div class="col-sm-8">
-									<input name="serverlink[]" type="text" class="form-control" placeholder="Server link" />
-								</div>
-							</div> --}}
+							@isset($subpost)
+								@if (count($subpost->servers))
+									@foreach ($subpost->servers as $server)
+										<div class="form-group server">
+											<div class="col-sm-4">
+												<input name="servername[]" type="text" class="form-control" placeholder="Server name" value="{{$server->name}}" />
+											</div>
+											<div class="col-sm-8">
+												<input name="serverlink[]" type="text" class="form-control" placeholder="Server link" value="{{$server->link}}" />
+											</div>
+										</div>
+									@endforeach
+								@endif
+							@endisset
 						</div>
 
 						<div class="text-center">
@@ -53,7 +61,7 @@
 
 						<div class="form-check">
 							<label class="form-check-label">
-								<input name="visible" type="checkbox" class="form-check-input">
+								<input name="visible" type="checkbox" class="form-check-input" {{ (isset($subpost) && $subpost->visible ) ? 'checked' : ''}}>
 								Is Visible?
 							</label>
 						</div>

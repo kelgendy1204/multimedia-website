@@ -19,7 +19,6 @@ class CreatePostsTable extends Migration
             $table->string('photo_url')->nullable();
             $table->text('description');
             $table->text('download_page')->nullable();
-            $table->text('online_page')->nullable();
             $table->boolean('visible')->default(true);
             $table->boolean('pinned')->default(false);
             $table->integer('visits')->default(0);

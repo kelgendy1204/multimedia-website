@@ -10,7 +10,7 @@
                     <form method="post" action="/admin/links">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <input type="text" class="form-control" name="link" id="link" placeholder="Type a link" />
+                            <input type="text" class="form-control" name="link" id="link" placeholder="Type a link - i.e. : http://www.example.com" />
                         </div>
                         @include('layouts.errors')
                     </form>

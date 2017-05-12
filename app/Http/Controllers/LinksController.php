@@ -21,7 +21,7 @@ class LinksController extends Controller
 	public function store(Request $request)
 	{
 		$this->validate($request, [
-			'link' => 'required'
+			'link' => 'required|url'
 		]);
 
 		$link = Link::where('url','=', $request->link)->first();

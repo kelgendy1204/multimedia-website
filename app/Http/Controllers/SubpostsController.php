@@ -13,7 +13,7 @@ class SubpostsController extends Controller
 
 	public function __construct()
 	{
-		$this->middleware('IsAdmin')->only(['create', 'store' ]);
+		$this->middleware('IsAdmin')->except(['show']);
 	}
 
 	// get : posts/{postid}/online/{subpostid} - watch post online
@@ -61,6 +61,50 @@ class SubpostsController extends Controller
 			}
 		}
 		$subpost->servers()->saveMany($servers);
+		return back()->with(['post' => $post]);
+	}
+
+	// get : admin/posts/{post_id}/online/{subpost_id}/edit - edit a post view
+	public function edit(Post $post, $subpostid)
+	{
+		$subpost= $post->subposts()->where('id', $subpostid)->first();
+
+		$servers = [];
+
+		if($subpost){
+			$subpost->servers;
+			return view('admin.subposts.create', ['post' => $post, 'subpost' => $subpost]);
+		}
+
+		return redirect()->action(
+			'SubpostsController@create', ['post' => $post]
+		);
+	}
+
+	// post : admin/posts/{post_id}/online/{subpost_id}/edit - update a post view
+	public function update(Post $post, $subpostid)
+	{
+		$subpost = $post->subposts()->where('id', $subpostid)->first();
+		$subpost->title = request('title');
+		$subpost->visible = request('visible') == "on" ? true : false;
+
+		$servers = [];
+		$servernames = request('servername');
+		$serverlinks = request('serverlink');
+
+		foreach ($serverlinks as $index => $serverlink) {
+			if($serverlink){
+				$server = new Server;
+				$server->name = $servernames[$index];
+				$server->link = $serverlink;
+				$servers[] = $server;
+			}
+		}
+
+		$subpost->servers()->delete();
+		$subpost->servers()->saveMany($servers);
+		$subpost->save();
+
 		return back()->with(['post' => $post]);
 	}
 }

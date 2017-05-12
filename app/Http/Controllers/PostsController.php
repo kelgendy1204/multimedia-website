@@ -13,7 +13,7 @@ class PostsController extends Controller
 
 	public function __construct()
 	{
-		$this->middleware('IsAdmin')->only(['create', 'store', 'edit', 'update']);
+		$this->middleware('IsAdmin')->only(['adminindex', 'create', 'store', 'edit', 'update']);
 	}
 
 	// get : / home page
@@ -32,6 +32,23 @@ class PostsController extends Controller
 			'parameters' => $parameters,
 			'advertisements' => $advertisements,
 		]);
+	}
+
+	// get : admin/posts - show a post
+	public function adminindex(Post $post) {
+		$categories = Category::all();
+		$parameters = Input::except('page');
+		$search = request()->input('search');
+		$category = request()->input('category');
+
+		$posts = Post::get_all_posts($category, $search);
+
+		return view('admin.posts.index' , [
+			'categories' => $categories,
+			'posts' => $posts,
+			'parameters' => $parameters
+		]);
+
 	}
 
 	// get : posts/{id} - show a post

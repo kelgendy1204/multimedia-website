@@ -6,6 +6,7 @@ Route::get('/posts/{post}/download', 'PostsController@download');
 Route::get('/admin/posts/create', 'PostsController@create');
 Route::get('/admin/posts/{post}/edit', 'PostsController@edit');
 Route::post('/admin/posts/{post}/update', 'PostsController@update');
+Route::get('/admin/posts', 'PostsController@adminindex');
 Route::post('/admin/posts', 'PostsController@store');
 
 Route::get('/posts/{post}/online/{subpost}', 'SubpostsController@show');

@@ -38,9 +38,19 @@ class Post extends Model
 		return static::where('visible', 0)->paginate(static::$paginate);
 	}
 
-	public static function get_all_posts()
+	public static function get_all_posts($category_name_en, $search)
 	{
-		return static::all();
+		$query = static::leftJoin('categories', 'categories.id', '=', 'posts.category_id')->select('posts.*', 'categories.name_en as category_name_en', 'categories.name as category_name');
+
+		if($category_name_en) {
+			$query->where('categories.name_en', $category_name_en);
+		}
+
+		if($search) {
+			$query->where('posts.title', 'like', '%' . $search . '%');
+		}
+
+		return $query->paginate(1);
 	}
 
 	public static function get_all_pinned()

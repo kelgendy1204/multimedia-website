@@ -15,12 +15,15 @@
         <hr />
 
         <div class="row text-center">
-            <form class="form-inline" method="get" action="/admin/posts">
+            <form class="form-inline col-sm-6" method="get" action="/admin/posts">
               <div class="form-group">
                 <input type="text" class="form-control" id="search" name="search" placeholder="Search">
               </div>
               <button type="submit" class="btn btn-primary">Search</button>
             </form>
+            <div class="col-sm-6 text-center">
+                <a class="btn btn-primary" href="/admin/posts/create" role="button">Create Post +</a>
+            </div>
         </div>
 
         <hr />

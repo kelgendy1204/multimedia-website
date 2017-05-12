@@ -18,7 +18,7 @@ class SubpostsController extends Controller
 
 	// get : posts/{postid}/online/{subpostid} - watch post online
 	public function show(Post $post, $subpostid) {
-		$subpost= $post->subposts()->where('id', $subpostid)->first();
+		$subpost= $post->subposts()->where('visible', '1')->where('id', $subpostid)->first();
 
 		$subposts = $post->subposts()->where('visible', '1')->get();
 
@@ -108,6 +108,23 @@ class SubpostsController extends Controller
 		$subpost->servers()->saveMany($servers);
 		$subpost->save();
 
-		return back()->with(['post' => $post]);
+		return redirect()->action(
+			'PostsController@edit', ['post' => $post]
+		);
+	}
+
+	public function delete(Post $post, $subpost)
+	{
+
+		$subpost = Subpost::find($subpost);
+
+		if($subpost){
+			$subpost->servers()->delete();
+			$subpost->delete();
+		}
+
+		return redirect()->action(
+			'PostsController@edit', ['post' => $post]
+		);
 	}
 }

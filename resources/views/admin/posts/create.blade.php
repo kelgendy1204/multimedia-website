@@ -25,7 +25,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-primary">
-				<div class="panel-heading text-center"><h4>{{ isset($post) ? 'Edit Posts' : 'Posts'}}</h4></div>
+				<div class="panel-heading text-center"><h4>{{ isset($post) ? 'Edit Post' : 'Create Post'}}</h4></div>
 				<div class="panel-body">
 
 					@if (isset($post))
@@ -35,7 +35,6 @@
 							</div>
 						</div>
 					@endif
-
 
 					<form method="POST" action="{{isset($post)? '/admin/posts/' . $post->id . '/update' : '/admin/posts'}}" enctype="multipart/form-data" class="{{isset($post) ? "well": ""}}">
 
@@ -61,17 +60,6 @@
 						</div>
 
 						<hr />
-
-						@if (isset($post))
-							<div class="row">
-								<h5 class="col-md-4"><strong>Add online watch:</strong></h5>
-								<div class="col-md-8">
-									<a class="btn btn-primary btn-sm" href="{{"/admin/posts/" . $post->id . "/online/create"}}" role="button">Add online watch post</a>
-								</div>
-							</div>
-							<hr />
-						@endif
-
 
 						<div class="form-group">
 							<label for="download_page">Download page</label>
@@ -107,9 +95,44 @@
 
 						<hr />
 						<div class="form-check text-center">
-							<button type="submit" class="btn btn-primary btn-lg">{{ isset($post) ? 'Edit post' : 'Create Post' }}</button>
+							<button type="submit" class="btn btn-primary btn-lg">{{ isset($post) ? 'Done edit post' : 'Create Post' }}</button>
 						</div>
 					</form>
+
+
+					@if (isset($post))
+						<hr />
+						<h2 class="text-center">Online watch</h2>
+
+						@if (count($post->subposts))
+							<ul class="list-group">
+								@foreach ($post->subposts as $subpost)
+									<li class="list-group-item">
+										<div class="row">
+											<h5 class="col-md-6">
+												{{$subpost->title}}
+											</h5>
+											<div class="col-md-3">
+												<a class="btn btn-primary btn-block" href="{{"/admin/posts/" . $post->id . "/online/" . $subpost->id . "/edit"}}" role="button">Edit online post</a>
+											</div>
+											<div class="col-md-3">
+												<form action="{{"/admin/posts/" . $post->id . "/online/" . $subpost->id . "/delete"}}" method="post">
+													{{ csrf_field() }}
+													<button type="submit" class="btn btn-danger btn-block">Delete online post</button>
+												</form>
+											</div>
+										</div>
+									</li>
+								@endforeach
+							</ul>
+
+							<hr />
+
+						@endif
+						<div class="form-group text-center">
+							<a class="btn btn-primary btn-lg" href="{{"/admin/posts/" . $post->id . "/online/create"}}" role="button">Add online watch post</a>
+						</div>
+					@endif
 				</div>
 			</div>
 		</div>

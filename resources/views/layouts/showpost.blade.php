@@ -12,8 +12,10 @@
         <header class="second">
             <div class="second-block-header">
                 <div class="title-right">
+                @isset ($category)
                     <a>{{ $category->name }}</a>
                     <a><img src="{{$category->photo_url}}"></a>
+                @endisset
                 </div>
                 <div class="title-left">
                     <a> MaZiKa<span>2</span>daY</a>
@@ -22,7 +24,9 @@
         </header>
         <section>
             <div class="sectioncontainer2">
-                <div class="title"><p> {{ $post->description }} {{ isset($activesubpost) ? " - " . $activesubpost->title : ''}} </p></div>
+                @isset ($post)
+                    <div class="title"><p> {{ $post->description }} {{ isset($activesubpost) ? " - " . $activesubpost->title : ''}} </p></div>
+                @endisset
                 @yield('content')
             </div>
         </section>

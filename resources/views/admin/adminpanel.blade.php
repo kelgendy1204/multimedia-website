@@ -19,6 +19,9 @@
                   <a href="/admin/posts/create" class="list-group-item">
                     Create Post
                   </a>
+                  <a href="/admin/posts" class="list-group-item">
+                    Show posts
+                  </a>
                 </div>
             </div>
             <hr />

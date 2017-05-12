@@ -50,7 +50,7 @@ class Post extends Model
 			$query->where('posts.title', 'like', '%' . $search . '%');
 		}
 
-		return $query->paginate(1);
+		return $query->paginate(200);
 	}
 
 	public static function get_all_pinned()

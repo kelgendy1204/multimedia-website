@@ -69,7 +69,7 @@
 						<hr />
 
 						<div class="form-check text-center">
-							<button type="submit" class="btn btn-primary btn-lg">Create online post</button>
+							<button type="submit" class="btn btn-primary btn-lg">{{isset($subpost) ? "Edit online post" : "Create online post"}}</button>
 						</div>
 					</form>
 				</div>

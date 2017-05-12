@@ -11,7 +11,7 @@
 			<iframe width="100%" height="100%" frameborder="0" allowfullscreen src="{{count($servers) ? $servers[0]->link : ""}}"></iframe>
 		</div>
 		<div class="share-title">
-			<a class="titlee">{{ isset($activesubpost)? $activesubpost->title : ''}} </a>
+			<a class="titlee">{{ (isset($activesubpost) && (count($subposts) > 1)) ? $activesubpost->title : ''}} </a>
 			<div class="share">
 				<a class="instgram"><img alt="" src="/dist/images/in.svg"></a>
 				<a class="google-plus"><img alt="" src="/dist/images/g.svg"></a>
@@ -20,7 +20,7 @@
 			</div>
 		</div>
 
-		@if (count($subposts))
+		@if (count($subposts) > 1)
 			<div class="new-ep">
 				<div class="title-ep">الحلقات</div>
 				<div class="border-ep">

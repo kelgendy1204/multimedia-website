@@ -15,7 +15,7 @@ class LinksController extends Controller
 
 	public function create()
 	{
-		return view('links.create');
+		return view('admin.links.create');
 	}
 
 	public function store(Request $request)
@@ -43,13 +43,18 @@ class LinksController extends Controller
 		}
 	}
 
+	public function generate($hash)
+	{
+		return view('links.getlink', ['hash' => $hash]);
+	}
+
 	public function translate($hash)
 	{
 		//First we check if the hash is from a URL from our database
 		$link = Link::where('hash', '=', $hash)->first();
 		//If found, we redirect to the URL
 		if($link) {
-			return redirect($link->url);
+			return view('links.getlink', ['link' => $link->url]);
 			//If not found, we redirect with error message
 		} else {
 			abort(403, 'Page Not Found!');

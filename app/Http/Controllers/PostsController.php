@@ -34,8 +34,8 @@ class PostsController extends Controller
 		]);
 	}
 
-	// get : admin/posts - show a post
-	public function adminindex(Post $post) {
+	// get : admin/posts - show all posts
+	public function adminindex() {
 		$categories = Category::all();
 		$parameters = Input::except('page');
 		$search = request()->input('search');
@@ -54,7 +54,7 @@ class PostsController extends Controller
 	// get : posts/{id} - show a post
 	public function show(Post $post) {
 		$category = Category::find($post->category_id);
-		$subpost = $post->subposts()->latest()->first();
+		$subpost = $post->subposts()->where('visible', '1')->latest()->first();
 		return view('posts.show', ['post' => $post, 'category' => $category, 'subpost' => $subpost]);
 	}
 
@@ -65,9 +65,14 @@ class PostsController extends Controller
 	}
 
 	// // get : admin/posts/{id}/edit - edit a post view
-	public function edit(Post $post) {
+	public function edit($post) {
+		$post = Post::find($post);
+		if(!$post){
+			return redirect()->action('PostsController@create');
+		}
 		$categories = Category::all();
-		return view('posts.create', ['categories' => $categories, 'post' => $post]);
+		$post->subposts;
+		return view('admin.posts.create', ['categories' => $categories, 'post' => $post]);
 	}
 
 	// // post : admin/posts/{id}/update - edit a post view
@@ -87,13 +92,16 @@ class PostsController extends Controller
 		}
 		$post->save();
 
-		return redirect("/admin/posts/" . $post->id . "/edit")->with(['categories' => $categories, 'post' => $post]);
+		return redirect()->action(
+			'PostsController@adminindex'
+		);
+
 	}
 
 	// get : admin/posts/create - create a post view
 	public function create() {
 		$categories = Category::all();
-		return view('posts.create', ['categories' => $categories]);
+		return view('admin.posts.create', ['categories' => $categories]);
 	}
 
 	// post : admin/posts - save a post

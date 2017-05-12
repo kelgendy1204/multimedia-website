@@ -14,6 +14,7 @@ Route::get('/admin/posts/{post}/online/create', 'SubpostsController@create');
 Route::post('/admin/posts/{post}/online/create', 'SubpostsController@store');
 Route::get('/admin/posts/{post}/online/{subpost}/edit', 'SubpostsController@edit');
 Route::post('/admin/posts/{post}/online/{subpost}/edit', 'SubpostsController@update');
+Route::post('/admin/posts/{post}/online/{subpost}/delete', 'SubpostsController@delete');
 
 Route::get('/admin/categories/create', 'CategoriesController@create');
 Route::post('/admin/categories', 'CategoriesController@store');
@@ -27,4 +28,6 @@ Route::post('/admin/mzk_admin_logout', 'AdminController@logout');
 
 Route::get('/admin/links/create', 'LinksController@create');
 Route::post('/admin/links', 'LinksController@store');
+
+Route::get('/generatelink/{hash}', 'LinksController@generate');
 Route::get('/getlink/{hash}', 'LinksController@translate');

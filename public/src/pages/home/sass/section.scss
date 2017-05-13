@@ -844,13 +844,16 @@ body{
 			}
 		}
 
+		.download_desc{
+			padding: 25px;
+		}
 		.downloadlinks{
-			padding: 50px;
+			padding: 25px;
 			width: 80%;
 			text-align: center;
 			color: white;
 			font-family: jf;
-			.linkservers{
+			.link{
 				margin: 20px 0;
 			}
 			h3{
@@ -858,7 +861,7 @@ body{
 				display: inline-block;
 				margin: 0;
 				font-size: 1em;
-				padding: 5px 15px;
+				padding: 5px 15px 10px;
 				margin-bottom: -5px;
 				border-top-left-radius: 15px;
 				border-top-right-radius: 15px;
@@ -867,12 +870,13 @@ body{
 				border-radius: 15px;
 				margin: 0;
 				display: flex;
+				justify-content: center;
 				flex-wrap: wrap;
 				padding: 20px;
 				background-color: #adadad;
 				li{
 					min-width: 200px;
-					width: 200px;
+					width: 20%;
 					border-radius: 5px;
 					font-size: 0.8em;
 					margin: 5px;

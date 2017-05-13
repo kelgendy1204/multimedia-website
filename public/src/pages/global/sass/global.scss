@@ -38,6 +38,14 @@ p {
     user-select: none;
 }
 
+.pagescontainer{
+    // width: 1024px;
+    // min-width: 1024px;
+    max-width: 1280px;
+    margin: 0 auto;
+    height: 100%;
+}
+
 ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
     font-size: 0.8em;

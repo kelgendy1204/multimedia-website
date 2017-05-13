@@ -9,31 +9,36 @@
         <link rel="stylesheet" href="/dist/css/home.css">
     </head>
     <body>
-        <header class="second">
-            <div class="second-block-header">
-                <div class="title-right">
-                @isset ($category)
-                    <a>{{ $category->name }}</a>
-                    <a><img src="{{$category->photo_url}}"></a>
-                @endisset
+        <div class="insidepage">
+            <header>
+                <div class="second-block-header">
+                    <div class="title-right">
+                    @isset ($category)
+                        <a>{{ $category->name }}</a>
+                        <a><img src="{{$category->photo_url}}"></a>
+                    @endisset
+                    </div>
+                    <div class="title-left">
+                        <a> MaZiKa<span>2</span>daY</a>
+                    </div>
                 </div>
-                <div class="title-left">
-                    <a> MaZiKa<span>2</span>daY</a>
-                </div>
-            </div>
-        </header>
-        <section>
-            <div class="sectioncontainer2">
+            </header>
+            <section>
                 @isset ($post)
-                    <div class="title"><p> {{ $post->description }} {{ isset($activesubpost) ? " - " . $activesubpost->title : ''}} </p></div>
+                    <h1 class="title">
+                        {{ $post->description }} {{ isset($activesubpost) ? " - " . $activesubpost->title : ''}}
+                    </h1>
                 @endisset
-                @yield('content')
-            </div>
-        </section>
-        <footer>
-            <div class="block-footer">
-                <div class="content"><div class="pic"><img src="/dist/images/home.svg"></div><div class="content"><p>جميع الحقوق محفوظة  لدى منتديات مزيكا تو داي</p></div></div>
-            </div>
-        </footer>
+                <div class="pagescontainer">
+                    @yield('content')
+                </div>
+            </section>
+            <footer>
+                <div class="block-footer">
+                    <div class="content"><div class="pic"><img src="/dist/images/home.svg"></div><div class="content"><p>جميع الحقوق محفوظة  لدى منتديات مزيكا تو داي</p></div></div>
+                </div>
+            </footer>
+
+        </div>
     </body>
 </html>

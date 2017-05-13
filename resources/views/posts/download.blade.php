@@ -8,6 +8,14 @@
 		</div>
 	@endif
 	<div class="downloadlinks">
+{{-- 		@foreach ($downloadlinks as $downloadlink)
+			<div class="link">
+				<h3>{{$downloadlink->name}}</h3>
+				@foreach ($downloadlink->downloadservers as $downloadserver)
+					<li><a href="{{$downloadserver->link}}">{{$downloadserver->name}}</a></li>
+				@endforeach
+			</div>
+		@endforeach --}}
 		<div class="link">
 			<h3>ep name</h3>
 			<ul>

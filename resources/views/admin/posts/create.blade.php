@@ -77,6 +77,18 @@
 							<input type="file" class="form-control-file" name="postimage" id="postimage">
 						</div>
 
+						@isset ($post)
+							<hr />
+
+							<div class="form-group">
+								<label for="position">position </label>
+								<span class="label label-danger pull-right">
+									<strong>Max position: {{$maxposition}}</strong>
+								</span>
+								<input name="position" class="form-control" id="position" value="{{$post->position}}">
+							</div>
+						@endisset
+
 						<hr />
 
 						<div class="form-check">

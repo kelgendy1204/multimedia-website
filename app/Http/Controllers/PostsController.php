@@ -53,6 +53,7 @@ class PostsController extends Controller
 
 	// get : posts/{id} - show a post
 	public function show(Post $post) {
+		$post->increment('visits');
 		$category = Category::find($post->category_id);
 		$subpost = $post->subposts()->where('visible', '1')->latest()->first();
 		return view('posts.show', ['post' => $post, 'category' => $category, 'subpost' => $subpost]);
@@ -67,12 +68,13 @@ class PostsController extends Controller
 	// // get : admin/posts/{id}/edit - edit a post view
 	public function edit($post) {
 		$post = Post::find($post);
+		$maxposition = Post::select('position')->max('position');
 		if(!$post){
 			return redirect()->action('PostsController@create');
 		}
 		$categories = Category::all();
 		$post->subposts;
-		return view('admin.posts.create', ['categories' => $categories, 'post' => $post]);
+		return view('admin.posts.create', ['categories' => $categories, 'post' => $post, 'maxposition' => $maxposition]);
 	}
 
 	// // post : admin/posts/{id}/update - edit a post view
@@ -84,12 +86,15 @@ class PostsController extends Controller
 		$post->visible = request('visible') == "on" ? true : false;
 		$post->pinned = request('pinned') == "on" ? true : false;
 		$post->category_id = request('category');
+		$post->position = request('position');
 		$imageFile = request()->file('postimage');
+
 		if(request()->hasFile('postimage') && $imageFile->isValid()) {
 			$uniqid = uniqid($post->id, true) . "." . $imageFile->getClientOriginalExtension();
 			$imageFile->move('postimages/', $uniqid);
 			$post->photo_url = "/postimages/" . $uniqid;
 		}
+
 		$post->save();
 
 		return redirect()->action(
@@ -116,12 +121,15 @@ class PostsController extends Controller
 		$post->save();
 
 		$imageFile = $request->file('postimage');
+
 		if($request->hasFile('postimage') && $imageFile->isValid()) {
 			$uniqid = uniqid($post->id, true) . "." . $imageFile->getClientOriginalExtension();
 			$imageFile->move('postimages/', $uniqid);
 			$post->photo_url = "/postimages/" . $uniqid;
-			$post->save();
 		}
+
+		$post->position = $post->id;
+		$post->save();
 
 		return redirect()->action(
 			'PostsController@edit', ['post' => $post]

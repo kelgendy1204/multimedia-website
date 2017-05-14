@@ -59,13 +59,7 @@ class PostsController extends Controller
 		return view('posts.show', ['post' => $post, 'category' => $category, 'subpost' => $subpost]);
 	}
 
-	// get : posts/{id}/download - show a post links
-	public function download(Post $post) {
-		$category = Category::find($post->category_id);
-		return view('posts.download', ['post' => $post, 'category' => $category]);
-	}
-
-	// // get : admin/posts/{id}/edit - edit a post view
+	// get : admin/posts/{id}/edit - edit a post view
 	public function edit($post) {
 		$post = Post::find($post);
 		$maxposition = Post::select('position')->max('position');

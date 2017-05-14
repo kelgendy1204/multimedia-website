@@ -13,6 +13,11 @@ class Post extends Model
 		return $this->hasMany('App\Subpost', 'post_id', 'id');
 	}
 
+	public function downloadlinks()
+	{
+		return $this->hasMany('App\Downloadlink', 'post_id', 'id');
+	}
+
 	public static function get_all_visible($category_name_en, $search, $limit)
 	{
 

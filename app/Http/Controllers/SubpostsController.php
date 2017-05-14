@@ -70,12 +70,9 @@ class SubpostsController extends Controller
 	// get : admin/posts/{post_id}/online/{subpost_id}/edit - edit a post view
 	public function edit(Post $post, $subpostid)
 	{
-		$subpost= $post->subposts()->where('id', $subpostid)->first();
-
-		$servers = [];
+		$subpost= $post->subposts()->where('id', $subpostid)->with('servers')->first();
 
 		if($subpost){
-			$subpost->servers;
 			return view('admin.subposts.create', ['post' => $post, 'subpost' => $subpost]);
 		}
 

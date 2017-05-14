@@ -4,7 +4,7 @@
 
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=wrielrrxldl32l2dzcfnesqzblk6q0i9tjm1xau55oiywoaq"></script>
 
-<script type="text/javascript">
+<script type="text/javascript" defer async>
 	tinymce.init({
 		selector: 'textarea',
 		theme: 'modern',
@@ -124,10 +124,10 @@
 											<h5 class="col-md-6">
 												{{$subpost->title}}
 											</h5>
-											<div class="col-md-3">
+											<div class="col-md-3 mb">
 												<a class="btn btn-primary btn-block" href="{{"/admin/posts/" . $post->id . "/online/" . $subpost->id . "/edit"}}" role="button">Edit online post</a>
 											</div>
-											<div class="col-md-3">
+											<div class="col-md-3 mb">
 												<form action="{{"/admin/posts/" . $post->id . "/online/" . $subpost->id . "/delete"}}" method="post">
 													{{ csrf_field() }}
 													<button type="submit" class="btn btn-danger btn-block">Delete online post</button>
@@ -145,6 +145,46 @@
 							<a class="btn btn-primary btn-lg" href="{{"/admin/posts/" . $post->id . "/online/create"}}" role="button">Add online watch post</a>
 						</div>
 					@endif
+
+
+
+					@if (isset($post))
+						<hr />
+						<h2 class="text-center">Download links</h2>
+
+						@if (count($post->downloadlinks))
+							<ul class="list-group">
+								@foreach ($post->downloadlinks as $downloadlink)
+									<li class="list-group-item">
+										<div class="row">
+											<h5 class="col-md-6">
+												{{$downloadlink->name}}
+											</h5>
+											<div class="col-md-3 mb">
+												<a class="btn btn-primary btn-block" href="{{ route('editdownloadlink', ['postid' => $post->id, 'downloadlinkid' => $downloadlink->id]) }}" role="button">Edit download link</a>
+											</div>
+											<div class="col-md-3 mb">
+												<form action="{{ route('deletedownloadlink', ['postid' => $post->id, 'downloadlinkid' => $downloadlink->id]) }}" method="post">
+													{{ csrf_field() }}
+													<button type="submit" class="btn btn-danger btn-block">Delete download link</button>
+												</form>
+											</div>
+										</div>
+									</li>
+								@endforeach
+							</ul>
+
+							<hr />
+
+						@endif
+						<div class="form-group text-center">
+							<a class="btn btn-primary btn-lg" href="{{ route('createdownloadlink', ['postid' => $post->id]) }}" role="button">Add download links</a>
+						</div>
+					@endif
+
+
+
+
 				</div>
 			</div>
 		</div>

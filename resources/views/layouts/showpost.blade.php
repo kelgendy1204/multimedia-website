@@ -8,20 +8,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/dist/css/home.css">
     </head>
-    <body>
+    <body class="page">
         <div class="insidepage">
             <header>
-                <div class="second-block-header">
-                    <div class="title-right">
-                    @isset ($category)
-                        <a>{{ $category->name }}</a>
-                        <a><img src="{{$category->photo_url}}"></a>
-                    @endisset
-                    </div>
-                    <div class="title-left">
-                        <a> MaZiKa<span>2</span>daY</a>
-                    </div>
-                </div>
+                <a>
+                    <h1>
+                        @isset ($category)
+                            {{ $category->name }}
+                            <img src="{{$category->photo_url}}">
+                        @endisset
+                    </h1>
+                </a>
+                <a class="logo" href="/"><img src="/dist/images/logo.svg" /></a>
             </header>
             <section>
                 @isset ($post)
@@ -34,11 +32,8 @@
                 </div>
             </section>
             <footer>
-                <div class="block-footer">
-                    <div class="content"><div class="pic"><img src="/dist/images/home.svg"></div><div class="content"><p>جميع الحقوق محفوظة  لدى منتديات مزيكا تو داي</p></div></div>
-                </div>
+                <div class="copy"><div class="pic"><img src="/dist/images/home.svg"></div><div class="content"><p>جميع الحقوق محفوظة  لدى منتديات مزيكا تو داي</p></div></div>
             </footer>
-
         </div>
     </body>
 </html>

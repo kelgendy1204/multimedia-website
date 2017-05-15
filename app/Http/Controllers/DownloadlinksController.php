@@ -51,15 +51,17 @@ class DownloadlinksController extends Controller
 		$downloadservernames = request('downloadservername');
 		$downloadserverlinks = request('downloadserverlink');
 
-		foreach ($downloadserverlinks as $index => $downloadserverlink) {
-			if($downloadserverlink){
-				$downloadserver = new Downloadserver;
-				$downloadserver->name = $downloadservernames[$index];
-				$downloadserver->link = $downloadserverlink;
-				$downloadservers[] = $downloadserver;
+		if($downloadserverlinks){
+			foreach ($downloadserverlinks as $index => $downloadserverlink) {
+				if($downloadserverlink){
+					$downloadserver = new Downloadserver;
+					$downloadserver->name = $downloadservernames[$index];
+					$downloadserver->link = $downloadserverlink;
+					$downloadservers[] = $downloadserver;
+				}
 			}
+			$downloadlink->downloadservers()->saveMany($downloadservers);
 		}
-		$downloadlink->downloadservers()->saveMany($downloadservers);
 
 		return redirect()->action(
 			'PostsController@edit', ['post' => $post]
@@ -95,12 +97,14 @@ class DownloadlinksController extends Controller
 		$downloadservernames = request('downloadservername');
 		$downloadserverlinks = request('downloadserverlink');
 
-		foreach ($downloadserverlinks as $index => $downloadserverlink) {
-			if($downloadserverlink){
-				$downloadserver = new Downloadserver;
-				$downloadserver->name = $downloadservernames[$index];
-				$downloadserver->link = $downloadserverlink;
-				$downloadservers[] = $downloadserver;
+		if($downloadserverlinks){
+			foreach ($downloadserverlinks as $index => $downloadserverlink) {
+				if($downloadserverlink){
+					$downloadserver = new Downloadserver;
+					$downloadserver->name = $downloadservernames[$index];
+					$downloadserver->link = $downloadserverlink;
+					$downloadservers[] = $downloadserver;
+				}
 			}
 		}
 

@@ -52,15 +52,18 @@ class SubpostsController extends Controller
 		$servers = [];
 		$servernames = request('servername');
 		$serverlinks = request('serverlink');
-		foreach ($serverlinks as $index => $serverlink) {
-			if($serverlink){
-				$server = new Server;
-				$server->name = $servernames[$index];
-				$server->link = $serverlink;
-				$servers[] = $server;
+
+		if($serverlinks){
+			foreach ($serverlinks as $index => $serverlink) {
+				if($serverlink){
+					$server = new Server;
+					$server->name = $servernames[$index];
+					$server->link = $serverlink;
+					$servers[] = $server;
+				}
 			}
+			$subpost->servers()->saveMany($servers);
 		}
-		$subpost->servers()->saveMany($servers);
 
 		return redirect()->action(
 			'PostsController@edit', ['post' => $post]
@@ -92,12 +95,14 @@ class SubpostsController extends Controller
 		$servernames = request('servername');
 		$serverlinks = request('serverlink');
 
-		foreach ($serverlinks as $index => $serverlink) {
-			if($serverlink){
-				$server = new Server;
-				$server->name = $servernames[$index];
-				$server->link = $serverlink;
-				$servers[] = $server;
+		if($serverlinks){
+			foreach ($serverlinks as $index => $serverlink) {
+				if($serverlink){
+					$server = new Server;
+					$server->name = $servernames[$index];
+					$server->link = $serverlink;
+					$servers[] = $server;
+				}
 			}
 		}
 

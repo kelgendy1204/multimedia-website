@@ -11,31 +11,36 @@
 			<iframe width="100%" height="100%" frameborder="0" allowfullscreen src="{{count($servers) ? $servers[0]->link : ""}}"></iframe>
 		</div>
 		<div class="share-title">
-			<a class="titlee">{{ (isset($activesubpost) && (count($subposts) > 1)) ? $activesubpost->title : ''}} </a>
+			<h2 class="titlee">{{ (isset($activesubpost) && (count($subposts) > 1)) ? $activesubpost->title : ''}} </h2>
 			<div class="share">
-				<a class="instgram"><img alt="" src="/dist/images/in.svg"></a>
-				<a class="google-plus"><img alt="" src="/dist/images/g.svg"></a>
-				<a class="twitter"><img alt="" src="/dist/images/t.svg"></a>
-				<a class="facebook"><img alt="" src="/dist/images/f.svg"></a>
+				<a class="socitem"><div class="soc-img google-plus"></div></a>
+				<a class="socitem"><div class="soc-img twitter"></div></a>
+				<a class="socitem"><div class="soc-img facebook"></div></a>
 			</div>
 		</div>
 
 		@if (count($subposts) > 1)
-			<div class="new-ep">
-				<div class="title-ep">الحلقات</div>
-				<div class="border-ep">
+			<div class="new-topic">
+				<div class="title-topic">الحلقات</div>
+				<div class="border-topic">
 					@foreach ($subposts as $subpost)
-						<a href="/posts/{{$post->id}}/online/{{$subpost->id}}"><img alt="{{isset($subpost)? $subpost->title : ''}}" src="{{$post->photo_url}}"><p>{{isset($subpost)? $subpost->title : ''}}</p></a>
+						<a href="/posts/{{$post->id}}/online/{{$subpost->id}}">
+							<div class="topic-img" style="background-image: url('{{$post->photo_url}}')"> </div>
+							<p>{{$subpost->title}}</p>
+						</a>
 					@endforeach
 				</div>
 			</div>
 		@endif
 
-		<div class="old-topic">
+		<div class="new-topic">
 			<div class="title-topic">مواضيع مهمة</div>
 			<div class="border-topic">
 				@foreach ($randomPosts as $randomPost)
-					<a href="/posts/{{$randomPost->id}}"><img alt="{{$randomPost->description}}" src="{{$randomPost->photo_url}}"></a>
+					<a href="/posts/{{$randomPost->id}}">
+						<div class="topic-img" style="background-image: url('{{$randomPost->photo_url}}')"></div>
+						<p>{{$randomPost->title}}</p>
+					</a>
 				@endforeach
 			</div>
 		</div>
@@ -48,7 +53,9 @@
 			serverLinks.forEach(function (item) {
 				item.addEventListener('click', function(e){
 					e.preventDefault();
+					document.querySelector('.servers >a.active').classList.remove('active');
 					iframe.src = this.href;
+					this.classList.add('active');
 				});
 			});
 		}());

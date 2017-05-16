@@ -4,7 +4,9 @@
 	serverLinks.forEach(function (item) {
 		item.addEventListener('click', function(e){
 			e.preventDefault();
+			$('.servers >a.active').classList.remove('active');
 			iframe.src = this.href;
+			this.classList.add('active');
 		});
 	});
 }());

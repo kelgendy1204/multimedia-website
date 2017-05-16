@@ -38,17 +38,15 @@ p {
     box-sizing: border-box;
 }
 
-.elementscontainer {
-    min-width: 1250px;
-    max-width: 1575px;
+.elementscontainer{
+    max-width: 1280px;
+    width: 100%;
     margin: 0 auto;
     height: 100%;
     user-select: none;
 }
 
 .pagescontainer{
-    // width: 1024px;
-    // min-width: 1024px;
     max-width: 1280px;
     margin: 0 auto;
     height: 100%;

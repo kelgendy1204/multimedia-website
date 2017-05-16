@@ -13,17 +13,32 @@
 		<div class="mainpage">
 			<header>
 				<div class="elementscontainer">
-					<div class="block-header">
-						<div class="right">
-							<a class="default1"><div class="pic"><img src="dist/images/home.svg"></div><div class="content"><p>الرئيسية</p></div></a>
-							<a class="default2"><div class="pic"><img src="dist/images/montadayat.svg"></div><div class="content"><p>المنتديات</p></div></a>
-						</div>
-						<div class="left">
-							<a class="instgram"><img src="dist/images/instgram.svg"></a>
-							<a class="google-plus"><img src="dist/images/google.svg"></a>
-							<a class="twitter"><img src="dist/images/twitter.svg"></a>
-							<a class="facebook"><img src="dist/images/facebook.svg"></a>
-						</div>
+					<div class="right">
+
+						<a class="menu" href="#">
+							<div class="nav-icon">
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
+						</a>
+
+						<a class="headercontent"><div class="pic"><img src="dist/images/home.svg"></div><div class="content"><p>الرئيسية</p></div></a>
+
+						<a class="headercontent"><div class="pic"><img src="dist/images/montadayat.svg"></div><div class="content"><p>المنتديات</p></div></a>
+
+					</div>
+					<div class="left">
+						<a class="socitem">
+							<div class="soc-img google-plus"></div>
+						</a>
+						<a class="socitem">
+							<div class="soc-img twitter"></div>
+						</a>
+						<a class="socitem">
+							<div class="soc-img facebook"></div>
+						</a>
 					</div>
 				</div>
 			</header>
@@ -87,5 +102,6 @@
 				</div>
 			</footer>
 		</div>
+		<script type="text/javascript" src="dist/js/home.js"></script>
 	</body>
 </html>

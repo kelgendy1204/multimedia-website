@@ -13,9 +13,9 @@
 		<div class="share-title">
 			<h2 class="titlee">{{ (isset($activesubpost) && (count($subposts) > 1)) ? $activesubpost->title : ''}} </h2>
 			<div class="share">
-				<a class="socitem"><div class="soc-img google-plus"></div></a>
-				<a class="socitem"><div class="soc-img twitter"></div></a>
-				<a class="socitem"><div class="soc-img facebook"></div></a>
+				<a class="socitem google-plus"></a>
+				<a class="socitem twitter"></a>
+				<a class="socitem facebook"></a>
 			</div>
 		</div>
 

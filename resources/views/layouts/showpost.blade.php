@@ -32,7 +32,11 @@
                 </div>
             </section>
             <footer>
-                <div class="copy"><div class="pic"><img src="/dist/images/home.svg"></div><div class="content"><p>جميع الحقوق محفوظة  لدى منتديات مزيكا تو داي</p></div></div>
+                <div class="elementscontainer">
+                    <div class="copy">
+                        <div class="pic"><img src="/dist/images/home.svg"></div><div class="content"><p>جميع الحقوق محفوظة  لدى منتديات مزيكا تو داي</p></div>
+                    </div>
+                </div>
             </footer>
         </div>
     </body>

@@ -1,7 +1,5 @@
-<a href="{{Request::url()}}?category={{$category->name_en}}" class="categories {{ $category->name_en }}">
-	<div class="pic">
-		<img src="{{ $category->photo_url }}" alt="{{$category->name_en}}">
-	</div>
+<a href="{{Request::url()}}?category={{$category->name_en}}" class="category {{ $category->name_en }}">
+	<div class="pic" style="background-image: url({{$category->photo_url}})"></div>
 	<div class="content">
 		<p>{{ $category->name }}</p>
 	</div>

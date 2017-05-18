@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<title>Mazika2day</title>
+		<title> مزيكا تو داي - MaZiKa2daY.CoM </title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="dist/css/home.css" />
@@ -29,9 +29,9 @@
 							</div>
 						</a>
 
-						<a class="headercontent"><div class="pic"><img src="dist/images/home.svg"></div><div class="content"><p>الرئيسية</p></div></a>
+						<a class="headercontent" href="{{URL::to('/')}}"><div class="pic"><img src="dist/images/home.svg"></div><div class="content"><p>الرئيسية</p></div></a>
 
-						<a class="headercontent"><div class="pic"><img src="dist/images/montadayat.svg"></div><div class="content"><p>المنتديات</p></div></a>
+						<a class="headercontent" href="http://forums.mazika2day.com"><div class="pic"><img src="dist/images/montadayat.svg"></div><div class="content"><p>المنتديات</p></div></a>
 
 					</div>
 					<div class="left">
@@ -51,7 +51,7 @@
 					@if (count($categories))
 						<ul>
 							@foreach ($categories as $category)
-									<li><a href="">{{$category->name}}</a></li>
+								<li><a href="">{{$category->name}}</a></li>
 							@endforeach
 						</ul>
 					@endif

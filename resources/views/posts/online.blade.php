@@ -33,21 +33,13 @@
 			</div>
 		@endif
 
-		<div class="new-topic">
-			<div class="title-topic">مواضيع مهمة</div>
-			<div class="border-topic">
-				@foreach ($randomPosts as $randomPost)
-					<a href="/posts/{{$randomPost->id}}">
-						<div class="topic-img" style="background-image: url('{{$randomPost->photo_url}}')"></div>
-						<p>{{$randomPost->title}}</p>
-					</a>
-				@endforeach
-			</div>
-		</div>
+		@include('layouts.randomPosts', ['classname' => ''])
+
 	</div>
 	{{-- <script type="text/javascript" src="/dist/js/online.js"></script> --}}
 	<script>
 		(function () {
+
 			var serverLinks = document.querySelectorAll('.servers >a');
 			var iframe = document.querySelector('iframe');
 			serverLinks.forEach(function (item) {
@@ -58,6 +50,23 @@
 					this.classList.add('active');
 				});
 			});
+
+			document.querySelector('.socitem.facebook').onclick = function() {
+				window.open("https://www.facebook.com/sharer/sharer.php?u={{Request::url()}}", "pop", "width=600, height=400, scrollbars=no");
+				return false;
+			};
+
+			document.querySelector('.socitem.google-plus').onclick = function() {
+				window.open('https://plus.google.com/share?url={{Request::url()}}', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
+				return false;
+			};
+
+			document.querySelector('.socitem.twitter').onclick = function() {
+				window.open('https://twitter.com/share?url={{Request::url()}}', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
+				return false;
+			};
+
+
 		}());
 	</script>
 @endsection

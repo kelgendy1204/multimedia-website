@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <link rel="canonical" href="{{URL::to('/')}}" />
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,14 +12,14 @@
     <body class="page">
         <div class="insidepage">
             <header>
-                <a>
-                    <h1>
-                        @isset ($category)
+                @isset ($category)
+                    <a href="{{URL::to('/')}}?category={{$category->name_en}}">
+                        <h1>
                             {{ $category->name }}
                             <img src="{{$category->photo_url}}">
-                        @endisset
-                    </h1>
-                </a>
+                        </h1>
+                    </a>
+                @endisset
                 <a class="logo" href="/"><img src="/dist/images/logo.svg" /></a>
             </header>
             <section>

@@ -32,6 +32,7 @@ class PostsController extends Controller
 			'parameters' => $parameters,
 			'advertisements' => $advertisements,
 		]);
+
 	}
 
 	// get : admin/posts - show all posts

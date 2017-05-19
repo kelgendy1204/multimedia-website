@@ -24,23 +24,9 @@ class LinksController extends Controller
 			'link' => 'required|url'
 		]);
 
-		$link = Link::where('url','=', $request->link)->first();
-			//If we have the URL saved in our database already, we provide that information back to view.
-		if($link) {
-			return redirect('/admin/links/create')->withInput()->with('link', $link->hash);
-			//Else we create a new unique URL
-		} else {
-			//First we create a new unique Hash
-			do {
-				$newHash = str_random(10);
-			} while(Link::where('hash', '=', $newHash)->count() > 0);
+		$link = \Helpers\Urlshorten::makeGetShortenUrl($request->link);
 
-			//Now we create a new database record
-			Link::create(array('url' => $request->link, 'hash' => $newHash));
-
-			//And then we return the new shortened URL info to our action
-			return redirect('/admin/links/create')->withInput()->with('link', $newHash);
-		}
+		return redirect('/admin/links/create')->withInput()->with('link', $link->hash);
 	}
 
 	public function generate($hash)

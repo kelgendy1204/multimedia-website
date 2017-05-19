@@ -7,6 +7,7 @@ use App\Post;
 use App\Category;
 use App\Downloadlink;
 use App\Downloadserver;
+use \Helpers\Urlshorten;
 
 class DownloadlinksController extends Controller
 {
@@ -56,7 +57,8 @@ class DownloadlinksController extends Controller
 				if($downloadserverlink){
 					$downloadserver = new Downloadserver;
 					$downloadserver->name = $downloadservernames[$index];
-					$downloadserver->link = $downloadserverlink;
+					$link = Urlshorten::makeGetShortenUrl($downloadserverlink);
+					$downloadserver->link = url('/') . "/generatelink/" . $link->hash;
 					$downloadservers[] = $downloadserver;
 				}
 			}
@@ -68,7 +70,7 @@ class DownloadlinksController extends Controller
 		);
 	}
 
-	// get : admin/posts/{post_id}/online/edit/{downloadlink_id} - edit a download links
+	// get : admin/posts/{post_id}/download/edit/{downloadlink_id} - edit a download links
 	public function edit($post, $downloadlink)
 	{
 		$post = Post::find($post);
@@ -102,7 +104,8 @@ class DownloadlinksController extends Controller
 				if($downloadserverlink){
 					$downloadserver = new Downloadserver;
 					$downloadserver->name = $downloadservernames[$index];
-					$downloadserver->link = $downloadserverlink;
+					$link = Urlshorten::makeGetShortenUrl($downloadserverlink);
+					$downloadserver->link = url('/') . "/generatelink/" . $link->hash;
 					$downloadservers[] = $downloadserver;
 				}
 			}

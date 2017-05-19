@@ -10,6 +10,8 @@ use App\Link;
 class Urlshorten
 {
 
+	public static $hashNumber = 10;
+
 	public static function makeGetShortenUrl($url)
 	{
 
@@ -22,7 +24,7 @@ class Urlshorten
 		} else {
 			//First we create a new unique Hash
 			do {
-				$newHash = str_random(10);
+				$newHash = str_random($hashNumber);
 			} while(Link::where('hash', '=', $newHash)->count() > 0);
 
 			//Now we create a new database record
@@ -31,6 +33,17 @@ class Urlshorten
 			//And then we return the new shortened URL info to our action
 			return $link;
 		}
+	}
+
+	public static function getLinkByHash($hash)
+	{
+		$link = Link::where('hash','=', $hash)->first();
+		return $link;
+	}
+
+	public static function getHashFromLink($generatedLink)
+	{
+		return substr($generatedLink, -static::$hashNumber);
 	}
 
 

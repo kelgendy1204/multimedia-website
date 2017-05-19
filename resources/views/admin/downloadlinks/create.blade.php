@@ -45,7 +45,7 @@
 												<input name="downloadservername[]" type="text" class="form-control" placeholder="Server name" value="{{$downloadserver->name}}" />
 											</div>
 											<div class="col-sm-8">
-												<input name="downloadserverlink[]" type="text" class="form-control" placeholder="Server link" value="{{$downloadserver->link}}" />
+												<input name="downloadserverlink[]" type="text" class="form-control" placeholder="Server link" value="{{\Helpers\Urlshorten::getLinkByHash(\Helpers\Urlshorten::getHashFromLink($downloadserver->link))->url}}" />
 											</div>
 										</div>
 									@endforeach
@@ -54,7 +54,7 @@
 						</div>
 
 						<div class="text-center">
-							<a class="btn btn-primary btn-sm" role="button" id="addserver">Add online watch post</a>
+							<a class="btn btn-primary btn-sm" role="button" id="addserver">Add new download links</a>
 						</div>
 
 						<hr />

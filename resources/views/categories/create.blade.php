@@ -31,11 +31,16 @@
 							</select>
 						</div>
 
+						<div class="form-group">
+							<label for="key_words">Add keywords</label>
+							<input type="text" class="form-control" name="key_words" id="key_words" placeholder="Enter keywords separated by commas"/>
+						</div>
+
 						<hr />
 
 						<div class="form-group">
 							<label for="categoryimage">upload image</label>
-							<input type="file" class="form-control-file" name="categoryimage" id="categoryimage">
+							<input type="file" class="form-control-file" name="categoryimage" id="categoryimage" />
 						</div>
 
 						<hr />

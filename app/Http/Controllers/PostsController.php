@@ -109,6 +109,7 @@ class PostsController extends Controller
 		$post = new Post;
 		$post->title = request('title');
 		$post->description = request('description');
+		$post->key_words = request('key_words');
 		$post->download_page = request('download_page');
 		$post->visible = request('visible') == "on" ? true : false;
 		$post->pinned = request('pinned') == "on" ? true : false;

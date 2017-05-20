@@ -677,7 +677,7 @@ div.mainpage {
                 }
             }
             &:last-child {
-                padding: 10px 50px;
+                padding: 0px 50px;
                 justify-content: flex-end;
                 img {
                     height: 100%;
@@ -785,6 +785,7 @@ div.mainpage {
         align-items: center;
         justify-content: center;
         .img {
+            max-width: 600px;
             margin: 40px 0;
             width: 60%;
             min-width: 280px;
@@ -957,6 +958,17 @@ div.mainpage {
                         background-repeat: no-repeat;
                     }
                 }
+                p {
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+                    background-color: rgba(58, 63, 72, 0.8);
+                    font-family: jf;
+                    font-size: 0.8em;
+                    padding: 5px 2px;
+                    color: white;
+                    text-align: center;
+                }
             }
         }
         .download_desc {
@@ -1007,7 +1019,7 @@ div.mainpage {
                 display: flex;
                 justify-content: center;
                 flex-wrap: wrap;
-                background-color: #dddddd;
+                background-color: #e1e2e7;
                 padding: 12px 0;
                 border: 1px solid #7b7979;
                 li {

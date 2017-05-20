@@ -24,7 +24,7 @@ class Urlshorten
 		} else {
 			//First we create a new unique Hash
 			do {
-				$newHash = str_random($hashNumber);
+				$newHash = str_random(static::$hashNumber);
 			} while(Link::where('hash', '=', $newHash)->count() > 0);
 
 			//Now we create a new database record

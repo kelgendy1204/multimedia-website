@@ -19,7 +19,7 @@
 						<h3>{{$downloadlink->name}}</h3>
 						<ul>
 							@foreach ($downloadlink->downloadservers as $downloadserver)
-								<li><a href="{{$downloadserver->link}}">{{$downloadserver->name}}</a></li>
+								<li><a href="{{$downloadserver->link}}" target="_blank">{{$downloadserver->name}}</a></li>
 							@endforeach
 						</ul>
 					</div>

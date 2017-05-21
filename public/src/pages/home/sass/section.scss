@@ -1071,6 +1071,9 @@ body.links{
             align-items: center;
             background-color: #2c4257;
             height: 15vh;
+            .logo{
+                justify-content: center;
+            }
         }
         section{
             background-color: white;

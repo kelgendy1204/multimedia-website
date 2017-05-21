@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-	public static $paginate = 50;
+	public static $paginate = 54;
 
 	public function subposts()
 	{

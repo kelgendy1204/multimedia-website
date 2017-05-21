@@ -25,7 +25,7 @@ class DownloadlinksController extends Controller
 
 		$category = Category::find($post->category_id);
 
-		$randomPosts = Post::get_all_visible($category->category_name_en, null, 20)->shuffle();
+		$randomPosts = Post::get_all_visible($category->category_name_en, null, 20)->where('category_id', $post->category_id)->shuffle();
 
 		return view('posts.download', ['post' => $post, 'downloadlinks' => $downloadlinks, 'category' => $category, 'randomPosts' => $randomPosts]);
 

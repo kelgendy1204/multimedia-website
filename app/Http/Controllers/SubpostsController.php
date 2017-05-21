@@ -26,7 +26,7 @@ class SubpostsController extends Controller
 
 		$servers = [];
 
-		$randomPosts = Post::get_all_visible($category->category_name_en, null, 20)->shuffle();
+		$randomPosts = Post::get_all_visible($category->category_name_en, null, 20)->where('category_id', $post->category_id)->shuffle();
 
 		if($subpost){
 			$servers = $subpost->servers;

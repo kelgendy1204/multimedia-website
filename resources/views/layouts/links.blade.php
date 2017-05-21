@@ -18,7 +18,9 @@
     <body class="page links">
         <div class="insidepage">
             <header>
-                <a class="logo" href="/"><img src="/dist/images/logo.svg" /></a>
+                <div class="logo">
+                    <a href="/"><img src="/dist/images/logo.svg" /></a>
+                </div>
             </header>
             <section>
                 @isset ($post)

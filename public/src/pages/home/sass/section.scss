@@ -29,8 +29,11 @@ div.mainpage {
                         border-bottom: 1px solid #494949;
                         padding: 10px 30px;
                         list-style: none;
-                        text-align: center;
+                        display: flex;
+                        align-items: center;
                         a {
+                            display: flex;
+                            align-items: center;
                             font-size: 1em;
                             font-family: jf;
                             color: white;
@@ -38,6 +41,14 @@ div.mainpage {
                             &:hover,
                             &:visited {
                                 text-decoration: none;
+                            }
+                            div.category-img{
+                                width: 35px;
+                                height: 35px;
+                                margin-left: 20px;
+                                background-position: center center;
+                                background-repeat: no-repeat;
+                                background-size: 75% auto;
                             }
                         }
                         &:last-child {
@@ -161,8 +172,18 @@ div.mainpage {
                 display: flex;
                 justify-content: flex-end;
                 align-items: center;
-                @media screen and (max-width: 850px) {
+                .logo {
+                    height: 100%;
                     display: none;
+                    justify-content: flex-end;
+                    align-items: stretch;
+                    img{
+                        width: auto;
+                        height: 100%;
+                    }
+                    @media screen and (max-width: 850px) {
+                        display: flex;
+                    }
                 }
                 .socitem {
                     min-width: 50px;
@@ -173,6 +194,9 @@ div.mainpage {
                     justify-content: center;
                     align-items: center;
                     margin: 0 15px;
+                    @media screen and (max-width: 850px) {
+                        display: none;
+                    }
                     div.soc-img {
                         background-repeat: no-repeat;
                         background-position: center center;
@@ -214,12 +238,11 @@ div.mainpage {
         min-height: 800px;
         .img-banner {
             margin: 0;
-            // border-radius: 10px;
             width: 100%;
             height: 410px;
             background-size: 100% auto;
             background-repeat: no-repeat;
-            background-position: center center;
+            background-position: center top;
             background-image: url(/dist/images/banner2.jpg);
             @media screen and (max-width: 1500px) {
                 height: 350px;
@@ -231,12 +254,6 @@ div.mainpage {
                 height: 260px;
             }
             @media screen and (max-width: 850px) {
-                height: 200px;
-            }
-            @media screen and (max-width: 680px) {
-                height: 160px;
-            }
-            @media screen and (max-width: 680px) {
                 display: none;
             }
         }
@@ -694,6 +711,16 @@ div.mainpage {
                     height: 100%;
                 }
             }
+            @media screen and (max-width: 850px) {
+                padding: 0px 50px;
+                width: 100%;
+                h1{
+                    font-size: 1em;
+                    img{
+                        width: 40px;
+                    }
+                }
+            }
         }
         @media screen and (max-width: 850px) {
             height: 160px;
@@ -926,14 +953,52 @@ div.mainpage {
             flex-direction: column;
             margin-bottom: 25px;
             width: 850px;
-            &.downloadpage{
-                width: 80%;
+            &.random {
+                @media screen and (max-width: 870px) {
+                    display: none;
+                }
+                .title-topic{
+                    background-color: #c74571;
+                }
+                .border-topic {
+                    padding: 10px 70px;
+                    position: relative;
+                    .swiper-container{
+                        width: 100%;
+                        .swiper-slide{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            a{
+                                margin: 0;
+                            }
+                        }
+                    }
+                    .btn-paginate{
+                        position: absolute;
+                        top: 0;
+                        height: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+                        img{
+                            width: 65px;
+                        }
+                        &.next{
+                            left: 0;
+                        }
+                        &.previous{
+                            right: 0;
+                        }
+                    }
+                }
             }
             @media screen and (max-width: 850px) {
                 width: 90%;
             }
             .title-topic {
-                background-color: #3a3f48;
+                background-color: #1d8386;
                 padding: 10px 20px;
                 border-top-left-radius: 20px;
                 border-top-right-radius: 20px;
@@ -946,6 +1011,7 @@ div.mainpage {
                 padding: 10px;
                 width: 100%;
                 border: 3px solid #3a3f48;
+                background-color: #3a3f48;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -954,6 +1020,7 @@ div.mainpage {
                 border-bottom-right-radius: 10px;
                 border-bottom-left-radius: 10px;
                 a {
+                    transform: skewX(-3deg);
                     display: inline-block;
                     min-width: 120px;
                     width: 15.4%;
@@ -962,6 +1029,7 @@ div.mainpage {
                     position: relative;
                     border-radius: 5px;
                     overflow: hidden;
+                    border: 5px solid white;
                     .topic-img {
                         width: 100%;
                         height: 100%;

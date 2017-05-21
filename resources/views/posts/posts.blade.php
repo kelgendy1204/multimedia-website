@@ -38,6 +38,9 @@
                         <a href="https://www.facebook.com/mazika2day.com.official" target="_blank" class="socitem">
                             <div class="soc-img facebook"></div>
                         </a>
+                        <a class="logo" href="{{URL::to('/')}}">
+                            <img src="/dist/images/logo.svg" />
+                        </a>
                     </div>
                 </div>
 
@@ -45,7 +48,12 @@
                     @if (count($categories))
                     <ul>
                         @foreach ($categories as $category)
-                        <li><a href="">{{$category->name}}</a></li>
+                            <li>
+                                <a href="{{Request::url()}}?category={{$category->name_en}}">
+                                    <div class="category-img" style="background-image: url({{$category->photo_url}})"></div>
+                                    {{$category->name}}
+                                </a>
+                            </li>
                         @endforeach
                     </ul>
                     @endif

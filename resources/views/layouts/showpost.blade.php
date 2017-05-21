@@ -13,7 +13,9 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/manifest.json">
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-        <link rel="stylesheet" href="/dist/css/home.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+        <link rel="stylesheet" href="/dist/css/home.css" />
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     </head>
     <body class="page">
         <div class="insidepage">

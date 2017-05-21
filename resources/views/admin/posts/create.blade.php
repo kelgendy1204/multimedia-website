@@ -47,7 +47,12 @@
 
 						<div class="form-group">
 							<label for="description">Description</label>
-							<input name="description" class="form-control" id="description" value="{{isset($post)? $post->description: ''}}">
+							<input name="description" placeholder="short description" class="form-control" id="description" value="{{isset($post)? $post->description: ''}}">
+						</div>
+
+						<div class="form-group">
+							<label for="key_words">Add keywords</label>
+							<input name="key_words" placeholder="Enter keywords separated by commas" class="form-control" id="key_words" value="{{isset($post)? $post->key_words: ''}}">
 						</div>
 
 						<div class="form-group">

@@ -23,6 +23,7 @@ class CategoriesController extends Controller
 		$category = new Category;
 		$category->name = request("category");
 		$category->name_en = request("category_en");
+		$category->key_words = request("key_words");
 		$category->parent_id = request("parent");
 		$category->save();
 

@@ -2,6 +2,8 @@
 
 @section('content')
 
+	<div class="img"><img src="{{ $post->photo_url }}"></div>
+
 	@if (!empty($post->download_page))
 		<div class="download_desc">
 			{!! $post->download_page !!}

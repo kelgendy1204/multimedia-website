@@ -1,16 +1,14 @@
-@extends('layouts.showpost')
+@extends('layouts.links')
 
 @section('content')
-	<div class="linkcontainer">
-		@isset ($link)
-			<a href="{{$link}}">
-				go to link
-			</a>
-		@endisset
-		@isset ($hash)
-			<a href="{{ "/getlink/" . $hash}}">
-				generate the link
-			</a>
-		@endisset
-	</div>
+    @isset ($link)
+        <a href="{{$link}}" target="_blank">
+            go to link
+        </a>
+    @endisset
+    @isset ($hash)
+    <a href="{{ "/getlink/" . $hash}}">
+        generate the link
+    </a>
+    @endisset
 @endsection

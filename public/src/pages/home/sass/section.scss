@@ -656,12 +656,23 @@ div.mainpage {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        a {
+        >div {
             width: 50%;
             height: 100%;
             display: inline-flex;
             text-align: left;
             padding: 15px 50px;
+            a{
+                display: flex;
+                align-items: center;
+                height: 100%;
+                color: white;
+                text-decoration: none;
+                &:hover, &:visited{
+                    color: white;
+                    text-decoration: none;
+                }
+            }
             h1 {
                 font-family: jf;
                 margin: 0;

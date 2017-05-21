@@ -19,14 +19,20 @@
         <div class="insidepage">
             <header>
                 @isset ($category)
-                    <a href="{{URL::to('/')}}?category={{$category->name_en}}">
+                    <div>
                         <h1>
-                            {{ $category->name }}
-                            <img src="{{$category->photo_url}}">
+                            <a href="{{URL::to('/')}}?category={{$category->name_en}}">
+                                {{ $category->name }}
+                                <img src="{{$category->photo_url}}">
+                            </a>
                         </h1>
-                    </a>
+                    </div>
                 @endisset
-                <a class="logo" href="/"><img src="/dist/images/logo.svg" /></a>
+                <div class="logo">
+                    <a href="{{URL::to('/')}}">
+                        <img src="/dist/images/logo.svg" />
+                    </a>
+                </div>
             </header>
             <section>
                 @isset ($post)

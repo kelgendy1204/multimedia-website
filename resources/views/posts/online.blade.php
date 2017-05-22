@@ -33,7 +33,7 @@
 			</div>
 		@endif
 
-		@include('layouts.randomPosts', ['classname' => ''])
+		@include('layouts.randomposts', ['classname' => ''])
 
 	</div>
 	{{-- <script type="text/javascript" src="/dist/js/online.js"></script> --}}

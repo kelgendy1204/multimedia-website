@@ -28,6 +28,6 @@
 		</div>
 	@endif
 
-	@include('layouts.randomPosts', ['classname' => 'downloadpage'])
+	@include('layouts.randomposts', ['classname' => 'downloadpage'])
 
 @endsection

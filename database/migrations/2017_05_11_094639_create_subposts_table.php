@@ -19,7 +19,6 @@ class CreateSubpostsTable extends Migration
             $table->boolean('visible');
             $table->integer('post_id');
             $table->timestamps();
-            // $table->unique(['post_id', 'title']);
         });
     }
 

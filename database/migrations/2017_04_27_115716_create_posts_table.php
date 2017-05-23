@@ -17,9 +17,13 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('photo_url')->nullable();
-            $table->text('description');
-            $table->text('key_words')->nullable();
+            $table->string('description');
             $table->text('download_page')->nullable();
+
+            $table->text('key_words')->nullable();
+            $table->text('long_description')->nullable();
+            $table->text('meta_description')->nullable();
+
             $table->boolean('visible')->default(false);
             $table->boolean('pinned')->default(false);
             $table->integer('visits')->default(0);

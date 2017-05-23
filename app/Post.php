@@ -62,4 +62,9 @@ class Post extends Model
 	{
 		return static::where('pinned', 1)->get();
 	}
+
+	public function tags()
+	{
+		return $this->belongsToMany('App\Tag', 'tag_post');
+	}
 }

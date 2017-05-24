@@ -14,7 +14,7 @@ class AdminController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('IsAdmin')->except(['login', 'authUser']);
+        $this->middleware('IsAdmin')->onyl(['index', 'logout']);
         $this->middleware('IsSuperAdmin')->only(['addUser', 'storeUser']);
         $this->middleware('guest')->only(['login', 'authUser']);
     }
@@ -24,12 +24,6 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    // get - /admin/mzk_admin_panel
-    public function index(Request $request)
-    {
-        return view('admin.adminpanel');
-    }
 
     // get - /admin/mzk_admin_login
     public function login(Request $request)
@@ -48,6 +42,20 @@ class AdminController extends Controller
         }
 
         return redirect('/admin/mzk_admin_panel');
+    }
+
+    // get - /admin/mzk_admin_panel
+    public function index(Request $request)
+    {
+        return view('admin.adminpanel');
+    }
+    
+    // post - /admin/mzk_admin_logout
+    public function logout(Request $request)
+    {
+        auth()->logout();
+
+        return redirect('/');
     }
 
     // get - /admin/mzk_admin_adduser
@@ -79,13 +87,5 @@ class AdminController extends Controller
 
         //redirect
         return redirect('/admin/mzk_admin_panel');
-    }
-
-    // post - /admin/mzk_admin_logout
-    public function logout(Request $request)
-    {
-        auth()->logout();
-
-        return redirect('/');
     }
 }

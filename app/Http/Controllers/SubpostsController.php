@@ -20,7 +20,7 @@ class SubpostsController extends Controller
 	public function show(Post $post, $subpostid) {
 		$subpost= $post->subposts()->where('visible', '1')->where('id', $subpostid)->first();
 
-		$subposts = $post->subposts()->where('visible', '1')->get();
+		$subposts = $post->subposts()->where('visible', '1')->latest()->get();
 
 		$category = Category::find($post->category_id);
 

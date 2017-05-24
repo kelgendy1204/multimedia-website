@@ -21,7 +21,7 @@ class DownloadlinksController extends Controller
 	public function show($post) {
 		$post = Post::find($post);
 
-		$downloadlinks = $post->downloadlinks()->with('downloadservers')->where('visible', '1')->get();
+		$downloadlinks = $post->downloadlinks()->with('downloadservers')->where('visible', '1')->latest()->get();
 
 		$category = Category::find($post->category_id);
 

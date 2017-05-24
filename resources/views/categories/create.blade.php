@@ -32,6 +32,16 @@
 						</div>
 
 						<div class="form-group">
+							<label for="color">Choose color</label>
+							<select class="form-control" name="color" id="color">
+								<option value="default">default</option>
+								@foreach ($colors as $color)
+									<option value="{{$color}}"> {{ $color }} </option>
+								@endforeach
+							</select>
+						</div>
+
+						<div class="form-group">
 							<label for="key_words">Add keywords</label>
 							<input type="text" class="form-control" name="key_words" id="key_words" placeholder="Enter keywords separated by commas"/>
 						</div>

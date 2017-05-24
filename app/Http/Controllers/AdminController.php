@@ -14,7 +14,7 @@ class AdminController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('IsAdmin')->onyl(['index', 'logout']);
+        $this->middleware('IsAdmin')->only(['index', 'logout']);
         $this->middleware('IsSuperAdmin')->only(['addUser', 'storeUser']);
         $this->middleware('guest')->only(['login', 'authUser']);
     }

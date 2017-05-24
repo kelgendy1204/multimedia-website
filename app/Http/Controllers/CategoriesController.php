@@ -16,7 +16,8 @@ class CategoriesController extends Controller
 	public function create()
 	{
 		$categories = Category::all();
-		return view('categories.create', ['categories' => $categories ]);
+		$colors = ['red', 'grey1', 'blue', 'orange', 'green1', 'green2', 'green3', 'yellow', 'grey2', 'pink'];
+		return view('categories.create', ['categories' => $categories, 'colors' => $colors ]);
 	}
 
 	public function store(Request $request) {
@@ -24,6 +25,7 @@ class CategoriesController extends Controller
 		$category->name = request("category");
 		$category->name_en = request("category_en");
 		$category->key_words = request("key_words");
+		$category->color = request("color");
 		$category->parent_id = request("parent");
 		$category->save();
 

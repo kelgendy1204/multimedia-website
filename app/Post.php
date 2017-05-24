@@ -21,7 +21,7 @@ class Post extends Model
 	public static function get_all_visible($category_name_en, $search, $limit)
 	{
 
-		$query = static::where('visible', 1)->leftJoin('categories', 'categories.id', '=', 'posts.category_id')->select('posts.*', 'categories.name_en as category_name_en', 'categories.name as category_name')->orderBy('pinned', 'desc')->orderBy('position', 'desc')->orderBy('updated_at', 'desc');
+		$query = static::where('visible', 1)->leftJoin('categories', 'categories.id', '=', 'posts.category_id')->select('posts.*', 'categories.name_en as category_name_en', 'categories.name as category_name', 'categories.color as category_color')->orderBy('pinned', 'desc')->orderBy('position', 'desc')->orderBy('updated_at', 'desc');
 
 		if($category_name_en) {
 			$query->where('categories.name_en', $category_name_en);

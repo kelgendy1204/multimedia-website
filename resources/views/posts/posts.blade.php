@@ -98,7 +98,7 @@
                         @endif
                         <div class="items">
                             @foreach ($posts as $post)
-                            @include('layouts.postlayout')
+                                @include('layouts.postlayout')
                             @endforeach
                         </div>
                         @if ($advertisements->get('home_left'))

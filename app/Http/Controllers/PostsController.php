@@ -52,8 +52,9 @@ class PostsController extends Controller
 
 	}
 
-	// get : posts/{id} - show a post
-	public function show(Post $post) {
+	// get : /{postdesc} - show a post
+	public function show($postdesc) {
+		$post = Post::where('description', $postdesc)->latest()->first();
 		$post->increment('visits');
 		$category = Category::find($post->category_id);
 		$subpost = $post->subposts()->where('visible', '1')->latest()->first();

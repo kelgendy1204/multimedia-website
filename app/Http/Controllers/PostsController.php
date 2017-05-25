@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
 use App\Post;
 use App\Category;
 use App\Advertisement;
@@ -115,7 +116,9 @@ class PostsController extends Controller
 		$post->visible = request('visible') == "on" ? true : false;
 		$post->pinned = request('pinned') == "on" ? true : false;
 		$post->category_id = request('category');
+		$post->user_id = Auth::id();
 		$post->save();
+
 
 		$imageFile = $request->file('postimage');
 

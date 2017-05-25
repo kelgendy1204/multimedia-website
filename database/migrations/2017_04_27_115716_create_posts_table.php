@@ -14,6 +14,7 @@ class CreatePostsTable extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
+ 
             $table->increments('id');
             $table->string('title');
             $table->string('photo_url')->nullable();
@@ -29,6 +30,8 @@ class CreatePostsTable extends Migration
             $table->integer('visits')->default(0);
             $table->integer('position')->default(0);
             $table->integer('category_id')->default(0);
+            $table->integer('user_id');
+
             $table->timestamps();
         });
     }

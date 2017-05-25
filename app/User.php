@@ -37,4 +37,9 @@ class User extends Authenticatable
         return in_array($check, array_pluck($this->roles->toArray(), 'name'));
     }
 
+    public function posts()
+    {
+        return $this->hasMany('App\Post', 'user_id', 'id');
+    }
+
 }

@@ -17,9 +17,9 @@ class DownloadlinksController extends Controller
 		$this->middleware('IsAdmin')->except(['show']);
 	}
 
-	// get : posts/{postid}/download - show a post links
-	public function show($post) {
-		$post = Post::find($post);
+	// get : /{postdesc}/تحميل مباشر - show a post links
+	public function show($postdesc) {
+		$post = Post::where('description', $postdesc)->latest()->first();
 
 		$downloadlinks = $post->downloadlinks()->with('downloadservers')->where('visible', '1')->latest()->get();
 

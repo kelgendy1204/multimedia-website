@@ -2,20 +2,23 @@
 
 Route::get('/', 'PostsController@index');
 Route::get('/{postdesc}', 'PostsController@show')->name('postshome');
+
 Route::get('/admin/posts/create', 'PostsController@create');
 Route::get('/admin/posts/{post}/edit', 'PostsController@edit');
 Route::post('/admin/posts/{post}/update', 'PostsController@update');
 Route::get('/admin/posts', 'PostsController@adminindex');
 Route::post('/admin/posts', 'PostsController@store');
 
-Route::get('/posts/{postid}/download', 'DownloadlinksController@show')->name('download');
+Route::get('/{postdesc}/تحميل مباشر', 'DownloadlinksController@show')->name('download');
+
 Route::get('/admin/posts/{postid}/download/create', 'DownloadlinksController@create')->name('createdownloadlink');
 Route::post('/admin/posts/{postid}/download/create', 'DownloadlinksController@store')->name('storedownloadlink');
 Route::get('/admin/posts/{postid}/download/{downloadlinkid}/edit', 'DownloadlinksController@edit')->name('editdownloadlink');
 Route::post('/admin/posts/{postid}/download/{downloadlinkid}/edit', 'DownloadlinksController@update')->name('updatedownloadlink');
 Route::post('/admin/posts/{postid}/download/{downloadlinkid}/delete', 'DownloadlinksController@delete')->name('deletedownloadlink');
 
-Route::get('/posts/{post}/online/{subpost}', 'SubpostsController@show');
+Route::get('/{postdesc}/مشاهدة مباشرة/{subposttitle}', 'SubpostsController@show')->name('online');
+
 Route::get('/admin/posts/{post}/online/create', 'SubpostsController@create');
 Route::post('/admin/posts/{post}/online/create', 'SubpostsController@store');
 Route::get('/admin/posts/{post}/online/{subpost}/edit', 'SubpostsController@edit');

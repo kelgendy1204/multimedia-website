@@ -16,18 +16,18 @@ class SubpostsController extends Controller
 		$this->middleware('IsAdmin')->except(['show']);
 	}
 
-	// get : posts/{postid}/online/{subpostid} - watch post online
-	public function show(Post $post, $subpostid) {
-		$subpost= $post->subposts()->where('visible', '1')->where('id', $subpostid)->first();
+	// get : /{postdesc}/مشاهدة مباشرة/{subposttitle} - watch post online
+	public function show($postdesc, $subposttitle) {
+		$post = Post::where('description', $postdesc)->latest()->first();
+		$subpost= $post->subposts()->where('visible', '1')->where('title', $subposttitle)->latest()->first();
 
 		$subposts = $post->subposts()->where('visible', '1')->latest()->get();
 
 		$category = Category::find($post->category_id);
 
-		$servers = [];
-
 		$randomPosts = Post::get_all_visible($category->category_name_en, null, 20)->where('category_id', $post->category_id)->shuffle();
 
+		$servers = [];
 		if($subpost){
 			$servers = $subpost->servers;
 		}

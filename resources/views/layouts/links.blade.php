@@ -4,8 +4,9 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <link rel="canonical" href="{{URL::to('/')}}" />
-        <title></title>
-        <meta name="description" content="">
+        <title>{{$post->title}}</title>
+        <meta name="description" content="{{$post->meta_description}}">
+        <meta name="keywords" content="{{$post->key_words}}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
         <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">

@@ -51,6 +51,11 @@
 						</div>
 
 						<div class="form-group">
+							<label for="meta_description">Meta description</label>
+							<input name="meta_description" placeholder="short meta_description" class="form-control" id="meta_description" value="{{isset($post)? $post->meta_description: ''}}">
+						</div>
+
+						<div class="form-group">
 							<label for="key_words">Add keywords</label>
 							<input name="key_words" placeholder="Enter keywords separated by commas" class="form-control" id="key_words" value="{{isset($post)? $post->key_words: ''}}">
 						</div>

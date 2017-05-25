@@ -82,6 +82,7 @@ class PostsController extends Controller
 		$post->visible = request('visible') == "on" ? true : false;
 		$post->pinned = request('pinned') == "on" ? true : false;
 		$post->category_id = request('category');
+		$post->meta_description = request('meta_description');
 		$post->position = request('position');
 		$imageFile = request()->file('postimage');
 
@@ -115,6 +116,7 @@ class PostsController extends Controller
 		$post->visible = request('visible') == "on" ? true : false;
 		$post->pinned = request('pinned') == "on" ? true : false;
 		$post->category_id = request('category');
+		$post->meta_description = request('meta_description');
 		$post->user_id = Auth::id();
 		$post->save();
 

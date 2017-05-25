@@ -3,14 +3,14 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title> مزيكا تو داي - MaZiKa2daY.CoM </title>
-        <meta name="description" content="">
+        <title>
+            مزيكا تو داي | مشاهدة افلام مباشرة اعربي واجنبي - مشاهدة افلام اون لاين - تحميل واستماع اغاني عربي
+        </title>
+        <meta name="description" content="مشاهدة و تحميل افلام عربي و اجنبي, مشاهدة و تحميل مسلسلات عربي و اجنبي, تحميل واستماع اغاني عربية, تحميل العاب, تحميل برامج, مشاهدة و تحميل مباريات و مصارعة">
+        <meta name="keywords" content="مشاهدة افلام مباشرة, مشاهدة افلام اون لاين عربى و اجنبى, تحميل واستماع اغانى عربية, اغاني شعبي مشاهدة مباشرة مسلسلات عربية, مشاهدة مسلسلات رمضان اون لاين,مشاهدة مباريات اون لاين, كليبات, اسلاميات, برامج, العاب, برامج الموبايل, العاب الموبايل, نغمات, عروض مصارعة, افلام مترجمة">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/dist/css/home.css" />
-        {{-- 		<script
-                            src="https://code.jquery.com/jquery-2.2.4.js"
-                            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
-                            crossorigin="anonymous"></script> --}}
+        <link rel="canonical" href="{{Request::url()}}">
     </head>
     <body>
         <div class="mainpage">

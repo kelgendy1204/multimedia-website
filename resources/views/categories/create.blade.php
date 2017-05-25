@@ -46,6 +46,11 @@
 							<input type="text" class="form-control" name="key_words" id="key_words" placeholder="Enter keywords separated by commas"/>
 						</div>
 
+						<div class="form-group">
+							<label for="meta_description">Add meta description</label>
+							<input type="text" class="form-control" name="meta_description" id="meta_description" placeholder="Add meta description"/>
+						</div>
+
 						<hr />
 
 						<div class="form-group">

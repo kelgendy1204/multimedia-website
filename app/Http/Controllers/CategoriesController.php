@@ -29,6 +29,7 @@ class CategoriesController extends Controller
 
 		return view('posts.posts', [
 			'posts' => $posts,
+			'category' => $category,
 			'categories' => $categories,
 			'parameters' => $parameters,
 			'advertisements' => $advertisements,
@@ -48,6 +49,7 @@ class CategoriesController extends Controller
 		$category->name = request("category");
 		$category->name_en = request("category_en");
 		$category->key_words = request("key_words");
+		$category->meta_description = request("meta_description");
 		$category->color = request("color");
 		$category->parent_id = request("parent");
 		$category->save();

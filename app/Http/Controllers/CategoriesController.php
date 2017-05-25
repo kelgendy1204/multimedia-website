@@ -3,14 +3,37 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use App\Category;
+use App\Advertisement;
+use App\Post;
 
 class CategoriesController extends Controller
 {
 
 	public function __construct()
 	{
-		$this->middleware('IsAdmin');
+		$this->middleware('IsAdmin')->except(['index']);
+	}
+
+		// get : /category/{categoryname} home page
+	public function index($categoryname) {
+		$category = Category::where('name', $categoryname)->first();
+
+		$parameters = Input::except('page');
+		$search = request()->input('search');
+
+		$categories = Category::all();
+		$advertisements = Advertisement::all()->keyBy('name');
+		$posts = Post::get_all_visible($category->name_en, $search, null);
+
+		return view('posts.posts', [
+			'posts' => $posts,
+			'categories' => $categories,
+			'parameters' => $parameters,
+			'advertisements' => $advertisements,
+		]);
+
 	}
 
 	public function create()

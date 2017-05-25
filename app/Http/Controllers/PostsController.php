@@ -20,12 +20,11 @@ class PostsController extends Controller
 	// get : / home page
 	public function index(Request $request) {
 		$parameters = Input::except('page');
-		$category = $request->input('category');
 		$search = $request->input('search');
 
 		$categories = Category::all();
 		$advertisements = Advertisement::all()->keyBy('name');
-		$posts = Post::get_all_visible($category, $search, null);
+		$posts = Post::get_all_visible(null, $search, null);
 
 		return view('posts.posts', [
 			'posts' => $posts,

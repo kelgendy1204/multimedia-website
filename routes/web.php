@@ -27,6 +27,7 @@ Route::post('/admin/posts/{post}/online/{subpost}/delete', 'SubpostsController@d
 
 Route::get('/admin/categories/create', 'CategoriesController@create');
 Route::post('/admin/categories', 'CategoriesController@store');
+Route::get('/category/{categoryname}', 'CategoriesController@index')->name('postsbycategory');
 
 Route::get('/admin/mzk_admin_login', 'AdminController@login');
 Route::post('/admin/mzk_admin_login', 'AdminController@authUser');

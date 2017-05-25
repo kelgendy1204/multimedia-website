@@ -6,7 +6,7 @@
         <title> مزيكا تو داي - MaZiKa2daY.CoM </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="dist/css/home.css" />
+        <link rel="stylesheet" href="/dist/css/home.css" />
         {{-- 		<script
                             src="https://code.jquery.com/jquery-2.2.4.js"
                             integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
@@ -25,8 +25,8 @@
                                 <span></span>
                             </div>
                         </a>
-                        <a class="headercontent" href="{{URL::to('/')}}"><div class="pic"><img src="dist/images/home.svg"></div><div class="content"><p>الرئيسية</p></div></a>
-                        <a class="headercontent" href="http://forums.mazika2day.com"><div class="pic"><img src="dist/images/montadayat.svg"></div><div class="content"><p>المنتديات</p></div></a>
+                        <a class="headercontent" href="{{URL::to('/')}}"><div class="pic"><img src="/dist/images/home.svg"></div><div class="content"><p>الرئيسية</p></div></a>
+                        <a class="headercontent" href="http://forums.mazika2day.com"><div class="pic"><img src="/dist/images/montadayat.svg"></div><div class="content"><p>المنتديات</p></div></a>
                     </div>
                     <div class="left">
                         <a href="https://plus.google.com/u/0/102472960087719695753" target="_blank" class="socitem">
@@ -49,7 +49,7 @@
                     <ul>
                         @foreach ($categories as $category)
                             <li>
-                                <a href="{{Request::url()}}?category={{$category->name_en}}">
+                                <a href="{{route('postsbycategory', ['categoryname' => $category->name])}}">
                                     <div class="category-img" style="background-image: url({{$category->photo_url}})"></div>
                                     {{$category->name}}
                                 </a>
@@ -127,6 +127,6 @@
                 </div>
             </footer>
         </div>
-        <script type="text/javascript" src="dist/js/home.js"></script>
+        <script type="text/javascript" src="/dist/js/home.js"></script>
     </body>
 </html>

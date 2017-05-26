@@ -13,6 +13,7 @@ Route::get('/{postdesc}/تحميل مباشر', 'DownloadlinksController@show')-
 
 Route::get('/admin/posts/{postid}/download/create', 'DownloadlinksController@create')->name('createdownloadlink');
 Route::post('/admin/posts/{postid}/download/create', 'DownloadlinksController@store')->name('storedownloadlink');
+Route::post('/admin/posts/{postid}/delete', 'PostsController@delete')->name('deletepost');
 Route::get('/admin/posts/{postid}/download/{downloadlinkid}/edit', 'DownloadlinksController@edit')->name('editdownloadlink');
 Route::post('/admin/posts/{postid}/download/{downloadlinkid}/edit', 'DownloadlinksController@update')->name('updatedownloadlink');
 Route::post('/admin/posts/{postid}/download/{downloadlinkid}/delete', 'DownloadlinksController@delete')->name('deletedownloadlink');
@@ -26,6 +27,7 @@ Route::post('/admin/posts/{post}/online/{subpost}/edit', 'SubpostsController@upd
 Route::post('/admin/posts/{post}/online/{subpost}/delete', 'SubpostsController@delete');
 
 Route::get('/admin/categories/create', 'CategoriesController@create');
+Route::get('/admin/categories', 'CategoriesController@adminindex')->name('showcategories');
 Route::get('/admin/categories/{category}/edit', 'CategoriesController@edit')->name('editcategory');
 Route::post('/admin/categories/{category}/edit', 'CategoriesController@update')->name('storecategory');
 Route::post('/admin/categories', 'CategoriesController@store');

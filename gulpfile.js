@@ -289,21 +289,18 @@ gulp.task('watch:copyFonts', () => {
 	gulp.watch(`${mainSrcFolder}fonts/**/*`, ['copyFonts']);
 });
 
-// gulp.task('copyUncompiledScripts', () => {
-// 	return gulp.src([`${mainSrcFolder}uncompiled/**/*`])
-// 		.pipe(gulp.dest(`${mainDestFolder}js`));
-// });
+gulp.task('copyUncompiledFiles', () => {
+	return gulp.src([`${mainSrcFolder}uncompiled/**/*`])
+		.pipe(gulp.dest(`${mainDestFolder}uncompiled`));
+});
 
-// gulp.task('watch:copyUncompiledScripts', () => {
-// 	gulp.watch(`${mainSrcFolder}uncompiled/**/*`, ['copyUncompiledScripts']);
-// });
+gulp.task('watch:copyUncompiledFiles', () => {
+	gulp.watch(`${mainSrcFolder}uncompiled/**/*`, ['copyUncompiledFiles']);
+});
 
 gulp.task('handleimages', ['imagemin', 'watch:imagemin']);
 
-// gulp.task('handleviews', ['copyviews', 'watch:copyviews']);
-
-// gulp.task('copyfiles', ['copyUncompiledScripts', 'watch:copyUncompiledScripts', 'copyFonts', 'watch:copyFonts']);
-gulp.task('copyfiles', ['copyFonts', 'watch:copyFonts']);
+gulp.task('copyfiles', ['copyUncompiledFiles', 'watch:copyUncompiledFiles', 'copyFonts', 'watch:copyFonts']);
 
 gulp.task('develop', gulpSequence('clean', pagesArr.concat(['copyfiles', 'handleimages', 'global'])));
 

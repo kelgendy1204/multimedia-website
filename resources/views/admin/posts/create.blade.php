@@ -2,7 +2,9 @@
 
 @section('content')
 
-<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=wrielrrxldl32l2dzcfnesqzblk6q0i9tjm1xau55oiywoaq"></script>
+<script src="/dist/uncompiled/tinymce/tinymce.min.js"></script>
+
+{{-- <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=wrielrrxldl32l2dzcfnesqzblk6q0i9tjm1xau55oiywoaq"></script> --}}
 
 <script type="text/javascript" defer async>
 	tinymce.init({
@@ -17,7 +19,7 @@
 		toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | preview media fullpage | forecolor backcolor emoticons codesample fontsizeselect fontselect visualblocks',
 		imagetools_toolbar: 'rotateleft rotateright | flipv fliph | editimage imageoptions',
 		font_formats: 'Andale Mono=andale mono,times;Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;Comic Sans MS=comic sans ms,sans-serif;Courier New=courier new,courier;Georgia=georgia,palatino;Helvetica=helvetica;Impact=impact,chicago;Symbol=symbol;Tahoma=tahoma,arial,helvetica,sans-serif;Terminal=terminal,monaco;Times New Roman=times new roman,times;Trebuchet MS=trebuchet ms,geneva;Verdana=verdana,geneva;Webdings=webdings;Wingdings=wingdings,zapf dingbats;JF=jf',
-		content_css : '/dist/css/post.css'
+		content_css : '/dist/css/tinymce.css'
 	});
 </script>
 
@@ -46,9 +48,22 @@
 						</div>
 
 						<div class="form-group">
-							<label for="description">Description</label>
+							<label for="description">Short description</label>
 							<input name="description" placeholder="short description" class="form-control" id="description" value="{{isset($post)? $post->description: ''}}">
 						</div>
+
+						<hr />
+
+						<div class="form-group">
+							<label for="long_description">First show page description</label>
+							<textarea id="long_description" name="long_description">
+								@if (isset($post))
+									{!! $post->long_description !!}
+								@endif
+							</textarea>
+						</div>
+
+						<hr />
 
 						<div class="form-group">
 							<label for="meta_description">Meta description</label>

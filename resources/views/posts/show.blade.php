@@ -2,6 +2,9 @@
 
 @section('content')
 	<div class="img"><img src="{{ $post->photo_url }}"></div>
+	<div class="post_description">
+		{!! $post->long_description !!}
+	</div>
 	<div class="download">
 		@if ($subpost)
 			<div class="right">

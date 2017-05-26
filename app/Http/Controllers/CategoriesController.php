@@ -97,4 +97,12 @@ class CategoriesController extends Controller
 		);
 	}
 
+	// get : admin/categories - show all posts
+	public function adminindex() {
+		$categories = Category::all();
+		return view('admin.categories.index' , [
+			'categories' => $categories
+		]);
+	}
+
 }

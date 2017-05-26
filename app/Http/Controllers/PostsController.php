@@ -14,7 +14,7 @@ class PostsController extends Controller
 
 	public function __construct()
 	{
-		$this->middleware('IsAdmin')->only(['adminindex', 'create', 'store', 'edit', 'update']);
+		$this->middleware('IsAdmin')->only(['adminindex', 'create', 'store', 'edit', 'update', 'delete']);
 	}
 
 	// get : / home page
@@ -79,6 +79,7 @@ class PostsController extends Controller
 		$post->title = request('title');
 		$post->description = request('description');
 		$post->download_page = request('download_page');
+		$post->long_description = request('long_description');
 		$post->visible = request('visible') == "on" ? true : false;
 		$post->pinned = request('pinned') == "on" ? true : false;
 		$post->category_id = request('category');
@@ -113,6 +114,7 @@ class PostsController extends Controller
 		$post->description = request('description');
 		$post->key_words = request('key_words');
 		$post->download_page = request('download_page');
+		$post->long_description = request('long_description');
 		$post->visible = request('visible') == "on" ? true : false;
 		$post->pinned = request('pinned') == "on" ? true : false;
 		$post->category_id = request('category');
@@ -135,6 +137,29 @@ class PostsController extends Controller
 		return redirect()->action(
 			'PostsController@edit', ['post' => $post]
 		);
+	}
+
+	// post : /admin/posts/{postid}/delete
+	public function delete($postid)
+	{
+		$post = Post::find($postid);
+
+		foreach ($post->subposts as $subpost) {
+			$subpost->servers()->delete();
+		}
+		$post->subposts()->delete();
+
+		foreach ($post->downloadlinks as $downloadlink) {
+			$downloadlink->downloadservers()->delete();
+		}
+		$post->downloadlinks()->delete();
+
+		$post->delete();
+
+		return redirect()->action(
+			'PostsController@adminindex'
+		);
+
 	}
 
 }

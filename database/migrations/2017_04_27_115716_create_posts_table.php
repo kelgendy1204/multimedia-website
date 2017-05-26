@@ -22,7 +22,7 @@ class CreatePostsTable extends Migration
             $table->longText('download_page')->nullable();
 
             $table->text('key_words')->nullable();
-            $table->text('long_description')->nullable();
+            $table->longText('long_description')->nullable();
             $table->text('meta_description')->nullable();
 
             $table->boolean('visible')->default(false);

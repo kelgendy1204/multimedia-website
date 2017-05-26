@@ -30,19 +30,25 @@
 
     <div class="items">
         @foreach ($posts as $post)
-        <a href="/admin/posts/{{$post->id}}/edit" class="item {{$post->category_name_en}} {{$post->visible ? "" : "notvisible"}}">
-            @if($post->pinned)
-                <button type="button" class="btn btn-primary pinned" aria-label="Left Align">
-                    <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
-                </button>
-            @endif
-            @if($post->visits)
-                <span class="label label-danger visits">{{$post->visits}}</span>
-            @endif
+        <div class="item">
+            <a href="/admin/posts/{{$post->id}}/edit" class="{{$post->visible ? "" : "notvisible"}}">
+                @if($post->pinned)
+                    <button type="button" class="btn btn-primary pinned" aria-label="Left Align">
+                        <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
+                    </button>
+                @endif
+                @if($post->visits)
+                    <span class="label label-danger visits">{{$post->visits}}</span>
+                @endif
+                <div class="img" style="background-image: url('{{$post->photo_url}}')"></div>
+                <p>{{$post->title}}</p>
+            </a>
+            <form method="post" action="{{ route('deletepost', ['postid' => $post->id]) }}" class="deletepost">
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-danger btn-lg btn-block">Delete post</button>
+            </form>
 
-            <div class="img" style="background-image: url('{{$post->photo_url}}')"></div>
-            <p>{{$post->title}}</p>
-        </a>
+        </div>
         @endforeach
     </div>
 

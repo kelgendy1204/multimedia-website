@@ -31,6 +31,9 @@
                   <a href="/admin/categories/create" class="list-group-item">
                     Create Category
                   </a>
+                  <a href="{{ route('showcategories') }}" class="list-group-item">
+                    Show Categories
+                  </a>
                 </div>
             </div>
             <hr />

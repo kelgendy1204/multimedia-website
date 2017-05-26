@@ -1,6 +1,6 @@
 'use strict';
 
-// const fs = require('fs');
+const fs = require('fs');
 const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
 const browserify = require('browserify');
@@ -11,17 +11,17 @@ const buffer = require('vinyl-buffer');
 const sass = require('gulp-sass');
 const postcss = require('gulp-postcss');
 const cssnext = require('postcss-cssnext');
-// const cssnano = require('cssnano');
-// const mqpacker = require('css-mqpacker');
-// const shortcss = require('postcss-short');
-// const pump = require('pump');
+const cssnano = require('cssnano');
+const mqpacker = require('css-mqpacker');
+const shortcss = require('postcss-short');
+const pump = require('pump');
 const imagemin = require('gulp-imagemin');
-// const uglify = require('gulp-uglify');
+const uglify = require('gulp-uglify');
 const pngquant = require('imagemin-pngquant');
 const jpegtran = require('imagemin-jpegtran');
 const svgo = require('imagemin-svgo');
 const gifsicle = require('imagemin-gifsicle');
-// const merge = require('merge-stream');
+const merge = require('merge-stream');
 const rename = require('gulp-rename');
 const gulpSequence = require('gulp-sequence');
 const eslint = require('gulp-eslint');
@@ -33,14 +33,13 @@ const watch = require('gulp-watch');
 const newer = require('gulp-newer');
 const notifier = require('node-notifier');
 // const dotenv = require('dotenv');
-// const bom = require('gulp-bom');
-// const rev = require('gulp-rev');
-// const revReplace = require('gulp-rev-replace');
-// const revdel = require('gulp-rev-delete-original');
-// const minifyCshtml = require('gulp-minify-cshtml');
+const rev = require('gulp-rev');
+const revReplace = require('gulp-rev-replace');
+const revdel = require('gulp-rev-delete-original');
 
 const mainSrcFolder = './public/src/';
 const mainDestFolder = './public/dist/';
+const mainViewsDistFolder = './resources/views/';
 
 const notify = (title, message) => {
 	notifier.notify({ title, message });
@@ -193,60 +192,60 @@ gulp.task('clean', function() {
 		.pipe(clean({ force: true }));
 });
 
-// gulp.task('css', () => {
+gulp.task('css', () => {
 
-// 	let postCssPlugins = [
-// 		cssnext({
-// 			browsers: ['last 15 version', '> 1%']
-// 		}),
-// 		shortcss(),
-// 		mqpacker(),
-// 		cssnano({
-// 			autoprefixer: false,
-// 			discardComments: {
-// 				removeAll: true
-// 			},
-// 			discardUnused: false,
-// 			mergeIdents: false,
-// 			reduceIdents: false,
-// 			zindex: false
-// 		})
-// 	];
+	let postCssPlugins = [
+		cssnext({
+			browsers: ['last 15 version', '> 1%']
+		}),
+		shortcss(),
+		mqpacker(),
+		cssnano({
+			autoprefixer: false,
+			discardComments: {
+				removeAll: true
+			},
+			discardUnused: false,
+			mergeIdents: false,
+			reduceIdents: false,
+			zindex: false
+		})
+	];
 
-// 	let stream = merge();
-// 	for (let i = 0; i < pagesArr.length; i++) {
-// 		let page = pagesArr[i];
-// 		let task = gulp.src(`${mainSrcFolder}pages/${page}/sass/style.scss`)
-// 			.pipe(sass({ outputStyle: 'compressed' }).on('error', swallowError))
-// 			.pipe(postcss(postCssPlugins))
-// 			.pipe(rename(`${page}.css`))
-// 			.pipe(gulp.dest(`${mainDestFolder}css`));
+	let stream = merge();
+	for (let i = 0; i < pagesArr.length; i++) {
+		let page = pagesArr[i];
+		let task = gulp.src(`${mainSrcFolder}pages/${page}/sass/style.scss`)
+			.pipe(sass({ outputStyle: 'compressed' }).on('error', swallowError))
+			.pipe(postcss(postCssPlugins))
+			.pipe(rename(`${page}.css`))
+			.pipe(gulp.dest(`${mainDestFolder}css`));
 
-// 		stream.add(task);
+		stream.add(task);
 
-// 		if (i == pagesArr.length - 1) {
-// 			return stream;
-// 		}
-// 	}
-// });
+		if (i == pagesArr.length - 1) {
+			return stream;
+		}
+	}
+});
 
-// gulp.task('js', () => {
-// 	let stream = merge();
-// 	for (let i = 0; i < pagesArr.length; i++) {
-// 		let page = pagesArr[i];
-// 		let task = browserify(`${mainSrcFolder}pages/${page}/js/main.js`)
-// 			.transform(babelify, { 'compact': false })
-// 			.bundle()
-// 			.on('error', swallowError)
-// 			.pipe(source(`${page}.js`))
-// 			.pipe(buffer())
-// 			.pipe(gulp.dest(`${mainDestFolder}js/`));
-// 		stream.add(task);
-// 		if (i == pagesArr.length - 1) {
-// 			return stream;
-// 		}
-// 	}
-// });
+gulp.task('js', () => {
+	let stream = merge();
+	for (let i = 0; i < pagesArr.length; i++) {
+		let page = pagesArr[i];
+		let task = browserify(`${mainSrcFolder}pages/${page}/js/main.js`)
+			.transform(babelify, { 'compact': false })
+			.bundle()
+			.on('error', swallowError)
+			.pipe(source(`${page}.js`))
+			.pipe(buffer())
+			.pipe(gulp.dest(`${mainDestFolder}js/`));
+		stream.add(task);
+		if (i == pagesArr.length - 1) {
+			return stream;
+		}
+	}
+});
 
 function minifyImages() {
 	return gulp.src(`${mainSrcFolder}images/**/*.*`)
@@ -270,15 +269,89 @@ gulp.task('watch:imagemin', () => {
 	});
 });
 
-// gulp.task('compress', function(cb) {
-// 	pump([
-// 		gulp.src(`${mainDestFolder}js/**/*.js`),
-// 		uglify({ mangle: true }),
-// 		gulp.dest(`${mainDestFolder}js/`)
-// 	],
-// 		cb
-// 	);
-// });
+
+gulp.task('rev', function () {
+	fs.unlink('./rev-manifest.json', function () {
+
+	});
+	let stream = merge();
+
+	stream.add(gulp.src(`${mainDestFolder}css/**/*.css`)
+		.pipe(rev())
+		.pipe(revdel())
+		.pipe(gulp.dest(`${mainDestFolder}css`))
+		.pipe(rev.manifest('rev-manifest.json', {
+			merge: true,
+			path: '.'
+		}))
+		.pipe(gulp.dest('.')));
+
+	stream.add(gulp.src([`${mainDestFolder}js/**/*.js`, `!${mainDestFolder}js/animations/*.js`])
+		.pipe(rev())
+		.pipe(revdel())
+		.pipe(gulp.dest(`${mainDestFolder}js`))
+		.pipe(rev.manifest('rev-manifest.json', {
+			merge: true,
+			path: '.'
+		}))
+		.pipe(gulp.dest('.')));
+
+	// stream.add(gulp.src(`${mainDestFolder}fonts/**/*.*`)
+	// 	.pipe(rev())
+	// 	.pipe(revdel())
+	// 	.pipe(gulp.dest(`${mainDestFolder}fonts`))
+	// 	.pipe(rev.manifest('rev-manifest.json', {
+	// 		merge: true,
+	// 		path: '.'
+	// 	}))
+	// 	.pipe(gulp.dest('.')));
+
+	return stream;
+});
+
+gulp.task('revreplace', ['revrepphp', 'revrepcss', 'revrepjs']);
+
+gulp.task('cache', gulpSequence('rev', 'revreplace'));
+
+gulp.task('revrepphp', () => {
+	let manifest = gulp.src('rev-manifest.json');
+	return gulp.src(`${mainViewsDistFolder}**/*.php`)
+		.pipe(revReplace({
+			manifest,
+			replaceInExtensions: ['.php']
+		}))
+		.pipe(gulp.dest(`${mainViewsDistFolder}`));
+});
+
+gulp.task('revrepcss', () => {
+	let manifest = gulp.src('rev-manifest.json');
+	return gulp.src(`${mainDestFolder}css/**/*.css`)
+		.pipe(revReplace({
+			manifest,
+			replaceInExtensions: ['.css']
+		}))
+		.pipe(gulp.dest(`${mainDestFolder}css`));
+});
+
+gulp.task('revrepjs', () => {
+	let manifest = gulp.src('rev-manifest.json');
+	return gulp.src(`${mainDestFolder}js/**/*.js`)
+		.pipe(revReplace({
+			manifest,
+			replaceInExtensions: ['.js']
+		}))
+		.pipe(gulp.dest(`${mainDestFolder}js`));
+});
+
+gulp.task('compress', function(cb) {
+	pump([
+		gulp.src(`${mainDestFolder}js/**/*.js`),
+		uglify({ mangle: true }),
+		gulp.dest(`${mainDestFolder}js/`)
+	],
+		cb
+	);
+});
 
 gulp.task('copyFonts', () => {
 	return gulp.src([`${mainSrcFolder}fonts/**/*`])
@@ -311,3 +384,5 @@ function swallowError(error) {
 }
 
 // gulp.task('prod', gulpSequence('clean', 'copyUncompiledScripts', 'copyFonts', 'imagemin', 'lint', ['css', 'js'], 'compress', 'copyandminifyviews', 'cache'));
+
+gulp.task('prod', gulpSequence('clean', ['css', 'js'], 'copyUncompiledFiles', 'copyFonts', 'imagemin', 'compress', 'cache'));

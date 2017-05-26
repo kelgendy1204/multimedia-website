@@ -9,7 +9,7 @@
 			<div class="swiper-wrapper">
 				@foreach ($randomPosts as $randomPost)
 					<div class="swiper-slide">
-						<a href="/posts/{{$randomPost->id}}">
+						<a href="{{ route('showpost', ['postdesc' => $randomPost->description]) }}">
 							<div class="topic-img" style="background-image: url('{{$randomPost->photo_url}}')"></div>
 						</a>
 					</div>

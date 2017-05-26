@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', 'PostsController@index');
-Route::get('/{postdesc}', 'PostsController@show')->name('postshome');
+Route::get('/{postdesc}', 'PostsController@show')->name('showpost');
 
 Route::get('/admin/posts/create', 'PostsController@create');
 Route::get('/admin/posts/{post}/edit', 'PostsController@edit');

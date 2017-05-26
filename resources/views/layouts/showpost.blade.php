@@ -24,7 +24,7 @@
                 @isset ($category)
                     <div>
                         <h1>
-                            <a href="{{URL::to('/')}}?category={{$category->name_en}}">
+                            <a href="{{route('postsbycategory', ['categoryname' => $category->name])}}">
                                 {{ $category->name }}
                                 <img src="{{$category->photo_url}}">
                             </a>

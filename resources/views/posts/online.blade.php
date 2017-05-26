@@ -24,7 +24,7 @@
 				<div class="title-topic">الحلقات</div>
 				<div class="border-topic">
 					@foreach ($subposts as $subpost)
-						<a href="/posts/{{$post->id}}/online/{{$subpost->id}}">
+						<a href="{{route('online', ['postdesc' => $post->description, 'subposttitle' => $subpost->title])}}">
 							<div class="topic-img" style="background-image: url('{{$post->photo_url}}')"> </div>
 							<p>{{$subpost->title}}</p>
 						</a>

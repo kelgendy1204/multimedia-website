@@ -26,6 +26,8 @@ Route::post('/admin/posts/{post}/online/{subpost}/edit', 'SubpostsController@upd
 Route::post('/admin/posts/{post}/online/{subpost}/delete', 'SubpostsController@delete');
 
 Route::get('/admin/categories/create', 'CategoriesController@create');
+Route::get('/admin/categories/{category}/edit', 'CategoriesController@edit')->name('editcategory');
+Route::post('/admin/categories/{category}/edit', 'CategoriesController@update')->name('storecategory');
 Route::post('/admin/categories', 'CategoriesController@store');
 Route::get('/category/{categoryname}', 'CategoriesController@index')->name('postsbycategory');
 

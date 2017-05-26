@@ -22,8 +22,8 @@
         @endif
         <meta http-equiv="Cache-control" content="public" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/dist/css/home.css" />
         <link rel="canonical" href="{{Request::url()}}">
+        <link rel="stylesheet" href="/dist/css/home.css" />
     </head>
     <body>
         <div class="mainpage">

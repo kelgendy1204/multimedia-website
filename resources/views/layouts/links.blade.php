@@ -4,9 +4,11 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <link rel="canonical" href="{{URL::to('/')}}" />
-        <title>{{$post->title}}</title>
-        <meta name="description" content="{{$post->meta_description}}">
-        <meta name="keywords" content="{{$post->key_words}}">
+        <title>
+            مزيكا تو داي | مشاهدة افلام مباشرة اعربي واجنبي - مشاهدة افلام اون لاين - تحميل واستماع اغاني عربي
+        </title>
+        <meta name="description" content="مشاهدة و تحميل افلام عربي و اجنبي, مشاهدة و تحميل مسلسلات عربي و اجنبي, تحميل واستماع اغاني عربية, تحميل العاب, تحميل برامج, مشاهدة و تحميل مباريات و مصارعة">
+        <meta name="keywords" content="مشاهدة افلام مباشرة, مشاهدة افلام اون لاين عربى و اجنبى, تحميل واستماع اغانى عربية, اغاني شعبي مشاهدة مباشرة مسلسلات عربية, مشاهدة مسلسلات رمضان اون لاين,مشاهدة مباريات اون لاين, كليبات, اسلاميات, برامج, العاب, برامج الموبايل, العاب الموبايل, نغمات, عروض مصارعة, افلام مترجمة">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
         <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">
@@ -24,11 +26,11 @@
                 </div>
             </header>
             <section>
-                @isset ($post)
+{{--                 @isset ($post)
                     <h1 class="title">
                         {{ $post->description }} {{ isset($activesubpost) ? " - " . $activesubpost->title : ''}}
                     </h1>
-                @endisset
+                @endisset --}}
                 <div class="pagescontainer">
                     @yield('content')
                 </div>

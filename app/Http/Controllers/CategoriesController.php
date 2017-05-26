@@ -85,7 +85,7 @@ class CategoriesController extends Controller
 
 		$imageFile = request()->file('categoryimage');
 		$uniqid = uniqid($category->id, true) . "." . $imageFile->getClientOriginalExtension();
-		if($request->hasFile("categoryimage") && $imageFile->isValid()) {
+		if(request()->hasFile("categoryimage") && $imageFile->isValid()) {
 			$imageFile->move("categoryimages/", $uniqid);
 			$category->photo_url = "/categoryimages/" . $uniqid;
 		}

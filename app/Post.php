@@ -32,7 +32,7 @@ class Post extends Model
 		}
 
 		if($limit){
-			return $query->limit($limit)->latest()->get();
+			return $query->latest()->limit($limit)->get();
 		}
 
 		return $query->paginate(static::$paginate);

@@ -19,6 +19,8 @@ class DownloadlinksController extends Controller
 
 	// get : /{postdesc}/تحميل مباشر - show a post links
 	public function show($postdesc) {
+		$categories = Category::all();
+
 		$post = Post::where('description', $postdesc)->latest()->first();
 
 		$downloadlinks = $post->downloadlinks()->with('downloadservers')->where('visible', '1')->latest()->get();
@@ -27,7 +29,7 @@ class DownloadlinksController extends Controller
 
 		$randomPosts = Post::get_all_visible($category->category_name_en, null, 20)->where('category_id', $post->category_id)->shuffle();
 
-		return view('posts.download', ['post' => $post, 'downloadlinks' => $downloadlinks, 'category' => $category, 'randomPosts' => $randomPosts]);
+		return view('posts.download', ['categories' => $categories, 'post' => $post, 'downloadlinks' => $downloadlinks, 'category' => $category, 'randomPosts' => $randomPosts]);
 
 	}
 

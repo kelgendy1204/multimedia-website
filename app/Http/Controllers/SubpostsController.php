@@ -18,7 +18,10 @@ class SubpostsController extends Controller
 
 	// get : /{postdesc}/مشاهدة مباشرة/{subposttitle} - watch post online
 	public function show($postdesc, $subposttitle) {
+		$categories = Category::all();
+
 		$post = Post::where('description', $postdesc)->latest()->first();
+
 		$subpost= $post->subposts()->where('visible', '1')->where('title', $subposttitle)->latest()->first();
 
 		$subposts = $post->subposts()->where('visible', '1')->latest()->get();
@@ -29,10 +32,10 @@ class SubpostsController extends Controller
 
 		$servers = [];
 		if($subpost){
-			$servers = $subpost->servers;
+			$servers = $subpost->servers()->orderBy('name')->get();
 		}
 
-		return view('posts.online', ['post' => $post, 'subposts' => $subposts, 'category' => $category, 'activesubpost' => $subpost, 'servers' => $servers, 'randomPosts' => $randomPosts]);
+		return view('posts.online', ['categories' => $categories, 'post' => $post, 'subposts' => $subposts, 'category' => $category, 'activesubpost' => $subpost, 'servers' => $servers, 'randomPosts' => $randomPosts]);
 	}
 
 	// get : admin/posts/{id}/online/create - create a post view

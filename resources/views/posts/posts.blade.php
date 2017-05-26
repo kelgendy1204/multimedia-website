@@ -80,7 +80,7 @@
                     <div class="img-banner"></div>
 
                     <div class="category_search">
-                        <ul class="container-header">
+                        <ul class="category-container">
                             @foreach ($categories as $category)
                             <li>
                                 @include('layouts.categorylayout')

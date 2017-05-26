@@ -38,11 +38,29 @@
                 </div>
             </header>
             <section>
+                <ul class="category-container">
+                    <li>
+                        <a href="{{url('/')}}" class="category">
+                            <div class="pic" style="background-image: url(/dist/images/home.svg)"></div>
+                            <div class="content">
+                                <p>الرئيسية</p>
+                            </div>
+                        </a>
+                    </li>
+                    @foreach ($categories as $category)
+                    <li>
+                        @include('layouts.categorylayout')
+                    </li>
+                    @endforeach
+                </ul>
                 @isset ($post)
                     <h1 class="title">
                         {{ $post->description }} {{ isset($activesubpost) ? " - " . $activesubpost->title : ''}}
                     </h1>
                 @endisset
+
+
+
                 <div class="pagescontainer">
                     @yield('content')
                 </div>

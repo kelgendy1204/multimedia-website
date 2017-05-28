@@ -55,8 +55,8 @@ class CategoriesController extends Controller
 		$category->save();
 
 		$imageFile = $request->file("categoryimage");
-		$uniqid = uniqid($category->id, true) . "." . $imageFile->getClientOriginalExtension();
 		if($request->hasFile("categoryimage") && $imageFile->isValid()) {
+			$uniqid = uniqid($category->id, true) . "." . $imageFile->getClientOriginalExtension();
 			$imageFile->move("categoryimages/", $uniqid);
 			$category->photo_url = "/categoryimages/" . $uniqid;
 			$category->save();
@@ -84,8 +84,8 @@ class CategoriesController extends Controller
 		$category->parent_id = request("parent");
 
 		$imageFile = request()->file('categoryimage');
-		$uniqid = uniqid($category->id, true) . "." . $imageFile->getClientOriginalExtension();
 		if(request()->hasFile("categoryimage") && $imageFile->isValid()) {
+			$uniqid = uniqid($category->id, true) . "." . $imageFile->getClientOriginalExtension();
 			$imageFile->move("categoryimages/", $uniqid);
 			$category->photo_url = "/categoryimages/" . $uniqid;
 		}

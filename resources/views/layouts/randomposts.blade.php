@@ -32,7 +32,7 @@
 			slidesPerView: 5,
 			nextButton: '.btn-paginate.next',
 			prevButton: '.btn-paginate.previous',
-			slidesPerGroup: '5'
+			slidesPerGroup: 5
 		})
 	});
 </script>

@@ -49,7 +49,7 @@ class AdminController extends Controller
     {
         return view('admin.adminpanel');
     }
-    
+
     // post - /admin/mzk_admin_logout
     public function logout(Request $request)
     {
@@ -88,4 +88,5 @@ class AdminController extends Controller
         //redirect
         return redirect('/admin/mzk_admin_panel');
     }
+
 }

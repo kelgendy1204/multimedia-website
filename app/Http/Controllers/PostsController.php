@@ -14,7 +14,7 @@ class PostsController extends Controller
 
 	public function __construct()
 	{
-		$this->middleware('IsAdmin')->only(['adminindex', 'create', 'store', 'edit', 'update', 'delete']);
+		$this->middleware('IsAdmin')->only(['adminindex', 'create', 'store', 'edit', 'update', 'delete', 'adminindexbycategory']);
 	}
 
 	// get : / home page
@@ -40,9 +40,8 @@ class PostsController extends Controller
 		$categories = Category::all();
 		$parameters = Input::except('page');
 		$search = request()->input('search');
-		$category = request()->input('category');
 
-		$posts = Post::get_all_posts($category, $search);
+		$posts = Post::get_all_posts(null, $search);
 
 		return view('admin.posts.index' , [
 			'categories' => $categories,
@@ -159,7 +158,23 @@ class PostsController extends Controller
 		return redirect()->action(
 			'PostsController@adminindex'
 		);
+	}
 
+	// get: show admin posts by category
+	public function adminindexbycategory($categoryname)
+	{
+
+		$category = Category::where('name', $categoryname)->first();
+		$parameters = Input::except('page');
+		$search = request()->input('search');
+		$categories = Category::all();
+		$posts = Post::get_all_posts($category->name_en, $search, null);
+
+		return view('admin.posts.index', [
+			'categories' => $categories,
+			'posts' => $posts,
+			'parameters' => $parameters
+		]);
 	}
 
 }

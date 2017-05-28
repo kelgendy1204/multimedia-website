@@ -5,7 +5,7 @@
     <div class="row">
         @foreach ($categories as $category)
         <div class="col-sm-2 pull-right form-group">
-            <a href="{{Request::url()}}?category={{$category->name_en}}" class="text-center btn btn-primary btn-block" role="button">
+            <a href="{{route('adminpostsbycategory', ['categoryname' => $category->name])}}" class="text-center btn btn-primary btn-block" role="button">
                 {{$category->name}}
             </a>
         </div>

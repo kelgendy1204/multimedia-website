@@ -14,7 +14,7 @@
 				@endif
 				</div>
 				<div class="panel-body">
-					<form method="POST" action="{{ route('storecategory', ['category' => $activecategory->id]) }}" enctype="multipart/form-data">
+					<form method="POST" action="{{ isset($activecategory)? route('updatecategory', ['category' => $activecategory->id]) : route('storecategory') }}" enctype="multipart/form-data">
 
 						{{ csrf_field() }}
 

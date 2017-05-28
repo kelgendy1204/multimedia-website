@@ -62,7 +62,9 @@ class CategoriesController extends Controller
 			$category->save();
 		}
 
-		return redirect('/admin/categories/create');
+		return redirect()->action(
+			'CategoriesController@adminindex'
+		);
 	}
 
 

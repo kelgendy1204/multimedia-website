@@ -8,9 +8,9 @@
 	<div class="download">
 		@if ($subpost)
 			<div class="right">
-				<a href="{{route('online', ['postdesc' => $post->description, 'subposttitle' => $subpost->title])}}"><img src="/dist/images/second/01.svg"></a>
+				<a href="{{route('online', ['postdesc' => $post->description, 'subposttitle' => $subpost->title])}}"><img src="/dist_v2/images/second/01.svg" alt="online watch"/></a>
 			</div>
 		@endif
-		<div class="left"><a href="{{route('download', ['postdesc' => $post->description])}}"><img src="/dist/images/second/02.svg"></a></div>
+		<div class="left"><a href="{{route('download', ['postdesc' => $post->description])}}"><img src="/dist_v2/images/second/02.svg" alt="downloads" /></a></div>
 	</div>
 @endsection

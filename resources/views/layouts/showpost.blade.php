@@ -23,7 +23,7 @@
         <meta property="og:image" content="{{$post->photo_url}}" />
 
         <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
-        <link rel="stylesheet" href="/dist/css/home.css" />
+        <link rel="stylesheet" href="/dist_v2/css/home.css" />
         <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -42,14 +42,14 @@
                         <h1>
                             <a href="{{route('postsbycategory', ['categoryname' => $category->name])}}">
                                 {{ $category->name }}
-                                <img src="{{$category->photo_url}}">
+                                <img src="{{$category->photo_url}}" alt="category" />
                             </a>
                         </h1>
                     </div>
                 @endisset
                 <div class="logo">
                     <a href="{{URL::to('/')}}">
-                        <img src="/dist/images/logo.svg" />
+                        <img src="/dist_v2/images/logo.svg" alt="logo" />
                     </a>
                 </div>
             </header>
@@ -57,7 +57,7 @@
                 <ul class="category-container">
                     <li>
                         <a href="{{url('/')}}" class="category">
-                            <div class="pic" style="background-image: url(/dist/images/home.svg)"></div>
+                            <div class="pic" style="background-image: url(/dist_v2/images/home.svg)"></div>
                             <div class="content">
                                 <p>الرئيسية</p>
                             </div>
@@ -84,7 +84,7 @@
             <footer>
                 <div class="elementscontainer">
                     <div class="copy">
-                       <a href="{{URL::to('/')}}" class="pic"><img src="/dist/images/home.svg"></a><div class="content"><p>جميع الحقوق محفوظة  لدى منتديات مزيكا تو داي</p></div>
+                       <a href="{{URL::to('/')}}" class="pic"><img src="/dist_v2/images/home.svg" alt="homepage"></a><div class="content"><p>جميع الحقوق محفوظة  لدى منتديات مزيكا تو داي</p></div>
                     </div>
                 </div>
             </footer>

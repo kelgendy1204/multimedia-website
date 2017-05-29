@@ -37,20 +37,20 @@
 
 	</div>
 
-	{{-- <script type="text/javascript" src="/dist/js/online.js"></script> --}}
+	{{-- <script type="text/javascript" src="/dist_v2/js/online.js"></script> --}}
 
 	<div id="fb-root"></div>
 
 	<script>
 		(function () {
 
-			(function(d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0];
-				if (d.getElementById(id)) return;
-				js = d.createElement(s); js.id = id;
-				js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=282317058844945";
-				fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));
+			// (function(d, s, id) {
+			// 	var js, fjs = d.getElementsByTagName(s)[0];
+			// 	if (d.getElementById(id)) return;
+			// 	js = d.createElement(s); js.id = id;
+			// 	js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=282317058844945";
+			// 	fjs.parentNode.insertBefore(js, fjs);
+			// }(document, 'script', 'facebook-jssdk'));
 
 			var serverLinks = document.querySelectorAll('.servers >a');
 			var iframe = document.querySelector('iframe');
@@ -64,15 +64,15 @@
 			});
 
 			document.querySelector('.socitem.facebook').onclick = function() {
-				if(FB){
+				{{-- if(FB){
 					FB.ui({
 						method: 'share',
 						href: '{{Request::fullUrl()}}',
 						display: 'popup'
 					}, function(response){});
-				}
-				{{-- window.open("https://www.facebook.com/sharer/sharer.php?u={{Request::fullUrl()}}", "pop", "width=600, height=400, scrollbars=no");
-				return false; --}}
+				}--}}
+				window.open("https://www.facebook.com/sharer/sharer.php?u={{Request::fullUrl()}}", "pop", "width=600, height=400, scrollbars=no");
+				return false;
 			};
 
 			document.querySelector('.socitem.google-plus').onclick = function() {

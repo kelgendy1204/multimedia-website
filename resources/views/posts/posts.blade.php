@@ -36,7 +36,7 @@
         <link rel="manifest" href="/manifest.json">
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
         <link rel="canonical" href="{{Request::url()}}" />
-        <link rel="stylesheet" href="/dist/css/home.css" />
+        <link rel="stylesheet" href="/dist_v2/css/home.css" />
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -59,8 +59,8 @@
                                 <span></span>
                             </div>
                         </a>
-                        <a class="headercontent" href="{{URL::to('/')}}"><div class="pic"><img src="/dist/images/home.svg"></div><div class="content"><p>الرئيسية</p></div></a>
-                        <a class="headercontent" href="http://forums.mazika2day.com"><div class="pic"><img src="/dist/images/montadayat.svg"></div><div class="content"><p>المنتديات</p></div></a>
+                        <a class="headercontent" href="{{URL::to('/')}}"><div class="pic"><img src="/dist_v2/images/home.svg" alt="homepage"></div><div class="content"><p>الرئيسية</p></div></a>
+                        <a class="headercontent" href="http://forums.mazika2day.com"><div class="pic"><img src="/dist_v2/images/montadayat.svg" alt="forum"></div><div class="content"><p>المنتديات</p></div></a>
                     </div>
                     <div class="left">
                         <a href="https://plus.google.com/u/0/102472960087719695753" target="_blank" class="socitem">
@@ -73,7 +73,7 @@
                             <div class="soc-img facebook"></div>
                         </a>
                         <a class="logo" href="{{URL::to('/')}}">
-                            <img src="/dist/images/logo.svg" />
+                            <img src="/dist_v2/images/logo.svg" alt="logo"/>
                         </a>
                     </div>
                 </div>
@@ -156,11 +156,11 @@
             <footer>
                 <div class="elementscontainer">
                     <div class="copy">
-                        <a href="{{URL::to('/')}}" class="pic"><img src="/dist/images/home.svg"></a><div class="content"><p>جميع الحقوق محفوظة  لدى منتديات مزيكا تو داي</p></div>
+                        <a href="{{URL::to('/')}}" class="pic"><img src="/dist_v2/images/home.svg" alt="homepage"></a><div class="content"><p>جميع الحقوق محفوظة  لدى منتديات مزيكا تو داي</p></div>
                     </div>
                 </div>
             </footer>
         </div>
-        <script type="text/javascript" src="/dist/js/home.js"></script>
+        <script type="text/javascript" src="/dist_v2/js/home.js"></script>
     </body>
 </html>

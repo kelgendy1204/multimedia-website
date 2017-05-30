@@ -130,7 +130,14 @@ class PostsController extends Controller
 			$post->photo_url = "/postimages/" . $uniqid;
 		}
 
-		$post->position = $post->id;
+		$maxposition = Post::select('position')->max('position');
+
+		if($maxposition) {
+			$post->position = ($maxposition >= $post->id) ? ($maxposition + 1) : $post->id;
+		} else {
+			$post->position = $post->id;
+		}
+
 		$post->save();
 
 		return redirect()->action(

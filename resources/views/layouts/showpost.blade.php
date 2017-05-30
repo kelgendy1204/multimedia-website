@@ -20,7 +20,7 @@
         <meta property="og:url" content="{{Request::fullUrl()}}" />
         <meta property="og:title" content="{{$post->title}}" />
         <meta property="og:description" content="{{$post->meta_description}}" />
-        <meta property="og:image" content="{{$post->photo_url}}" />
+        <meta property="og:image" content="{{URL::to('/')}}{{$post->photo_url}}" />
 
         <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
         <link rel="stylesheet" href="/dist_v2/css/home.css" />

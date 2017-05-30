@@ -1,0 +1,10 @@
+/* TEAM */
+
+	Web designer: Ramy mostafa
+	Gmail: ramymostafa736@gmail.com
+	Tel: 01095359890
+
+	Full stack developer: Khaled saad
+	Gmail: elgendy1204@gmail.com
+	Tel: 01002573620
+

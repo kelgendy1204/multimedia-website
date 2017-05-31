@@ -9,25 +9,36 @@
                 مزيكا تو داي | {{$category->name}}
             </title>
             <meta property="og:title" content="مزيكا تو داي | {{$category->name}}" />
+            <meta name="twitter:title" content="مزيكا تو داي | {{$category->name}}">
+            <meta itemprop="name" content="مزيكا تو داي | {{$category->name}}">
         @else
             <title>
                 مزيكا تو داي | مشاهدة افلام مباشرة اعربي واجنبي - مشاهدة افلام اون لاين - تحميل واستماع اغاني عربي
             </title>
             <meta property="og:title" content="مزيكا تو داي | مشاهدة افلام مباشرة اعربي واجنبي - مشاهدة افلام اون لاين - تحميل واستماع اغاني عربي" />
+            <meta name="twitter:title" content="مزيكا تو داي | مشاهدة افلام مباشرة اعربي واجنبي - مشاهدة افلام اون لاين - تحميل واستماع اغاني عربي">
+            <meta itemprop="name" content="مزيكا تو داي | مشاهدة افلام مباشرة اعربي واجنبي - مشاهدة افلام اون لاين - تحميل واستماع اغاني عربي">
         @endif
 
         @if (isset($category))
-            <meta name="description" content="{{$category->meta_description}}">
             <meta name="keywords" content="{{$category->key_words}}">
+            <meta name="description" content="{{$category->meta_description}}">
             <meta property="og:description" content="{{$category->meta_description}}" />
+            <meta itemprop="description" content="{{$category->meta_description}}">
+            <meta name="twitter:description" content="{{$category->meta_description}}">
         @else
             <meta name="description" content="مشاهدة و تحميل افلام عربي و اجنبي, مشاهدة و تحميل مسلسلات عربي و اجنبي, تحميل واستماع اغاني عربية, تحميل العاب, تحميل برامج, مشاهدة و تحميل مباريات و مصارعة">
+            <meta property="og:description" content="مشاهدة و تحميل افلام عربي و اجنبي, مشاهدة و تحميل مسلسلات عربي و اجنبي, تحميل واستماع اغاني عربية, تحميل العاب, تحميل برامج, مشاهدة و تحميل مباريات و مصارعة" />
+            <meta itemprop="description" content="مشاهدة و تحميل افلام عربي و اجنبي, مشاهدة و تحميل مسلسلات عربي و اجنبي, تحميل واستماع اغاني عربية, تحميل العاب, تحميل برامج, مشاهدة و تحميل مباريات و مصارعة">
+            <meta name="twitter:description" content="مشاهدة و تحميل افلام عربي و اجنبي, مشاهدة و تحميل مسلسلات عربي و اجنبي, تحميل واستماع اغاني عربية, تحميل العاب, تحميل برامج, مشاهدة و تحميل مباريات و مصارعة">
             <meta name="keywords" content="مشاهدة افلام مباشرة, مشاهدة افلام اون لاين عربى و اجنبى, تحميل واستماع اغانى عربية, اغاني شعبي مشاهدة مباشرة مسلسلات عربية, مشاهدة مسلسلات رمضان اون لاين,مشاهدة مباريات اون لاين, كليبات, اسلاميات, برامج, العاب, برامج الموبايل, العاب الموبايل, نغمات, عروض مصارعة, افلام مترجمة">
-            <meta property="og:description" content="مشاهدة افلام مباشرة, مشاهدة افلام اون لاين عربى و اجنبى, تحميل واستماع اغانى عربية, اغاني شعبي مشاهدة مباشرة مسلسلات عربية, مشاهدة مسلسلات رمضان اون لاين,مشاهدة مباريات اون لاين, كليبات, اسلاميات, برامج, العاب, برامج الموبايل, العاب الموبايل, نغمات, عروض مصارعة, افلام مترجمة" />
         @endif
 
         <meta property="og:url" content="{{ Request::url() }}" />
-        {{-- <meta property="og:image" content="{{$post->photo_url}}" /> --}}
+        <meta property="og:image" content="{{URL::to('/')}}/dist_v2/images/banner2.jpg" />
+        <meta name="twitter:image" content="{{URL::to('/')}}/dist_v2/images/banner2.jpg">
+        <meta itemprop="image" content="{{URL::to('/')}}/dist_v2/images/banner2.jpg">
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
         <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">

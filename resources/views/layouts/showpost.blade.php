@@ -17,38 +17,21 @@
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
         <link rel="canonical" href="{{Request::fullUrl()}}" />
 
+        <!-- markup for facebook -->
         <meta property="og:url" content="{{Request::fullUrl()}}" />
         <meta property="og:title" content="{{$post->title}}" />
         <meta property="og:description" content="{{$post->meta_description}}" />
         <meta property="og:image" content="{{URL::to('/')}}{{$post->photo_url}}" />
 
-
-    {{-- <!-- Schema.org markup for Google+ -->
-        <meta itemprop="name" content="The Name or Title Here">
-        <meta itemprop="description" content="This is the page description">
-        <meta itemprop="image" content="http://www.example.com/image.jpg">
+        <!-- markup for Google+ -->
+        <meta itemprop="name" content="{{$post->title}}">
+        <meta itemprop="description" content="{{$post->meta_description}}">
+        <meta itemprop="image" content="{{URL::to('/')}}{{$post->photo_url}}">
 
         <!-- Twitter Card data -->
-        <meta name="twitter:card" content="product">
-        <meta name="twitter:site" content="@publisher_handle">
-        <meta name="twitter:title" content="Page Title">
-        <meta name="twitter:description" content="Page description less than 200 characters">
-        <meta name="twitter:creator" content="@author_handle">
-        <meta name="twitter:image" content="http://www.example.com/image.jpg">
-        <meta name="twitter:data1" content="$3">
-        <meta name="twitter:label1" content="Price">
-        <meta name="twitter:data2" content="Black">
-        <meta name="twitter:label2" content="Color">
-
-        <!-- Open Graph data -->
-        <meta property="og:title" content="Title Here" />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="http://www.example.com/" />
-        <meta property="og:image" content="http://example.com/image.jpg" />
-        <meta property="og:description" content="Description Here" />
-        <meta property="og:site_name" content="Site Name, i.e. Moz" />
-        <meta property="og:price:amount" content="15.00" />
-        <meta property="og:price:currency" content="USD" /> --}}
+        <meta name="twitter:title" content="{{$post->title}}">
+        <meta name="twitter:description" content="{{$post->meta_description}}">
+        <meta name="twitter:image" content="{{URL::to('/')}}{{$post->photo_url}}">
 
         <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
         <link rel="stylesheet" href="/dist_v2/css/home.css" />

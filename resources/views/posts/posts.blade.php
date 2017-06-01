@@ -34,7 +34,7 @@
             <meta name="keywords" content="مشاهدة افلام مباشرة, مشاهدة افلام اون لاين عربى و اجنبى, تحميل واستماع اغانى عربية, اغاني شعبي مشاهدة مباشرة مسلسلات عربية, مشاهدة مسلسلات رمضان اون لاين,مشاهدة مباريات اون لاين, كليبات, اسلاميات, برامج, العاب, برامج الموبايل, العاب الموبايل, نغمات, عروض مصارعة, افلام مترجمة">
         @endif
 
-        <meta property="og:url" content="{{ Request::url() }}" />
+        <meta property="og:url" content="{{ Request::fullUrl() }}" />
         <meta property="og:image" content="{{URL::to('/')}}/dist_v2/images/banner2.jpg" />
         <meta name="twitter:image" content="{{URL::to('/')}}/dist_v2/images/banner2.jpg">
         <meta itemprop="image" content="{{URL::to('/')}}/dist_v2/images/banner2.jpg">
@@ -46,15 +46,15 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/manifest.json">
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-        <link rel="canonical" href="{{Request::url()}}" />
+        <link rel="canonical" href="{{ Request::fullUrl() }}" />
         <link rel="stylesheet" href="/dist_v2/css/home.css" />
         <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-          ga('create', 'UA-6197253-1', 'auto');
-          ga('send', 'pageview');
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-6197253-1', 'auto');
+            ga('send', 'pageview');
         </script>
     </head>
     <body>

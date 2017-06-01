@@ -7,11 +7,13 @@ use App\User;
 
 class AdminController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
+
     public function __construct()
     {
         $this->middleware('IsAdmin')->only(['index', 'logout']);
@@ -34,8 +36,9 @@ class AdminController extends Controller
     // post - /admin/mzk_admin_login
     public function authUser(Request $request)
     {
+        $remember = $request->remember == 'on' ? true : false;
         // attempt to auth user
-        if(!auth()->attempt(request(['name', 'password']))){
+        if(!auth()->attempt(request(['name', 'password']), $remember)){
             return back()->withErrors([
                 'message' => 'Please check your credentials and try again'
             ]);
@@ -81,9 +84,6 @@ class AdminController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
         $user->roles()->attach($request->role_ids);
-
-        // //sign in
-        // auth()->login($user);
 
         //redirect
         return redirect('/admin/mzk_admin_panel');

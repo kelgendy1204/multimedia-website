@@ -8,6 +8,11 @@ class Post extends Model
 {
 	public static $paginate = 54;
 
+	public function category()
+	{
+		return $this->belongsTo('App\Category');
+	}
+
 	public function subposts()
 	{
 		return $this->hasMany('App\Subpost', 'post_id', 'id');
@@ -70,7 +75,7 @@ class Post extends Model
 
 	public function user()
 	{
-	    return $this->belongsTo('App\User');
+		return $this->belongsTo('App\User');
 	}
 
 }

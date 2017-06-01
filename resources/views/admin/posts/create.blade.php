@@ -32,6 +32,9 @@
 
 					@if (isset($post))
 						<div class="row form-group">
+							<h1 class="text-center">Created by : {{$post->user->name}}</h1>
+						</div>
+						<div class="row form-group">
 							<div class="col-md-4 col-md-offset-4">
 								<img src="{{$post->photo_url}}" alt="{{$post->description}}" class="img-rounded img-responsive">
 							</div>

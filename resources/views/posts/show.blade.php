@@ -11,6 +11,8 @@
 				<a href="{{route('online', ['postdesc' => $post->description, 'subposttitle' => $subpost->title])}}"><img src="/dist_v2/images/second/01.svg" alt="online watch"/></a>
 			</div>
 		@endif
-		<div class="left"><a href="{{route('download', ['postdesc' => $post->description])}}"><img src="/dist_v2/images/second/02.svg" alt="downloads" /></a></div>
+		@if ($post->download_page || $post->downloadlinks()->count())
+			<div class="left"><a href="{{route('download', ['postdesc' => $post->description])}}"><img src="/dist_v2/images/second/02.svg" alt="downloads" /></a></div>
+		@endif
 	</div>
 @endsection

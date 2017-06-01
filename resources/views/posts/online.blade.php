@@ -21,7 +21,15 @@
 
 		@if (count($subposts) > 1)
 			<div class="new-topic">
-				<div class="title-topic">الحلقات</div>
+				@if ($post->category->name_en == "arabic series" || $post->category->name_en == "tv" || $post->category->name_en == "english series")
+					<div class="title-topic">
+						الحلقات
+					</div>
+				@else
+					<div class="title-topic">
+						النسخ
+					</div>
+				@endif
 				<div class="border-topic">
 					@foreach ($subposts as $subpost)
 						<a href="{{route('online', ['postdesc' => $post->description, 'subposttitle' => $subpost->title])}}">

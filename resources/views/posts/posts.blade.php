@@ -92,6 +92,12 @@
                 <div class="elementscontainer mobile">
                     @if (count($categories))
                     <ul>
+                        <li>
+                            <a href="{{route('home')}}">
+                                <div class="category-img" style="background-image: url(/dist_v2/images/home.svg)"></div>
+                                الرئيسية
+                            </a>
+                        </li>
                         @foreach ($categories as $category)
                             <li>
                                 <a href="{{route('postsbycategory', ['categoryname' => $category->name])}}">

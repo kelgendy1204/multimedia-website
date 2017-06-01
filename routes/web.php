@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/', 'PostsController@index');
+Route::get('/', 'PostsController@index')->name('home');
 Route::get('/{postdesc}', 'PostsController@show')->name('showpost');
 
 Route::get('/admin/posts/create', 'PostsController@create');

@@ -95,14 +95,14 @@
                         <li>
                             <a href="{{route('home')}}">
                                 <div class="category-img" style="background-image: url(/dist_v2/images/home.svg)"></div>
-                                الرئيسية
+                                <p>الرئيسية</p>
                             </a>
                         </li>
                         @foreach ($categories as $category)
                             <li>
                                 <a href="{{route('postsbycategory', ['categoryname' => $category->name])}}">
                                     <div class="category-img" style="background-image: url({{$category->photo_url}})"></div>
-                                    {{$category->name}}
+                                    <p>{{$category->name}}</p>
                                 </a>
                             </li>
                         @endforeach

@@ -403,7 +403,8 @@ div.mainpage {
                         background-size: 100% 100%;
                         background-repeat: no-repeat;
                     }
-                    p {
+                    h3 {
+                        margin: 0;
                         word-break: break-word;
                         width: 100%;
                         min-height: 67px;
@@ -413,6 +414,7 @@ div.mainpage {
                         padding: 8px;
                         font-family: cursive;
                         text-align: center;
+                        font-weight: normal;
                     }
                     &.red {
                         border: 2px solid #e84e3d;
@@ -595,19 +597,22 @@ div.mainpage {
                     color: white;
                     text-decoration: none;
                 }
-            }
-            h1 {
-                font-family: jf;
-                margin: 0;
-                font-size: 1.8em;
-                color: white;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                img {
+                img.cat-img {
                     width: 50px;
                     margin: 15px;
+                    max-height: 100%;
+                }
+                p {
+                    font-family: jf;
+                    margin: 0;
+                    font-size: 1.8em;
+                    color: white;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    strong{
+                        text-align: center;
+                    }
                 }
             }
             &:last-child {
@@ -621,9 +626,11 @@ div.mainpage {
                 padding: 0px 50px;
                 width: 100%;
                 height: 80px;
-                h1{
-                    font-size: 1em;
-                    img{
+                a{
+                    p{
+                        font-size: 1em;
+                    }
+                    img.cat-img{
                         width: 40px;
                     }
                 }
@@ -1173,12 +1180,13 @@ body.links{
                 justify-content: center;
                 border-bottom-left-radius: 5px;
                 border-top-left-radius: 5px;
-                p {
+                h2 {
                     color: white;
                     font-size: 16px;
                     font-weight: bold;
                     font-family: jf;
                     text-align: center;
+                    margin: 0;
                 }
             }
         }

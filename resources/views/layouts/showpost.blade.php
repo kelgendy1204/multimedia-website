@@ -50,12 +50,12 @@
             <header>
                 @isset ($category)
                     <div>
-                        <h1>
-                            <a href="{{route('postsbycategory', ['categoryname' => $category->name])}}">
-                                {{ $category->name }}
-                                <img src="{{$category->photo_url}}" alt="category" />
-                            </a>
-                        </h1>
+                        <a href="{{route('postsbycategory', ['categoryname' => $category->name])}}">
+                            <p>
+                                <strong>{{ $category->name }}</strong>
+                            </p>
+                            <img class="cat-img" src="{{$category->photo_url}}" alt="category" />
+                        </a>
                     </div>
                 @endisset
                 <div class="logo">
@@ -70,7 +70,7 @@
                         <a href="{{url('/')}}" class="category">
                             <div class="pic" style="background-image: url(/dist_v2/images/home.svg)"></div>
                             <div class="content">
-                                <p>الرئيسية</p>
+                                <h2>الرئيسية</h2>
                             </div>
                         </a>
                     </li>

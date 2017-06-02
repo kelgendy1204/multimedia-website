@@ -3,6 +3,7 @@
 /public/storage
 /public/postimages
 /public/categoryimages
+/public/dist*
 /storage/*.key
 /vendor
 /.idea

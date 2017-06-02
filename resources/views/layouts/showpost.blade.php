@@ -1,20 +1,20 @@
 <!doctype html>
 <html lang="ar">
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
         <meta http-equiv="Cache-control" content="public" />
         <title>{{$post->title}}</title>
-        <meta name="description" content="{{$post->meta_description}}">
-        <meta name="keywords" content="{{$post->key_words}}">
+        <meta name="description" content="{{$post->meta_description}}" />
+        <meta name="keywords" content="{{$post->key_words}}" />
 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff">
-        <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-        <link rel="manifest" href="/manifest.json">
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#ffffff" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <link rel="canonical" href="{{Request::fullUrl()}}" />
 
         <!-- markup for facebook -->
@@ -24,17 +24,18 @@
         <meta property="og:image" content="{{URL::to('/')}}{{$post->photo_url}}" />
 
         <!-- markup for Google+ -->
-        <meta itemprop="name" content="{{$post->title}}">
-        <meta itemprop="description" content="{{$post->meta_description}}">
-        <meta itemprop="image" content="{{URL::to('/')}}{{$post->photo_url}}">
+        <meta itemprop="name" content="{{$post->title}}" />
+        <meta itemprop="description" content="{{$post->meta_description}}" />
+        <meta itemprop="image" content="{{URL::to('/')}}{{$post->photo_url}}" />
 
         <!-- Twitter Card data -->
-        <meta name="twitter:title" content="{{$post->title}}">
-        <meta name="twitter:description" content="{{$post->meta_description}}">
-        <meta name="twitter:image" content="{{URL::to('/')}}{{$post->photo_url}}">
+        <meta name="twitter:title" content="{{$post->title}}" />
+        <meta name="twitter:description" content="{{$post->meta_description}}" />
+        <meta name="twitter:image" content="{{URL::to('/')}}{{$post->photo_url}}" />
 
-        <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+        <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css" />
         <link rel="stylesheet" href="/dist_v2/css/home.css" />
+
         <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

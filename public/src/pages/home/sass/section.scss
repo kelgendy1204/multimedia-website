@@ -737,23 +737,87 @@ div.mainpage {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        .img {
-            max-width: 430px;
-            margin: 40px 0;
-            width: 60%;
-            min-width: 280px;
-            img {
-                width: 100%;
+        div.postdetails{
+            min-height: 500px;
+            width: 850px;
+            display: flex;
+            background-color: #3a3f48;
+            div.img {
+                z-index: 1;
+                position: relative;
+                width: 50%;
+                min-width: 300px;
+                min-height: 500px;
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+                img {
+                    width: 100%;
+                }
             }
-        }
-        >div.post_description{
-            width: 100%;
+            .post_description{
+                z-index: 2;
+                position: relative;
+                width: 50%;
+                min-height: 500px;
+                max-height: 800px;
+                transform-origin: top left;
+                transform: skewX(-10deg);
+                background-color: #3a3f48;
+                .descriptioncontent{
+                    height: 100%;
+                    width: 100%;
+                    left: 0;
+                    top: 0;
+                    transform-origin: top left;
+                    transform: skewX(10deg);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 10px;
+                    overflow: hidden;
+
+                    .long_description{
+                        width: 100%;
+                        height: 100%;
+                        font-family: jf !important;
+                        color: white !important;
+                        line-height: 1.5em;
+                        h3{
+                            margin: 10px 0;
+                            font-family: jf;
+                            text-align: center;
+                            span.desctitle{
+                                display: inline-block;
+                                border-radius: 10px;
+                                color: #3a3f48;
+                                background-color: #FFF;
+                                padding: 10px 20px;
+                                max-width: 80%;
+                            }
+                        }
+                        a{
+                            color: white !important;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+            @media screen and (max-width: 850px) {
+                flex-direction: column-reverse;
+                background-color: transparent;
+                align-items: center;
+                width: 80%;
+                .post_description{
+                    display: none;
+                }
+            }
         }
         >div.download {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin: 15px;
+            margin: 0 0 15px;
             width: 60%;
             @media screen and (max-width: 850px) {
                 flex-direction: column;
@@ -811,58 +875,12 @@ div.mainpage {
             min-width: 300px;
             height: 480px;
             border: 15px solid #3a3f48;
-            margin-bottom: 10px;
             border-radius: 20px;
             @media screen and (max-width: 850px) {
                 width: 90%;
                 height: 350px;
                 border-width: 10px;
                 border-radius: 10px;
-            }
-        }
-        .share-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 850px;
-            margin-bottom: 15px;
-            @media screen and (max-width: 850px) {
-                width: 90%;
-                justify-content: center;
-            }
-            h2 {
-                margin: 0;
-                font-weight: bold;
-                font-size: 30px;
-                color: #3a3f48;
-                font-family: jf;
-            }
-            .share {
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                .socitem {
-                    width: 50px;
-                    height: 50px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    background-repeat: no-repeat;
-                    background-size: 90%;
-                    background-position: center center;
-                    &.google-plus {
-                        background-image: url('/dist_v2/images/g.svg');
-                    }
-                    &.twitter {
-                        background-image: url('/dist_v2/images/t.svg');
-                    }
-                    &.facebook {
-                        background-image: url('/dist_v2/images/f.svg');
-                    }
-                }
-                @media screen and (max-width: 850px) {
-                    display: none;
-                }
             }
         }
         .new-topic {
@@ -1040,6 +1058,73 @@ div.mainpage {
                         width: 100%;
                         height: 100%;
                     }
+                }
+            }
+        }
+    }
+    .share-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 850px;
+        margin: 10px 0 15px;
+        &.firstpage{
+            justify-content: center;
+            margin: 10px 0;
+                .share {
+                    .socitem {
+                        width: 60px;
+                        height: 60px;
+                    }
+                }
+            @media screen and (max-width: 850px) {
+                width: 100%;
+                .share {
+                    .socitem {
+                        width: 50px;
+                        height: 50px;
+                    }
+                }
+            }
+        }
+        @media screen and (max-width: 850px) {
+            width: 90%;
+        }
+        h2 {
+            margin: 0;
+            font-weight: bold;
+            font-size: 1.4em;
+            color: #3a3f48;
+            font-family: jf;
+            @media screen and (max-width: 850px) {
+                font-size: 1em;
+            }
+        }
+        .share {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            .socitem {
+                width: 50px;
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-repeat: no-repeat;
+                background-size: 90%;
+                background-position: center center;
+                @media screen and (max-width: 850px) {
+                    width: 40px;
+                    height: 40px;
+                }
+                &.google-plus {
+                    background-image: url('/dist_v2/images/g.svg');
+                }
+                &.twitter {
+                    background-image: url('/dist_v2/images/t.svg');
+                }
+                &.facebook {
+                    background-image: url('/dist_v2/images/f.svg');
                 }
             }
         }

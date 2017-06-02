@@ -34,7 +34,7 @@
         <meta name="twitter:image" content="{{URL::to('/')}}{{$post->photo_url}}">
 
         <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
-        <link rel="stylesheet" href="/dist_v2/css/home.css" />
+        <link rel="stylesheet" href="/dist_v2/css/home-d101dc4886.css" />
         <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

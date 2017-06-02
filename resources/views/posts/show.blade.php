@@ -31,16 +31,6 @@
 
 	<script>
 		(function () {
-			var serverLinks = document.querySelectorAll('.servers >a');
-			var iframe = document.querySelector('iframe');
-			serverLinks.forEach(function (item) {
-				item.addEventListener('click', function(e){
-					e.preventDefault();
-					document.querySelector('.servers >a.active').classList.remove('active');
-					iframe.src = this.href;
-					this.classList.add('active');
-				});
-			});
 
 			document.querySelector('.socitem.facebook').onclick = function() {
 				window.open("https://www.facebook.com/sharer/sharer.php?u={{Request::fullUrl()}}", "pop", "width=600, height=400, scrollbars=no");
@@ -56,7 +46,6 @@
 				window.open('https://twitter.com/share?url={{Request::fullUrl()}}', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
 				return false;
 			};
-
 
 		}());
 	</script>

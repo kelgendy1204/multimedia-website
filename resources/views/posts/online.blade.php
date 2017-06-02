@@ -53,7 +53,7 @@
 
 		@include('layouts.randomposts', ['classname' => ''])
 
-		<div class="fb-comments" data-href="{{Request::fullUrl()}}" data-width="100%" data-numposts="10" order_by="social"></div>
+		<div class="fb-comments" data-href="{{ route('showpost', ['postdesc' => $post->description]) }}" data-width="100%" data-numposts="10" order_by="social"></div>
 
 	</div>
 

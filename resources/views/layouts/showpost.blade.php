@@ -20,6 +20,7 @@
         <!-- markup for facebook -->
         <meta property="fb:app_id" content="282317058844945" />
         <meta property="og:url" content="{{Request::fullUrl()}}" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="{{$post->title}}" />
         <meta property="og:description" content="{{$post->meta_description}}" />
         <meta property="og:image" content="{{URL::to('/')}}{{$post->photo_url}}" />

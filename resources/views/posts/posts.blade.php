@@ -34,6 +34,7 @@
             <meta name="keywords" content="مشاهدة افلام مباشرة, مشاهدة افلام اون لاين عربى و اجنبى, تحميل واستماع اغانى عربية, اغاني شعبي مشاهدة مباشرة مسلسلات عربية, مشاهدة مسلسلات رمضان اون لاين,مشاهدة مباريات اون لاين, كليبات, اسلاميات, برامج, العاب, برامج الموبايل, العاب الموبايل, نغمات, عروض مصارعة, افلام مترجمة" />
         @endif
 
+        <meta property="fb:app_id" content="282317058844945" />
         <meta property="og:url" content="{{ Request::fullUrl() }}" />
         <meta property="og:image" content="{{URL::to('/')}}/dist_v2/images/banner2.jpg" />
         <meta name="twitter:image" content="{{URL::to('/')}}/dist_v2/images/banner2.jpg" />

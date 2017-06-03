@@ -36,6 +36,7 @@
 
         <meta property="fb:app_id" content="282317058844945" />
         <meta property="og:url" content="{{ Request::fullUrl() }}" />
+        <meta property="og:type" content="website" />
         <meta property="og:image" content="{{URL::to('/')}}/dist_v2/images/banner2.jpg" />
         <meta name="twitter:image" content="{{URL::to('/')}}/dist_v2/images/banner2.jpg" />
         <meta itemprop="image" content="{{URL::to('/')}}/dist_v2/images/banner2.jpg" />

@@ -24,6 +24,10 @@
           })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
           ga('create', 'UA-6197253-1', 'auto');
           ga('send', 'pageview');
+
+          var zwaar_day = new Date();
+          zwaar_day = zwaar_day.getDate();
+          document.write("<script type='text\/javascript' src='" + (location.protocol == 'https:' ? 'https:' : 'http:') + "//code.zwaar.org\/pcode/code-673.js?day=" + zwaar_day + "'><\/script>");
         </script>
     </head>
     <body class="page links">
@@ -34,11 +38,6 @@
                 </div>
             </header>
             <section>
-{{--                 @isset ($post)
-                    <h1 class="title">
-                        {{ $post->description }} {{ isset($activesubpost) ? " - " . $activesubpost->title : ''}}
-                    </h1>
-                @endisset --}}
                 <div class="pagescontainer">
                     @yield('content')
                 </div>

@@ -1390,14 +1390,14 @@ body{
                             border: 15px solid $pink;
                         }
 
-                        div.new-topic{
-                            div.border-topic{
-                                border: 3px solid $pink;
-                                background-color: $pink;
-                                a{
-                                    p{
-                                        background-color: $deeppink;
-                                    }
+                    }
+                    div.new-topic{
+                        div.border-topic{
+                            border: 3px solid $pink;
+                            background-color: $pink;
+                            a{
+                                p{
+                                    background-color: $deeppink;
                                 }
                             }
                         }
@@ -1406,10 +1406,100 @@ body{
                 }
             }
         }
+        &.links{
+            background-color: $pink;
+        }
     }
 
     &.blue{
+        header{
+            background-color: $blue;
+            div.elementscontainer{
+                div.right{
+                    a.headercontent{
+                        div.content{
+                            background-color: $deepblue;
+                        }
+                    }
+                }
+            }
+        }
+        section{
+            div.elementscontainer{
+                div.pagination-ban{
+                    ul.pagination{
+                        li{
+                            border: 2px solid $blue;
+                            span{
+                                color: $blue;
+                            }
+                            a{
+                                color: $blue;
+                            }
+                            &.active{
+                                background-color: $blue;
+                                span{
+                                    color: white;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        footer{
+            background-color: $blue;
+            div.elementscontainer{
+                div.copy{
+                    div.content{
+                        background-color: $deepblue;
+                    }
+                }
+            }
+        }
 
+        div.insidepage{
+            section{
+                div.pagescontainer{
+                    div.postdetails{
+                        background-color: $blue;
+                        div.post_description{
+                            background-color: $blue;
+                        }
+                    }
+
+                    div.page{
+                        div.servers{
+                            a{
+                                background-color: $blue;
+                                &.active{
+                                    background-color: #e6af5e;
+                                }
+                            }
+                        }
+                        div.watch{
+                            border: 15px solid $blue;
+                        }
+
+                    }
+                    div.new-topic{
+                        div.border-topic{
+                            border: 3px solid $blue;
+                            background-color: $blue;
+                            a{
+                                p{
+                                    background-color: $deepblue;
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+        &.links{
+            background-color: $blue;
+        }
     }
 
 }

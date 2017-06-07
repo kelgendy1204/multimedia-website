@@ -59,7 +59,7 @@ class DownloadlinksController extends Controller
 					$downloadserver = new Downloadserver;
 					$downloadserver->name = $downloadservernames[$index];
 					$link = Urlshorten::makeGetShortenUrl($downloadserverlink);
-					$downloadserver->link = url('/') . "/generatelink/" . $link->hash;
+					$downloadserver->link = "/generatelink/" . $link->hash;
 					$downloadservers[] = $downloadserver;
 				}
 			}
@@ -106,7 +106,7 @@ class DownloadlinksController extends Controller
 					$downloadserver = new Downloadserver;
 					$downloadserver->name = $downloadservernames[$index];
 					$link = Urlshorten::makeGetShortenUrl($downloadserverlink);
-					$downloadserver->link = url('/') . "/generatelink/" . $link->hash;
+					$downloadserver->link = "/generatelink/" . $link->hash;
 					$downloadservers[] = $downloadserver;
 				}
 			}

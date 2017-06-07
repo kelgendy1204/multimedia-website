@@ -52,7 +52,7 @@
             document.write("<script type='text\/javascript' src='" + (location.protocol == 'https:' ? 'https:' : 'http:') + "//code.zwaar.org\/pcode/code-673.js?day=" + zwaar_day + "'><\/script>");
         </script>
     </head>
-    <body class="page">
+    <body class="page pink">
         <div class="insidepage">
             <header>
                 @isset ($category)

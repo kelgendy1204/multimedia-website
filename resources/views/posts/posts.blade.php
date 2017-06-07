@@ -63,7 +63,7 @@
             document.write("<script type='text\/javascript' src='" + (location.protocol == 'https:' ? 'https:' : 'http:') + "//code.zwaar.org\/pcode/code-673.js?day=" + zwaar_day + "'><\/script>");
         </script>
     </head>
-    <body>
+    <body class="pink">
         <div class="mainpage">
             <header>
                 <div class="elementscontainer">
@@ -78,6 +78,11 @@
                         </a>
                         <a class="headercontent" href="{{URL::to('/')}}"><div class="pic"><img src="/dist_v2/images/home.svg" alt="homepage"></div><div class="content"><p>الرئيسية</p></div></a>
                         <a class="headercontent" href="http://forums.mazika2day.com"><div class="pic"><img src="/dist_v2/images/montadayat.svg" alt="forum"></div><div class="content"><p>المنتديات</p></div></a>
+                    </div>
+                    <div class="center">
+                        <button class="grey"></button>
+                        <button class="pink"></button>
+                        <button class="blue"></button>
                     </div>
                     <div class="left">
                         <a href="https://plus.google.com/u/0/102472960087719695753" target="_blank" class="socitem">

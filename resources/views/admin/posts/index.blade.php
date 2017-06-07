@@ -30,8 +30,8 @@
 
     <div class="items">
         @foreach ($posts as $post)
-        <div class="item">
-            <a href="/admin/posts/{{$post->id}}/edit" class="{{$post->visible ? "" : "notvisible"}}">
+        <div class="item {{$post->visible ? "" : "notvisible"}}">
+            <a href="/admin/posts/{{$post->id}}/edit">
                 @if($post->pinned)
                     <button type="button" class="btn btn-primary pinned" aria-label="Left Align">
                         <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
@@ -43,7 +43,7 @@
                 <div class="img" style="background-image: url('{{$post->photo_url}}')"></div>
                 <p>{{$post->title}}</p>
             </a>
-            <form method="post" action="{{ route('deletepost', ['postid' => $post->id]) }}" class="deletepost">
+            <form method="post" action="{{ route('deletepost', ['postid' => $post->id]) }}" class="deletepost delete">
                 {{ csrf_field() }}
                 <button type="submit" class="btn btn-danger btn-lg btn-block">Delete post</button>
             </form>

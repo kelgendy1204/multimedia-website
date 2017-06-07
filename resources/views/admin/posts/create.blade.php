@@ -160,7 +160,7 @@
 												<a class="btn btn-primary btn-block" href="{{"/admin/posts/" . $post->id . "/online/" . $subpost->id . "/edit"}}" role="button">Edit online post</a>
 											</div>
 											<div class="col-md-3 mb">
-												<form action="{{"/admin/posts/" . $post->id . "/online/" . $subpost->id . "/delete"}}" method="post">
+												<form action="{{"/admin/posts/" . $post->id . "/online/" . $subpost->id . "/delete"}}" method="post" class="delete">
 													{{ csrf_field() }}
 													<button type="submit" class="btn btn-danger btn-block">Delete online post</button>
 												</form>
@@ -196,7 +196,7 @@
 												<a class="btn btn-primary btn-block" href="{{ route('editdownloadlink', ['postid' => $post->id, 'downloadlinkid' => $downloadlink->id]) }}" role="button">Edit download link</a>
 											</div>
 											<div class="col-md-3 mb">
-												<form action="{{ route('deletedownloadlink', ['postid' => $post->id, 'downloadlinkid' => $downloadlink->id]) }}" method="post">
+												<form action="{{ route('deletedownloadlink', ['postid' => $post->id, 'downloadlinkid' => $downloadlink->id]) }}" method="post" class="delete">
 													{{ csrf_field() }}
 													<button type="submit" class="btn btn-danger btn-block">Delete download link</button>
 												</form>

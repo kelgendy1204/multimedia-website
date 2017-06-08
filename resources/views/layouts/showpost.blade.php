@@ -15,7 +15,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-        <link rel="canonical" href="{{Request::fullUrl()}}" />
+        @yield('canonical')
 
         <!-- markup for facebook -->
         <meta property="fb:app_id" content="282317058844945" />
@@ -31,6 +31,7 @@
         <meta itemprop="image" content="{{URL::to('/')}}{{$post->photo_url}}" />
 
         <!-- Twitter Card data -->
+        <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="{{$post->title}}" />
         <meta name="twitter:description" content="{{$post->meta_description}}" />
         <meta name="twitter:image" content="{{URL::to('/')}}{{$post->photo_url}}" />
@@ -38,6 +39,7 @@
         <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css" />
         <link rel="stylesheet" href="/dist_v2/css/home.css" />
 
+        <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

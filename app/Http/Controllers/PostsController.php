@@ -60,6 +60,16 @@ class PostsController extends Controller
 		return view('posts.show', ['post' => $post, 'category' => $category, 'subpost' => $subpost, 'categories' => $categories]);
 	}
 
+	// get : /{postdesc}/alt/{num} - show a post
+	public function showalt($postdesc, $num) {
+		$categories = Category::all();
+		$post = Post::where('description', $postdesc)->latest()->first();
+		$post->increment('visits');
+		$category = Category::find($post->category_id);
+		$subpost = $post->subposts()->where('visible', '1')->latest()->first();
+		return view('posts.show', ['post' => $post, 'category' => $category, 'subpost' => $subpost, 'categories' => $categories]);
+	}
+
 	// get : admin/posts/{id}/edit - edit a post view
 	public function edit($post) {
 		$post = Post::find($post);

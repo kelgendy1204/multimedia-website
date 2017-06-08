@@ -1,5 +1,9 @@
 @extends('layouts.showpost')
 
+@section('canonical')
+	<link rel="canonical" href="{{ route('download', ['postdesc' => $post->description]) }}" />
+@endsection
+
 @section('content')
 
 	<div id="fb-root"></div>

@@ -17,9 +17,15 @@
 	</div>
 	<div class="share-title firstpage">
 		<div class="share">
-			<a class="socitem google-plus"></a>
+
+			<a class="socitem google-plus">
+				<div class="g-plus" data-action="share" data-href="{{route('showpost', ['postdesc' => $post->description])}}" data-height="24"></div>
+			</a>
+
 			<a class="socitem twitter" href="https://twitter.com/intent/tweet?url={{route('showpost', ['postdesc' => $post->description])}}&text={{$post->title}}&hashtags={{$post->key_words}}"></a>
+
 			<a class="socitem facebook"></a>
+
 		</div>
 	</div>
 	<div class="download">
@@ -35,17 +41,10 @@
 
 	<script>
 		(function () {
-
 			document.querySelector('.socitem.facebook').onclick = function() {
-				window.open("https://www.facebook.com/sharer/sharer.php?u={{Request::fullUrl()}}", "pop", "width=600, height=400, scrollbars=no");
+				window.open("https://www.facebook.com/sharer/sharer.php?u={{route('showpost', ['postdesc' => $post->description])}}", "pop", "width=600, height=400, scrollbars=no");
 				return false;
 			};
-
-			document.querySelector('.socitem.google-plus').onclick = function() {
-				window.open('https://plus.google.com/share?url={{Request::fullUrl()}}', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
-				return false;
-			};
-
 		}());
 	</script>
 @endsection

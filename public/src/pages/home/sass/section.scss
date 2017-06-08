@@ -1147,12 +1147,17 @@ div.mainpage {
                 background-repeat: no-repeat;
                 background-size: 90%;
                 background-position: center center;
+                overflow: hidden;
+                iframe{
+                    opacity: 0;
+                }
                 @media screen and (max-width: 850px) {
                     width: 40px;
                     height: 40px;
                 }
                 &.google-plus {
                     background-image: url('/dist_v2/images/g.svg');
+                    cursor: auto;
                 }
                 &.twitter {
                     background-image: url('/dist_v2/images/t.svg');

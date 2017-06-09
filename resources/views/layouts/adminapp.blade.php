@@ -20,7 +20,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="/dist_v2/css/admin-2e8180c3f2.css">
+    <link rel="stylesheet" type="text/css" href="/dist_v5/css/admin.css">
 
     <script
       src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
@@ -93,5 +93,6 @@
 
         @yield('content')
     </div>
+    <script type="text/javascript" src="/dist_v5/js/admin.js"></script>
 </body>
 </html>

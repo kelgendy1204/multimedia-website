@@ -15,7 +15,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-        <link rel="canonical" href="{{Request::fullUrl()}}" />
+        @yield('canonical')
 
         <!-- markup for facebook -->
         <meta property="fb:app_id" content="282317058844945" />
@@ -31,13 +31,16 @@
         <meta itemprop="image" content="{{URL::to('/')}}{{$post->photo_url}}" />
 
         <!-- Twitter Card data -->
+        <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="{{$post->title}}" />
         <meta name="twitter:description" content="{{$post->meta_description}}" />
         <meta name="twitter:image" content="{{URL::to('/')}}{{$post->photo_url}}" />
 
         <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css" />
-        <link rel="stylesheet" href="/dist_v2/css/home-d101dc4886.css" />
+        <link rel="stylesheet" href="/dist_v5/css/home.css" />
 
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -52,7 +55,7 @@
             document.write("<script type='text\/javascript' src='" + (location.protocol == 'https:' ? 'https:' : 'http:') + "//code.zwaar.org\/pcode/code-673.js?day=" + zwaar_day + "'><\/script>");
         </script>
     </head>
-    <body class="page">
+    <body class="page {{ isset($_COOKIE['color']) ? $_COOKIE['color'] : ''}}">
         <div class="insidepage">
             <header>
                 @isset ($category)
@@ -67,7 +70,7 @@
                 @endisset
                 <div class="logo">
                     <a href="{{URL::to('/')}}">
-                        <img src="/dist_v2/images/logo.svg" alt="logo" />
+                        <img src="/dist_v5/images/logo.svg" alt="logo" />
                     </a>
                 </div>
             </header>
@@ -75,7 +78,7 @@
                 <ul class="category-container">
                     <li>
                         <a href="{{url('/')}}" class="category">
-                            <div class="pic" style="background-image: url(/dist_v2/images/home.svg)"></div>
+                            <div class="pic" style="background-image: url(/dist_v5/images/home.svg)"></div>
                             <div class="content">
                                 <h2>الرئيسية</h2>
                             </div>
@@ -102,7 +105,7 @@
             <footer>
                 <div class="elementscontainer">
                     <div class="copy">
-                       <a href="{{URL::to('/')}}" class="pic"><img src="/dist_v2/images/home.svg" alt="homepage"></a><div class="content"><p>جميع الحقوق محفوظة  لدى منتديات مزيكا تو داي</p></div>
+                       <a href="{{URL::to('/')}}" class="pic"><img src="/dist_v5/images/home.svg" alt="homepage"></a><div class="content"><p>جميع الحقوق محفوظة  لدى منتديات مزيكا تو داي</p></div>
                     </div>
                 </div>
             </footer>

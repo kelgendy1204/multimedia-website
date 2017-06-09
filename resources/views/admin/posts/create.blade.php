@@ -2,7 +2,7 @@
 
 @section('content')
 
-<script src="/dist_v2/uncompiled/tinymce/tinymce.min.js"></script>
+<script src="/dist_v5/uncompiled/tinymce/tinymce.min.js"></script>
 
 {{-- <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=wrielrrxldl32l2dzcfnesqzblk6q0i9tjm1xau55oiywoaq"></script> --}}
 
@@ -19,7 +19,7 @@
 		toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | preview media fullpage | forecolor backcolor emoticons codesample fontsizeselect fontselect visualblocks',
 		imagetools_toolbar: 'rotateleft rotateright | flipv fliph | editimage imageoptions',
 		font_formats: 'Andale Mono=andale mono,times;Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;Comic Sans MS=comic sans ms,sans-serif;Courier New=courier new,courier;Georgia=georgia,palatino;Helvetica=helvetica;Impact=impact,chicago;Symbol=symbol;Tahoma=tahoma,arial,helvetica,sans-serif;Terminal=terminal,monaco;Times New Roman=times new roman,times;Trebuchet MS=trebuchet ms,geneva;Verdana=verdana,geneva;Webdings=webdings;Wingdings=wingdings,zapf dingbats;JF=jf',
-		content_css : '/dist_v2/css/tinymce-0723d9577f.css',
+		content_css : '/dist_v5/css/tinymce.css',
 		style_formats: [
 			{title: 'Description title', inline : 'span' ,classes: 'desctitle'}
 		],
@@ -80,6 +80,11 @@
 						<div class="form-group">
 							<label for="key_words">Add keywords</label>
 							<input name="key_words" placeholder="Enter keywords separated by commas" class="form-control" id="key_words" value="{{isset($post)? $post->key_words: ''}}">
+						</div>
+
+						<div class="form-group">
+							<label for="alt_link">Alt link</label>
+							<input name="alt_link" placeholder="Enter Alt link" class="form-control" id="alt_link" value="{{isset($post)? $post->alt_link: ''}}">
 						</div>
 
 						<div class="form-group">
@@ -160,7 +165,7 @@
 												<a class="btn btn-primary btn-block" href="{{"/admin/posts/" . $post->id . "/online/" . $subpost->id . "/edit"}}" role="button">Edit online post</a>
 											</div>
 											<div class="col-md-3 mb">
-												<form action="{{"/admin/posts/" . $post->id . "/online/" . $subpost->id . "/delete"}}" method="post">
+												<form action="{{"/admin/posts/" . $post->id . "/online/" . $subpost->id . "/delete"}}" method="post" class="delete">
 													{{ csrf_field() }}
 													<button type="submit" class="btn btn-danger btn-block">Delete online post</button>
 												</form>
@@ -196,7 +201,7 @@
 												<a class="btn btn-primary btn-block" href="{{ route('editdownloadlink', ['postid' => $post->id, 'downloadlinkid' => $downloadlink->id]) }}" role="button">Edit download link</a>
 											</div>
 											<div class="col-md-3 mb">
-												<form action="{{ route('deletedownloadlink', ['postid' => $post->id, 'downloadlinkid' => $downloadlink->id]) }}" method="post">
+												<form action="{{ route('deletedownloadlink', ['postid' => $post->id, 'downloadlinkid' => $downloadlink->id]) }}" method="post" class="delete">
 													{{ csrf_field() }}
 													<button type="submit" class="btn btn-danger btn-block">Delete download link</button>
 												</form>

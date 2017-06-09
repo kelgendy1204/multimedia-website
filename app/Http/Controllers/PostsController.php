@@ -60,6 +60,16 @@ class PostsController extends Controller
 		return view('posts.show', ['post' => $post, 'category' => $category, 'subpost' => $subpost, 'categories' => $categories]);
 	}
 
+	// get : /{postdesc}/alt/{num} - show a post
+	public function showalt($postdesc, $num) {
+		$categories = Category::all();
+		$post = Post::where('description', $postdesc)->latest()->first();
+		$post->increment('visits');
+		$category = Category::find($post->category_id);
+		$subpost = $post->subposts()->where('visible', '1')->latest()->first();
+		return view('posts.show', ['post' => $post, 'category' => $category, 'subpost' => $subpost, 'categories' => $categories]);
+	}
+
 	// get : admin/posts/{id}/edit - edit a post view
 	public function edit($post) {
 		$post = Post::find($post);
@@ -76,13 +86,19 @@ class PostsController extends Controller
 	public function update(Post $post) {
 		$categories = Category::all();
 		$post->title = request('title');
+		$post->key_words = request('key_words');
+		$post->alt_link = request('alt_link');
+
 		$post->description = request('description');
 		$post->download_page = request('download_page');
 		$post->long_description = request('long_description');
+		$post->meta_description = request('meta_description');
+
 		$post->visible = request('visible') == "on" ? true : false;
 		$post->pinned = request('pinned') == "on" ? true : false;
+
 		$post->category_id = request('category');
-		$post->meta_description = request('meta_description');
+
 		$post->position = request('position');
 		$imageFile = request()->file('postimage');
 
@@ -110,17 +126,21 @@ class PostsController extends Controller
 	public function store(Request $request) {
 		$post = new Post;
 		$post->title = request('title');
-		$post->description = request('description');
 		$post->key_words = request('key_words');
+		$post->alt_link = request('alt_link');
+
+		$post->description = request('description');
 		$post->download_page = request('download_page');
 		$post->long_description = request('long_description');
+		$post->meta_description = request('meta_description');
+
 		$post->visible = request('visible') == "on" ? true : false;
 		$post->pinned = request('pinned') == "on" ? true : false;
-		$post->category_id = request('category');
-		$post->meta_description = request('meta_description');
-		$post->user_id = Auth::id();
-		$post->save();
 
+		$post->category_id = request('category');
+		$post->user_id = Auth::id();
+
+		$post->save();
 
 		$imageFile = $request->file('postimage');
 

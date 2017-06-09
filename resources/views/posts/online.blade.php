@@ -1,5 +1,9 @@
 @extends('layouts.showpost')
 
+@section('canonical')
+	<link rel="canonical" href="{{route('online', ['postdesc' => $post->description, 'subposttitle' => $activesubpost->title])}}" />
+@endsection
+
 @section('content')
 
 	<div id="fb-root"></div>
@@ -23,8 +27,10 @@
 		<div class="share-title">
 			<h2 class="titlee">{{ (isset($activesubpost) && (count($subposts) > 1)) ? $activesubpost->title : ''}} </h2>
 			<div class="share">
-				<a class="socitem google-plus"></a>
-				<a class="socitem twitter"></a>
+				<a class="socitem google-plus">
+					<div class="g-plus" data-action="share" data-href="{{route('online', ['postdesc' => $post->description, 'subposttitle' => $activesubpost->title])}}" data-height="24"></div>
+				</a>
+				<a class="socitem twitter" href="https://twitter.com/intent/tweet?url={{route('showpost', ['postdesc' => $post->description])}}&text={{$post->title}}&hashtags={{$post->key_words}}"></a>
 				<a class="socitem facebook"></a>
 			</div>
 		</div>
@@ -57,7 +63,7 @@
 
 	</div>
 
-	{{-- <script type="text/javascript" src="/dist_v2/js/online-e1692be55a.js"></script> --}}
+	{{-- <script type="text/javascript" src="/dist_v5/js/online.js"></script> --}}
 
 	<script>
 		(function () {
@@ -76,18 +82,6 @@
 				window.open("https://www.facebook.com/sharer/sharer.php?u={{Request::fullUrl()}}", "pop", "width=600, height=400, scrollbars=no");
 				return false;
 			};
-
-			document.querySelector('.socitem.google-plus').onclick = function() {
-				window.open('https://plus.google.com/share?url={{Request::fullUrl()}}', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
-				return false;
-			};
-
-			document.querySelector('.socitem.twitter').onclick = function() {
-				window.open('https://twitter.com/share?url={{Request::fullUrl()}}', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
-				return false;
-			};
-
-
 		}());
 	</script>
 @endsection

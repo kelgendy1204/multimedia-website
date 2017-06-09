@@ -27,7 +27,7 @@ class DownloadlinksController extends Controller
 
 		$category = Category::find($post->category_id);
 
-		$randomPosts = Post::get_all_visible($category->category_name_en, null, 60)->where('category_id', $post->category_id)->shuffle();
+		$randomPosts = Post::get_all_visible($category->category_name_en, null, 30)->where('category_id', $post->category_id)->shuffle();
 
 		return view('posts.download', ['categories' => $categories, 'post' => $post, 'downloadlinks' => $downloadlinks, 'category' => $category, 'randomPosts' => $randomPosts]);
 	}
@@ -59,7 +59,7 @@ class DownloadlinksController extends Controller
 					$downloadserver = new Downloadserver;
 					$downloadserver->name = $downloadservernames[$index];
 					$link = Urlshorten::makeGetShortenUrl($downloadserverlink);
-					$downloadserver->link = url('/') . "/generatelink/" . $link->hash;
+					$downloadserver->link = "/generatelink/" . $link->hash;
 					$downloadservers[] = $downloadserver;
 				}
 			}
@@ -106,7 +106,7 @@ class DownloadlinksController extends Controller
 					$downloadserver = new Downloadserver;
 					$downloadserver->name = $downloadservernames[$index];
 					$link = Urlshorten::makeGetShortenUrl($downloadserverlink);
-					$downloadserver->link = url('/') . "/generatelink/" . $link->hash;
+					$downloadserver->link = "/generatelink/" . $link->hash;
 					$downloadservers[] = $downloadserver;
 				}
 			}

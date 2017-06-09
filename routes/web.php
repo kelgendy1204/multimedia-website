@@ -2,6 +2,7 @@
 
 Route::get('/', 'PostsController@index')->name('home');
 Route::get('/{postdesc}', 'PostsController@show')->name('showpost');
+Route::get('/{postdesc}/alt/{num}', 'PostsController@showalt')->name('showaltpost');
 
 Route::get('/admin/posts/create', 'PostsController@create');
 Route::get('/admin/posts/{post}/edit', 'PostsController@edit');

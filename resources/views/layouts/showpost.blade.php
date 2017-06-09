@@ -55,7 +55,7 @@
             document.write("<script type='text\/javascript' src='" + (location.protocol == 'https:' ? 'https:' : 'http:') + "//code.zwaar.org\/pcode/code-673.js?day=" + zwaar_day + "'><\/script>");
         </script>
     </head>
-    <body class="page {{$_COOKIE['color']}}">
+    <body class="page {{ isset($_COOKIE['color']) ? $_COOKIE['color'] : ''}}">
         <div class="insidepage">
             <header>
                 @isset ($category)

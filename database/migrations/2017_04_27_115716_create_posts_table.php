@@ -20,11 +20,10 @@ class CreatePostsTable extends Migration
             $table->string('photo_url')->nullable();
             $table->string('description');
             $table->longText('download_page')->nullable();
-
             $table->text('key_words')->nullable();
+            $table->integer('alt_link')->nullable();
             $table->longText('long_description')->nullable();
             $table->text('meta_description')->nullable();
-
             $table->boolean('visible')->default(false);
             $table->boolean('pinned')->default(false);
             $table->integer('visits')->default(0);

@@ -83,6 +83,11 @@
 						</div>
 
 						<div class="form-group">
+							<label for="alt_link">Alt link</label>
+							<input name="alt_link" placeholder="Enter Alt link" class="form-control" id="alt_link" value="{{isset($post)? $post->alt_link: ''}}">
+						</div>
+
+						<div class="form-group">
 							<label for="category">Category</label>
 							<select class="form-control" name="category" id="category">
 								@foreach ($categories as $category)

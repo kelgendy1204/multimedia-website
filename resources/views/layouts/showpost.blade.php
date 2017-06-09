@@ -37,7 +37,7 @@
         <meta name="twitter:image" content="{{URL::to('/')}}{{$post->photo_url}}" />
 
         <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css" />
-        <link rel="stylesheet" href="/dist_v5/css/home.css" />
+        <link rel="stylesheet" href="/dist_v5/css/home-362273b6a3.css" />
 
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>

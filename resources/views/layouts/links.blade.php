@@ -16,7 +16,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/manifest.json">
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-        <link rel="stylesheet" href="/dist_v2/css/home.css" />
+        <link rel="stylesheet" href="/dist_v5/css/home.css" />
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -34,7 +34,7 @@
         <div class="insidepage">
             <header>
                 <div class="logo">
-                    <a href="/"><img src="/dist_v2/images/logo.svg" alt="logo" /></a>
+                    <a href="/"><img src="/dist_v5/images/logo.svg" alt="logo" /></a>
                 </div>
             </header>
             <section>

@@ -37,10 +37,10 @@
         <meta property="fb:app_id" content="282317058844945" />
         <meta property="og:url" content="{{ Request::fullUrl() }}" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="{{URL::to('/')}}/dist_v2/images/banner2.jpg" />
+        <meta property="og:image" content="{{URL::to('/')}}/dist_v5/images/banner2.jpg" />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:image" content="{{URL::to('/')}}/dist_v2/images/banner2.jpg" />
-        <meta itemprop="image" content="{{URL::to('/')}}/dist_v2/images/banner2.jpg" />
+        <meta name="twitter:image" content="{{URL::to('/')}}/dist_v5/images/banner2.jpg" />
+        <meta itemprop="image" content="{{URL::to('/')}}/dist_v5/images/banner2.jpg" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#ffffff" />
@@ -50,7 +50,7 @@
         <link rel="manifest" href="/manifest.json" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <link rel="canonical" href="{{ Request::fullUrl() }}" />
-        <link rel="stylesheet" href="/dist_v2/css/home.css" />
+        <link rel="stylesheet" href="/dist_v5/css/home.css" />
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -77,8 +77,8 @@
                                 <span></span>
                             </div>
                         </a>
-                        <a class="headercontent" href="{{URL::to('/')}}"><div class="pic"><img src="/dist_v2/images/home.svg" alt="homepage"></div><div class="content"><p>الرئيسية</p></div></a>
-                        <a class="headercontent" href="http://forums.mazika2day.com"><div class="pic"><img src="/dist_v2/images/montadayat.svg" alt="forum"></div><div class="content"><p>المنتديات</p></div></a>
+                        <a class="headercontent" href="{{URL::to('/')}}"><div class="pic"><img src="/dist_v5/images/home.svg" alt="homepage"></div><div class="content"><p>الرئيسية</p></div></a>
+                        <a class="headercontent" href="http://forums.mazika2day.com"><div class="pic"><img src="/dist_v5/images/montadayat.svg" alt="forum"></div><div class="content"><p>المنتديات</p></div></a>
                     </div>
                     <div class="center">
                         <button class="colorbtn grey" data-color="grey"></button>
@@ -96,7 +96,7 @@
                             <div class="soc-img facebook"></div>
                         </a>
                         <a class="logo" href="{{URL::to('/')}}">
-                            <img src="/dist_v2/images/logo.svg" alt="logo"/>
+                            <img src="/dist_v5/images/logo.svg" alt="logo"/>
                         </a>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                     <ul>
                         <li>
                             <a href="{{route('home')}}">
-                                <div class="category-img" style="background-image: url(/dist_v2/images/home.svg)"></div>
+                                <div class="category-img" style="background-image: url(/dist_v5/images/home.svg)"></div>
                                 <p>الرئيسية</p>
                             </a>
                         </li>
@@ -185,11 +185,11 @@
             <footer>
                 <div class="elementscontainer">
                     <div class="copy">
-                        <a href="{{URL::to('/')}}" class="pic"><img src="/dist_v2/images/home.svg" alt="homepage"></a><div class="content"><p>جميع الحقوق محفوظة  لدى منتديات مزيكا تو داي</p></div>
+                        <a href="{{URL::to('/')}}" class="pic"><img src="/dist_v5/images/home.svg" alt="homepage"></a><div class="content"><p>جميع الحقوق محفوظة  لدى منتديات مزيكا تو داي</p></div>
                     </div>
                 </div>
             </footer>
         </div>
-        <script type="text/javascript" src="/dist_v2/js/home.js"></script>
+        <script type="text/javascript" src="/dist_v5/js/home.js"></script>
     </body>
 </html>

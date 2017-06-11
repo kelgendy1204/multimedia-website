@@ -4,8 +4,6 @@
 
 <script src="/dist_v5/uncompiled/tinymce/tinymce.min.js"></script>
 
-{{-- <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=wrielrrxldl32l2dzcfnesqzblk6q0i9tjm1xau55oiywoaq"></script> --}}
-
 <script type="text/javascript" defer async>
 	tinymce.init({
 		selector: 'textarea',

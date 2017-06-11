@@ -84,6 +84,7 @@
                         <button class="colorbtn grey" data-color="grey"></button>
                         <button class="colorbtn pink" data-color="pink"></button>
                         <button class="colorbtn blue" data-color="blue"></button>
+                        <button class="colorbtn orange" data-color="orange"></button>
                     </div>
                     <div class="left">
                         <a href="https://plus.google.com/u/0/102472960087719695753" target="_blank" class="socitem">

@@ -83,7 +83,7 @@
                     </div>
 
                     @if ($advertisements->get('home_top'))
-                    <a href="{{$advertisements->get('home_top')->link}}" class="home_top">
+                    <a href="{{$advertisements->get('home_top')->link}}" class="home_top" target="_blank">
                         <div style="background-image: url({{$advertisements->get('home_top')->photo_url}})">
                         </div>
                     </a>
@@ -93,7 +93,7 @@
             <div class="posts-container">
                 <div class="home_right side-bans">
                     @if ($advertisements->get('home_right'))
-                    <a href="{{$advertisements->get('home_right')->link}}">
+                    <a href="{{$advertisements->get('home_right')->link}}" target="_blank">
                         <div class="image" style="background-image: url({{$advertisements->get('home_right')->photo_url}})">
                         </div>
                     </a>
@@ -106,7 +106,7 @@
                 </div>
                 <div class="home_left side-bans">
                     @if ($advertisements->get('home_left'))
-                        <a href="{{$advertisements->get('home_left')->link}}">
+                        <a href="{{$advertisements->get('home_left')->link}}" target="_blank">
                             <div class="image" style="background-image: url({{$advertisements->get('home_left')->photo_url}})">
                             </div>
                         </a>
@@ -115,7 +115,7 @@
             </div>
             <div class="pagination-ban elementscontainer">
                 @if ($advertisements->get('home_bottom'))
-                <a href="{{$advertisements->get('home_bottom')->link}}" class="home_bottom">
+                <a href="{{$advertisements->get('home_bottom')->link}}" class="home_bottom" target="_blank">
                     <div style="background-image: url({{$advertisements->get('home_bottom')->photo_url}})">
                     </div>
                 </a>

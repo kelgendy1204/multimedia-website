@@ -61,10 +61,10 @@
 				}());
 			</script>
 		</div>
-		<div class="home_right side-bans">
-			@if ($advertisements->get('home_right'))
-			<a href="{{$advertisements->get('home_right')->link}}" target="_blank">
-				<div class="image" style="background-image: url({{$advertisements->get('home_right')->photo_url}})">
+		<div class="home_left side-bans">
+			@if ($advertisements->get('home_left'))
+			<a href="{{$advertisements->get('home_left')->link}}" target="_blank">
+				<div class="image" style="background-image: url({{$advertisements->get('home_left')->photo_url}})">
 				</div>
 			</a>
 			@endif

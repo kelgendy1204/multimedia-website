@@ -39,6 +39,7 @@ const revdel = require('gulp-rev-delete-original');
 
 const mainSrcFolder = './public/src/';
 const mainDestFolder = './public/dist_v5/';
+const anyDestFolder = './public/dist*/';
 const mainViewsDistFolder = './resources/views/';
 
 const notify = (title, message) => {
@@ -188,7 +189,7 @@ function lintSass(file) {
 }
 
 gulp.task('clean', function() {
-	return gulp.src([`${mainDestFolder}`], { read: false })
+	return gulp.src([`${mainDestFolder}`, `${anyDestFolder}`], { read: false })
 		.pipe(clean({ force: true }));
 });
 

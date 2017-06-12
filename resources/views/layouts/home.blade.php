@@ -107,7 +107,6 @@
             {
             opened = 1;
             window.open("https://waffarha.com/mazika2day", "rwmrgfdqpop1", "scrollbars = 1, resizable = 800,width=850,height=510");
-
             }
             }
         </script>

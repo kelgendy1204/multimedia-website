@@ -41,7 +41,7 @@
 		</div>
 	@endif
 
-	@include('layouts.randomposts', ['classname' => 'downloadpage'])
+	@include('partials.randomposts', ['classname' => 'downloadpage'])
 
 	<div class="fb-comments" data-href="{{ route('showpost', ['postdesc' => $post->description]) }}" data-width="100%" data-numposts="10" order_by="social"></div>
 

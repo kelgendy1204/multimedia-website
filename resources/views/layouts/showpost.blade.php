@@ -37,7 +37,7 @@
         <meta name="twitter:image" content="{{URL::to('/')}}{{$post->photo_url}}" />
 
         <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css" />
-        <link rel="stylesheet" href="/dist_v5/css/home-362273b6a3.css" />
+        <link rel="stylesheet" href="/dist_v5/css/home-55dea8ff01.css" />
 
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
@@ -49,10 +49,58 @@
             })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
             ga('create', 'UA-6197253-1', 'auto');
             ga('send', 'pageview');
+        </script>
+        <script language="JavaScript1.1">
+            var popunder
+            function get_cookie(Name) {
+            var search = Name + "="
+            var returnvalue = "";
+            if (document.cookie.length > 0) {
+            offset = document.cookie.indexOf(search)
+            if (offset != -1) { // if cookie exists
+            offset += search.length
+            // set index of beginning of value
+            end = document.cookie.indexOf(";", offset);
+            // set index of end of cookie value
+            if (end == -1)
+            end = document.cookie.length;
+            returnvalue=unescape(document.cookie.substring(offset, end))
+            }
+            }
+            return returnvalue;
+            }
+            popfrequency="15 minutes"
+            function resetcookie(){
+            var expireDate = new Date()
+            expireDate.setMinutes(expireDate.getMinutes()-0)
+            document.cookie = "popunder=;path=/;expires=" + expireDate.toGMTString()
+            }
+            function loadornot(){
+            if (get_cookie('popunder')==''){
+            loadpopunder()
+            var expireDate = new Date()
+            expireDate.setMinutes(expireDate.getMinutes()+parseInt(popfrequency))
+            document.cookie = "popunder="+parseInt(popfrequency)+";path=/;expires=" + expireDate.toGMTString()
+            }
+            }
+            function loadpopunder(){
+            document.write('<body onclick="rwmrgfdq_Popup()" >');
+            }
+            if (get_cookie('popunder')!=parseInt(popfrequency))
+            resetcookie()
+            loadornot()
+        </script>
+        <script type="text/javascript">
+            var opened;
+            function rwmrgfdq_Popup()
+            {
+            if(opened != 1)
+            {
+            opened = 1;
+            window.open("https://waffarha.com/mazika2day", "rwmrgfdqpop1", "scrollbars = 1, resizable = 800,width=850,height=510");
 
-            var zwaar_day = new Date();
-            zwaar_day = zwaar_day.getDate();
-            document.write("<script type='text\/javascript' src='" + (location.protocol == 'https:' ? 'https:' : 'http:') + "//code.zwaar.org\/pcode/code-673.js?day=" + zwaar_day + "'><\/script>");
+            }
+            }
         </script>
     </head>
     <body class="page {{ isset($_COOKIE['color']) ? $_COOKIE['color'] : ''}}">
@@ -86,7 +134,7 @@
                     </li>
                     @foreach ($categories as $category)
                     <li>
-                        @include('layouts.categorylayout')
+                        @include('partials.categorylayout')
                     </li>
                     @endforeach
                 </ul>

@@ -2,6 +2,8 @@ $pink: #982359;
 $deeppink: #631f3c;
 $blue: #18788f;
 $deepblue: #194d55;
+$orange: #ca8724;
+$deeporange: #8e5706;
 
 div.mainpage {
     header {
@@ -180,15 +182,20 @@ div.mainpage {
             }
             .center {
                 display: flex;
+                display: none;
                 justify-content: center;
                 align-items: center;
+                background-color: #FFF;
+                padding: 0 5px;
+                border-radius: 10px;
+                box-shadow: inset 0px 0px 10px 0px black;
                 button{
                     padding: 0;
                     display: inline-block;
-                    width: 40px;
-                    height: 40px;
+                    width: 30px;
+                    height: 30px;
                     border-radius: 50%;
-                    margin: 5px 10px;
+                    margin: 5px 5px;
                     border: 2px solid white;
                     box-shadow: inset 0px 0px 10px 0px black;
                     cursor: pointer;
@@ -196,10 +203,13 @@ div.mainpage {
                         background-color: #3a3f48;
                     }
                     &.pink{
-                        background-color: #982359;
+                        background-color: $pink;
                     }
                     &.blue{
-                        background-color: #18788f;
+                        background-color: $blue;
+                    }
+                    &.orange{
+                        background-color: $orange;
                     }
                 }
                 @media screen and (max-width: 870px) {
@@ -1504,6 +1514,97 @@ body{
         }
         &.links{
             background-color: $blue;
+        }
+    }
+
+    &.orange{
+        header{
+            background-color: $orange;
+            div.elementscontainer{
+                div.right{
+                    a.headercontent{
+                        div.content{
+                            background-color: $deeporange;
+                        }
+                    }
+                }
+            }
+        }
+        section{
+            div.elementscontainer{
+                div.pagination-ban{
+                    ul.pagination{
+                        li{
+                            border: 2px solid $orange;
+                            span{
+                                color: $orange;
+                            }
+                            a{
+                                color: $orange;
+                            }
+                            &.active{
+                                background-color: $orange;
+                                span{
+                                    color: white;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        footer{
+            background-color: $orange;
+            div.elementscontainer{
+                div.copy{
+                    div.content{
+                        background-color: $deeporange;
+                    }
+                }
+            }
+        }
+
+        div.insidepage{
+            section{
+                div.pagescontainer{
+                    div.postdetails{
+                        background-color: $orange;
+                        div.post_description{
+                            background-color: $orange;
+                        }
+                    }
+
+                    div.page{
+                        div.servers{
+                            a{
+                                background-color: $orange;
+                                &.active{
+                                    background-color: #e6af5e;
+                                }
+                            }
+                        }
+                        div.watch{
+                            border: 15px solid $orange;
+                        }
+
+                    }
+                    div.new-topic{
+                        div.border-topic{
+                            border: 3px solid $orange;
+                            background-color: $orange;
+                            a{
+                                p{
+                                    background-color: $deeporange;
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+        &.links{
+            background-color: $orange;
         }
     }
 

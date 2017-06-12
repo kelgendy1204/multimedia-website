@@ -29,7 +29,7 @@ class CategoriesController extends Controller
 
 		return view('posts.posts', [
 			'posts' => $posts,
-			'category' => $category,
+			'activecategory' => $category,
 			'categories' => $categories,
 			'parameters' => $parameters,
 			'advertisements' => $advertisements,

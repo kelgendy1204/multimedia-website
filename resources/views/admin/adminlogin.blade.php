@@ -56,7 +56,7 @@
 
                     </form>
 
-                    @include('layouts.errors')
+                    @include('partials.errors')
 
                 </div>
             </div>

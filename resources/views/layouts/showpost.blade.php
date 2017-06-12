@@ -86,7 +86,7 @@
                     </li>
                     @foreach ($categories as $category)
                     <li>
-                        @include('layouts.categorylayout')
+                        @include('partials.categorylayout')
                     </li>
                     @endforeach
                 </ul>

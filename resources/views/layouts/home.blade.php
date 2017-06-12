@@ -4,13 +4,13 @@
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
         <meta http-equiv="Cache-control" content="public" />
-        @if (isset($category))
+        @if (isset($activecategory))
             <title>
-                مزيكا تو داي | {{$category->name}}
+                مزيكا تو داي | {{$activecategory->name}}
             </title>
-            <meta property="og:title" content="مزيكا تو داي | {{$category->name}}" />
-            <meta name="twitter:title" content="مزيكا تو داي | {{$category->name}}" />
-            <meta itemprop="name" content="مزيكا تو داي | {{$category->name}}" />
+            <meta property="og:title" content="مزيكا تو داي | {{$activecategory->name}}" />
+            <meta name="twitter:title" content="مزيكا تو داي | {{$activecategory->name}}" />
+            <meta itemprop="name" content="مزيكا تو داي | {{$activecategory->name}}" />
         @else
             <title>
                 مزيكا تو داي | مشاهدة افلام مباشرة اعربي واجنبي - مشاهدة افلام اون لاين - تحميل واستماع اغاني عربي
@@ -20,12 +20,12 @@
             <meta itemprop="name" content="مزيكا تو داي | مشاهدة افلام مباشرة اعربي واجنبي - مشاهدة افلام اون لاين - تحميل واستماع اغاني عربي" />
         @endif
 
-        @if (isset($category))
-            <meta name="keywords" content="{{$category->key_words}}" />
-            <meta name="description" content="{{$category->meta_description}}" />
-            <meta property="og:description" content="{{$category->meta_description}}" />
-            <meta itemprop="description" content="{{$category->meta_description}}" />
-            <meta name="twitter:description" content="{{$category->meta_description}}" />
+        @if (isset($activecategory))
+            <meta name="keywords" content="{{$activecategory->key_words}}" />
+            <meta name="description" content="{{$activecategory->meta_description}}" />
+            <meta property="og:description" content="{{$activecategory->meta_description}}" />
+            <meta itemprop="description" content="{{$activecategory->meta_description}}" />
+            <meta name="twitter:description" content="{{$activecategory->meta_description}}" />
         @else
             <meta name="description" content="مشاهدة و تحميل افلام عربي و اجنبي, مشاهدة و تحميل مسلسلات عربي و اجنبي, تحميل واستماع اغاني عربية, تحميل العاب, تحميل برامج, مشاهدة و تحميل مباريات و مصارعة" />
             <meta property="og:description" content="مشاهدة و تحميل افلام عربي و اجنبي, مشاهدة و تحميل مسلسلات عربي و اجنبي, تحميل واستماع اغاني عربية, تحميل العاب, تحميل برامج, مشاهدة و تحميل مباريات و مصارعة" />
@@ -107,7 +107,6 @@
             {
             opened = 1;
             window.open("https://waffarha.com/mazika2day", "rwmrgfdqpop1", "scrollbars = 1, resizable = 800,width=850,height=510");
-
             }
             }
         </script>

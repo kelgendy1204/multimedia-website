@@ -55,9 +55,16 @@ class PostsController extends Controller
 		$categories = Category::all();
 		$post = Post::where('description', $postdesc)->latest()->first();
 		$post->increment('visits');
+		$advertisements = Advertisement::all()->keyBy('name');
 		$category = Category::find($post->category_id);
 		$subpost = $post->subposts()->where('visible', '1')->latest()->first();
-		return view('posts.show', ['post' => $post, 'category' => $category, 'subpost' => $subpost, 'categories' => $categories]);
+		return view('posts.show', [
+			'post' => $post,
+			'category' => $category,
+			'subpost' => $subpost,
+			'categories' => $categories,
+			'advertisements' => $advertisements
+		]);
 	}
 
 	// get : /{postdesc}/alt/{num} - show a post
@@ -65,9 +72,16 @@ class PostsController extends Controller
 		$categories = Category::all();
 		$post = Post::where('description', $postdesc)->latest()->first();
 		$post->increment('visits');
+		$advertisements = Advertisement::all()->keyBy('name');
 		$category = Category::find($post->category_id);
 		$subpost = $post->subposts()->where('visible', '1')->latest()->first();
-		return view('posts.show', ['post' => $post, 'category' => $category, 'subpost' => $subpost, 'categories' => $categories]);
+		return view('posts.show', [
+			'post' => $post,
+			'category' => $category,
+			'subpost' => $subpost,
+			'categories' => $categories,
+			'advertisements' => $advertisements
+		]);
 	}
 
 	// get : admin/posts/{id}/edit - edit a post view

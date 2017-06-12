@@ -89,34 +89,38 @@
                     </a>
                     @endif
                 </div>
-                <div class="posts-container">
+            </div>
+            <div class="posts-container">
+                <div class="home_right side-bans">
                     @if ($advertisements->get('home_right'))
-                    <a href="{{$advertisements->get('home_right')->link}}" class="home_right side-bans">
-                        <div style="background-image: url({{$advertisements->get('home_right')->photo_url}})">
+                    <a href="{{$advertisements->get('home_right')->link}}">
+                        <div class="image" style="background-image: url({{$advertisements->get('home_right')->photo_url}})">
                         </div>
                     </a>
                     @endif
-                    <div class="items">
-                        @foreach ($posts as $post)
-                            @include('partials.postlayout')
-                        @endforeach
-                    </div>
+                </div>
+                <div class="items">
+                    @foreach ($posts as $post)
+                        @include('partials.postlayout')
+                    @endforeach
+                </div>
+                <div class="home_left side-bans">
                     @if ($advertisements->get('home_left'))
-                    <a href="{{$advertisements->get('home_left')->link}}" class="home_left side-bans">
-                        <div style="background-image: url({{$advertisements->get('home_left')->photo_url}})">
-                        </div>
-                    </a>
+                        <a href="{{$advertisements->get('home_left')->link}}">
+                            <div class="image" style="background-image: url({{$advertisements->get('home_left')->photo_url}})">
+                            </div>
+                        </a>
                     @endif
                 </div>
-                <div class="pagination-ban">
-                    @if ($advertisements->get('home_bottom'))
-                    <a href="{{$advertisements->get('home_bottom')->link}}" class="home_bottom">
-                        <div style="background-image: url({{$advertisements->get('home_bottom')->photo_url}})">
-                        </div>
-                    </a>
-                    @endif
-                    {{ $posts->appends($parameters)->links() }}
-                </div>
+            </div>
+            <div class="pagination-ban elementscontainer">
+                @if ($advertisements->get('home_bottom'))
+                <a href="{{$advertisements->get('home_bottom')->link}}" class="home_bottom">
+                    <div style="background-image: url({{$advertisements->get('home_bottom')->photo_url}})">
+                    </div>
+                </a>
+                @endif
+                {{ $posts->appends($parameters)->links() }}
             </div>
         </section>
         <footer>

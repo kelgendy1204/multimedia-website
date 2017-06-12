@@ -69,7 +69,7 @@
             }
             return returnvalue;
             }
-            popfrequency="15 minutes"
+            popfrequency="5 minutes"
             function resetcookie(){
             var expireDate = new Date()
             expireDate.setMinutes(expireDate.getMinutes()-0)

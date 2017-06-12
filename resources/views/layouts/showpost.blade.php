@@ -143,12 +143,7 @@
                         {{ $post->description }} {{ isset($activesubpost) ? " - " . $activesubpost->title : ''}}
                     </h1>
                 @endisset
-
-
-
-                <div class="pagescontainer">
-                    @yield('content')
-                </div>
+                @yield('content')
             </section>
             <footer>
                 <div class="elementscontainer">

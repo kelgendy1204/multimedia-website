@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-
+<div class="pagescontainer">
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0];
@@ -44,5 +44,5 @@
 	@include('partials.randomposts', ['classname' => 'downloadpage'])
 
 	<div class="fb-comments" data-href="{{ route('showpost', ['postdesc' => $post->description]) }}" data-width="100%" data-numposts="10" order_by="social"></div>
-
+</div>
 @endsection

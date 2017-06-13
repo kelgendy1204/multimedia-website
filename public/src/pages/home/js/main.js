@@ -1,16 +1,13 @@
-// import '../../../lib/jquery.pin.js';
-// $('.side-bans').pin();
-
 document.querySelector('.nav-icon').addEventListener('click', function(){
 	this.classList.toggle('open');
 	document.querySelector('header').classList.toggle('open');
 });
 
-document.querySelectorAll('.colorbtn').forEach( function(element, index) {
+document.querySelectorAll('.colorbtn').forEach( function(element) {
 	element.addEventListener('click', function () {
 		createCookie('color', this.getAttribute('data-color'), 30);
 		window.location.reload(false);
-	})
+	});
 });
 
 function createCookie(name,value,days) {
@@ -23,3 +20,5 @@ function createCookie(name,value,days) {
 	document.cookie = name + '=' + value + expires + '; path=/';
 }
 
+$('.side-bans.home_right a').sticky({topSpacing: 80});
+$('.side-bans.home_left a').sticky({topSpacing: 80});

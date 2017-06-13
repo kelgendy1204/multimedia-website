@@ -110,6 +110,8 @@
             }
             }
         </script>
+        <script src="/dist_v5/uncompiled/jquery-3.2.1.min.js"></script>
+        <script src="/dist_v5/uncompiled/jquery.sticky.js"></script>
     </head>
     <body class="{{ isset($_COOKIE['color']) ? $_COOKIE['color'] : ''}}">
         @yield('content')

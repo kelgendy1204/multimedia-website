@@ -356,7 +356,7 @@ gulp.task('compressjs', function(cb) {
 
 gulp.task('compresscompiled', function(cb) {
 	pump([
-		gulp.src(`${mainSrcFolder}uncompiled/**/*.js`),
+		gulp.src(`${mainDestFolder}uncompiled/**/*.js`),
 		uglify({ mangle: true }),
 		gulp.dest(`${mainDestFolder}uncompiled`)
 	],

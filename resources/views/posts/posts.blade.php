@@ -131,6 +131,6 @@
             </div>
         </footer>
     </div>
-    <script type="text/javascript" src="/dist_v5/js/home-954c521fd8.js"></script>
+    <script type="text/javascript" src="/dist_v5/js/home-a5e7fe11d4.js"></script>
 @endsection
 

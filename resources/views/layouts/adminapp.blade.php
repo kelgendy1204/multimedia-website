@@ -93,6 +93,6 @@
 
         @yield('content')
     </div>
-    <script type="text/javascript" src="/dist_v5/js/admin-c1ce5a66b1.js"></script>
+    <script type="text/javascript" src="/dist_v5/js/admin-08a245ad00.js"></script>
 </body>
 </html>

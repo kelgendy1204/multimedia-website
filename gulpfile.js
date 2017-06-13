@@ -344,7 +344,7 @@ gulp.task('revrepjs', () => {
 		.pipe(gulp.dest(`${mainDestFolder}js`));
 });
 
-gulp.task('compress', function(cb) {
+gulp.task('compressjs', function(cb) {
 	pump([
 		gulp.src(`${mainDestFolder}js/**/*.js`),
 		uglify({ mangle: true }),
@@ -353,6 +353,18 @@ gulp.task('compress', function(cb) {
 		cb
 	);
 });
+
+gulp.task('compresscompiled', function(cb) {
+	pump([
+		gulp.src(`${mainSrcFolder}uncompiled/**/*.js`),
+		uglify({ mangle: true }),
+		gulp.dest(`${mainDestFolder}uncompiled`)
+	],
+		cb
+	);
+});
+
+gulp.task('compress', ['compressjs', 'compresscompiled']);
 
 gulp.task('copyFonts', () => {
 	return gulp.src([`${mainSrcFolder}fonts/**/*`])

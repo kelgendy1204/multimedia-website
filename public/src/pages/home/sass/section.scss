@@ -1,3 +1,4 @@
+$grey: #3a3f48;
 $pink: #982359;
 $deeppink: #631f3c;
 $blue: #18788f;
@@ -1205,6 +1206,31 @@ div.mainpage {
                     background-image: url('/dist_v5/images/f.svg');
                 }
             }
+        }
+    }
+    .playlists{
+        width: 850px;
+        direction: ltr;
+        display: flex;
+        justify-content: space-around;
+        padding: 10px;
+        .playlist-pic{
+            width: 150px;
+            height: 200px;
+            background-position: center center;
+            background-size: cover;
+            border-radius: 5px;
+        }
+        .sm2-bar-ui {
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .sm2-bar-ui .sm2-main-controls,
+        .sm2-bar-ui .sm2-playlist-drawer {
+            background-color: $grey;
+        }
+        .sm2-bar-ui .sm2-inline-texture {
+            background: transparent;
         }
     }
 }

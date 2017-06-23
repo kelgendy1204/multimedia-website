@@ -19,6 +19,11 @@ class Post extends Model
 		return $this->hasMany('App\Subpost', 'post_id', 'id');
 	}
 
+	public function playlists()
+	{
+		return $this->hasMany('App\Playlist', 'post_id', 'id');
+	}
+
 	public function downloadlinks()
 	{
 		return $this->hasMany('App\Downloadlink', 'post_id', 'id');

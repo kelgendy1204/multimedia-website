@@ -219,6 +219,42 @@
 
 
 
+					@if (isset($post))
+						<hr />
+						<h2 class="text-center">Playlists</h2>
+
+						@if (count($post->playlists))
+							<ul class="list-group">
+								@foreach ($post->playlists as $playlist)
+									<li class="list-group-item">
+										<div class="row">
+											<h5 class="col-md-6">
+												{{$playlist->title}}
+											</h5>
+											<div class="col-md-3 mb">
+												<a class="btn btn-primary btn-block" href="{{"/admin/posts/" . $post->id . "/online/" . $playlist->id . "/edit"}}" role="button">Edit playlist</a>
+											</div>
+											<div class="col-md-3 mb">
+												<form action="{{"/admin/posts/" . $post->id . "/online/" . $playlist->id . "/delete"}}" method="post" class="delete">
+													{{ csrf_field() }}
+													<button type="submit" class="btn btn-danger btn-block">Delete playlist</button>
+												</form>
+											</div>
+										</div>
+									</li>
+								@endforeach
+							</ul>
+
+							<hr />
+
+						@endif
+						<div class="form-group text-center">
+							<a class="btn btn-primary btn-lg" href="{{ route('createplaylist', ['post' => $post->id]) }}" role="button">Add playlist</a>
+						</div>
+					@endif
+
+
+
 
 				</div>
 			</div>

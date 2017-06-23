@@ -15,11 +15,18 @@ Route::get('/admin/posts/{categoryname}', 'PostsController@adminindexbycategory'
 
 Route::get('/{postdesc}/تحميل مباشر', 'DownloadlinksController@show')->name('download');
 
+
+
 Route::get('/admin/posts/{postid}/download/create', 'DownloadlinksController@create')->name('createdownloadlink');
+
 Route::post('/admin/posts/{postid}/download/create', 'DownloadlinksController@store')->name('storedownloadlink');
+
 Route::get('/admin/posts/{postid}/download/{downloadlinkid}/edit', 'DownloadlinksController@edit')->name('editdownloadlink');
+
 Route::post('/admin/posts/{postid}/download/{downloadlinkid}/edit', 'DownloadlinksController@update')->name('updatedownloadlink');
+
 Route::post('/admin/posts/{postid}/download/{downloadlinkid}/delete', 'DownloadlinksController@delete')->name('deletedownloadlink');
+
 // ========================================= //
 
 Route::get('/{postdesc}/مشاهدة مباشرة/{subposttitle}', 'SubpostsController@show')->name('online');
@@ -29,6 +36,9 @@ Route::post('/admin/posts/{post}/online/create', 'SubpostsController@store');
 Route::get('/admin/posts/{post}/online/{subpost}/edit', 'SubpostsController@edit');
 Route::post('/admin/posts/{post}/online/{subpost}/edit', 'SubpostsController@update');
 Route::post('/admin/posts/{post}/online/{subpost}/delete', 'SubpostsController@delete');
+
+// ========================================= //
+Route::get('/admin/posts/{post}/playlist/create', 'PlaylistController@create')->name('createplaylist');
 // ========================================= //
 
 Route::get('/category/{categoryname}', 'CategoriesController@index')->name('postsbycategory');

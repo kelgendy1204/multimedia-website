@@ -98,7 +98,6 @@
 					</div>
 				</div>
 			</div>
-			{{-- <div class="playlist-pic" style="background-image: url('{{$post->photo_url}}')"></div> --}}
 			<img class="playlist-pic" src="{{$post->photo_url}}" alt="{{$post->description}}" />
 		</div>
 		<script type="text/javascript" src="/dist_v5/js/online.js"></script>

@@ -18,7 +18,7 @@
 	}(document, 'script', 'facebook-jssdk'));</script>
 
 	<div class="page">
-{{-- 		<div class="playlists">
+ 		<div class="playlists">
 			<script type="text/javascript" src="/dist_v5/uncompiled/soundmanager2-nodebug-jsmin.js"></script>
 			<div class="sm2-bar-ui playlist-open">
 				<div class="bd sm2-main-controls">
@@ -98,10 +98,11 @@
 					</div>
 				</div>
 			</div>
-			<div class="playlist-pic" style="background-image: url('{{$post->photo_url}}')"></div>
+			{{-- <div class="playlist-pic" style="background-image: url('{{$post->photo_url}}')"></div> --}}
+			<img class="playlist-pic" src="{{$post->photo_url}}" alt="{{$post->description}}" />
 		</div>
 		<script type="text/javascript" src="/dist_v5/js/online.js"></script>
---}}
+
 
 		<div class="servers">
 			@foreach ($servers as $key=>$server)

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Post extends Model
 {
@@ -41,6 +42,15 @@ class Post extends Model
 		}
 
 		return $query->paginate(static::$paginate);
+	}
+
+	public static function get_random_posts($category_id)
+	{
+		$limit = 20;
+
+		$rows = DB::select("SELECT * FROM posts where visible = 1 AND category_id = $category_id order by created_at desc limit $limit");
+
+		return $rows;
 	}
 
 	public static function get_all_none_visible()

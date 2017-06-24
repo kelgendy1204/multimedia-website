@@ -37,10 +37,10 @@
         <meta property="fb:app_id" content="282317058844945" />
         <meta property="og:url" content="{{ Request::fullUrl() }}" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="{{URL::to('/')}}/dist_v5/images/banner2.jpg" />
+        <meta property="og:image" content="{{URL::to('/')}}/dist_v5/images/banner3.jpg" />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:image" content="{{URL::to('/')}}/dist_v5/images/banner2.jpg" />
-        <meta itemprop="image" content="{{URL::to('/')}}/dist_v5/images/banner2.jpg" />
+        <meta name="twitter:image" content="{{URL::to('/')}}/dist_v5/images/banner3.jpg" />
+        <meta itemprop="image" content="{{URL::to('/')}}/dist_v5/images/banner3.jpg" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#ffffff" />
@@ -50,7 +50,7 @@
         <link rel="manifest" href="/manifest.json" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <link rel="canonical" href="{{ Request::fullUrl() }}" />
-        <link rel="stylesheet" href="/dist_v5/css/home-e0a0a177be.css" />
+        <link rel="stylesheet" href="/dist_v5/css/home-cccc544697.css" />
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

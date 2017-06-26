@@ -15,16 +15,10 @@ Route::get('/admin/posts/{categoryname}', 'PostsController@adminindexbycategory'
 
 Route::get('/{postdesc}/تحميل مباشر', 'DownloadlinksController@show')->name('download');
 
-
-
 Route::get('/admin/posts/{postid}/download/create', 'DownloadlinksController@create')->name('createdownloadlink');
-
 Route::post('/admin/posts/{postid}/download/create', 'DownloadlinksController@store')->name('storedownloadlink');
-
 Route::get('/admin/posts/{postid}/download/{downloadlinkid}/edit', 'DownloadlinksController@edit')->name('editdownloadlink');
-
 Route::post('/admin/posts/{postid}/download/{downloadlinkid}/edit', 'DownloadlinksController@update')->name('updatedownloadlink');
-
 Route::post('/admin/posts/{postid}/download/{downloadlinkid}/delete', 'DownloadlinksController@delete')->name('deletedownloadlink');
 
 // ========================================= //
@@ -39,6 +33,9 @@ Route::post('/admin/posts/{post}/online/{subpost}/delete', 'SubpostsController@d
 
 // ========================================= //
 Route::get('/admin/posts/{post}/playlist/create', 'PlaylistController@create')->name('createplaylist');
+Route::post('/admin/posts/{post}/playlist/create', 'PlaylistController@store')->name('storeplaylist');
+
+
 // ========================================= //
 
 Route::get('/category/{categoryname}', 'CategoriesController@index')->name('postsbycategory');

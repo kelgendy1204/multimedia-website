@@ -16,7 +16,7 @@
 						</div>
 					</div>
 
-					<form method="POST" action="{{isset($playlist) ? '/admin/posts/' . $post->id . '/playlist/' . $playlist->id . '/edit' : '/admin/posts/' . $post->id . '/playlist/create'}}" class="well form-horizontal">
+					<form method="POST" action="{{isset($playlist) ? '/admin/posts/' . $post->id . '/playlist/' . $playlist->id . '/edit' : route('storeplaylist', ['post' => $post->id]) }}" class="well form-horizontal" enctype="multipart/form-data">
 
 					{{ csrf_field() }}
 
@@ -96,7 +96,7 @@
 								<strong> - OR - </strong>
 							</div>
 							<div class="col-sm-3 control-label">
-								<input type="file" class="form-control-file" name="audiolink" id="audiolink">
+								<input type="file" class="form-control-file" name="audiofile[]" id="audiofile">
 							</div>
 						</div>`;
 

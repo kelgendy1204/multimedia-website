@@ -235,7 +235,7 @@
 												<a class="btn btn-primary btn-block" href="{{"/admin/posts/" . $post->id . "/online/" . $playlist->id . "/edit"}}" role="button">Edit playlist</a>
 											</div>
 											<div class="col-md-3 mb">
-												<form action="{{"/admin/posts/" . $post->id . "/online/" . $playlist->id . "/delete"}}" method="post" class="delete">
+												<form action="{{ route('deleteplaylist', ['post' => $post->id, 'playlist' => $playlist->id]) }}" method="post" class="delete">
 													{{ csrf_field() }}
 													<button type="submit" class="btn btn-danger btn-block">Delete playlist</button>
 												</form>

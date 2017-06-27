@@ -41,7 +41,7 @@ class PlaylistController extends Controller
 		$playlist = new Playlist;
 		$playlist->title = request('title');
 		$playlist->visible = request('visible') == "on" ? true : false;
-		// $post->playlists()->save($playlist);
+		$post->playlists()->save($playlist);
 
 		$audios = [];
 		$audionames = request('audioname');
@@ -57,20 +57,35 @@ class PlaylistController extends Controller
 						$audio->name = $audionames[$index];
 						$audio->link = $audiolink;
 						$audios[] = $audio;
-					} else if($audiofile) {
+					} elseif($audiofile) {
 						if(request()->file('audiofile')[$index] && $this->isValidAudio($audiofile)) {
 							$audio = new Audio;
 							$audio->name = $audionames[$index];
 
 							$uniqid = uniqid($playlist->id, true) . "." . $audiofile->getClientOriginalExtension();
-							$audiofile->move('playlistaudios/', $uniqid);
-							$audio->link = '/playlistaudios/' . $uniqid;
+							$audiofile->move('playlistaudios/' . $playlist->title . '/' , $uniqid);
+							$audio->link = '/playlistaudios/' . $playlist->title . '/' . $uniqid;
 							$audios[] = $audio;
 						}
 					}
 				}
 			}
 			$playlist->audios()->saveMany($audios);
+		}
+
+		return redirect()->action(
+			'PostsController@edit', ['post' => $post]
+		);
+	}
+
+	public function delete(Post $post, $playlist)
+	{
+
+		$playlist = Playlist::find($playlist);
+
+		if($playlist){
+			$playlist->audios()->delete();
+			$playlist->delete();
 		}
 
 		return redirect()->action(

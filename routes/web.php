@@ -34,6 +34,7 @@ Route::post('/admin/posts/{post}/online/{subpost}/delete', 'SubpostsController@d
 // ========================================= //
 Route::get('/admin/posts/{post}/playlist/create', 'PlaylistController@create')->name('createplaylist');
 Route::post('/admin/posts/{post}/playlist/create', 'PlaylistController@store')->name('storeplaylist');
+Route::post('/admin/posts/{post}/playlist/{playlist}/delete', 'PlaylistController@delete')->name('deleteplaylist');
 
 
 // ========================================= //

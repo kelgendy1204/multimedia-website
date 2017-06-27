@@ -189,6 +189,11 @@ class PostsController extends Controller
 		}
 		$post->subposts()->delete();
 
+		foreach ($post->playlists as $playlist) {
+			$playlist->audios()->delete();
+		}
+		$post->playlists()->delete();
+
 		foreach ($post->downloadlinks as $downloadlink) {
 			$downloadlink->downloadservers()->delete();
 		}

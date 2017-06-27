@@ -232,7 +232,7 @@
 												{{$playlist->title}}
 											</h5>
 											<div class="col-md-3 mb">
-												<a class="btn btn-primary btn-block" href="{{"/admin/posts/" . $post->id . "/online/" . $playlist->id . "/edit"}}" role="button">Edit playlist</a>
+												<a class="btn btn-primary btn-block" href="{{ route('editplaylist', ['post' => $post->id, 'playlist' => $playlist->id]) }}" role="button">Edit playlist</a>
 											</div>
 											<div class="col-md-3 mb">
 												<form action="{{ route('deleteplaylist', ['post' => $post->id, 'playlist' => $playlist->id]) }}" method="post" class="delete">

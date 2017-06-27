@@ -16,7 +16,7 @@
 						</div>
 					</div>
 
-					<form method="POST" action="{{isset($playlist) ? '/admin/posts/' . $post->id . '/playlist/' . $playlist->id . '/edit' : route('storeplaylist', ['post' => $post->id]) }}" class="well form-horizontal" enctype="multipart/form-data">
+					<form method="POST" action="{{isset($playlist) ? route('updateplaylist', ['post' => $post->id, 'playlist' => $playlist->id ]) : route('storeplaylist', ['post' => $post->id]) }}" class="well form-horizontal" enctype="multipart/form-data">
 
 					{{ csrf_field() }}
 
@@ -41,14 +41,23 @@
 							@isset($playlist)
 								@if (count($playlist->audios))
 									@foreach ($playlist->audios as $audio)
+
 										<div class="form-group audio">
 											<div class="col-sm-4">
-												<input name="audioname[]" type="text" class="form-control" placeholder="Audio name" value="{{$audio->name}}" />
+												<input name="audioname[]" type="text" class="form-control" placeholder="Audio name" value="{{$audio->name}}">
 											</div>
-											<div class="col-sm-8">
-												<input name="audiolink[]" type="text" class="form-control" placeholder="Audio link" value="{{$audio->link}}" />
+											<div class="col-sm-4">
+												<input name="audiolink[]" type="text" class="form-control" placeholder="Audio link" value="{{$audio->link}}">
+											</div>
+											<div class="col-sm-1 control-label">
+												<strong> - OR - </strong>
+											</div>
+											<div class="col-sm-3 control-label">
+												<input type="file" class="form-control-file" name="audiofile[]">
 											</div>
 										</div>
+
+
 									@endforeach
 								@endif
 							@endisset
@@ -96,7 +105,7 @@
 								<strong> - OR - </strong>
 							</div>
 							<div class="col-sm-3 control-label">
-								<input type="file" class="form-control-file" name="audiofile[]" id="audiofile">
+								<input type="file" class="form-control-file" name="audiofile[]">
 							</div>
 						</div>`;
 

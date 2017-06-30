@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Playlist;
 use App\Audio;
+use App\Category;
 use File;
 
 class PlaylistController extends Controller
@@ -23,6 +24,8 @@ class PlaylistController extends Controller
 				return true;
 			case 'ogg':
 				return true;
+			case 'mp4':
+				return true;
 			case 'wav':
 				return true;
 			default:
@@ -36,9 +39,9 @@ class PlaylistController extends Controller
 
 		$post = Post::where('description', $postdesc)->latest()->first();
 
-		$playlist= $post->playlists()->where('visible', '1')->where('title', $playlisttitle)->latest()->first();
+		$playlist = $post->playlists()->where('visible', '1')->where('title', $playlisttitle)->latest()->first();
 
-		$playlists = $post->playlists()->where('visible', '1')->latest()->get();
+		$playlists = $post->playlists()->where('visible', '1')->with('audios')->latest()->get();
 
 		$category = Category::find($post->category_id);
 

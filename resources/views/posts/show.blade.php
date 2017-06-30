@@ -46,7 +46,14 @@
 					<div class="right">
 						<a href="{{route('online', ['postdesc' => $post->description, 'subposttitle' => $subpost->title])}}"><img src="/dist_v5/images/second/01.svg" alt="online watch"/></a>
 					</div>
+				@else
+					@if ($playlist)
+						<div class="right">
+							<a href="{{route('playlist', ['postdesc' => $post->description, 'playlisttitle' => $playlist->title])}}"><img src="/dist_v5/images/second/01.svg" alt="Playlist"/></a>
+						</div>
+					@endif
 				@endif
+
 				@if ($post->download_page || $post->downloadlinks()->count())
 					<div class="left"><a href="{{route('download', ['postdesc' => $post->description])}}"><img src="/dist_v5/images/second/02.svg" alt="downloads" /></a></div>
 				@endif

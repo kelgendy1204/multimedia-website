@@ -15,10 +15,11 @@
 		js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=282317058844945";
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
+	{{-- <script type="text/javascript" src="/dist_v5/uncompiled/soundmanager2-nodebug-jsmin.js"></script> --}}
+	<script type="text/javascript" src="/dist_v5/uncompiled/soundmanager2.js"></script>
 
 	<div class="page">
 		<div class="playlists">
-			<script type="text/javascript" src="/dist_v5/uncompiled/soundmanager2-nodebug-jsmin.js"></script>
 			<div class="sm2-bar-ui playlist-open">
 				<div class="bd sm2-main-controls">
 					<div class="sm2-inline-texture"></div>
@@ -72,7 +73,10 @@
 					</div>
 					<div class="sm2-playlist-wrapper">
 						<ul class="sm2-playlist-bd">
-							<li><a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20LA%20%28Prod%20Chin%20Injetti%29.mp3"><b>SonReal</b> - LA</a></li>
+							@foreach ($activeplaylist->audios as $audio)
+								<li><a href="{{ url('/') }}{{$audio->link}}"><b>{{$activeplaylist->title}}</b> - {{$audio->name}}</a></li>
+							@endforeach
+{{-- 							<li><a href="http://www.orangefreesounds.com/wp-content/uploads/2017/06/Cartoon-gulp-sound-effect.mp3"><b>Cartoon-gulp-sound-effect</b></a></li>
 							<li><a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20People%20Asking.mp3"><b>SonReal</b> - People Asking</a></li>
 							<li><a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20Already%20There%20Remix%20ft.%20Rich%20Kidd%2C%20Saukrates.mp3"><b>SonReal</b> - Already There Remix ft. Rich Kidd, Saukrates</a></li>
 							<li><a href="http://freshly-ground.com/data/audio/sm2/The%20Fugitives%20-%20Graffiti%20Sex.mp3"><b>The Fugitives</b> - Graffiti Sex</a></li>
@@ -84,7 +88,7 @@
 							<li><a href="http://freshly-ground.com/data/audio/sm2/birds-in-kauai-128kbps-aac-lc.mp4">Birds In Kaua'i (AAC)</a></li>
 							<li><a href="http://freshly-ground.com/data/audio/sm2/20130320%20-%20Po%27ipu%20Beach%20Waves.ogg">Po'ipu Beach Waves (OGG)</a></li>
 							<li><a href="http://freshly-ground.com/data/audio/sm2/bottle-pop.wav">A corked beer bottle (WAV)</a></li>
-							<li><a href="../../demo/_mp3/rain.mp3">Rain</a></li>
+							<li><a href="../../demo/_mp3/rain.mp3">Rain</a></li> --}}
 						</ul>
 					</div>
 					<div class="sm2-extra-controls">
@@ -107,7 +111,7 @@
 			<h2 class="titlee">{{ (isset($activeplaylist) && (count($playlists) > 1)) ? $activeplaylist->title : ''}} </h2>
 			<div class="share">
 				<a class="socitem google-plus">
-					<div class="g-plus" data-action="share" data-href="{{route('online', ['postdesc' => $post->description, 'playlisttitle' => $activeplaylist->title])}}" data-height="24"></div>
+					<div class="g-plus" data-action="share" data-href="{{route('playlist', ['postdesc' => $post->description, 'playlisttitle' => $activeplaylist->title])}}" data-height="24"></div>
 				</a>
 				<a class="socitem twitter" href="https://twitter.com/intent/tweet?url={{route('showpost', ['postdesc' => $post->description])}}&text={{$post->title}}&hashtags={{$post->key_words}}"></a>
 				<a class="socitem facebook"></a>
@@ -116,18 +120,12 @@
 
 		@if (count($playlists) > 1)
 			<div class="new-topic">
-				@if ($post->category->name_en == "arabic series" || $post->category->name_en == "tv" || $post->category->name_en == "english series")
-					<div class="title-topic">
-						الحلقات
-					</div>
-				@else
-					<div class="title-topic">
-						النسخ
-					</div>
-				@endif
+				<div class="title-topic">
+					ألبومات
+				</div>
 				<div class="border-topic">
 					@foreach ($playlists as $playlist)
-						<a href="{{route('online', ['postdesc' => $post->description, 'playlisttitle' => $playlist->title])}}">
+						<a href="{{route('playlist', ['postdesc' => $post->description, 'playlisttitle' => $playlist->title])}}">
 							<div class="topic-img" style="background-image: url('{{$post->photo_url}}')"> </div>
 							<p>{{$playlist->title}}</p>
 						</a>

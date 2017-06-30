@@ -58,10 +58,12 @@ class PostsController extends Controller
 		$advertisements = Advertisement::all()->keyBy('name');
 		$category = Category::find($post->category_id);
 		$subpost = $post->subposts()->where('visible', '1')->latest()->first();
+		$playlist = $post->playlists()->where('visible', '1')->latest()->first();
 		return view('posts.show', [
 			'post' => $post,
 			'category' => $category,
 			'subpost' => $subpost,
+			'playlist' => $playlist,
 			'categories' => $categories,
 			'advertisements' => $advertisements
 		]);

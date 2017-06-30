@@ -758,6 +758,7 @@
 .bd.sm2-playlist-drawer {
  /* optional: absolute positioning */
  /* position: absolute; */
+ min-height: 157px;
  z-index: 3;
  border-radius: 0px;
  width: 100%;
@@ -838,6 +839,7 @@
 }
 
 .sm2-playlist-wrapper {
+ height: 100%;
  position: relative;
  padding: 0.5em 0.5em 0.5em 0.25em;
  background-image: none, none;

@@ -32,13 +32,13 @@ Route::post('/admin/posts/{post}/online/{subpost}/edit', 'SubpostsController@upd
 Route::post('/admin/posts/{post}/online/{subpost}/delete', 'SubpostsController@delete');
 
 // ========================================= //
+Route::get('/{postdesc}/استماع مباشر/{playlisttitle}', 'PlaylistController@show')->name('playlist');
+
 Route::get('/admin/posts/{post}/playlist/create', 'PlaylistController@create')->name('createplaylist');
 Route::post('/admin/posts/{post}/playlist/create', 'PlaylistController@store')->name('storeplaylist');
 Route::post('/admin/posts/{post}/playlist/{playlist}/delete', 'PlaylistController@delete')->name('deleteplaylist');
 Route::get('/admin/posts/{post}/playlist/{playlist}/edit', 'PlaylistController@edit')->name('editplaylist');
 Route::post('/admin/posts/{post}/playlist/{playlist}/edit', 'PlaylistController@update')->name('updateplaylist');
-
-
 // ========================================= //
 
 Route::get('/category/{categoryname}', 'CategoriesController@index')->name('postsbycategory');

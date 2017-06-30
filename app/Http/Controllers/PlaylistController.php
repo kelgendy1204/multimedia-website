@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Playlist;
 use App\Audio;
+use File;
 
 class PlaylistController extends Controller
 {
@@ -29,6 +30,28 @@ class PlaylistController extends Controller
 		}
 	}
 
+	// get : /{postdesc}/مشاهدة مباشرة/{playlisttitle} - watch post online
+	public function show($postdesc, $playlisttitle) {
+		$categories = Category::all();
+
+		$post = Post::where('description', $postdesc)->latest()->first();
+
+		$playlist= $post->playlists()->where('visible', '1')->where('title', $playlisttitle)->latest()->first();
+
+		$playlists = $post->playlists()->where('visible', '1')->latest()->get();
+
+		$category = Category::find($post->category_id);
+
+		$randomPosts = collect(Post::get_random_posts($post->category_id))->shuffle();
+
+		$audios = [];
+		if($playlist){
+			$audios = $playlist->audios()->orderBy('name')->get();
+		}
+
+		return view('posts.playlist', ['categories' => $categories, 'post' => $post, 'playlists' => $playlists, 'category' => $category, 'activeplaylist' => $playlist, 'audios' => $audios, 'randomPosts' => $randomPosts]);
+	}
+
 	// get : admin/posts/{id}/playlist/create - create a post view
 	public function create(Post $post)
 	{
@@ -48,17 +71,16 @@ class PlaylistController extends Controller
 
 		if($audionames){
 			foreach ($audionames as $index => $audioname) {
-				if($audioname){
+				if ($audioname){
 					$audiolink = request('audiolink')[$index];
-					dd(request()->file('audiofile'));
-					$audiofile = request()->file('audiofile')[$index];
+					$audiofile = array_key_exists( $index, ((!request()->file('audiofile')) ? [] : request()->file('audiofile')) ) ? request()->file('audiofile')[$index] : null;
 
-					if($audiolink) {
+					if ($audiolink) {
 						$audio = new Audio;
 						$audio->name = $audionames[$index];
 						$audio->link = $audiolink;
 						$audios[] = $audio;
-					} elseif($audiofile) {
+					} elseif ($audiofile) {
 						if(request()->file('audiofile')[$index] && $this->isValidAudio($audiofile)) {
 							$audio = new Audio;
 							$audio->name = $audionames[$index];
@@ -103,19 +125,18 @@ class PlaylistController extends Controller
 		$audios = [];
 		$audionames = request('audioname');
 
-		if($audionames){
+		if ($audionames){
 			foreach ($audionames as $index => $audioname) {
-				if($audioname){
+				if ($audioname){
 					$audiolink = request('audiolink')[$index];
-					dd(request()->file('audiofile'));
-					$audiofile = request()->file('audiofile')[$index];
+					$audiofile = array_key_exists( $index, ((!request()->file('audiofile')) ? [] : request()->file('audiofile')) ) ? request()->file('audiofile')[$index] : null;
 
 					if($audiolink) {
 						$audio = new Audio;
 						$audio->name = $audionames[$index];
 						$audio->link = $audiolink;
 						$audios[] = $audio;
-					} elseif($audiofile) {
+					} elseif ($audiofile) {
 						if(request()->file('audiofile')[$index] && $this->isValidAudio($audiofile)) {
 							$audio = new Audio;
 							$audio->name = $audionames[$index];
@@ -145,6 +166,7 @@ class PlaylistController extends Controller
 	{
 
 		$playlist = Playlist::find($playlist);
+		File::deleteDirectory(public_path('playlistaudios/' . $playlist->title));
 
 		if($playlist){
 			$playlist->audios()->delete();

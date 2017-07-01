@@ -22,3 +22,7 @@ function createCookie(name,value,days) {
 
 $('.side-bans.home_right a').sticky({topSpacing: 80});
 $('.side-bans.home_left a').sticky({topSpacing: 80});
+
+setTimeout(() => {
+	window.location.reload(false);
+}, 5 * 60 * 1000);

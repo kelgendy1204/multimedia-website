@@ -29,6 +29,7 @@
           zwaar_day = zwaar_day.getDate();
           document.write("<script type='text\/javascript' src='" + (location.protocol == 'https:' ? 'https:' : 'http:') + "//code.zwaar.org\/pcode/code-673.js?day=" + zwaar_day + "'><\/script>");
         </script>
+        <script type="text/javascript" src="//go.oclaserver.com/apu.php?zoneid=874590"></script>
     </head>
     <body class="page links {{ isset($_COOKIE['color']) ? $_COOKIE['color'] : ''}}">
         <div class="insidepage">

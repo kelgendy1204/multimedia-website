@@ -60,3 +60,8 @@ Route::get('/getlink/{hash}', 'LinksController@translate');
 
 Route::get('/admin/links/create', 'LinksController@create');
 Route::post('/admin/links', 'LinksController@store');
+
+// ================================================ //
+
+Route::get('/admin/metadata', 'MetadataController@index')->name('metadata');
+Route::post('/admin/metadata', 'MetadataController@save')->name('editmetadata');

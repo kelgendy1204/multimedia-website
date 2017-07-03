@@ -7,6 +7,7 @@ use App\Post;
 use App\Subpost;
 use App\Server;
 use App\Category;
+use App\Metadata;
 
 class SubpostsController extends Controller
 {
@@ -35,7 +36,13 @@ class SubpostsController extends Controller
 			$servers = $subpost->servers()->orderBy('name')->get();
 		}
 
-		return view('posts.online', ['categories' => $categories, 'post' => $post, 'subposts' => $subposts, 'category' => $category, 'activesubpost' => $subpost, 'servers' => $servers, 'randomPosts' => $randomPosts]);
+		return view('posts.online',  array_merge([
+			'categories' => $categories,
+			'post' => $post, 'subposts' => $subposts,
+			'category' => $category,
+			'activesubpost' => $subpost,
+			'servers' => $servers,
+			'randomPosts' => $randomPosts], Metadata::getMetadata()) );
 	}
 
 	// get : admin/posts/{id}/online/create - create a post view

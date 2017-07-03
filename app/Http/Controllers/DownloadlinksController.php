@@ -7,6 +7,7 @@ use App\Post;
 use App\Category;
 use App\Downloadlink;
 use App\Downloadserver;
+use App\Metadata;
 use \Helpers\Urlshorten;
 
 class DownloadlinksController extends Controller
@@ -29,7 +30,7 @@ class DownloadlinksController extends Controller
 
 		$randomPosts = collect(Post::get_random_posts($post->category_id))->shuffle();
 
-		return view('posts.download', ['categories' => $categories, 'post' => $post, 'downloadlinks' => $downloadlinks, 'category' => $category, 'randomPosts' => $randomPosts]);
+		return view('posts.download', array_merge(['categories' => $categories, 'post' => $post, 'downloadlinks' => $downloadlinks, 'category' => $category, 'randomPosts' => $randomPosts], Metadata::getMetadata()) );
 	}
 
 	// get : admin/posts/{id}/download/create - create download links

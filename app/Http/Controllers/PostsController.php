@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use App\Post;
 use App\Category;
+use App\Metadata;
 use App\Advertisement;
 
 class PostsController extends Controller
@@ -26,12 +27,12 @@ class PostsController extends Controller
 		$advertisements = Advertisement::all()->keyBy('name');
 		$posts = Post::get_all_visible(null, $search, null);
 
-		return view('posts.posts', [
+		return view('posts.posts', array_merge([
 			'posts' => $posts,
 			'categories' => $categories,
 			'parameters' => $parameters,
 			'advertisements' => $advertisements,
-		]);
+		], Metadata::getMetadata()) );
 
 	}
 

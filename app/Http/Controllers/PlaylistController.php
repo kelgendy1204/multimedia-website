@@ -7,6 +7,7 @@ use App\Post;
 use App\Playlist;
 use App\Audio;
 use App\Category;
+use App\Metadata;
 use File;
 
 class PlaylistController extends Controller
@@ -52,7 +53,14 @@ class PlaylistController extends Controller
 			$audios = $playlist->audios()->orderBy('name')->get();
 		}
 
-		return view('posts.playlist', ['categories' => $categories, 'post' => $post, 'playlists' => $playlists, 'category' => $category, 'activeplaylist' => $playlist, 'audios' => $audios, 'randomPosts' => $randomPosts]);
+		return view('posts.playlist', array_merge([
+			'categories' => $categories,
+			'post' => $post,
+			'playlists' => $playlists,
+			'category' => $category,
+			'activeplaylist' => $playlist,
+			'audios' => $audios,
+			'randomPosts' => $randomPosts], Metadata::getMetadata()) );
 	}
 
 	// get : admin/posts/{id}/playlist/create - create a post view

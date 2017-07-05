@@ -10,7 +10,7 @@
 				<div class="panel-heading text-center"><h4>Edit Site Metadata</h4></div>
 				<div class="panel-body">
 
-					<form method="POST" action="{{ route('editmetadata') }}" class="well form-horizontal">
+					<form method="POST" action="{{ route('editmetadata') }}" class="well form-horizontal" enctype="multipart/form-data">
 
 					{{ csrf_field() }}
 
@@ -52,6 +52,20 @@
 						</div>
 
 						<hr />
+
+						@if ($home_banner->value)
+							<div class="row form-group">
+								<div class="col-md-4 col-md-offset-4">
+									<img src="{{$home_banner->value}}" alt="{{$home_banner->name}}" class="img-rounded img-responsive">
+								</div>
+							</div>
+						@endif
+
+
+						<div class="form-group row">
+							<label for="home_banner" class="col-xs-12">Upload home banner</label>
+							<input type="file" class="form-control-file col-xs-12" name="home_banner" id="home_banner">
+						</div>
 
 						<div class="form-check text-center">
 							<button type="submit" class="btn btn-primary btn-lg">Edit metadata</button>

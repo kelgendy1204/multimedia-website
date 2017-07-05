@@ -64,7 +64,7 @@
 
         <section>
             <div class="elementscontainer">
-                <div class="img-banner"></div>
+                <div class="img-banner" style="{{ $home_banner && $home_banner->value ? 'background-image: url(' . $home_banner->value . ')' : '' }}"></div>
 
                 <div class="category_search">
                     <ul class="category-container">

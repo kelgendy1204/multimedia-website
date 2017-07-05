@@ -32,7 +32,7 @@ class PostsController extends Controller
 			'categories' => $categories,
 			'parameters' => $parameters,
 			'advertisements' => $advertisements,
-		], Metadata::getMetadata()) );
+		], Metadata::getMetadataForHome()) );
 
 	}
 

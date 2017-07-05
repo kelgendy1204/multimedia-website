@@ -3,7 +3,8 @@
 /public/storage
 /public/postimages
 /public/categoryimages
-public/playlistaudios
+/public/playlistaudios
+/public/bansimages/
 /public/dist*
 /storage/*.key
 /vendor

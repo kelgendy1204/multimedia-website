@@ -15,8 +15,8 @@
 		js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=282317058844945";
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
-	{{-- <script type="text/javascript" src="/dist_v5/uncompiled/soundmanager2-nodebug-jsmin.js"></script> --}}
-	<script type="text/javascript" src="/dist_v5/uncompiled/soundmanager2.js"></script>
+	<script type="text/javascript" src="/dist_v5/uncompiled/soundmanager2-nodebug-jsmin.js"></script>
+	{{-- <script type="text/javascript" src="/dist_v5/uncompiled/soundmanager2.js"></script> --}}
 
 	<div class="page">
 		<div class="playlists">
@@ -67,43 +67,45 @@
 						</div>
 					</div>
 				</div>
-				<div class="bd sm2-playlist-drawer sm2-element">
-					<div class="sm2-inline-texture">
-						<div class="sm2-box-shadow"></div>
-					</div>
-					<div class="sm2-playlist-wrapper">
-						<ul class="sm2-playlist-bd">
-							@foreach ($activeplaylist->audios as $audio)
-								<li><a href="{{ url('/') }}{{$audio->link}}"><b>{{$activeplaylist->title}}</b> - {{$audio->name}}</a></li>
-							@endforeach
-{{-- 							<li><a href="http://www.orangefreesounds.com/wp-content/uploads/2017/06/Cartoon-gulp-sound-effect.mp3"><b>Cartoon-gulp-sound-effect</b></a></li>
-							<li><a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20People%20Asking.mp3"><b>SonReal</b> - People Asking</a></li>
-							<li><a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20Already%20There%20Remix%20ft.%20Rich%20Kidd%2C%20Saukrates.mp3"><b>SonReal</b> - Already There Remix ft. Rich Kidd, Saukrates</a></li>
-							<li><a href="http://freshly-ground.com/data/audio/sm2/The%20Fugitives%20-%20Graffiti%20Sex.mp3"><b>The Fugitives</b> - Graffiti Sex</a></li>
-							<li><a href="http://freshly-ground.com/data/audio/sm2/Adrian%20Glynn%20-%20Seven%20Or%20Eight%20Days.mp3"><b>Adrian Glynn</b> - Seven Or Eight Days</a></li>
-							<li><a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20I%20Tried.mp3"><b>SonReal</b> - I Tried</a></li>
-							<li><a href="http://freshly-ground.com/data/audio/sm2/gong-192kbps.mp3">32" Gong Sounds (rubber + standard mallets)</a></li>
-							<li><a href="http://freshly-ground.com/data/audio/mpc/20060826%20-%20Armstrong.mp3">Armstrong Beat</a></li>
-							<li><a href="http://freshly-ground.com/data/audio/mpc/20090119%20-%20Untitled%20Groove.mp3">Untitled Groove</a></li>
-							<li><a href="http://freshly-ground.com/data/audio/sm2/birds-in-kauai-128kbps-aac-lc.mp4">Birds In Kaua'i (AAC)</a></li>
-							<li><a href="http://freshly-ground.com/data/audio/sm2/20130320%20-%20Po%27ipu%20Beach%20Waves.ogg">Po'ipu Beach Waves (OGG)</a></li>
-							<li><a href="http://freshly-ground.com/data/audio/sm2/bottle-pop.wav">A corked beer bottle (WAV)</a></li>
-							<li><a href="../../demo/_mp3/rain.mp3">Rain</a></li> --}}
-						</ul>
-					</div>
-					<div class="sm2-extra-controls">
-						<div class="bd">
-							<div class="sm2-inline-element sm2-button-element">
-								<a href="#prev" title="Previous" class="sm2-inline-button sm2-icon-previous">&lt; previous</a>
-							</div>
-							<div class="sm2-inline-element sm2-button-element">
-								<a href="#next" title="Next" class="sm2-inline-button sm2-icon-next">&gt; next</a>
+				<div class="lower-playlist">
+					<div class="bd sm2-playlist-drawer sm2-element">
+						<div class="sm2-inline-texture">
+							<div class="sm2-box-shadow"></div>
+						</div>
+						<div class="sm2-playlist-wrapper">
+							<ul class="sm2-playlist-bd">
+								@foreach ($activeplaylist->audios as $audio)
+									<li><a href="{{$audio->link}}"><b>{{$activeplaylist->title}}</b> - {{$audio->name}}</a></li>
+								@endforeach
+	{{-- 							<li><a href="http://www.orangefreesounds.com/wp-content/uploads/2017/06/Cartoon-gulp-sound-effect.mp3"><b>Cartoon-gulp-sound-effect</b></a></li>
+								<li><a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20People%20Asking.mp3"><b>SonReal</b> - People Asking</a></li>
+								<li><a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20Already%20There%20Remix%20ft.%20Rich%20Kidd%2C%20Saukrates.mp3"><b>SonReal</b> - Already There Remix ft. Rich Kidd, Saukrates</a></li>
+								<li><a href="http://freshly-ground.com/data/audio/sm2/The%20Fugitives%20-%20Graffiti%20Sex.mp3"><b>The Fugitives</b> - Graffiti Sex</a></li>
+								<li><a href="http://freshly-ground.com/data/audio/sm2/Adrian%20Glynn%20-%20Seven%20Or%20Eight%20Days.mp3"><b>Adrian Glynn</b> - Seven Or Eight Days</a></li>
+								<li><a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20I%20Tried.mp3"><b>SonReal</b> - I Tried</a></li>
+								<li><a href="http://freshly-ground.com/data/audio/sm2/gong-192kbps.mp3">32" Gong Sounds (rubber + standard mallets)</a></li>
+								<li><a href="http://freshly-ground.com/data/audio/mpc/20060826%20-%20Armstrong.mp3">Armstrong Beat</a></li>
+								<li><a href="http://freshly-ground.com/data/audio/mpc/20090119%20-%20Untitled%20Groove.mp3">Untitled Groove</a></li>
+								<li><a href="http://freshly-ground.com/data/audio/sm2/birds-in-kauai-128kbps-aac-lc.mp4">Birds In Kaua'i (AAC)</a></li>
+								<li><a href="http://freshly-ground.com/data/audio/sm2/20130320%20-%20Po%27ipu%20Beach%20Waves.ogg">Po'ipu Beach Waves (OGG)</a></li>
+								<li><a href="http://freshly-ground.com/data/audio/sm2/bottle-pop.wav">A corked beer bottle (WAV)</a></li>
+								<li><a href="../../demo/_mp3/rain.mp3">Rain</a></li> --}}
+							</ul>
+						</div>
+						<div class="sm2-extra-controls">
+							<div class="bd">
+								<div class="sm2-inline-element sm2-button-element">
+									<a href="#prev" title="Previous" class="sm2-inline-button sm2-icon-previous">&lt; previous</a>
+								</div>
+								<div class="sm2-inline-element sm2-button-element">
+									<a href="#next" title="Next" class="sm2-inline-button sm2-icon-next">&gt; next</a>
+								</div>
 							</div>
 						</div>
 					</div>
+					<img class="playlist-pic" src="{{$post->photo_url}}" alt="{{$post->description}}" />
 				</div>
 			</div>
-			<img class="playlist-pic" src="{{$post->photo_url}}" alt="{{$post->description}}" />
 		</div>
 		<script type="text/javascript" src="/dist_v5/js/online.js"></script>
 

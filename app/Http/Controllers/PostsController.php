@@ -60,14 +60,14 @@ class PostsController extends Controller
 		$category = Category::find($post->category_id);
 		$subpost = $post->subposts()->where('visible', '1')->latest()->first();
 		$playlist = $post->playlists()->where('visible', '1')->latest()->first();
-		return view('posts.show', [
+		return view('posts.show', array_merge([
 			'post' => $post,
 			'category' => $category,
 			'subpost' => $subpost,
 			'playlist' => $playlist,
 			'categories' => $categories,
 			'advertisements' => $advertisements
-		]);
+		], Metadata::getMetadata()) );
 	}
 
 	// get : /{postdesc}/alt/{num} - show a post

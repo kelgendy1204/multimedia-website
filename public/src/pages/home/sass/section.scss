@@ -1209,9 +1209,10 @@ div.mainpage {
             }
         }
     }
+
     .playlists{
         width: 850px;
-        height: 200px;
+        height: 220px;
         direction: ltr;
         display: flex;
         justify-content: space-around;
@@ -1219,22 +1220,45 @@ div.mainpage {
         .playlist-pic{
             height: 100%;
             border-radius: 5px;
+            margin: 0 20px;
         }
         .sm2-bar-ui {
+            display: flex;
+            flex-direction: column;
             font-size: 16px;
             border-radius: 5px;
-        }
-        .sm2-bar-ui .sm2-main-controls,
-        .sm2-bar-ui .sm2-playlist-drawer {
-            background-color: $grey;
-        }
-        .sm2-bar-ui .sm2-inline-texture {
-            background: transparent;
-        }
-        .sm2-progress-bar{
-            background-color: #268186;
+            max-width: 100%;
+            .sm2-main-controls, .sm2-playlist-drawer {
+                background-color: $grey;
+            }
+            .sm2-inline-texture {
+                background: transparent;
+            }
+            .sm2-inline-status {
+                width: 100%;
+                min-width: initial;
+                max-width: initial;
+                .sm2-playlist-bd{
+                    >li{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+            }
+            .sm2-main-controls{
+                margin-bottom: 20px;
+            }
+            .sm2-progress-bar{
+                background-color: #268186;
+            }
+            .lower-playlist{
+                display: flex;
+                height: 100%;
+            }
         }
     }
+
 }
 
 body.links{

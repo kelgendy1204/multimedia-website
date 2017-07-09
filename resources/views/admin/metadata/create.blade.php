@@ -55,7 +55,8 @@
 
 						@if ($home_banner->value)
 							<div class="row form-group">
-								<div class="col-md-4 col-md-offset-4">
+								<div class="col-md-12">
+								{{-- <div class="col-md-4 col-md-offset-4"> --}}
 									<img src="{{$home_banner->value}}" alt="{{$home_banner->name}}" class="img-rounded img-responsive">
 								</div>
 							</div>

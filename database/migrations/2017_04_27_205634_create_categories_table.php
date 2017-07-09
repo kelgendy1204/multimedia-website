@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name')->unique();
             $table->string('name_en')->unique();
             $table->string('color')->nullable();
+            $table->string('category_banner')->nullable();
 
             $table->text('key_words')->nullable();
             $table->text('meta_description')->nullable();

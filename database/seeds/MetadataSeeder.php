@@ -15,7 +15,8 @@ class MetadataSeeder extends Seeder
         DB::table('metadata')->insert(array(
         	 array('name' => 'keywords'),
         	 array('name' => 'description'),
-        	 array('name' => 'scripts')
+             array('name' => 'scripts'),
+        	 array('name' => 'home_banner')
         ));
     }
 }

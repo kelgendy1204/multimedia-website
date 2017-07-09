@@ -64,7 +64,12 @@
 
         <section>
             <div class="elementscontainer">
-                <div class="img-banner" style="{{ $home_banner && $home_banner->value ? 'background-image: url(' . $home_banner->value . ')' : '' }}"></div>
+
+                @if (isset($activecategory))
+                    <div class="img-banner" style="{{ $activecategory->category_banner ? 'background-image: url(' . $activecategory->category_banner . ')' : '' }}"></div>
+                @else
+                    <div class="img-banner" style="{{ $home_banner->value ? 'background-image: url(' . $home_banner->value . ')' : '' }}"></div>
+                @endif
 
                 <div class="category_search">
                     <ul class="category-container">

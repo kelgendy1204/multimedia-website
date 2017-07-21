@@ -78,6 +78,24 @@
 
 						<hr />
 
+						@if (isset($playlist))
+							<div class="row form-group">
+								<h1 class="text-center">Playlist photo</h1>
+							</div>
+							@isset ($playlist->photo_url)
+								<div class="row form-group">
+									<div class="col-md-4 col-md-offset-4">
+										<img src="{{$playlist->photo_url}}" alt="playlist photo" class="img-rounded img-responsive">
+									</div>
+								</div>
+							@endisset
+						@endif
+
+						<div class="form-group row">
+							<label for="photo_url" class="col-xs-12">Upload playlist photo</label>
+							<input type="file" class="form-control-file col-xs-12" name="photo_url" id="photo_url">
+						</div>
+
 						<div class="form-check text-center">
 							<button type="submit" class="btn btn-primary btn-lg">{{isset($playlist) ? "Edit playlist" : "Create playlist"}}</button>
 						</div>

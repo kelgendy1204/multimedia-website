@@ -103,7 +103,11 @@
 							</div>
 						</div>
 					</div>
-					<img class="playlist-pic" src="{{$post->photo_url}}" alt="{{$post->description}}" />
+					@if (isset($activeplaylist->photo_url))
+						<img class="playlist-pic" src="{{$activeplaylist->photo_url}}" alt="{{$post->description}}" />
+					@else
+						<img class="playlist-pic" src="{{$post->photo_url}}" alt="{{$post->description}}" />
+					@endif
 				</div>
 			</div>
 		</div>
@@ -128,7 +132,11 @@
 				<div class="border-topic">
 					@foreach ($playlists as $playlist)
 						<a href="{{route('playlist', ['postdesc' => $post->description, 'playlisttitle' => $playlist->title])}}">
-							<div class="topic-img" style="background-image: url('{{$post->photo_url}}')"> </div>
+							@if (isset($playlist->photo_url))
+								<div class="topic-img" style="background-image: url('{{$playlist->photo_url}}')"> </div>
+							@else
+								<div class="topic-img" style="background-image: url('{{$post->photo_url}}')"> </div>
+							@endif
 							<p>{{$playlist->title}}</p>
 						</a>
 					@endforeach

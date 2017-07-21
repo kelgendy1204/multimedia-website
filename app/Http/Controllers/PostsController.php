@@ -18,6 +18,25 @@ class PostsController extends Controller
 		$this->middleware('IsAdmin')->only(['adminindex', 'create', 'store', 'edit', 'update', 'delete', 'adminindexbycategory']);
 	}
 
+	private function showActivePost($postdesc)
+	{
+		$categories = Category::all();
+		$post = Post::where('description', $postdesc)->latest()->first();
+		$post->increment('visits');
+		$advertisements = Advertisement::all()->keyBy('name');
+		$category = Category::find($post->category_id);
+		$subpost = $post->subposts()->where('visible', '1')->latest()->first();
+		$playlist = $post->playlists()->where('visible', '1')->latest()->first();
+		return view('posts.show', array_merge([
+			'post' => $post,
+			'category' => $category,
+			'subpost' => $subpost,
+			'playlist' => $playlist,
+			'categories' => $categories,
+			'advertisements' => $advertisements
+		], Metadata::getMetadata()) );
+	}
+
 	// get : / home page
 	public function index(Request $request) {
 		$parameters = Input::except('page');
@@ -53,38 +72,12 @@ class PostsController extends Controller
 
 	// get : /{postdesc} - show a post
 	public function show($postdesc) {
-		$categories = Category::all();
-		$post = Post::where('description', $postdesc)->latest()->first();
-		$post->increment('visits');
-		$advertisements = Advertisement::all()->keyBy('name');
-		$category = Category::find($post->category_id);
-		$subpost = $post->subposts()->where('visible', '1')->latest()->first();
-		$playlist = $post->playlists()->where('visible', '1')->latest()->first();
-		return view('posts.show', array_merge([
-			'post' => $post,
-			'category' => $category,
-			'subpost' => $subpost,
-			'playlist' => $playlist,
-			'categories' => $categories,
-			'advertisements' => $advertisements
-		], Metadata::getMetadata()) );
+		return $this->showActivePost($postdesc);
 	}
 
 	// get : /{postdesc}/alt/{num} - show a post
 	public function showalt($postdesc, $num) {
-		$categories = Category::all();
-		$post = Post::where('description', $postdesc)->latest()->first();
-		$post->increment('visits');
-		$advertisements = Advertisement::all()->keyBy('name');
-		$category = Category::find($post->category_id);
-		$subpost = $post->subposts()->where('visible', '1')->latest()->first();
-		return view('posts.show', [
-			'post' => $post,
-			'category' => $category,
-			'subpost' => $subpost,
-			'categories' => $categories,
-			'advertisements' => $advertisements
-		]);
+		return $this->showActivePost($postdesc);
 	}
 
 	// get : admin/posts/{id}/edit - edit a post view

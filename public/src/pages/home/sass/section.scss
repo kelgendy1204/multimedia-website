@@ -1168,7 +1168,8 @@ div.mainpage {
         h2 {
             margin: 0;
             font-weight: bold;
-            font-size: 1.4em;
+            // font-size: 1.4em;
+            font-size: 1em;
             color: #3a3f48;
             font-family: jf;
             @media screen and (max-width: 850px) {
@@ -1220,7 +1221,8 @@ div.mainpage {
         .playlist-pic{
             height: 100%;
             border-radius: 5px;
-            margin: 0 20px;
+            margin: 0 0 0 20px;
+            width: 120px;
         }
         .sm2-bar-ui {
             display: flex;

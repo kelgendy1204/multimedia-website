@@ -75,6 +75,16 @@ class SubpostsController extends Controller
 			$subpost->servers()->saveMany($servers);
 		}
 
+		$imageFile = request()->file('photo_url');
+
+		if(request()->hasFile('photo_url') && $imageFile->isValid()) {
+			$uniqid = uniqid($post->id . $subpost->id, true) . "." . $imageFile->getClientOriginalExtension();
+			$imageFile->move('subpostimages/', $uniqid);
+			$subpost->photo_url = "/subpostimages/" . $uniqid;
+		}
+
+		$subpost->save();
+
 		return redirect()->action(
 			'PostsController@edit', ['post' => $post]
 		);
@@ -118,6 +128,15 @@ class SubpostsController extends Controller
 
 		$subpost->servers()->delete();
 		$subpost->servers()->saveMany($servers);
+
+		$imageFile = request()->file('photo_url');
+
+		if(request()->hasFile('photo_url') && $imageFile->isValid()) {
+			$uniqid = uniqid($post->id . $subpost->id, true) . "." . $imageFile->getClientOriginalExtension();
+			$imageFile->move('subpostimages/', $uniqid);
+			$subpost->photo_url = "/subpostimages/" . $uniqid;
+		}
+
 		$subpost->save();
 
 		return redirect()->action(

@@ -5,6 +5,8 @@
 /public/categoryimages
 /public/playlistaudios
 /public/bansimages/
+/public/playlistimages/
+/public/subpostimages/
 /public/dist*
 /storage/*.key
 /vendor

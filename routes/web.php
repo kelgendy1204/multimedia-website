@@ -24,9 +24,9 @@ Route::post('/admin/posts/{postid}/download/{downloadlinkid}/delete', 'Downloadl
 
 Route::get('/{postdesc}/مشاهدة مباشرة/{subposttitle}', 'SubpostsController@show')->name('online');
 
-Route::get('/admin/posts/{post}/online/create', 'SubpostsController@create');
+Route::get('/admin/posts/{post}/online/create', 'SubpostsController@create')->name('storesubpost');
 Route::post('/admin/posts/{post}/online/create', 'SubpostsController@store');
-Route::get('/admin/posts/{post}/online/{subpost}/edit', 'SubpostsController@edit');
+Route::get('/admin/posts/{post}/online/{subpost}/edit', 'SubpostsController@edit')->name('editsubpost');
 Route::post('/admin/posts/{post}/online/{subpost}/edit', 'SubpostsController@update');
 Route::post('/admin/posts/{post}/online/{subpost}/delete', 'SubpostsController@delete');
 // ========================================= //

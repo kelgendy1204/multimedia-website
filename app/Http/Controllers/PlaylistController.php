@@ -107,6 +107,16 @@ class PlaylistController extends Controller
 			$playlist->audios()->saveMany($audios);
 		}
 
+		$imageFile = request()->file('photo_url');
+
+		if(request()->hasFile('photo_url') && $imageFile->isValid()) {
+			$uniqid = uniqid($post->id . $playlist->id, true) . "." . $imageFile->getClientOriginalExtension();
+			$imageFile->move('playlistimages/', $uniqid);
+			$playlist->photo_url = "/playlistimages/" . $uniqid;
+		}
+
+		$playlist->save();
+
 		return redirect()->action(
 			'PostsController@edit', ['post' => $post]
 		);
@@ -165,6 +175,15 @@ class PlaylistController extends Controller
 
 		$playlist->audios()->delete();
 		$playlist->audios()->saveMany($audios);
+
+		$imageFile = request()->file('photo_url');
+
+		if(request()->hasFile('photo_url') && $imageFile->isValid()) {
+			$uniqid = uniqid($post->id . $playlist->id, true) . "." . $imageFile->getClientOriginalExtension();
+			$imageFile->move('playlistimages/', $uniqid);
+			$playlist->photo_url = "/playlistimages/" . $uniqid;
+		}
+
 		$playlist->save();
 
 		return redirect()->action(

@@ -37,7 +37,7 @@
         <meta name="twitter:image" content="{{URL::to('/')}}{{$post->photo_url}}" />
 
         <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css" />
-        <link rel="stylesheet" href="/dist_v5/css/home.css" />
+        <link rel="stylesheet" href="/dist_v6/css/home.css" />
 
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
@@ -77,7 +77,7 @@
                 @endisset
                 <div class="logo">
                     <a href="{{URL::to('/')}}">
-                        <img src="/dist_v5/images/logo.svg" alt="logo" />
+                        <img src="/dist_v6/images/logo.svg" alt="logo" />
                     </a>
                 </div>
             </header>
@@ -85,7 +85,7 @@
                 <ul class="category-container">
                     <li>
                         <a href="{{url('/')}}" class="category">
-                            <div class="pic" style="background-image: url(/dist_v5/images/home.svg)"></div>
+                            <div class="pic" style="background-image: url(/dist_v6/images/home.svg)"></div>
                             <div class="content">
                                 <h2>الرئيسية</h2>
                             </div>
@@ -107,7 +107,7 @@
             <footer>
                 <div class="elementscontainer">
                     <div class="copy">
-                       <a href="{{URL::to('/')}}" class="pic"><img src="/dist_v5/images/home.svg" alt="homepage"></a><div class="content"><p>جميع الحقوق محفوظة  لدى منتديات مزيكا تو داي</p></div>
+                       <a href="{{URL::to('/')}}" class="pic"><img src="/dist_v6/images/home.svg" alt="homepage"></a><div class="content"><p>جميع الحقوق محفوظة  لدى منتديات مزيكا تو داي</p></div>
                     </div>
                 </div>
             </footer>

@@ -13,8 +13,8 @@
                             <span></span>
                         </div>
                     </a>
-                    <a class="headercontent" href="{{URL::to('/')}}"><div class="pic"><img src="/dist_v5/images/home.svg" alt="homepage"></div><div class="content"><p>الرئيسية</p></div></a>
-                    <a class="headercontent" href="http://forums.mazika2day.com"><div class="pic"><img src="/dist_v5/images/montadayat.svg" alt="forum"></div><div class="content"><p>المنتديات</p></div></a>
+                    <a class="headercontent" href="{{URL::to('/')}}"><div class="pic"><img src="/dist_v6/images/home.svg" alt="homepage"></div><div class="content"><p>الرئيسية</p></div></a>
+                    <a class="headercontent" href="http://forums.mazika2day.com"><div class="pic"><img src="/dist_v6/images/montadayat.svg" alt="forum"></div><div class="content"><p>المنتديات</p></div></a>
                 </div>
                 <div class="center">
                     <button class="colorbtn grey" data-color="grey"></button>
@@ -33,7 +33,7 @@
                         <div class="soc-img facebook"></div>
                     </a>
                     <a class="logo" href="{{URL::to('/')}}">
-                        <img src="/dist_v5/images/logo.svg" alt="logo"/>
+                        <img src="/dist_v6/images/logo.svg" alt="logo"/>
                     </a>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                 <ul>
                     <li>
                         <a href="{{route('home')}}">
-                            <div class="category-img" style="background-image: url(/dist_v5/images/home.svg)"></div>
+                            <div class="category-img" style="background-image: url(/dist_v6/images/home.svg)"></div>
                             <p>الرئيسية</p>
                         </a>
                     </li>
@@ -131,10 +131,10 @@
         <footer>
             <div class="elementscontainer">
                 <div class="copy">
-                    <a href="{{URL::to('/')}}" class="pic"><img src="/dist_v5/images/home.svg" alt="homepage"></a><div class="content"><p>جميع الحقوق محفوظة  لدى منتديات مزيكا تو داي</p></div>
+                    <a href="{{URL::to('/')}}" class="pic"><img src="/dist_v6/images/home.svg" alt="homepage"></a><div class="content"><p>جميع الحقوق محفوظة  لدى منتديات مزيكا تو داي</p></div>
                 </div>
             </div>
         </footer>
     </div>
-    <script type="text/javascript" src="/dist_v5/js/home.js"></script>
+    <script type="text/javascript" src="/dist_v6/js/home.js"></script>
 @endsection

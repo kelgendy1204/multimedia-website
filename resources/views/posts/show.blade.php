@@ -44,18 +44,18 @@
 			<div class="download">
 				@if ($subpost)
 					<div class="right">
-						<a href="{{route('online', ['postdesc' => $post->description, 'subposttitle' => $subpost->title])}}"><img src="/dist_v5/images/second/3.svg" alt="online watch"/></a>
+						<a href="{{route('online', ['postdesc' => $post->description, 'subposttitle' => $subpost->title])}}"><img src="/dist_v6/images/second/3.svg" alt="online watch"/></a>
 					</div>
 				@else
 					@if ($playlist)
 						<div class="right">
-							<a href="{{route('playlist', ['postdesc' => $post->description, 'playlisttitle' => $playlist->title])}}"><img src="/dist_v5/images/second/2.svg" alt="Playlist"/></a>
+							<a href="{{route('playlist', ['postdesc' => $post->description, 'playlisttitle' => $playlist->title])}}"><img src="/dist_v6/images/second/2.svg" alt="Playlist"/></a>
 						</div>
 					@endif
 				@endif
 
 				@if ($post->download_page || $post->downloadlinks()->count())
-					<div class="left"><a href="{{route('download', ['postdesc' => $post->description])}}"><img src="/dist_v5/images/second/4.svg" alt="downloads" /></a></div>
+					<div class="left"><a href="{{route('download', ['postdesc' => $post->description])}}"><img src="/dist_v6/images/second/4.svg" alt="downloads" /></a></div>
 				@endif
 			</div>
 

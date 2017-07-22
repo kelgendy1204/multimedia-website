@@ -15,8 +15,8 @@
 		js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=282317058844945";
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
-	<script type="text/javascript" src="/dist_v5/uncompiled/soundmanager2-nodebug-jsmin.js"></script>
-	{{-- <script type="text/javascript" src="/dist_v5/uncompiled/soundmanager2.js"></script> --}}
+	<script type="text/javascript" src="/dist_v6/uncompiled/soundmanager2-nodebug-jsmin.js"></script>
+	{{-- <script type="text/javascript" src="/dist_v6/uncompiled/soundmanager2.js"></script> --}}
 
 	<div class="page">
 		<div class="playlists">
@@ -111,7 +111,7 @@
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript" src="/dist_v5/js/online.js"></script>
+		<script type="text/javascript" src="/dist_v6/js/online.js"></script>
 
 		<div class="share-title">
 			<h2 class="titlee">{{ (isset($activeplaylist) && (count($playlists) > 1)) ? $activeplaylist->title : ''}} </h2>

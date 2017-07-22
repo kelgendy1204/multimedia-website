@@ -261,15 +261,15 @@ div.mainpage {
                         align-items: center;
                         &.google-plus {
                             background-size: auto 50%;
-                            background-image: url('/dist_v5/images/google.svg');
+                            background-image: url('/dist_v6/images/google.svg');
                         }
                         &.twitter {
                             background-size: auto 60%;
-                            background-image: url('/dist_v5/images/twitter.svg');
+                            background-image: url('/dist_v6/images/twitter.svg');
                         }
                         &.facebook {
                             background-size: auto 70%;
-                            background-image: url('/dist_v5/images/facebook.svg');
+                            background-image: url('/dist_v6/images/facebook.svg');
                         }
                     }
                 }
@@ -295,7 +295,7 @@ div.mainpage {
             background-size: 100% auto;
             background-repeat: no-repeat;
             background-position: center top;
-            background-image: url(/dist_v5/images/banner3.jpg);
+            background-image: url(/dist_v6/images/banner3.jpg);
             @media screen and (max-width: 1500px) {
                 height: 350px;
             }
@@ -348,7 +348,7 @@ div.mainpage {
                         background-position: center center;
                         background-repeat: no-repeat;
                         background-size: 80% auto;
-                        background-image: url(/dist_v5/images/search-icon.svg);
+                        background-image: url(/dist_v6/images/search-icon.svg);
                     }
                     input {
                         flex-grow: 1;
@@ -1198,14 +1198,14 @@ div.mainpage {
                     height: 40px;
                 }
                 &.google-plus {
-                    background-image: url('/dist_v5/images/g.svg');
+                    background-image: url('/dist_v6/images/g.svg');
                     cursor: auto;
                 }
                 &.twitter {
-                    background-image: url('/dist_v5/images/t.svg');
+                    background-image: url('/dist_v6/images/t.svg');
                 }
                 &.facebook {
-                    background-image: url('/dist_v5/images/f.svg');
+                    background-image: url('/dist_v6/images/f.svg');
                 }
             }
         }

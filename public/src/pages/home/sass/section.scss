@@ -183,11 +183,14 @@ div.mainpage {
             }
             .center {
                 display: flex;
-                display: none;
+                // display: none;
+                position: relative;
+                top: -25px;
                 justify-content: center;
                 align-items: center;
                 background-color: #FFF;
                 padding: 0 5px;
+                padding: 20px 5px 0;
                 border-radius: 10px;
                 box-shadow: inset 0px 0px 10px 0px black;
                 button{
@@ -1213,7 +1216,7 @@ div.mainpage {
 
     .playlists{
         width: 850px;
-        height: 220px;
+        height: 280px;
         direction: ltr;
         display: flex;
         justify-content: space-around;
@@ -1222,7 +1225,7 @@ div.mainpage {
             height: 100%;
             border-radius: 5px;
             margin: 0 0 0 20px;
-            width: 120px;
+            width: 140px;
         }
         .sm2-bar-ui {
             display: flex;
@@ -1232,7 +1235,25 @@ div.mainpage {
             max-width: 100%;
             .sm2-main-controls, .sm2-playlist-drawer {
                 background-color: $grey;
+                border-radius: 5px;
+                height: auto !important;
             }
+
+            .sm2-inline-element{
+                min-height: 4em;
+                padding: 8px;
+            }
+
+            .sm2-button-element {
+                .sm2-button-bd {
+                    min-height: 3.5em;
+                    &.play{
+                        height: 3.5em;
+                        width: 3.5em;
+                    }
+                }
+            }
+
             .sm2-inline-texture {
                 background: transparent;
             }
@@ -1257,6 +1278,12 @@ div.mainpage {
             .lower-playlist{
                 display: flex;
                 height: 100%;
+            }
+
+            .sm2-playlist-wrapper {
+                ul {
+                    max-height: 100%;
+                }
             }
         }
     }

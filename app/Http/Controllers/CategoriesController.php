@@ -14,7 +14,8 @@ class CategoriesController extends Controller
 
 	public function __construct()
 	{
-		$this->middleware('IsAdmin')->except(['index']);
+		$this->middleware('IsSuperAdmin')->except(['index']);
+		$this->middleware('IsAdmin')->only(['adminindex']);
 	}
 
 		// get : /category/{categoryname} home page

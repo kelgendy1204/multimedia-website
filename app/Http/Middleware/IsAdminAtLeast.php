@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class IsSuperAdmin
+class IsAdminAtLeast
 {
     /**
      * Handle an incoming request.
@@ -15,10 +15,8 @@ class IsSuperAdmin
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user() && $request->user()->hasRole('super_admin')) {
+        if ($request->user() && ($request->user()->hasRole('admin') || $request->user()->hasRole('super_admin'))) {
             return $next($request);
-        } elseif ($request->user() && ($request->user()->hasRole('admin') || $request->user()->hasRole('editor'))) {
-            return redirect('/admin/mzk_admin_panel');
         }
         return redirect('/');
     }

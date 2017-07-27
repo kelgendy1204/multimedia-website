@@ -15,7 +15,7 @@ class PostsController extends Controller
 
 	public function __construct()
 	{
-		$this->middleware('IsAdmin')->only(['adminindex', 'create', 'store', 'edit', 'update', 'delete', 'adminindexbycategory']);
+		$this->middleware('IsAdminAtLeast')->only(['adminindex', 'create', 'store', 'edit', 'update', 'delete', 'adminindexbycategory']);
 	}
 
 	private function showActivePost($postdesc)

@@ -14,7 +14,7 @@ class SubpostsController extends Controller
 
 	public function __construct()
 	{
-		$this->middleware('IsAdmin')->except(['show']);
+		$this->middleware('IsAdminAtLeast')->except(['show']);
 	}
 
 	// get : /{postdesc}/مشاهدة مباشرة/{subposttitle} - watch post online

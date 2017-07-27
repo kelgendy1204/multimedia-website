@@ -11,7 +11,7 @@ class LinksController extends Controller
 
 	function __construct()
 	{
-		$this->middleware('IsAdmin')->only(['create', 'store']);
+		$this->middleware('IsAdminAtLeast')->only(['create', 'store']);
 	}
 
 	public function create()

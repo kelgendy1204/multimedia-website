@@ -14,7 +14,7 @@ class PlaylistController extends Controller
 {
 	public function __construct()
 	{
-		$this->middleware('IsAdmin')->except(['show']);
+		$this->middleware('IsAdminAtLeast')->except(['show']);
 	}
 
 	private function isValidAudio($file)

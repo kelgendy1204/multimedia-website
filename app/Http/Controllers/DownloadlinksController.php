@@ -15,7 +15,7 @@ class DownloadlinksController extends Controller
 
 	public function __construct()
 	{
-		$this->middleware('IsAdmin')->except(['show']);
+		$this->middleware('IsAdminAtLeast')->except(['show']);
 	}
 
 	// get : /{postdesc}/تحميل مباشر - show a post links

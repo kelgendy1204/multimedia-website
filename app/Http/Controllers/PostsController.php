@@ -147,20 +147,23 @@ class PostsController extends Controller
 		$post = new Post;
 		$post->title = request('title');
 		$post->key_words = request('key_words');
-		$post->alt_link = request('alt_link');
-
 		$post->description = request('description');
 		$post->download_page = request('download_page');
 		$post->long_description = request('long_description');
 		$post->meta_description = request('meta_description');
 
+
+		$post->alt_link = request('alt_link');
 		$post->visible = request('visible') == "on" ? true : false;
 		$post->pinned = request('pinned') == "on" ? true : false;
-
 		$post->category_id = request('category');
 		$post->user_id = Auth::id();
 
 		$post->save();
+
+
+		// continue from here ======================
+
 
 		$imageFile = $request->file('postimage');
 

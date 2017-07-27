@@ -80,10 +80,13 @@
 							<input name="key_words" placeholder="Enter keywords separated by commas" class="form-control" id="key_words" value="{{isset($post)? $post->key_words: ''}}">
 						</div>
 
-						<div class="form-group">
-							<label for="alt_link">Alt link</label>
-							<input name="alt_link" placeholder="Enter Alt link" class="form-control" id="alt_link" value="{{isset($post)? $post->alt_link: ''}}">
-						</div>
+						@if ( Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin') )
+							<div class="form-group">
+								<label for="alt_link">Alt link</label>
+								<input name="alt_link" placeholder="Enter Alt link" class="form-control" id="alt_link" value="{{isset($post)? $post->alt_link: ''}}">
+							</div>
+						@endif
+
 
 						<div class="form-group">
 							<label for="category">Category</label>
@@ -125,22 +128,25 @@
 						@endisset
 
 						<hr />
+						@if ( Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin') )
+							<div class="form-check">
+								<label class="form-check-label">
+									<input name="visible" type="checkbox" class="form-check-input" {{ (isset($post) && $post->visible ) ? 'checked' : ''}}>
+									Is Visible?
+								</label>
+							</div>
 
-						<div class="form-check">
-							<label class="form-check-label">
-								<input name="visible" type="checkbox" class="form-check-input" {{ (isset($post) && $post->visible ) ? 'checked' : ''}}>
-								Is Visible?
-							</label>
-						</div>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input name="pinned" type="checkbox" class="form-check-input" {{ (isset($post) && $post->pinned) ? 'checked' : ''}}>
+									Is pinned?
+								</label>
+							</div>
 
-						<div class="form-check">
-							<label class="form-check-label">
-								<input name="pinned" type="checkbox" class="form-check-input" {{ (isset($post) && $post->pinned) ? 'checked' : ''}}>
-								Is pinned?
-							</label>
-						</div>
+							<hr />
 
-						<hr />
+						@endif
+
 						<div class="form-check text-center">
 							<button type="submit" class="btn btn-primary btn-lg">{{ isset($post) ? 'Done edit post' : 'Create Post' }}</button>
 						</div>

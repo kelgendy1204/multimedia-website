@@ -27,10 +27,10 @@
           <div class="panel panel-primary">
               <div class="panel-heading text-center"><strong>Posts</strong></div>
               <div class="list-group">
-                <a href="/admin/posts/create" class="list-group-item">
+                <a href="{{ route('createpost') }}" class="list-group-item">
                   Create Post
                 </a>
-                <a href="/admin/posts" class="list-group-item">
+                <a href="{{ route('showadminposts') }}" class="list-group-item">
                   Show posts
                 </a>
               </div>

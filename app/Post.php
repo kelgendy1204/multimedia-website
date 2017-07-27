@@ -78,6 +78,22 @@ class Post extends Model
 		return $query->paginate(200);
 	}
 
+	public static function get_posts_by_editor($userid, $search)
+	{
+
+		$query = static::join('users', 'users.id', '=', 'posts.user_id')->select('posts.*')->orderBy('position', 'desc')->orderBy('updated_at', 'desc');
+
+		if($userid) {
+			$query->where('posts.user_id', $userid);
+		}
+
+		if($search) {
+			$query->where('posts.title', 'like', '%' . $search . '%');
+		}
+
+		return $query->paginate(200);
+	}
+
 	public static function get_all_pinned()
 	{
 		return static::where('pinned', 1)->get();

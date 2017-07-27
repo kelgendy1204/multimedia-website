@@ -4,10 +4,10 @@ Route::get('/', 'PostsController@index')->name('home');
 Route::get('/{postdesc}', 'PostsController@show')->name('showpost');
 Route::get('/{postdesc}/alt/{num}', 'PostsController@showalt')->name('showaltpost');
 
-Route::get('/admin/posts/create', 'PostsController@create');
+Route::get('/admin/posts/create', 'PostsController@create')->name('createpost');
 Route::get('/admin/posts/{post}/edit', 'PostsController@edit');
 Route::post('/admin/posts/{post}/update', 'PostsController@update');
-Route::get('/admin/posts', 'PostsController@adminindex');
+Route::get('/admin/posts', 'PostsController@adminindex')->name('showadminposts');
 Route::post('/admin/posts', 'PostsController@store');
 Route::post('/admin/posts/{postid}/delete', 'PostsController@delete')->name('deletepost');
 Route::get('/admin/posts/{categoryname}', 'PostsController@adminindexbycategory')->name('adminpostsbycategory');

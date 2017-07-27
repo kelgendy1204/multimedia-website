@@ -15,7 +15,8 @@ class PostsController extends Controller
 
 	public function __construct()
 	{
-		$this->middleware('IsAdminAtLeast')->only(['adminindex', 'create', 'store', 'edit', 'update', 'delete', 'adminindexbycategory']);
+		$this->middleware('IsAdminAtLeast')->only(['delete', 'adminindexbycategory']);
+		$this->middleware('IsEditorAtLeast')->only(['adminindex', 'create', 'store', 'edit', 'update']);
 	}
 
 	private function showActivePost($postdesc)
@@ -57,12 +58,21 @@ class PostsController extends Controller
 
 	// get : admin/posts - show all posts
 	public function adminindex() {
-		$categories = Category::all();
-		$parameters = Input::except('page');
 		$search = request()->input('search');
+		$parameters = Input::except('page');
 
+		if( request()->user()->hasRole('editor') ) {
+			$posts = Post::get_posts_by_editor( request()->user()->id , $search );
+			$categories = [];
+			return view('admin.posts.index' , [
+				'categories' => $categories,
+				'posts' => $posts,
+				'parameters' => $parameters
+			]);
+		}
+
+		$categories = Category::all();
 		$posts = Post::get_all_posts(null, $search);
-
 		return view('admin.posts.index' , [
 			'categories' => $categories,
 			'posts' => $posts,

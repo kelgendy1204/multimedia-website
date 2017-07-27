@@ -2,27 +2,30 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        @foreach ($categories as $category)
-        <div class="col-sm-2 pull-right form-group">
-            <a href="{{route('adminpostsbycategory', ['categoryname' => $category->name])}}" class="text-center btn btn-primary btn-block" role="button">
-                {{$category->name}}
-            </a>
-        </div>
-        @endforeach
-    </div>
 
-    <hr />
+    @if (count($categories) > 0)
+        <div class="row">
+            @foreach ($categories as $category)
+            <div class="col-sm-2 pull-right form-group">
+                <a href="{{route('adminpostsbycategory', ['categoryname' => $category->name])}}" class="text-center btn btn-primary btn-block" role="button">
+                    {{$category->name}}
+                </a>
+            </div>
+            @endforeach
+        </div>
+
+        <hr />
+    @endif
 
     <div class="row text-center">
-        <form class="form-inline col-sm-6" method="get" action="/admin/posts">
+        <form class="form-inline col-sm-6" method="get" action="{{ route('showadminposts') }}">
             <div class="form-group">
                 <input type="text" class="form-control" id="search" name="search" placeholder="Search">
             </div>
             <button type="submit" class="btn btn-primary">Search</button>
         </form>
         <div class="col-sm-6 text-center">
-            <a class="btn btn-primary" href="/admin/posts/create" role="button">Create Post +</a>
+            <a class="btn btn-primary" href="{{ route('createpost') }}" role="button">Create Post +</a>
         </div>
     </div>
 

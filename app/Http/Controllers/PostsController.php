@@ -123,41 +123,48 @@ class PostsController extends Controller
 	// get : admin/posts/{id}/edit - edit a post view
 	public function edit($post) {
 
-
-
-		// continue from here =====================
-
-
-
-
-		$post = Post::find($post);
 		$maxposition = Post::select('position')->max('position');
-		if(!$post){
+		$categories = $this->getCategoriesForUser();
+
+		$activepost = null;
+		if( request()->user()->hasRole('editor') ) {
+			$activepost = Post::where('id' , $post)->where('user_id', request()->user()->id)->with('subposts')->with('downloadlinks')->with('playlists')->first();
+		} else {
+			$activepost = Post::where('id' , $post)->with('subposts')->with('downloadlinks')->with('playlists')->first();
+		}
+
+		if(!$activepost){
 			return redirect()->action('PostsController@create');
 		}
-		$categories = $this->getCategoriesForUser();
-		$post->subposts;
-		return view('admin.posts.create', ['categories' => $categories, 'post' => $post, 'maxposition' => $maxposition]);
+
+		return view('admin.posts.create', ['categories' => $categories, 'post' => $activepost, 'maxposition' => $maxposition]);
 	}
 
 	// // post : admin/posts/{id}/update - edit a post view
 	public function update(Post $post) {
-		$categories = Category::all();
 		$post->title = request('title');
 		$post->key_words = request('key_words');
-		$post->alt_link = request('alt_link');
-
 		$post->description = request('description');
 		$post->download_page = request('download_page');
 		$post->long_description = request('long_description');
 		$post->meta_description = request('meta_description');
 
-		$post->visible = request('visible') == "on" ? true : false;
-		$post->pinned = request('pinned') == "on" ? true : false;
+		if(request()->user()->hasRole('editor')) {
+			$category_id = request('category');
+			$category_check = request()->user()->hasRole(Category::find($category_id)['name_en']);
+			if($category_check) {
+				$post->category_id = $category_id;
+			} else {
+				abort(403, 'Unauthorized action.');
+			}
+		} else {
+			$post->alt_link = request('alt_link');
+			$post->visible = request('visible') == "on" ? true : false;
+			$post->pinned = request('pinned') == "on" ? true : false;
+			$post->category_id = request('category');
+			$post->position = request('position');
+		}
 
-		$post->category_id = request('category');
-
-		$post->position = request('position');
 		$imageFile = request()->file('postimage');
 
 		if(request()->hasFile('postimage') && $imageFile->isValid()) {
@@ -265,7 +272,6 @@ class PostsController extends Controller
 	// get: show admin posts by category
 	public function adminindexbycategory($categoryname)
 	{
-
 		$category = Category::where('name', $categoryname)->first();
 		$parameters = Input::except('page');
 		$search = request()->input('search');

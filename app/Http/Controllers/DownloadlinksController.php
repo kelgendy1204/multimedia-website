@@ -15,7 +15,20 @@ class DownloadlinksController extends Controller
 
 	public function __construct()
 	{
-		$this->middleware('IsAdminAtLeast')->except(['show']);
+		$this->middleware('IsEditorAtLeast')->except(['show']);
+	}
+
+	private function checkUserPost($postid)
+	{
+		if( request()->user()->hasRole('editor') ) {
+			$activepost = Post::where('id' , $postid)->where('user_id', request()->user()->id)->first();
+			if($activepost) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	// get : /{postdesc}/تحميل مباشر - show a post links
@@ -36,6 +49,10 @@ class DownloadlinksController extends Controller
 	// get : admin/posts/{id}/download/create - create download links
 	public function create($post)
 	{
+		if(!$this->checkUserPost($post)) {
+			return redirect()->action('PostsController@adminindex');
+		}
+
 		$post = Post::find($post);
 		return view('admin.downloadlinks.create', ['post' => $post]);
 	}
@@ -43,6 +60,10 @@ class DownloadlinksController extends Controller
 	// post : admin/posts/{id}/download/create - store download links
 	public function store($post)
 	{
+		if(!$this->checkUserPost($post)) {
+			return redirect()->action('PostsController@adminindex');
+		}
+
 		$post = Post::find($post);
 
 		$downloadlink = new Downloadlink;
@@ -75,6 +96,10 @@ class DownloadlinksController extends Controller
 	// get : admin/posts/{post_id}/download/edit/{downloadlink_id} - edit a download links
 	public function edit($post, $downloadlink)
 	{
+		if(!$this->checkUserPost($post)) {
+			return redirect()->action('PostsController@adminindex');
+		}
+
 		$post = Post::find($post);
 
 		$downloadlink = $post->downloadlinks()->where('id', $downloadlink)->with('downloadservers')->first();
@@ -91,6 +116,10 @@ class DownloadlinksController extends Controller
 	// post : admin/posts/{post_id}/online/{subpost_id}/edit - update a post view
 	public function update($post, $downloadlink)
 	{
+		if(!$this->checkUserPost($post)) {
+			return redirect()->action('PostsController@adminindex');
+		}
+
 		$post = Post::find($post);
 
 		$downloadlink = $post->downloadlinks()->where('id', $downloadlink)->first();
@@ -124,6 +153,10 @@ class DownloadlinksController extends Controller
 
 	public function delete($post, $downloadlink)
 	{
+		if(!$this->checkUserPost($post)) {
+			return redirect()->action('PostsController@adminindex');
+		}
+
 		$post = Post::find($post);
 		$downloadlink = Downloadlink::find($downloadlink);
 

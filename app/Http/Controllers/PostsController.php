@@ -19,10 +19,40 @@ class PostsController extends Controller
 		$this->middleware('IsEditorAtLeast')->only(['adminindex', 'create', 'store', 'edit', 'update']);
 	}
 
+	private function getCategoriesForUser()
+	{
+		$categories = collect();
+		if(request()->user()->hasRole('editor')) {
+			$filtered_roles = request()->user()->roles->filter(function ($item) {
+				return $item['name'] != 'editor';
+			});
+
+			foreach (Category::all() as $category) {
+
+				$isRoleExist = $filtered_roles->every(function ($role) use ($category) {
+				    return $category['name_en'] == $role->name;
+				});
+
+			    if($isRoleExist) {
+					$categories->push($category);
+			    }
+			}
+		} else{
+			$categories = Category::all();
+		}
+
+		return $categories;
+	}
+
 	private function showActivePost($postdesc)
 	{
 		$categories = Category::all();
-		$post = Post::where('description', $postdesc)->latest()->first();
+		$post = Post::where('description', $postdesc)->where('visible', '1')->latest()->first();
+		if(!$post){
+			return redirect()->action(
+				'PostsController@index'
+			);
+		}
 		$post->increment('visits');
 		$advertisements = Advertisement::all()->keyBy('name');
 		$category = Category::find($post->category_id);
@@ -92,12 +122,20 @@ class PostsController extends Controller
 
 	// get : admin/posts/{id}/edit - edit a post view
 	public function edit($post) {
+
+
+
+		// continue from here =====================
+
+
+
+
 		$post = Post::find($post);
 		$maxposition = Post::select('position')->max('position');
 		if(!$post){
 			return redirect()->action('PostsController@create');
 		}
-		$categories = Category::all();
+		$categories = $this->getCategoriesForUser();
 		$post->subposts;
 		return view('admin.posts.create', ['categories' => $categories, 'post' => $post, 'maxposition' => $maxposition]);
 	}
@@ -138,7 +176,7 @@ class PostsController extends Controller
 
 	// get : admin/posts/create - create a post view
 	public function create() {
-		$categories = Category::all();
+		$categories = $this->getCategoriesForUser();
 		return view('admin.posts.create', ['categories' => $categories]);
 	}
 
@@ -152,18 +190,27 @@ class PostsController extends Controller
 		$post->long_description = request('long_description');
 		$post->meta_description = request('meta_description');
 
+		if(request()->user()->hasRole('editor')) {
+			$post->alt_link = null;
+			$post->visible = false;
+			$post->pinned = false;
 
-		$post->alt_link = request('alt_link');
-		$post->visible = request('visible') == "on" ? true : false;
-		$post->pinned = request('pinned') == "on" ? true : false;
-		$post->category_id = request('category');
+			$category_id = request('category');
+			$category_check = request()->user()->hasRole(Category::find($category_id)['name_en']);
+			if($category_check) {
+				$post->category_id = $category_id;
+			} else {
+				abort(403, 'Unauthorized action.');
+			}
+		} else {
+			$post->alt_link = request('alt_link');
+			$post->visible = request('visible') == "on" ? true : false;
+			$post->pinned = request('pinned') == "on" ? true : false;
+			$post->category_id = request('category');
+		}
+
 		$post->user_id = Auth::id();
-
 		$post->save();
-
-
-		// continue from here ======================
-
 
 		$imageFile = $request->file('postimage');
 

@@ -53,8 +53,8 @@
 						</div>
 
 						<div class="form-group">
-							<label for="description">Short description</label>
-							<input name="description" placeholder="short description" class="form-control" id="description" value="{{isset($post)? $post->description: ''}}">
+							<label for="description">Short description - link name</label>
+							<input name="description" placeholder="short description - link name" class="form-control" id="description" value="{{isset($post)? $post->description: ''}}">
 						</div>
 
 						<hr />
@@ -116,15 +116,17 @@
 						</div>
 
 						@isset ($post)
-							<hr />
+							@if ( Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin') )
+								<hr />
 
-							<div class="form-group">
-								<label for="position">position </label>
-								<span class="label label-danger pull-right">
-									<strong>Max position: {{$maxposition}}</strong>
-								</span>
-								<input name="position" class="form-control" id="position" value="{{$post->position}}">
-							</div>
+								<div class="form-group">
+									<label for="position">position </label>
+									<span class="label label-danger pull-right">
+										<strong>Max position: {{$maxposition}}</strong>
+									</span>
+									<input name="position" class="form-control" id="position" value="{{$post->position}}">
+								</div>
+							@endif
 						@endisset
 
 						<hr />

@@ -8,13 +8,14 @@ use App\Playlist;
 use App\Audio;
 use App\Category;
 use App\Metadata;
+use \Helpers\CheckUser;
 use File;
 
 class PlaylistController extends Controller
 {
 	public function __construct()
 	{
-		$this->middleware('IsAdminAtLeast')->except(['show']);
+		$this->middleware('IsEditorAtLeast')->except(['show']);
 	}
 
 	private function isValidAudio($file)
@@ -64,14 +65,24 @@ class PlaylistController extends Controller
 	}
 
 	// get : admin/posts/{id}/playlist/create - create a post view
-	public function create(Post $post)
+	public function create($post)
 	{
+		if(!CheckUser::checkUserPost(request() , $post)) {
+			return redirect()->action('PostsController@adminindex');
+		}
+
+		$post = Post::find($post);
 		return view('admin.playlists.create', ['post' => $post]);
 	}
 
 	// post : admin/posts/{id}/online/create - create a post view
-	public function store(Post $post)
+	public function store($post)
 	{
+		if(!CheckUser::checkUserPost(request() , $post)) {
+			return redirect()->action('PostsController@adminindex');
+		}
+
+		$post = Post::find($post);
 		$playlist = new Playlist;
 		$playlist->title = request('title');
 		$playlist->visible = request('visible') == "on" ? true : false;
@@ -123,8 +134,13 @@ class PlaylistController extends Controller
 	}
 
 	// get : admin/posts/{post_id}/playlist/{playlist_id}/edit - edit a playlist view
-	public function edit(Post $post, $playlist)
+	public function edit($post, $playlist)
 	{
+		if(!CheckUser::checkUserPost(request() , $post)) {
+			return redirect()->action('PostsController@adminindex');
+		}
+
+		$post = Post::find($post);
 		$playlist= $post->playlists()->where('id', $playlist)->with('audios')->first();
 
 		if($playlist){
@@ -137,8 +153,13 @@ class PlaylistController extends Controller
 	}
 
 	// post : admin/posts/{post_id}/online/{subpost_id}/edit - update a post view
-	public function update(Post $post, $playlist)
+	public function update($post, $playlist)
 	{
+		if(!CheckUser::checkUserPost(request() , $post)) {
+			return redirect()->action('PostsController@adminindex');
+		}
+
+		$post = Post::find($post);
 		$playlist = $post->playlists()->where('id', $playlist)->first();
 		$playlist->title = request('title');
 		$playlist->visible = request('visible') == "on" ? true : false;
@@ -192,9 +213,13 @@ class PlaylistController extends Controller
 	}
 
 
-	public function delete(Post $post, $playlist)
+	public function delete($post, $playlist)
 	{
+		if(!CheckUser::checkUserPost(request() , $post)) {
+			return redirect()->action('PostsController@adminindex');
+		}
 
+		$post = Post::find($post);
 		$playlist = Playlist::find($playlist);
 		File::deleteDirectory(public_path('playlistaudios/' . $playlist->title));
 

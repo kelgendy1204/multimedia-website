@@ -8,13 +8,14 @@ use App\Subpost;
 use App\Server;
 use App\Category;
 use App\Metadata;
+use \Helpers\CheckUser;
 
 class SubpostsController extends Controller
 {
 
 	public function __construct()
 	{
-		$this->middleware('IsAdminAtLeast')->except(['show']);
+		$this->middleware('IsEditorAtLeast')->except(['show']);
 	}
 
 	// get : /{postdesc}/مشاهدة مباشرة/{subposttitle} - watch post online
@@ -46,14 +47,24 @@ class SubpostsController extends Controller
 	}
 
 	// get : admin/posts/{id}/online/create - create a post view
-	public function create(Post $post)
+	public function create($post)
 	{
+		if(!CheckUser::checkUserPost(request() , $post)) {
+			return redirect()->action('PostsController@adminindex');
+		}
+
+		$post = Post::find($post);
 		return view('admin.subposts.create', ['post' => $post]);
 	}
 
 	// post : admin/posts/{id}/online/create - create a post view
-	public function store(Post $post)
+	public function store($post)
 	{
+		if(!CheckUser::checkUserPost(request() , $post)) {
+			return redirect()->action('PostsController@adminindex');
+		}
+
+		$post = Post::find($post);
 		$subpost = new Subpost;
 		$subpost->title = request('title');
 		$subpost->visible = request('visible') == "on" ? true : false;
@@ -91,8 +102,13 @@ class SubpostsController extends Controller
 	}
 
 	// get : admin/posts/{post_id}/online/{subpost_id}/edit - edit a post view
-	public function edit(Post $post, $subpostid)
+	public function edit($post, $subpostid)
 	{
+		if(!CheckUser::checkUserPost(request() , $post)) {
+			return redirect()->action('PostsController@adminindex');
+		}
+
+		$post = Post::find($post);
 		$subpost= $post->subposts()->where('id', $subpostid)->with('servers')->first();
 
 		if($subpost){
@@ -105,8 +121,13 @@ class SubpostsController extends Controller
 	}
 
 	// post : admin/posts/{post_id}/online/{subpost_id}/edit - update a post view
-	public function update(Post $post, $subpostid)
+	public function update($post, $subpostid)
 	{
+		if(!CheckUser::checkUserPost(request() , $post)) {
+			return redirect()->action('PostsController@adminindex');
+		}
+
+		$post = Post::find($post);
 		$subpost = $post->subposts()->where('id', $subpostid)->first();
 		$subpost->title = request('title');
 		$subpost->visible = request('visible') == "on" ? true : false;
@@ -144,8 +165,13 @@ class SubpostsController extends Controller
 		);
 	}
 
-	public function delete(Post $post, $subpost)
+	public function delete($post, $subpost)
 	{
+		if(!CheckUser::checkUserPost(request() , $post)) {
+			return redirect()->action('PostsController@adminindex');
+		}
+
+		$post = Post::find($post);
 
 		$subpost = Subpost::find($subpost);
 

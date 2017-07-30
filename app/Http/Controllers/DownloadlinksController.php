@@ -7,14 +7,16 @@ use App\Post;
 use App\Category;
 use App\Downloadlink;
 use App\Downloadserver;
+use App\Metadata;
 use \Helpers\Urlshorten;
+use \Helpers\CheckUser;
 
 class DownloadlinksController extends Controller
 {
 
 	public function __construct()
 	{
-		$this->middleware('IsAdmin')->except(['show']);
+		$this->middleware('IsEditorAtLeast')->except(['show']);
 	}
 
 	// get : /{postdesc}/تحميل مباشر - show a post links
@@ -29,12 +31,16 @@ class DownloadlinksController extends Controller
 
 		$randomPosts = collect(Post::get_random_posts($post->category_id))->shuffle();
 
-		return view('posts.download', ['categories' => $categories, 'post' => $post, 'downloadlinks' => $downloadlinks, 'category' => $category, 'randomPosts' => $randomPosts]);
+		return view('posts.download', array_merge(['categories' => $categories, 'post' => $post, 'downloadlinks' => $downloadlinks, 'category' => $category, 'randomPosts' => $randomPosts], Metadata::getMetadata()) );
 	}
 
 	// get : admin/posts/{id}/download/create - create download links
 	public function create($post)
 	{
+		if(!CheckUser::checkUserPost(request() , $post)) {
+			return redirect()->action('PostsController@adminindex');
+		}
+
 		$post = Post::find($post);
 		return view('admin.downloadlinks.create', ['post' => $post]);
 	}
@@ -42,6 +48,10 @@ class DownloadlinksController extends Controller
 	// post : admin/posts/{id}/download/create - store download links
 	public function store($post)
 	{
+		if(!CheckUser::checkUserPost(request() , $post)) {
+			return redirect()->action('PostsController@adminindex');
+		}
+
 		$post = Post::find($post);
 
 		$downloadlink = new Downloadlink;
@@ -74,6 +84,10 @@ class DownloadlinksController extends Controller
 	// get : admin/posts/{post_id}/download/edit/{downloadlink_id} - edit a download links
 	public function edit($post, $downloadlink)
 	{
+		if(!CheckUser::checkUserPost(request() , $post)) {
+			return redirect()->action('PostsController@adminindex');
+		}
+
 		$post = Post::find($post);
 
 		$downloadlink = $post->downloadlinks()->where('id', $downloadlink)->with('downloadservers')->first();
@@ -90,6 +104,10 @@ class DownloadlinksController extends Controller
 	// post : admin/posts/{post_id}/online/{subpost_id}/edit - update a post view
 	public function update($post, $downloadlink)
 	{
+		if(!CheckUser::checkUserPost(request() , $post)) {
+			return redirect()->action('PostsController@adminindex');
+		}
+
 		$post = Post::find($post);
 
 		$downloadlink = $post->downloadlinks()->where('id', $downloadlink)->first();
@@ -123,6 +141,10 @@ class DownloadlinksController extends Controller
 
 	public function delete($post, $downloadlink)
 	{
+		if(!CheckUser::checkUserPost(request() , $post)) {
+			return redirect()->action('PostsController@adminindex');
+		}
+
 		$post = Post::find($post);
 		$downloadlink = Downloadlink::find($downloadlink);
 

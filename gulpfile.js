@@ -38,7 +38,7 @@ const revReplace = require('gulp-rev-replace');
 const revdel = require('gulp-rev-delete-original');
 
 const mainSrcFolder = './public/src/';
-const mainDestFolder = './public/dist_v5/';
+const mainDestFolder = './public/dist_v6/';
 const anyDestFolder = './public/dist*/';
 const mainViewsDistFolder = './resources/views/';
 

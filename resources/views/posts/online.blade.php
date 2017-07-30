@@ -6,6 +6,7 @@
 
 @section('content')
 <div class="pagescontainer">
+
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0];
@@ -49,7 +50,11 @@
 				<div class="border-topic">
 					@foreach ($subposts as $subpost)
 						<a href="{{route('online', ['postdesc' => $post->description, 'subposttitle' => $subpost->title])}}">
-							<div class="topic-img" style="background-image: url('{{$post->photo_url}}')"> </div>
+							@if (isset($subpost->photo_url))
+								<div class="topic-img" style="background-image: url('{{$subpost->photo_url}}')"> </div>
+							@else
+								<div class="topic-img" style="background-image: url('{{$post->photo_url}}')"> </div>
+							@endif
 							<p>{{$subpost->title}}</p>
 						</a>
 					@endforeach
@@ -62,8 +67,6 @@
 		<div class="fb-comments" data-href="{{ route('showpost', ['postdesc' => $post->description]) }}" data-width="100%" data-numposts="10" order_by="social"></div>
 
 	</div>
-
-	{{-- <script type="text/javascript" src="/dist_v5/js/online-e1692be55a.js"></script> --}}
 
 	<script>
 		(function () {

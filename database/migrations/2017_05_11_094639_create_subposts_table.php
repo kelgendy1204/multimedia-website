@@ -16,6 +16,7 @@ class CreateSubpostsTable extends Migration
         Schema::create('subposts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('photo_url')->nullable();
             $table->boolean('visible');
             $table->integer('post_id');
             $table->timestamps();

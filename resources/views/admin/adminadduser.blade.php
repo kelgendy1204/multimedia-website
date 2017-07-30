@@ -64,7 +64,7 @@
                             <label for="role_ids" class="col-md-4 control-label">User roles</label>
                             <div class="col-md-6">
                                 <select multiple class="form-control" name="role_ids[]" id="role_ids">
-                                    @foreach (App\Role::all() as $role)
+                                    @foreach ($roles as $role)
                                         <option value="{{$role->id}}"> {{ $role->name }} </option>
                                     @endforeach
                                 </select>

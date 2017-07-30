@@ -17,7 +17,7 @@ class IsSuperAdmin
     {
         if ($request->user() && $request->user()->hasRole('super_admin')) {
             return $next($request);
-        } elseif ($request->user()->hasRole('admin')) {
+        } elseif ($request->user() && ($request->user()->hasRole('admin') || $request->user()->hasRole('editor'))) {
             return redirect('/admin/mzk_admin_panel');
         }
         return redirect('/');

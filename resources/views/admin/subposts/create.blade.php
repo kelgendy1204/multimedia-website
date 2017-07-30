@@ -15,7 +15,7 @@
 						</div>
 					</div>
 
-					<form method="POST" action="{{isset($subpost) ? '/admin/posts/' . $post->id . '/online/' . $subpost->id . '/edit' : '/admin/posts/' . $post->id . '/online/create'}}" class="well form-horizontal">
+					<form method="POST" action="{{isset($subpost) ? route('editsubpost', [ 'post' => $post->id , 'subpost' => $subpost->id ]) : route('storesubpost', [ 'post' => $post->id ]) }}" enctype="multipart/form-data" class="well form-horizontal">
 
 					{{ csrf_field() }}
 
@@ -67,6 +67,24 @@
 						</div>
 
 						<hr />
+
+						@if (isset($subpost))
+							<div class="row form-group">
+								<h1 class="text-center">Subpost photo</h1>
+							</div>
+							@isset ($subpost->photo_url)
+								<div class="row form-group">
+									<div class="col-md-4 col-md-offset-4">
+										<img src="{{$subpost->photo_url}}" alt="subpost photo" class="img-rounded img-responsive">
+									</div>
+								</div>
+							@endisset
+						@endif
+
+						<div class="form-group row">
+							<label for="photo_url" class="col-xs-12">Upload subpost photo</label>
+							<input type="file" class="form-control-file col-xs-12" name="photo_url" id="photo_url">
+						</div>
 
 						<div class="form-check text-center">
 							<button type="submit" class="btn btn-primary btn-lg">{{isset($subpost) ? "Edit online post" : "Create online post"}}</button>

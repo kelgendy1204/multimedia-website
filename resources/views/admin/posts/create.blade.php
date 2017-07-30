@@ -2,7 +2,7 @@
 
 @section('content')
 
-<script src="/dist_v5/uncompiled/tinymce/tinymce.min.js"></script>
+<script src="/dist_v6/uncompiled/tinymce/tinymce.min.js"></script>
 
 <script type="text/javascript" defer async>
 	tinymce.init({
@@ -17,7 +17,7 @@
 		toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | preview media fullpage | forecolor backcolor emoticons codesample fontsizeselect fontselect visualblocks',
 		imagetools_toolbar: 'rotateleft rotateright | flipv fliph | editimage imageoptions',
 		font_formats: 'Andale Mono=andale mono,times;Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;Comic Sans MS=comic sans ms,sans-serif;Courier New=courier new,courier;Georgia=georgia,palatino;Helvetica=helvetica;Impact=impact,chicago;Symbol=symbol;Tahoma=tahoma,arial,helvetica,sans-serif;Terminal=terminal,monaco;Times New Roman=times new roman,times;Trebuchet MS=trebuchet ms,geneva;Verdana=verdana,geneva;Webdings=webdings;Wingdings=wingdings,zapf dingbats;JF=jf',
-		content_css : '/dist_v5/css/tinymce-0723d9577f.css',
+		content_css : '/dist_v6/css/tinymce-0723d9577f.css',
 		style_formats: [
 			{title: 'Description title', inline : 'span' ,classes: 'desctitle'}
 		],
@@ -53,8 +53,8 @@
 						</div>
 
 						<div class="form-group">
-							<label for="description">Short description</label>
-							<input name="description" placeholder="short description" class="form-control" id="description" value="{{isset($post)? $post->description: ''}}">
+							<label for="description">Short description - link name</label>
+							<input name="description" placeholder="short description - link name" class="form-control" id="description" value="{{isset($post)? $post->description: ''}}">
 						</div>
 
 						<hr />
@@ -80,10 +80,13 @@
 							<input name="key_words" placeholder="Enter keywords separated by commas" class="form-control" id="key_words" value="{{isset($post)? $post->key_words: ''}}">
 						</div>
 
-						<div class="form-group">
-							<label for="alt_link">Alt link</label>
-							<input name="alt_link" placeholder="Enter Alt link" class="form-control" id="alt_link" value="{{isset($post)? $post->alt_link: ''}}">
-						</div>
+						@if ( Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin') )
+							<div class="form-group">
+								<label for="alt_link">Alt link</label>
+								<input name="alt_link" placeholder="Enter Alt link" class="form-control" id="alt_link" value="{{isset($post)? $post->alt_link: ''}}">
+							</div>
+						@endif
+
 
 						<div class="form-group">
 							<label for="category">Category</label>
@@ -113,34 +116,39 @@
 						</div>
 
 						@isset ($post)
-							<hr />
+							@if ( Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin') )
+								<hr />
 
-							<div class="form-group">
-								<label for="position">position </label>
-								<span class="label label-danger pull-right">
-									<strong>Max position: {{$maxposition}}</strong>
-								</span>
-								<input name="position" class="form-control" id="position" value="{{$post->position}}">
-							</div>
+								<div class="form-group">
+									<label for="position">position </label>
+									<span class="label label-danger pull-right">
+										<strong>Max position: {{$maxposition}}</strong>
+									</span>
+									<input name="position" class="form-control" id="position" value="{{$post->position}}">
+								</div>
+							@endif
 						@endisset
 
 						<hr />
+						@if ( Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin') )
+							<div class="form-check">
+								<label class="form-check-label">
+									<input name="visible" type="checkbox" class="form-check-input" {{ (isset($post) && $post->visible ) ? 'checked' : ''}}>
+									Is Visible?
+								</label>
+							</div>
 
-						<div class="form-check">
-							<label class="form-check-label">
-								<input name="visible" type="checkbox" class="form-check-input" {{ (isset($post) && $post->visible ) ? 'checked' : ''}}>
-								Is Visible?
-							</label>
-						</div>
+							<div class="form-check">
+								<label class="form-check-label">
+									<input name="pinned" type="checkbox" class="form-check-input" {{ (isset($post) && $post->pinned) ? 'checked' : ''}}>
+									Is pinned?
+								</label>
+							</div>
 
-						<div class="form-check">
-							<label class="form-check-label">
-								<input name="pinned" type="checkbox" class="form-check-input" {{ (isset($post) && $post->pinned) ? 'checked' : ''}}>
-								Is pinned?
-							</label>
-						</div>
+							<hr />
 
-						<hr />
+						@endif
+
 						<div class="form-check text-center">
 							<button type="submit" class="btn btn-primary btn-lg">{{ isset($post) ? 'Done edit post' : 'Create Post' }}</button>
 						</div>
@@ -214,6 +222,42 @@
 						@endif
 						<div class="form-group text-center">
 							<a class="btn btn-primary btn-lg" href="{{ route('createdownloadlink', ['postid' => $post->id]) }}" role="button">Add download links</a>
+						</div>
+					@endif
+
+
+
+					@if (isset($post))
+						<hr />
+						<h2 class="text-center">Playlists</h2>
+
+						@if (count($post->playlists))
+							<ul class="list-group">
+								@foreach ($post->playlists as $playlist)
+									<li class="list-group-item">
+										<div class="row">
+											<h5 class="col-md-6">
+												{{$playlist->title}}
+											</h5>
+											<div class="col-md-3 mb">
+												<a class="btn btn-primary btn-block" href="{{ route('editplaylist', ['post' => $post->id, 'playlist' => $playlist->id]) }}" role="button">Edit playlist</a>
+											</div>
+											<div class="col-md-3 mb">
+												<form action="{{ route('deleteplaylist', ['post' => $post->id, 'playlist' => $playlist->id]) }}" method="post" class="delete">
+													{{ csrf_field() }}
+													<button type="submit" class="btn btn-danger btn-block">Delete playlist</button>
+												</form>
+											</div>
+										</div>
+									</li>
+								@endforeach
+							</ul>
+
+							<hr />
+
+						@endif
+						<div class="form-group text-center">
+							<a class="btn btn-primary btn-lg" href="{{ route('createplaylist', ['post' => $post->id]) }}" role="button">Add playlist</a>
 						</div>
 					@endif
 

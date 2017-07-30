@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Role;
+use App\Category;
 
 class AdminController extends Controller
 {
@@ -16,7 +18,7 @@ class AdminController extends Controller
 
     public function __construct()
     {
-        $this->middleware('IsAdmin')->only(['index', 'logout']);
+        $this->middleware('IsEditorAtLeast')->only(['index', 'logout']);
         $this->middleware('IsSuperAdmin')->only(['addUser', 'storeUser']);
         $this->middleware('guest')->only(['login', 'authUser']);
     }
@@ -64,7 +66,26 @@ class AdminController extends Controller
     // get - /admin/mzk_admin_adduser
     public function addUser(Request $request)
     {
-        return view('admin.adminadduser');
+
+        $roles = Role::all();
+        $categoriesRoles = Category::all();
+
+        foreach ($categoriesRoles as $categoriesRole) {
+
+            $isRoleNotExist = $roles->every(function ($role) use ($categoriesRole) {
+                return $categoriesRole['name_en'] != $role->name;
+            });
+
+            if($isRoleNotExist) {
+                $role = new Role;
+                $role->name = $categoriesRole['name_en'];
+                $role->save();
+            }
+        }
+
+        $roles = Role::all();
+
+        return view('admin.adminadduser', ['roles' => $roles]);
     }
 
     // post - /admin/mzk_admin_adduser

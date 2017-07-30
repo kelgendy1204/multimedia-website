@@ -6,6 +6,7 @@
 
 @section('content')
 <div class="pagescontainer">
+
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0];
@@ -15,7 +16,7 @@
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 
-	<div class="img"><img src="{{ $post->photo_url }}"></div>
+	<div class="img downloadpage"><img src="{{ $post->photo_url }}"></div>
 
 	@if (!empty($post->download_page))
 		<div class="download_desc">

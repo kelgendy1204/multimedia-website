@@ -1,3 +1,5 @@
+NodeList.prototype.forEach = Array.prototype.forEach;
+
 document.querySelector('.nav-icon').addEventListener('click', function(){
 	this.classList.toggle('open');
 	document.querySelector('header').classList.toggle('open');
@@ -22,3 +24,7 @@ function createCookie(name,value,days) {
 
 $('.side-bans.home_right a').sticky({topSpacing: 80});
 $('.side-bans.home_left a').sticky({topSpacing: 80});
+
+setTimeout(() => {
+	window.location.reload(false);
+}, 5 * 60 * 1000);

@@ -67,6 +67,22 @@
 
 						<hr />
 
+						@isset ($activecategory)
+							@if ($activecategory->category_banner)
+								<div class="row form-group">
+									{{-- <div class="col-md-4 col-md-offset-4"> --}}
+									<div class="col-md-12">
+										<img src="{{$activecategory->category_banner}}" alt="category banner" class="img-rounded img-responsive">
+									</div>
+								</div>
+							@endif
+						@endisset
+
+						<div class="form-group row">
+							<label for="category_banner" class="col-xs-12">Upload banner</label>
+							<input type="file" class="form-control-file col-xs-12" name="category_banner" id="category_banner">
+						</div>
+
 						<div class="form-group text-center">
 							<button type="submit" class="btn btn-primary btn-lg">{{isset($activecategory) ? "Edit Category" : "Create Category"}}</button>
 						</div>

@@ -19,6 +19,11 @@ class Post extends Model
 		return $this->hasMany('App\Subpost', 'post_id', 'id');
 	}
 
+	public function playlists()
+	{
+		return $this->hasMany('App\Playlist', 'post_id', 'id');
+	}
+
 	public function downloadlinks()
 	{
 		return $this->hasMany('App\Downloadlink', 'post_id', 'id');
@@ -64,6 +69,22 @@ class Post extends Model
 
 		if($category_name_en) {
 			$query->where('categories.name_en', $category_name_en);
+		}
+
+		if($search) {
+			$query->where('posts.title', 'like', '%' . $search . '%');
+		}
+
+		return $query->paginate(200);
+	}
+
+	public static function get_posts_by_editor($userid, $search)
+	{
+
+		$query = static::join('users', 'users.id', '=', 'posts.user_id')->select('posts.*')->orderBy('position', 'desc')->orderBy('updated_at', 'desc');
+
+		if($userid) {
+			$query->where('posts.user_id', $userid);
 		}
 
 		if($search) {

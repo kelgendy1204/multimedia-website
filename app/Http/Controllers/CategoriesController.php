@@ -7,13 +7,15 @@ use Illuminate\Support\Facades\Input;
 use App\Category;
 use App\Advertisement;
 use App\Post;
+use App\Metadata;
 
 class CategoriesController extends Controller
 {
 
 	public function __construct()
 	{
-		$this->middleware('IsAdmin')->except(['index']);
+		$this->middleware('IsSuperAdmin')->except(['index']);
+		$this->middleware('IsAdminAtLeast')->only(['adminindex']);
 	}
 
 		// get : /category/{categoryname} home page
@@ -27,13 +29,13 @@ class CategoriesController extends Controller
 		$advertisements = Advertisement::all()->keyBy('name');
 		$posts = Post::get_all_visible($category->name_en, $search, null);
 
-		return view('posts.posts', [
+		return view('posts.posts', array_merge([
 			'posts' => $posts,
 			'activecategory' => $category,
 			'categories' => $categories,
 			'parameters' => $parameters,
 			'advertisements' => $advertisements,
-		]);
+		], Metadata::getMetadata()) );
 
 	}
 
@@ -41,7 +43,7 @@ class CategoriesController extends Controller
 	{
 		$categories = Category::all();
 		$colors = ['red', 'grey1', 'blue', 'orange', 'green1', 'green2', 'green3', 'yellow', 'grey2', 'pink'];
-		return view('categories.create', ['categories' => $categories, 'colors' => $colors ]);
+		return view('admin.categories.create', ['categories' => $categories, 'colors' => $colors ]);
 	}
 
 	public function store(Request $request) {
@@ -62,6 +64,14 @@ class CategoriesController extends Controller
 			$category->save();
 		}
 
+		$bannerImage = $request->file("category_banner");
+		if($request->hasFile("category_banner") && $bannerImage->isValid()) {
+			$uniqid = uniqid($category->id, true) . "." . $bannerImage->getClientOriginalExtension();
+			$bannerImage->move("bansimages/", $uniqid);
+			$category->category_banner = "/bansimages/" . $uniqid;
+			$category->save();
+		}
+
 		return redirect()->action(
 			'CategoriesController@adminindex'
 		);
@@ -72,7 +82,7 @@ class CategoriesController extends Controller
 	public function edit(Category $category) {
 		$categories = Category::all();
 		$colors = ['red', 'grey1', 'blue', 'orange', 'green1', 'green2', 'green3', 'yellow', 'grey2', 'pink'];
-		return view('categories.create', ['activecategory' => $category, 'categories' => $categories, 'colors' => $colors ]);
+		return view('admin.categories.create', ['activecategory' => $category, 'categories' => $categories, 'colors' => $colors ]);
 	}
 
 	// post : /admin/categories/{category}/edit - update a category
@@ -90,6 +100,13 @@ class CategoriesController extends Controller
 			$uniqid = uniqid($category->id, true) . "." . $imageFile->getClientOriginalExtension();
 			$imageFile->move("categoryimages/", $uniqid);
 			$category->photo_url = "/categoryimages/" . $uniqid;
+		}
+
+		$bannerImage = request()->file('category_banner');
+		if(request()->hasFile("category_banner") && $bannerImage->isValid()) {
+			$uniqid = uniqid($category->id, true) . "." . $bannerImage->getClientOriginalExtension();
+			$bannerImage->move("bansimages/", $uniqid);
+			$category->category_banner = "/bansimages/" . $uniqid;
 		}
 
 		$category->save();

@@ -1,3 +1,4 @@
+$grey: #3a3f48;
 $pink: #982359;
 $deeppink: #631f3c;
 $blue: #18788f;
@@ -182,11 +183,14 @@ div.mainpage {
             }
             .center {
                 display: flex;
-                display: none;
+                // display: none;
+                position: relative;
+                top: -25px;
                 justify-content: center;
                 align-items: center;
                 background-color: #FFF;
                 padding: 0 5px;
+                padding: 20px 5px 0;
                 border-radius: 10px;
                 box-shadow: inset 0px 0px 10px 0px black;
                 button{
@@ -260,15 +264,15 @@ div.mainpage {
                         align-items: center;
                         &.google-plus {
                             background-size: auto 50%;
-                            background-image: url('/dist_v5/images/google.svg');
+                            background-image: url('/dist_v6/images/google.svg');
                         }
                         &.twitter {
                             background-size: auto 60%;
-                            background-image: url('/dist_v5/images/twitter.svg');
+                            background-image: url('/dist_v6/images/twitter.svg');
                         }
                         &.facebook {
                             background-size: auto 70%;
-                            background-image: url('/dist_v5/images/facebook.svg');
+                            background-image: url('/dist_v6/images/facebook.svg');
                         }
                     }
                 }
@@ -294,7 +298,7 @@ div.mainpage {
             background-size: 100% auto;
             background-repeat: no-repeat;
             background-position: center top;
-            background-image: url(/dist_v5/images/banner3.jpg);
+            background-image: url(/dist_v6/images/banner3.jpg);
             @media screen and (max-width: 1500px) {
                 height: 350px;
             }
@@ -347,7 +351,7 @@ div.mainpage {
                         background-position: center center;
                         background-repeat: no-repeat;
                         background-size: 80% auto;
-                        background-image: url(/dist_v5/images/search-icon.svg);
+                        background-image: url(/dist_v6/images/search-icon.svg);
                     }
                     input {
                         flex-grow: 1;
@@ -503,6 +507,7 @@ div.mainpage {
             width: 100%;
             display: inline-flex;
             justify-content: center;
+            flex-wrap: wrap;
             margin: 20px;
             li {
                 border: 2px solid #3a3f48;
@@ -1059,8 +1064,19 @@ div.mainpage {
                 }
             }
         }
+        .downloadpage{
+            &.img{
+                text-align: center;
+                img{
+                    max-width: 90%;
+                }
+            }
+        }
         .download_desc {
             padding: 25px;
+            img{
+                max-width: 90%;
+            }
         }
         .downloadlinks {
             padding: 20px 10px 25px;
@@ -1092,11 +1108,12 @@ div.mainpage {
                     padding: 5px 20px 10px;
                     transform: translateX(0);
                     position: absolute;
-                    top: -35px;
+                    top: -27px;
+                    right: 20px;
                     height: auto;
-                    right: 40px;
                     left: auto;
                     border-radius: 10px;
+                    font-size: 0.7em;
                 }
             }
             ul {
@@ -1166,7 +1183,8 @@ div.mainpage {
         h2 {
             margin: 0;
             font-weight: bold;
-            font-size: 1.4em;
+            // font-size: 1.4em;
+            font-size: 1em;
             color: #3a3f48;
             font-family: jf;
             @media screen and (max-width: 850px) {
@@ -1195,18 +1213,99 @@ div.mainpage {
                     height: 40px;
                 }
                 &.google-plus {
-                    background-image: url('/dist_v5/images/g.svg');
+                    background-image: url('/dist_v6/images/g.svg');
                     cursor: auto;
                 }
                 &.twitter {
-                    background-image: url('/dist_v5/images/t.svg');
+                    background-image: url('/dist_v6/images/t.svg');
                 }
                 &.facebook {
-                    background-image: url('/dist_v5/images/f.svg');
+                    background-image: url('/dist_v6/images/f.svg');
                 }
             }
         }
     }
+
+    .playlists{
+        width: 850px;
+        height: 280px;
+        direction: ltr;
+        display: flex;
+        justify-content: space-around;
+        margin: 10px;
+        .playlist-pic{
+            height: 100%;
+            border-radius: 5px;
+            margin: 0 0 0 20px;
+            width: 140px;
+        }
+        .sm2-bar-ui {
+            display: flex;
+            flex-direction: column;
+            font-size: 16px;
+            border-radius: 5px;
+            max-width: 100%;
+            .sm2-main-controls, .sm2-playlist-drawer {
+                background-color: $grey;
+                border-radius: 5px;
+                height: auto !important;
+            }
+
+            .sm2-playlist {
+                height: auto;
+                min-height: 1.45em;
+                padding-bottom: 10px;
+            }
+
+            .sm2-inline-element{
+                min-height: 4em;
+                padding: 8px;
+            }
+
+            .sm2-button-element {
+                .sm2-button-bd {
+                    min-height: 3.5em;
+                    &.play{
+                        height: 3.5em;
+                        width: 3.5em;
+                    }
+                }
+            }
+
+            .sm2-inline-texture {
+                background: transparent;
+            }
+            .sm2-inline-status {
+                width: 100%;
+                min-width: initial;
+                max-width: initial;
+                .sm2-playlist-bd{
+                    >li{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+            }
+            .sm2-main-controls{
+                margin-bottom: 20px;
+            }
+            .sm2-progress-bar{
+                background-color: #268186;
+            }
+            .lower-playlist{
+                display: flex;
+                height: 100%;
+            }
+
+            .sm2-playlist-wrapper {
+                ul {
+                    max-height: 100%;
+                }
+            }
+        }
+    }
+
 }
 
 body.links{

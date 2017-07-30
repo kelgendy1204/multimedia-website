@@ -1064,8 +1064,19 @@ div.mainpage {
                 }
             }
         }
+        .downloadpage{
+            &.img{
+                text-align: center;
+                img{
+                    max-width: 90%;
+                }
+            }
+        }
         .download_desc {
             padding: 25px;
+            img{
+                max-width: 90%;
+            }
         }
         .downloadlinks {
             padding: 20px 10px 25px;
@@ -1097,11 +1108,12 @@ div.mainpage {
                     padding: 5px 20px 10px;
                     transform: translateX(0);
                     position: absolute;
-                    top: -35px;
+                    top: -27px;
+                    right: 20px;
                     height: auto;
-                    right: 40px;
                     left: auto;
                     border-radius: 10px;
+                    font-size: 0.7em;
                 }
             }
             ul {

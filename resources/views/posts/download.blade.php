@@ -16,7 +16,7 @@
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 
-	<div class="img"><img src="{{ $post->photo_url }}"></div>
+	<div class="img downloadpage"><img src="{{ $post->photo_url }}"></div>
 
 	@if (!empty($post->download_page))
 		<div class="download_desc">

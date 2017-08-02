@@ -67,7 +67,7 @@
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <link rel="canonical" href="{{ Request::fullUrl() }}" />
 
-        <link rel="stylesheet" href="/dist_v6/css/home-481c1bf8b4.css" />
+        <link rel="stylesheet" href="/dist_v6/css/home-bb71c2b818.css" />
         <script src="/dist_v6/uncompiled/jquery-3.2.1.min.js"></script>
         <script src="/dist_v6/uncompiled/jquery.sticky.js"></script>
 

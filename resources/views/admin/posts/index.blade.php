@@ -46,11 +46,12 @@
                 <div class="img" style="background-image: url('{{$post->photo_url}}')"></div>
                 <p>{{$post->title}}</p>
             </a>
-            <form method="post" action="{{ route('deletepost', ['postid' => $post->id]) }}" class="deletepost delete">
-                {{ csrf_field() }}
-                <button type="submit" class="btn btn-danger btn-lg btn-block">Delete post</button>
-            </form>
-
+            @if ( Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin') )
+                <form method="post" action="{{ route('deletepost', ['postid' => $post->id]) }}" class="deletepost delete">
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-danger btn-lg btn-block">Delete post</button>
+                </form>
+            @endif
         </div>
         @endforeach
     </div>

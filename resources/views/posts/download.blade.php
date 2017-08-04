@@ -18,6 +18,22 @@
 
 	<div class="img downloadpage"><img src="{{ $post->photo_url }}"></div>
 
+	<div class="otherlinks">
+
+		@if (isset($latestsubpost))
+			<div class="otherlink">
+				<a href="{{route('online', ['postdesc' => $post->description, 'subposttitle' => $latestsubpost->title])}}"><img src="/dist_v6/images/second/3.svg" alt="online watch"/></a>
+			</div>
+		@endif
+
+		@if (isset($latestplaylist))
+			<div class="otherlink">
+				<a href="{{route('playlist', ['postdesc' => $post->description, 'playlisttitle' => $latestplaylist->title])}}"><img src="/dist_v6/images/second/2.svg" alt="Playlist"/></a>
+			</div>
+		@endif
+
+	</div>
+
 	@if (!empty($post->download_page))
 		<div class="download_desc">
 			{!! $post->download_page !!}

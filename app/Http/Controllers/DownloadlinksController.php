@@ -23,7 +23,10 @@ class DownloadlinksController extends Controller
 	public function show($postdesc) {
 		$categories = Category::all();
 
-		$post = Post::where('description', $postdesc)->latest()->first();
+		$post = Post::where('description', $postdesc)->where('visible', '1')->with('downloadlinks')->with('playlists')->with('subposts')->latest()->first();
+
+		$latestsubpost = $post->subposts()->where('visible', '1')->latest()->first();
+		$latestplaylist = $post->playlists()->where('visible', '1')->latest()->first();
 
 		$downloadlinks = $post->downloadlinks()->with('downloadservers')->where('visible', '1')->latest()->get();
 
@@ -31,7 +34,7 @@ class DownloadlinksController extends Controller
 
 		$randomPosts = collect(Post::get_random_posts($post->category_id))->shuffle();
 
-		return view('posts.download', array_merge(['categories' => $categories, 'post' => $post, 'downloadlinks' => $downloadlinks, 'category' => $category, 'randomPosts' => $randomPosts], Metadata::getMetadata()) );
+		return view('posts.download', array_merge(['categories' => $categories, 'post' => $post, 'downloadlinks' => $downloadlinks, 'category' => $category, 'randomPosts' => $randomPosts, 'latestsubpost' => $latestsubpost , 'latestplaylist' => $latestplaylist ], Metadata::getMetadata()) );
 	}
 
 	// get : admin/posts/{id}/download/create - create download links

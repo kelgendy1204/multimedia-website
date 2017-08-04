@@ -36,6 +36,20 @@
 			</div>
 		</div>
 
+		<div class="otherlinks">
+			@if ($post->downloadlinks()->count())
+				<div class="otherlink">
+					<a href="{{route('download', ['postdesc' => $post->description])}}"><img src="/dist_v6/images/second/4.svg" alt="downloads" /></a>
+				</div>
+			@endif
+
+			@if (isset($latestplaylist))
+				<div class="otherlink">
+					<a href="{{route('playlist', ['postdesc' => $post->description, 'playlisttitle' => $latestplaylist->title])}}"><img src="/dist_v6/images/second/2.svg" alt="Playlist"/></a>
+				</div>
+			@endif
+		</div>
+
 		@if (count($subposts) > 1)
 			<div class="new-topic">
 				@if ($post->category->name_en == "arabic series" || $post->category->name_en == "tv" || $post->category->name_en == "english series")

@@ -22,9 +22,11 @@ class SubpostsController extends Controller
 	public function show($postdesc, $subposttitle) {
 		$categories = Category::all();
 
-		$post = Post::where('description', $postdesc)->latest()->first();
+		$post = Post::where('description', $postdesc)->with('downloadlinks')->with('playlists')->with('subposts')->latest()->first();
 
-		$subpost= $post->subposts()->where('visible', '1')->where('title', $subposttitle)->latest()->first();
+		$latestplaylist = $post->playlists()->where('visible', '1')->latest()->first();
+
+		$subpost = $post->subposts()->where('visible', '1')->where('title', $subposttitle)->latest()->first();
 
 		$subposts = $post->subposts()->where('visible', '1')->latest()->get();
 
@@ -43,6 +45,7 @@ class SubpostsController extends Controller
 			'category' => $category,
 			'activesubpost' => $subpost,
 			'servers' => $servers,
+			'latestplaylist' => $latestplaylist,
 			'randomPosts' => $randomPosts], Metadata::getMetadata()) );
 	}
 

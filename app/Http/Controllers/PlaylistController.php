@@ -39,7 +39,9 @@ class PlaylistController extends Controller
 	public function show($postdesc, $playlisttitle) {
 		$categories = Category::all();
 
-		$post = Post::where('description', $postdesc)->latest()->first();
+		$post = Post::where('description', $postdesc)->with('downloadlinks')->with('playlists')->with('subposts')->latest()->first();
+
+		$latestsubpost = $post->subposts()->where('visible', '1')->latest()->first();
 
 		$playlist = $post->playlists()->where('visible', '1')->where('title', $playlisttitle)->latest()->first();
 
@@ -61,6 +63,7 @@ class PlaylistController extends Controller
 			'category' => $category,
 			'activeplaylist' => $playlist,
 			'audios' => $audios,
+			'latestsubpost' => $latestsubpost,
 			'randomPosts' => $randomPosts], Metadata::getMetadata()) );
 	}
 

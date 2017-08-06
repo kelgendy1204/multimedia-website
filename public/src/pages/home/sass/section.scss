@@ -182,8 +182,8 @@ div.mainpage {
                 }
             }
             .center {
-                display: flex;
-                // display: none;
+                // display: flex;
+                display: none;
                 position: relative;
                 // top: -25px;
                 justify-content: center;
@@ -192,13 +192,14 @@ div.mainpage {
                 padding: 0 5px;
                 // padding: 20px 5px 0;
                 border-radius: 10px;
-                box-shadow: inset 0px 0px 10px 0px black;
+                // box-shadow: inset 0px 0px 10px 0px black;
                 button{
                     padding: 0;
                     display: inline-block;
                     width: 30px;
                     height: 30px;
-                    border-radius: 50%;
+                    // border-radius: 50%;
+                    border-radius: 8px;
                     margin: 5px 5px;
                     border: 2px solid white;
                     box-shadow: inset 0px 0px 10px 0px black;
@@ -762,6 +763,9 @@ div.mainpage {
                 margin-top: 20px;
                 font-size: 1.5em;
             }
+            @media screen and (max-width: 500px) {
+                font-size: 1.1em;
+            }
         }
     }
     .pagescontainer {
@@ -911,6 +915,28 @@ div.mainpage {
                     img {
                         width: 100%;
                     }
+                }
+            }
+        }
+        .otherlinks{
+            margin: 30px 0;
+            width: 100%;
+            display: flex;
+            justify-content:  center;
+            align-items: center;
+            flex-wrap: wrap;
+            .otherlink{
+                width: 250px;
+                margin: 0 30px;
+                a{
+                    display: inline-block;
+                    width: 100%;
+                    img{
+                        width: 100%;
+                    }
+                }
+                @media screen and (max-width: 700px) {
+                    width: 170px;
                 }
             }
         }
@@ -1228,7 +1254,8 @@ div.mainpage {
     }
 
     .playlists{
-        width: 850px;
+        max-width: 850px;
+        width: 90%;
         height: 280px;
         direction: ltr;
         display: flex;
@@ -1238,7 +1265,10 @@ div.mainpage {
             height: 100%;
             border-radius: 5px;
             margin: 0 0 0 20px;
-            width: 140px;
+            width: 160px;
+            @media screen and (max-width: 500px) {
+                display: none;
+            }
         }
         .sm2-bar-ui {
             display: flex;
@@ -1246,6 +1276,10 @@ div.mainpage {
             font-size: 16px;
             border-radius: 5px;
             max-width: 100%;
+
+            @media screen and (max-width: 500px) {
+                font-size: 15px;
+            }
             .sm2-main-controls, .sm2-playlist-drawer {
                 background-color: $grey;
                 border-radius: 5px;
@@ -1269,6 +1303,24 @@ div.mainpage {
                     &.play{
                         height: 3.5em;
                         width: 3.5em;
+                        @media screen and (max-width: 500px) {
+                            height: 3em;
+                            width: 3em;
+                        }
+                        @media screen and (max-width: 400px) {
+                            height: 2em;
+                            width: 2em;
+                            min-width: 2em;
+                            min-height: 2em;
+                        }
+                    }
+                    @media screen and (max-width: 500px) {
+                        min-height: 3em;
+                        min-width: 2.4em;
+                    }
+                    @media screen and (max-width: 400px) {
+                        min-height: 2.5em;
+                        min-width: 2em;
                     }
                 }
             }
@@ -1297,6 +1349,9 @@ div.mainpage {
             .lower-playlist{
                 display: flex;
                 height: 100%;
+                .sm2-extra-controls{
+                    display: none;
+                }
             }
 
             .sm2-playlist-wrapper {

@@ -35,6 +35,8 @@
 					@if (isset($post))
 						<div class="row form-group">
 							<h1 class="text-center">Created by : {{$post->user->name}}</h1>
+							<p class="text-center">Created at : {{$post->created_at}}</p>
+							<p class="text-center">Edited at : {{$post->updated_at}}</p>
 						</div>
 						<div class="row form-group">
 							<div class="col-md-4 col-md-offset-4">

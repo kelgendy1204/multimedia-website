@@ -77,19 +77,6 @@
 								@foreach ($activeplaylist->audios as $audio)
 									<li><a href="{{$audio->link}}"><b>{{$activeplaylist->title}}</b> - {{$audio->name}}</a></li>
 								@endforeach
-	{{-- 							<li><a href="http://www.orangefreesounds.com/wp-content/uploads/2017/06/Cartoon-gulp-sound-effect.mp3"><b>Cartoon-gulp-sound-effect</b></a></li>
-								<li><a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20People%20Asking.mp3"><b>SonReal</b> - People Asking</a></li>
-								<li><a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20Already%20There%20Remix%20ft.%20Rich%20Kidd%2C%20Saukrates.mp3"><b>SonReal</b> - Already There Remix ft. Rich Kidd, Saukrates</a></li>
-								<li><a href="http://freshly-ground.com/data/audio/sm2/The%20Fugitives%20-%20Graffiti%20Sex.mp3"><b>The Fugitives</b> - Graffiti Sex</a></li>
-								<li><a href="http://freshly-ground.com/data/audio/sm2/Adrian%20Glynn%20-%20Seven%20Or%20Eight%20Days.mp3"><b>Adrian Glynn</b> - Seven Or Eight Days</a></li>
-								<li><a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20I%20Tried.mp3"><b>SonReal</b> - I Tried</a></li>
-								<li><a href="http://freshly-ground.com/data/audio/sm2/gong-192kbps.mp3">32" Gong Sounds (rubber + standard mallets)</a></li>
-								<li><a href="http://freshly-ground.com/data/audio/mpc/20060826%20-%20Armstrong.mp3">Armstrong Beat</a></li>
-								<li><a href="http://freshly-ground.com/data/audio/mpc/20090119%20-%20Untitled%20Groove.mp3">Untitled Groove</a></li>
-								<li><a href="http://freshly-ground.com/data/audio/sm2/birds-in-kauai-128kbps-aac-lc.mp4">Birds In Kaua'i (AAC)</a></li>
-								<li><a href="http://freshly-ground.com/data/audio/sm2/20130320%20-%20Po%27ipu%20Beach%20Waves.ogg">Po'ipu Beach Waves (OGG)</a></li>
-								<li><a href="http://freshly-ground.com/data/audio/sm2/bottle-pop.wav">A corked beer bottle (WAV)</a></li>
-								<li><a href="../../demo/_mp3/rain.mp3">Rain</a></li> --}}
 							</ul>
 						</div>
 						<div class="sm2-extra-controls">
@@ -122,6 +109,20 @@
 				<a class="socitem twitter" href="https://twitter.com/intent/tweet?url={{route('showpost', ['postdesc' => $post->description])}}&text={{$post->title}}&hashtags={{$post->key_words}}"></a>
 				<a class="socitem facebook"></a>
 			</div>
+		</div>
+
+		<div class="otherlinks">
+			@if ($post->downloadlinks()->count())
+				<div class="otherlink">
+					<a href="{{route('download', ['postdesc' => $post->description])}}"><img src="/dist_v6/images/second/4.svg" alt="downloads" /></a>
+				</div>
+			@endif
+
+			@if (isset($latestsubpost))
+				<div class="otherlink">
+					<a href="{{route('online', ['postdesc' => $post->description, 'subposttitle' => $latestsubpost->title])}}"><img src="/dist_v6/images/second/3.svg" alt="online watch"/></a>
+				</div>
+			@endif
 		</div>
 
 		@if (count($playlists) > 1)

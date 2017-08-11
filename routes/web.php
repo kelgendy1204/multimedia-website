@@ -69,3 +69,9 @@ Route::post('/admin/links', 'LinksController@store');
 
 Route::get('/admin/metadata', 'MetadataController@index')->name('metadata');
 Route::post('/admin/metadata', 'MetadataController@save')->name('editmetadata');
+
+// ================================================ //
+
+Route::get('/admin/Advertisement', 'AdvertisementController@index')->name('adsindex');
+Route::post('/admin/Advertisement', 'AdvertisementController@update')->name('updateads');
+

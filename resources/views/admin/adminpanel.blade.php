@@ -23,6 +23,9 @@
                     <a href="{{ route('metadata') }}" class="list-group-item">
                       Edit data
                     </a>
+                    <a href="{{ route('adsindex') }}" class="list-group-item">
+                      Edit Advertisement
+                    </a>
                   </div>
               </div>
               <hr />

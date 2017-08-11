@@ -19,7 +19,7 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('IsEditorAtLeast')->only(['index', 'logout']);
-        $this->middleware('IsSuperAdmin')->only(['addUser', 'storeUser']);
+        $this->middleware('IsSuperAdmin')->only(['addUser', 'storeUser', 'showUsers', 'editUser', 'updateUser', 'deleteUser']);
         $this->middleware('guest')->only(['login', 'authUser']);
     }
 
@@ -28,6 +28,29 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    private function getAllRoles()
+    {
+        $roles = Role::all();
+        $categoriesRoles = Category::all();
+
+        foreach ($categoriesRoles as $categoriesRole) {
+
+            $isRoleNotExist = $roles->every(function ($role) use ($categoriesRole) {
+                return $categoriesRole['name_en'] != $role->name;
+            });
+
+            if($isRoleNotExist) {
+                $role = new Role;
+                $role->name = $categoriesRole['name_en'];
+                $role->save();
+            }
+        }
+
+        $roles = Role::all();
+
+        return $roles;
+    }
 
     // get - /admin/mzk_admin_login
     public function login(Request $request)
@@ -49,6 +72,58 @@ class AdminController extends Controller
         return redirect('/admin/mzk_admin_panel');
     }
 
+
+    public function showUsers()
+    {
+        $users = User::all();
+        return view('admin.users.index', ['users' => $users]);
+    }
+
+    public function editUser($user)
+    {
+        $roles = $this->getAllRoles();
+        $user = User::find($user);
+        return view('admin.users.create', ['user' => $user, 'roles' => $roles]);
+    }
+
+    public function updateUser($user)
+    {
+        $user = User::find($user);
+        $this->validate(request(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'confirmed',
+        ]);
+
+        $user->name = request()->name;
+        $user->email = request()->email;
+        if(request()->password) {
+            $user->password = bcrypt(request()->password);
+        }
+        $user->save();
+        $user->roles()->detach();
+        $user->roles()->attach(request()->role_ids);
+        return redirect()->action(
+            'AdminController@showUsers'
+        );
+    }
+
+    public function deleteUser($user)
+    {
+        if($user == request()->user()->id){
+            return redirect()->action(
+                'AdminController@showUsers'
+            );
+        }
+
+        $user = User::find($user);
+        $user->roles()->detach();
+        $user->delete();
+        return redirect()->action(
+            'AdminController@showUsers'
+        );
+    }
+
     // get - /admin/mzk_admin_panel
     public function index(Request $request)
     {
@@ -66,26 +141,8 @@ class AdminController extends Controller
     // get - /admin/mzk_admin_adduser
     public function addUser(Request $request)
     {
-
-        $roles = Role::all();
-        $categoriesRoles = Category::all();
-
-        foreach ($categoriesRoles as $categoriesRole) {
-
-            $isRoleNotExist = $roles->every(function ($role) use ($categoriesRole) {
-                return $categoriesRole['name_en'] != $role->name;
-            });
-
-            if($isRoleNotExist) {
-                $role = new Role;
-                $role->name = $categoriesRole['name_en'];
-                $role->save();
-            }
-        }
-
-        $roles = Role::all();
-
-        return view('admin.adminadduser', ['roles' => $roles]);
+        $roles = $this->getAllRoles();
+        return view('admin.users.create', ['roles' => $roles]);
     }
 
     // post - /admin/mzk_admin_adduser

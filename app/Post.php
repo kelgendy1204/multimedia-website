@@ -63,7 +63,7 @@ class Post extends Model
 		return static::where('visible', 0)->paginate(static::$paginate);
 	}
 
-	public static function get_all_posts($category_name_en, $search)
+	public static function get_all_posts($category_name_en, $search, $userid)
 	{
 		$query = static::leftJoin('categories', 'categories.id', '=', 'posts.category_id')->select('posts.*', 'categories.name_en as category_name_en', 'categories.name as category_name')->orderBy('pinned', 'desc')->orderBy('position', 'desc')->orderBy('updated_at', 'desc');
 
@@ -75,10 +75,14 @@ class Post extends Model
 			$query->where('posts.title', 'like', '%' . $search . '%');
 		}
 
+		if($userid) {
+			$query->where('posts.user_id', $userid);
+		}
+
 		return $query->paginate(200);
 	}
 
-	public static function get_posts_by_editor($userid, $search)
+	public static function get_posts_for_editor($userid, $search)
 	{
 
 		$query = static::join('users', 'users.id', '=', 'posts.user_id')->select('posts.*')->orderBy('position', 'desc')->orderBy('updated_at', 'desc');

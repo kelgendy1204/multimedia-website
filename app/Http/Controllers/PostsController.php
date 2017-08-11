@@ -92,7 +92,7 @@ class PostsController extends Controller
 		$parameters = Input::except('page');
 
 		if( request()->user()->hasRole('editor') ) {
-			$posts = Post::get_posts_by_editor( request()->user()->id , $search );
+			$posts = Post::get_posts_for_editor( request()->user()->id , $search );
 			$categories = [];
 			return view('admin.posts.index' , [
 				'categories' => $categories,
@@ -101,8 +101,9 @@ class PostsController extends Controller
 			]);
 		}
 
+		$userid = request()->input('userid');
 		$categories = Category::all();
-		$posts = Post::get_all_posts(null, $search);
+		$posts = Post::get_all_posts(null, $search, $userid);
 		return view('admin.posts.index' , [
 			'categories' => $categories,
 			'posts' => $posts,

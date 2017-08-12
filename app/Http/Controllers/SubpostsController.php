@@ -8,6 +8,7 @@ use App\Subpost;
 use App\Server;
 use App\Category;
 use App\Metadata;
+use App\Advertisement;
 use \Helpers\CheckUser;
 
 class SubpostsController extends Controller
@@ -21,6 +22,7 @@ class SubpostsController extends Controller
 	// get : /{postdesc}/مشاهدة مباشرة/{subposttitle} - watch post online
 	public function show($postdesc, $subposttitle) {
 		$categories = Category::all();
+		$advertisements = Advertisement::all()->keyBy('name');
 
 		$post = Post::where('description', $postdesc)->with('downloadlinks')->with('playlists')->with('subposts')->latest()->first();
 
@@ -46,6 +48,7 @@ class SubpostsController extends Controller
 			'activesubpost' => $subpost,
 			'servers' => $servers,
 			'latestplaylist' => $latestplaylist,
+			'advertisements' => $advertisements,
 			'randomPosts' => $randomPosts], Metadata::getMetadata()) );
 	}
 

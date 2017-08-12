@@ -48,7 +48,6 @@
         @endif
     </head>
     <body class="page links {{ isset($_COOKIE['color']) ? $_COOKIE['color'] : ''}}">
-      {{$description}}
         <div class="insidepage">
             <header>
                 <div class="logo">

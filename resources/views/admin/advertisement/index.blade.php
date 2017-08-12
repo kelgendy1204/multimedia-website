@@ -149,6 +149,85 @@
               </div>
             </div>
 
+
+            <div class="panel panel-default">
+              <div class="panel-heading"> <h3 class="text-center"> Show post page </h3></div>
+              <div class="panel-body">
+
+
+                  @if ($ads->get('showpost_right'))
+                    <div class="row form-group">
+                      <h4 class="text-center">Show post right advertisement</h4>
+                      <div class="col-md-4 col-sm-4 col-md-offset-4">
+                        <img src="{{$ads->get('showpost_right')->photo_url}}" class="img-rounded img-responsive">
+                      </div>
+                    </div>
+
+                    <div class="mb-15">
+                      <label for="showpost_right_link">Link</label>
+                      <input type="text" class="form-control" id="showpost_right_link" name="showpost_right_link" placeholder="enter link" value="{{$ads->get('showpost_right')->link}}">
+                    </div>
+
+                    <div class="mb-15">
+                      <label for="showpost_right_photolink">Photo link</label>
+                      <input type="text" class="form-control" id="showpost_right_photolink" name="showpost_right_photolink" placeholder="enter photo link" value="{{$ads->get('showpost_right')->photo_url}}">
+                    </div>
+
+
+                    <div class="form-check mb-15">
+                      <label class="form-check-label">
+                        <input name="showpost_right_isphotofile" type="checkbox" class="form-check-input">
+                        Is file uploaded?
+                      </label>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="showpost_right_photo" class="col-xs-12">Upload photo</label>
+                      <input type="file" class="form-control-file col-xs-12" name="showpost_right_photo" id="showpost_right_photo">
+                    </div>
+                    <hr />
+                  @endif
+
+
+                  @if ($ads->get('showpost_left'))
+                    <div class="row form-group">
+                      <h4 class="text-center">Show post left advertisement</h4>
+                      <div class="col-md-4 col-sm-4 col-md-offset-4">
+                        <img src="{{$ads->get('showpost_left')->photo_url}}" class="img-rounded img-responsive">
+                      </div>
+                    </div>
+
+                    <div class="mb-15">
+                      <label for="showpost_left_link">Link</label>
+                      <input type="text" class="form-control" id="showpost_left_link" name="showpost_left_link" placeholder="enter link" value="{{$ads->get('showpost_left')->link}}">
+                    </div>
+
+                    <div class="mb-15">
+                      <label for="showpost_left_photolink">Photo link</label>
+                      <input type="text" class="form-control" id="showpost_left_photolink" name="showpost_left_photolink" placeholder="enter photo link" value="{{$ads->get('showpost_left')->photo_url}}">
+                    </div>
+
+
+                    <div class="form-check mb-15">
+                      <label class="form-check-label">
+                        <input name="showpost_left_isphotofile" type="checkbox" class="form-check-input">
+                        Is file uploaded?
+                      </label>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="showpost_left_photo" class="col-xs-12">Upload photo</label>
+                      <input type="file" class="form-control-file col-xs-12" name="showpost_left_photo" id="showpost_left_photo">
+                    </div>
+                  @endif
+
+
+              </div>
+            </div>
+
+
+
+
             <div class="form-check text-center">
               <button type="submit" class="btn btn-primary btn-lg">Edit advertisements</button>
             </div>

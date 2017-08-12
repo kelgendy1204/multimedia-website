@@ -8,6 +8,7 @@ use App\Category;
 use App\Downloadlink;
 use App\Downloadserver;
 use App\Metadata;
+use App\Advertisement;
 use \Helpers\Urlshorten;
 use \Helpers\CheckUser;
 
@@ -22,6 +23,7 @@ class DownloadlinksController extends Controller
 	// get : /{postdesc}/تحميل مباشر - show a post links
 	public function show($postdesc) {
 		$categories = Category::all();
+		$advertisements = Advertisement::all()->keyBy('name');
 
 		$post = Post::where('description', $postdesc)->where('visible', '1')->with('downloadlinks')->with('playlists')->with('subposts')->latest()->first();
 
@@ -34,7 +36,15 @@ class DownloadlinksController extends Controller
 
 		$randomPosts = collect(Post::get_random_posts($post->category_id))->shuffle();
 
-		return view('posts.download', array_merge(['categories' => $categories, 'post' => $post, 'downloadlinks' => $downloadlinks, 'category' => $category, 'randomPosts' => $randomPosts, 'latestsubpost' => $latestsubpost , 'latestplaylist' => $latestplaylist ], Metadata::getMetadata()) );
+		return view('posts.download', array_merge([
+			'categories' => $categories,
+			'post' => $post,
+			'downloadlinks' => $downloadlinks,
+			'category' => $category,
+			'randomPosts' => $randomPosts,
+			'latestsubpost' => $latestsubpost,
+			'advertisements' => $advertisements,
+			'latestplaylist' => $latestplaylist], Metadata::getMetadata()) );
 	}
 
 	// get : admin/posts/{id}/download/create - create download links

@@ -7,6 +7,7 @@ use App\Post;
 use App\Playlist;
 use App\Audio;
 use App\Category;
+use App\Advertisement;
 use App\Metadata;
 use \Helpers\CheckUser;
 use File;
@@ -38,6 +39,7 @@ class PlaylistController extends Controller
 	// get : /{postdesc}/مشاهدة مباشرة/{playlisttitle} - watch post online
 	public function show($postdesc, $playlisttitle) {
 		$categories = Category::all();
+		$advertisements = Advertisement::all()->keyBy('name');
 
 		$post = Post::where('description', $postdesc)->with('downloadlinks')->with('playlists')->with('subposts')->latest()->first();
 
@@ -49,6 +51,7 @@ class PlaylistController extends Controller
 
 		$category = Category::find($post->category_id);
 
+
 		$randomPosts = collect(Post::get_random_posts($post->category_id))->shuffle();
 
 		$audios = [];
@@ -58,6 +61,7 @@ class PlaylistController extends Controller
 
 		return view('posts.playlist', array_merge([
 			'categories' => $categories,
+			'advertisements' => $advertisements,
 			'post' => $post,
 			'playlists' => $playlists,
 			'category' => $category,

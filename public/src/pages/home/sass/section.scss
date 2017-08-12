@@ -785,6 +785,22 @@ div.mainpage {
                 }
             }
         }
+
+        &.internal-pages{
+            @media screen and (max-width: 1220px) {
+                .firstpagecontainer{
+                    justify-content: center;
+                }
+                .side-bans{
+                    display: none;
+                }
+            }
+        }
+
+        .internal-pages-content{
+            text-align: center;
+        }
+
         .firstpagecontainer {
             display: flex;
             align-items: flex-start;
@@ -993,6 +1009,8 @@ div.mainpage {
             flex-direction: column;
             margin-bottom: 25px;
             width: 850px;
+            margin-left: auto;
+            margin-right: auto;
             &.random {
                 @media screen and (max-width: 870px) {
                     display: none;
@@ -1108,6 +1126,7 @@ div.mainpage {
         .downloadlinks {
             padding: 20px 10px 25px;
             width: 80%;
+            margin: 0 auto;
             min-width: 256px;
             text-align: center;
             color: white;
@@ -1513,6 +1532,7 @@ body.links{
 
 .fb-comments{
     width: 850px;
+    display: inline-block !important;
     @media screen and (max-width: 870px) {
         width: 90%;
     }
@@ -1799,6 +1819,7 @@ body{
     align-items: center;
     margin: 10px;
     min-width: 160px;
+    background-color: beige;
     width: 160px;
     min-height: 600px;
     height: 600px;

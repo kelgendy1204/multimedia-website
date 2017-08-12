@@ -45,31 +45,11 @@ class AdvertisementController extends Controller
 	public function update()
 	{
 
-		$allAds = ['home_top', 'home_bottom', 'home_right', 'home_left'];
+		$allAds = ['home_top', 'home_bottom', 'home_right', 'home_left', 'showpost_right', 'showpost_left'];
 
 		foreach ($allAds as $adsName) {
 			$this->makeAds($adsName);
 		}
-
-		// $home_top_ads = Advertisement::where('name', 'home_top')->first();
-		// $home_top_ads->link = request('home_top_link');
-
-		// $photolink = request('home_top_photolink');
-		// $photofile = request()->file('home_top_photo');
-
-		// $isphotofile = request('home_top_isphotofile') == "on" ? true : false;
-
-		// if (!$isphotofile) {
-		// 	$home_top_ads->photo_url = $photolink;
-		// } else {
-		// 	if($photofile && request()->hasFile('home_top_photo') && $photofile->isValid()) {
-		// 		$uniqid = uniqid($home_top_ads->id , true) . "." . $photofile->getClientOriginalExtension();
-		// 		$photofile->move('appendixadbans/', $uniqid);
-		// 		$home_top_ads->photo_url = "/appendixadbans/" . $uniqid;
-		// 	}
-		// }
-
-		// $home_top_ads->save();
 
 		return redirect()->action(
 			'AdvertisementController@index'

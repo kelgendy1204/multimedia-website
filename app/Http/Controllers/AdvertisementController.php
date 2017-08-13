@@ -7,6 +7,8 @@ use App\Advertisement;
 
 class AdvertisementController extends Controller
 {
+	private $allAds = ['home_top', 'home_bottom', 'home_right', 'home_left', 'showpost_right', 'showpost_left', 'internalpages_right', 'internalpages_left'];
+
     public function __construct()
 	{
 		$this->middleware('IsSuperAdmin');
@@ -15,7 +17,19 @@ class AdvertisementController extends Controller
 	public function index()
 	{
 		$ads = Advertisement::all()->keyBy('name');
+		$this->checkAllAds($ads);
 		return view('admin.advertisement.index', ['ads' => $ads]);
+	}
+
+	private function checkAllAds($ads)
+	{
+		foreach ($this->allAds as $adsName) {
+			if(! $ads->has($adsName)) {
+				$newAds = new Advertisement;
+				$newAds->name = $adsName;
+				$newAds->save();
+			}
+		}
 	}
 
 	private function makeAds($adsname)
@@ -45,9 +59,7 @@ class AdvertisementController extends Controller
 	public function update()
 	{
 
-		$allAds = ['home_top', 'home_bottom', 'home_right', 'home_left', 'showpost_right', 'showpost_left'];
-
-		foreach ($allAds as $adsName) {
+		foreach ($this->allAds as $adsName) {
 			$this->makeAds($adsName);
 		}
 

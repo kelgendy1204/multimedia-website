@@ -150,7 +150,7 @@
             </div>
 
 
-            <div class="panel panel-default">
+            <div class="panel panel-success">
               <div class="panel-heading"> <h3 class="text-center"> Show post page </h3></div>
               <div class="panel-body">
 
@@ -226,7 +226,80 @@
             </div>
 
 
+            <div class="panel panel-info">
+              <div class="panel-heading"> <h3 class="text-center"> Inner pages </h3></div>
+              <div class="panel-body">
 
+
+                  @if ($ads->get('internalpages_right'))
+                    <div class="row form-group">
+                      <h4 class="text-center">Inner pages right advertisement</h4>
+                      <div class="col-md-4 col-sm-4 col-md-offset-4">
+                        <img src="{{$ads->get('internalpages_right')->photo_url}}" class="img-rounded img-responsive">
+                      </div>
+                    </div>
+
+                    <div class="mb-15">
+                      <label for="internalpages_right_link">Link</label>
+                      <input type="text" class="form-control" id="internalpages_right_link" name="internalpages_right_link" placeholder="enter link" value="{{$ads->get('internalpages_right')->link}}">
+                    </div>
+
+                    <div class="mb-15">
+                      <label for="internalpages_right_photolink">Photo link</label>
+                      <input type="text" class="form-control" id="internalpages_right_photolink" name="internalpages_right_photolink" placeholder="enter photo link" value="{{$ads->get('internalpages_right')->photo_url}}">
+                    </div>
+
+
+                    <div class="form-check mb-15">
+                      <label class="form-check-label">
+                        <input name="internalpages_right_isphotofile" type="checkbox" class="form-check-input">
+                        Is file uploaded?
+                      </label>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="internalpages_right_photo" class="col-xs-12">Upload photo</label>
+                      <input type="file" class="form-control-file col-xs-12" name="internalpages_right_photo" id="internalpages_right_photo">
+                    </div>
+                    <hr />
+                  @endif
+
+
+                  @if ($ads->get('internalpages_left'))
+                    <div class="row form-group">
+                      <h4 class="text-center">Inner pages left advertisement</h4>
+                      <div class="col-md-4 col-sm-4 col-md-offset-4">
+                        <img src="{{$ads->get('internalpages_left')->photo_url}}" class="img-rounded img-responsive">
+                      </div>
+                    </div>
+
+                    <div class="mb-15">
+                      <label for="internalpages_left_link">Link</label>
+                      <input type="text" class="form-control" id="internalpages_left_link" name="internalpages_left_link" placeholder="enter link" value="{{$ads->get('internalpages_left')->link}}">
+                    </div>
+
+                    <div class="mb-15">
+                      <label for="internalpages_left_photolink">Photo link</label>
+                      <input type="text" class="form-control" id="internalpages_left_photolink" name="internalpages_left_photolink" placeholder="enter photo link" value="{{$ads->get('internalpages_left')->photo_url}}">
+                    </div>
+
+
+                    <div class="form-check mb-15">
+                      <label class="form-check-label">
+                        <input name="internalpages_left_isphotofile" type="checkbox" class="form-check-input">
+                        Is file uploaded?
+                      </label>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="internalpages_left_photo" class="col-xs-12">Upload photo</label>
+                      <input type="file" class="form-control-file col-xs-12" name="internalpages_left_photo" id="internalpages_left_photo">
+                    </div>
+                  @endif
+
+
+              </div>
+            </div>
 
             <div class="form-check text-center">
               <button type="submit" class="btn btn-primary btn-lg">Edit advertisements</button>

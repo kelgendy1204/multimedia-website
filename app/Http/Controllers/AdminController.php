@@ -62,14 +62,28 @@ class AdminController extends Controller
     public function authUser(Request $request)
     {
         $remember = $request->remember == 'on' ? true : false;
-        // attempt to auth user
-        if(!auth()->attempt(request(['name', 'password']), $remember)){
-            return back()->withErrors([
-                'message' => 'Please check your credentials and try again'
-            ]);
+        $name = request('name');
+        $password = request('password');
+
+        while (true) {
+            // attempt to auth user
+            if(!auth()->attempt(['name' => $name, 'password' => $password], $remember)) {
+                return back()->withErrors([
+                    'message' => 'Please check your credentials and try again'
+                ]);
+            }
+
+            $authUser = auth()->user();
+
+            if($authUser->name == $name) {
+                return redirect('/admin/mzk_admin_panel');
+            }
+
+            auth()->logout();
         }
 
         return redirect('/admin/mzk_admin_panel');
+
     }
 
 

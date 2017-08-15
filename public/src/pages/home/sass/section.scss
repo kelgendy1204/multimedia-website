@@ -799,7 +799,7 @@ div.mainpage {
         .firstpagecontainer {
             display: flex;
             align-items: flex-start;
-            justify-content: space-between;
+            justify-content: center;
             overflow: hidden;
             width: 100%;
             @media screen and (max-width: 850px) {
@@ -808,7 +808,7 @@ div.mainpage {
             .postdetailscontainer {
                 height: 100%;
                 display: flex;
-                margin: 10px 0;
+                margin: 10px auto;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;

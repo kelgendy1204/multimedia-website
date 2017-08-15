@@ -88,42 +88,42 @@
                     </div>
 
                     @if ($advertisements->get('home_top') && $advertisements->get('home_top')->photo_url && $advertisements->get('home_top')->link)
-                    <a href="{{$advertisements->get('home_top')->link}}" class="home_top" target="_blank">
-                        <div style="background-image: url({{$advertisements->get('home_top')->photo_url}})">
-                        </div>
-                    </a>
-                    @endif
-                </div>
-            </div>
-            <div class="posts-container">
-                <div class="home_right side-bans">
-                    @if ($advertisements->get('home_right') && $advertisements->get('home_right')->photo_url && $advertisements->get('home_right')->link)
-                    <a href="{{$advertisements->get('home_right')->link}}" target="_blank">
-                        <div class="image" style="background-image: url({{$advertisements->get('home_right')->photo_url}})">
-                        </div>
-                    </a>
-                    @endif
-                </div>
-                <div class="items">
-                    @foreach ($posts as $post)
-                        @include('partials.postlayout')
-                    @endforeach
-                </div>
-                <div class="home_left side-bans">
-                    @if ($advertisements->get('home_left') && $advertisements->get('home_left')->photo_url && $advertisements->get('home_left')->link)
-                        <a href="{{$advertisements->get('home_left')->link}}" target="_blank">
-                            <div class="image" style="background-image: url({{$advertisements->get('home_left')->photo_url}})">
+                        <a href="{{$advertisements->get('home_top')->link}}" class="home_top" target="_blank">
+                            <div style="background-image: url({{$advertisements->get('home_top')->photo_url}})">
                             </div>
                         </a>
                     @endif
                 </div>
             </div>
+            <div class="posts-container">
+                @if ($advertisements->get('home_right') && $advertisements->get('home_right')->photo_url && $advertisements->get('home_right')->link)
+                    <div class="home_right side-bans">
+                        <a href="{{$advertisements->get('home_right')->link}}" target="_blank">
+                            <div class="image" style="background-image: url({{$advertisements->get('home_right')->photo_url}})">
+                            </div>
+                        </a>
+                    </div>
+                @endif
+                <div class="items">
+                    @foreach ($posts as $post)
+                        @include('partials.postlayout')
+                    @endforeach
+                </div>
+                @if ($advertisements->get('home_left') && $advertisements->get('home_left')->photo_url && $advertisements->get('home_left')->link)
+                    <div class="home_left side-bans">
+                        <a href="{{$advertisements->get('home_left')->link}}" target="_blank">
+                            <div class="image" style="background-image: url({{$advertisements->get('home_left')->photo_url}})">
+                            </div>
+                        </a>
+                    </div>
+                @endif
+            </div>
             <div class="pagination-ban elementscontainer">
                 @if ($advertisements->get('home_bottom') && $advertisements->get('home_bottom')->photo_url && $advertisements->get('home_bottom')->link)
-                <a href="{{$advertisements->get('home_bottom')->link}}" class="home_bottom" target="_blank">
-                    <div style="background-image: url({{$advertisements->get('home_bottom')->photo_url}})">
-                    </div>
-                </a>
+                    <a href="{{$advertisements->get('home_bottom')->link}}" class="home_bottom" target="_blank">
+                        <div style="background-image: url({{$advertisements->get('home_bottom')->photo_url}})">
+                        </div>
+                    </a>
                 @endif
                 {{ $posts->appends($parameters)->links() }}
             </div>

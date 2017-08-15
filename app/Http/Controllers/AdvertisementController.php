@@ -7,7 +7,7 @@ use App\Advertisement;
 
 class AdvertisementController extends Controller
 {
-	private $allAds = ['home_top', 'home_bottom', 'home_right', 'home_left', 'showpost_right', 'showpost_left', 'internalpages_right', 'internalpages_left'];
+	private $allAds = ['home_top', 'home_bottom', 'home_right', 'home_left', 'showpost_right', 'showpost_left', 'internalpages_right', 'internalpages_left', 'links_top', 'links_bottom', 'getlinks_top_right' , 'getlinks_top_left', 'getlinks_bottom_right', 'getlinks_bottom_left'];
 
     public function __construct()
 	{
@@ -16,13 +16,14 @@ class AdvertisementController extends Controller
 
 	public function index()
 	{
+		$this->checkAllAds();
 		$ads = Advertisement::all()->keyBy('name');
-		$this->checkAllAds($ads);
 		return view('admin.advertisement.index', ['ads' => $ads]);
 	}
 
-	private function checkAllAds($ads)
+	private function checkAllAds()
 	{
+		$ads = Advertisement::all()->keyBy('name');
 		foreach ($this->allAds as $adsName) {
 			if(! $ads->has($adsName)) {
 				$newAds = new Advertisement;

@@ -7,6 +7,7 @@
 /public/bansimages/
 /public/playlistimages/
 /public/subpostimages/
+/public/appendixadbans/
 /public/dist*
 /storage/*.key
 /vendor

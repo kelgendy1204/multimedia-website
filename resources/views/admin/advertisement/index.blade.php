@@ -301,6 +301,213 @@
               </div>
             </div>
 
+
+            <div class="panel panel-default">
+              <div class="panel-heading"> <h3 class="text-center"> Links page </h3></div>
+              <div class="panel-body">
+
+
+                @if ($ads->get('links_top'))
+                  <div class="row form-group">
+                    <h4 class="text-center">Links top advertisement</h4>
+                    <div class="col-md-12">
+                      <img src="{{$ads->get('links_top')->photo_url}}" class="img-rounded img-responsive">
+                    </div>
+                  </div>
+
+                  <div class="mb-15">
+                    <label for="links_top_link">Link</label>
+                    <input type="text" class="form-control" id="links_top_link" name="links_top_link" placeholder="enter link" value="{{$ads->get('links_top')->link}}">
+                  </div>
+
+                  <div class="mb-15">
+                    <label for="links_top_photolink">Photo link</label>
+                    <input type="text" class="form-control" id="links_top_photolink" name="links_top_photolink" placeholder="enter photo link" value="{{$ads->get('links_top')->photo_url}}">
+                  </div>
+
+                  <div class="form-check mb-15">
+                    <label class="form-check-label">
+                      <input name="links_top_isphotofile" type="checkbox" class="form-check-input">
+                      Is file uploaded?
+                    </label>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="links_top_photo" class="col-xs-12">Upload photo</label>
+                    <input type="file" class="form-control-file col-xs-12" name="links_top_photo" id="links_top_photo">
+                  </div>
+                  <hr />
+                @endif
+
+
+                @if ($ads->get('links_bottom'))
+                  <div class="row form-group">
+                    <h4 class="text-center">Links bottom advertisement</h4>
+                    <div class="col-md-12">
+                      <img src="{{$ads->get('links_bottom')->photo_url}}" class="img-rounded img-responsive">
+                    </div>
+                  </div>
+
+                  <div class="mb-15">
+                    <label for="links_bottom_link">Link</label>
+                    <input type="text" class="form-control" id="links_bottom_link" name="links_bottom_link" placeholder="enter link" value="{{$ads->get('links_bottom')->link}}">
+                  </div>
+
+                  <div class="mb-15">
+                    <label for="links_bottom_photolink">Photo link</label>
+                    <input type="text" class="form-control" id="links_bottom_photolink" name="links_bottom_photolink" placeholder="enter photo link" value="{{$ads->get('links_bottom')->photo_url}}">
+                  </div>
+
+                  <div class="form-check mb-15">
+                    <label class="form-check-label">
+                      <input name="links_bottom_isphotofile" type="checkbox" class="form-check-input">
+                      Is file uploaded?
+                    </label>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="links_bottom_photo" class="col-xs-12">Upload photo</label>
+                    <input type="file" class="form-control-file col-xs-12" name="links_bottom_photo" id="links_bottom_photo">
+                  </div>
+                  <hr />
+                @endif
+
+
+
+                @if ($ads->get('getlinks_top_right'))
+                  <div class="row form-group">
+                    <h4 class="text-center">GetLinks top right advertisement</h4>
+                    <div class="col-md-4 col-sm-4 col-md-offset-4">
+                      <img src="{{$ads->get('getlinks_top_right')->photo_url}}" class="img-rounded img-responsive">
+                    </div>
+                  </div>
+
+                  <div class="mb-15">
+                    <label for="getlinks_top_right_link">Link</label>
+                    <input type="text" class="form-control" id="getlinks_top_right_link" name="getlinks_top_right_link" placeholder="enter link" value="{{$ads->get('getlinks_top_right')->link}}">
+                  </div>
+
+                  <div class="mb-15">
+                    <label for="getlinks_top_right_photolink">Photo link</label>
+                    <input type="text" class="form-control" id="getlinks_top_right_photolink" name="getlinks_top_right_photolink" placeholder="enter photo link" value="{{$ads->get('getlinks_top_right')->photo_url}}">
+                  </div>
+
+                  <div class="form-check mb-15">
+                    <label class="form-check-label">
+                      <input name="getlinks_top_right_isphotofile" type="checkbox" class="form-check-input">
+                      Is file uploaded?
+                    </label>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="getlinks_top_right_photo" class="col-xs-12">Upload photo</label>
+                    <input type="file" class="form-control-file col-xs-12" name="getlinks_top_right_photo" id="getlinks_top_right_photo">
+                  </div>
+                  <hr />
+                @endif
+
+
+                @if ($ads->get('getlinks_top_left'))
+                  <div class="row form-group">
+                    <h4 class="text-center">GetLinks top left advertisement</h4>
+                    <div class="col-md-4 col-sm-4 col-md-offset-4">
+                      <img src="{{$ads->get('getlinks_top_left')->photo_url}}" class="img-rounded img-responsive">
+                    </div>
+                  </div>
+
+                  <div class="mb-15">
+                    <label for="getlinks_top_left_link">Link</label>
+                    <input type="text" class="form-control" id="getlinks_top_left_link" name="getlinks_top_left_link" placeholder="enter link" value="{{$ads->get('getlinks_top_left')->link}}">
+                  </div>
+
+                  <div class="mb-15">
+                    <label for="getlinks_top_left_photolink">Photo link</label>
+                    <input type="text" class="form-control" id="getlinks_top_left_photolink" name="getlinks_top_left_photolink" placeholder="enter photo link" value="{{$ads->get('getlinks_top_left')->photo_url}}">
+                  </div>
+
+                  <div class="form-check mb-15">
+                    <label class="form-check-label">
+                      <input name="getlinks_top_left_isphotofile" type="checkbox" class="form-check-input">
+                      Is file uploaded?
+                    </label>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="getlinks_top_left_photo" class="col-xs-12">Upload photo</label>
+                    <input type="file" class="form-control-file col-xs-12" name="getlinks_top_left_photo" id="getlinks_top_left_photo">
+                  </div>
+                  <hr />
+                @endif
+
+
+                @if ($ads->get('getlinks_bottom_right'))
+                  <div class="row form-group">
+                    <h4 class="text-center">GetLinks bottom right advertisement</h4>
+                    <div class="col-md-4 col-sm-4 col-md-offset-4">
+                      <img src="{{$ads->get('getlinks_bottom_right')->photo_url}}" class="img-rounded img-responsive">
+                    </div>
+                  </div>
+
+                  <div class="mb-15">
+                    <label for="getlinks_bottom_right_link">Link</label>
+                    <input type="text" class="form-control" id="getlinks_bottom_right_link" name="getlinks_bottom_right_link" placeholder="enter link" value="{{$ads->get('getlinks_bottom_right')->link}}">
+                  </div>
+
+                  <div class="mb-15">
+                    <label for="getlinks_bottom_right_photolink">Photo link</label>
+                    <input type="text" class="form-control" id="getlinks_bottom_right_photolink" name="getlinks_bottom_right_photolink" placeholder="enter photo link" value="{{$ads->get('getlinks_bottom_right')->photo_url}}">
+                  </div>
+
+                  <div class="form-check mb-15">
+                    <label class="form-check-label">
+                      <input name="getlinks_bottom_right_isphotofile" type="checkbox" class="form-check-input">
+                      Is file uploaded?
+                    </label>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="getlinks_bottom_right_photo" class="col-xs-12">Upload photo</label>
+                    <input type="file" class="form-control-file col-xs-12" name="getlinks_bottom_right_photo" id="getlinks_bottom_right_photo">
+                  </div>
+                  <hr />
+                @endif
+
+
+                @if ($ads->get('getlinks_bottom_left'))
+                  <div class="row form-group">
+                    <h4 class="text-center">GetLinks bottom left advertisement</h4>
+                    <div class="col-md-4 col-sm-4 col-md-offset-4">
+                      <img src="{{$ads->get('getlinks_bottom_left')->photo_url}}" class="img-rounded img-responsive">
+                    </div>
+                  </div>
+
+                  <div class="mb-15">
+                    <label for="getlinks_bottom_left_link">Link</label>
+                    <input type="text" class="form-control" id="getlinks_bottom_left_link" name="getlinks_bottom_left_link" placeholder="enter link" value="{{$ads->get('getlinks_bottom_left')->link}}">
+                  </div>
+
+                  <div class="mb-15">
+                    <label for="getlinks_bottom_left_photolink">Photo link</label>
+                    <input type="text" class="form-control" id="getlinks_bottom_left_photolink" name="getlinks_bottom_left_photolink" placeholder="enter photo link" value="{{$ads->get('getlinks_bottom_left')->photo_url}}">
+                  </div>
+
+                  <div class="form-check mb-15">
+                    <label class="form-check-label">
+                      <input name="getlinks_bottom_left_isphotofile" type="checkbox" class="form-check-input">
+                      Is file uploaded?
+                    </label>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="getlinks_bottom_left_photo" class="col-xs-12">Upload photo</label>
+                    <input type="file" class="form-control-file col-xs-12" name="getlinks_bottom_left_photo" id="getlinks_bottom_left_photo">
+                  </div>
+                  <hr />
+                @endif
+
+              </div>
+            </div>
+
             <div class="form-check text-center">
               <button type="submit" class="btn btn-primary btn-lg">Edit advertisements</button>
             </div>

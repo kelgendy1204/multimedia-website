@@ -100,7 +100,9 @@ class AdminController extends Controller
             ]);
         }
 
-        return redirect('/admin/mzk_admin_panel');
+        return redirect()->action(
+            'AdminController@index'
+        );
 
     }
 
@@ -167,7 +169,9 @@ class AdminController extends Controller
     {
         auth()->logout();
 
-        return redirect('/');
+        return redirect()->action(
+            'PostsController@index'
+        );
     }
 
     // get - /admin/mzk_admin_adduser
@@ -196,7 +200,9 @@ class AdminController extends Controller
         $user->roles()->attach($request->role_ids);
 
         //redirect
-        return redirect('/admin/mzk_admin_panel');
+        return redirect()->action(
+            'AdminController@index'
+        );
     }
 
 }

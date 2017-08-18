@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Role;
 use App\Category;
+use App\Session;
 
 class AdminController extends Controller
 {
@@ -82,6 +84,13 @@ class AdminController extends Controller
         $roles = Role::all();
 
         return $roles;
+    }
+
+    private function logoutAllUsers($request)
+    {
+        $request->session()->flush();
+        Session::truncate();
+        DB::table('users')->update(['remember_token' => null]);
     }
 
     // get - /admin/mzk_admin_login

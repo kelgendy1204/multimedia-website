@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Role;
 use App\Category;
@@ -28,6 +30,36 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    private function loginUserById($request)
+    {
+        $remember = $request->remember == 'on' ? true : false;
+        $name = $request->name;
+        $password = $request->password;
+
+        $user = User::where('name', $name)->first();
+
+        if (Hash::check($password, $user->password)) {
+            Auth::loginUsingId($user->id, $remember);
+            return true;
+        }
+        return false;
+    }
+
+    private function loginUserByAttempt($request)
+    {
+        $remember = $request->remember == 'on' ? true : false;
+        $name = $request->name;
+        $password = $request->password;
+
+        // attempt to auth user
+        if(auth()->attempt(['name' => $name, 'password' => $password], $remember)) {
+            return true;
+        }
+
+        return false;
+    }
 
     private function getAllRoles()
     {
@@ -61,25 +93,11 @@ class AdminController extends Controller
     // post - /admin/mzk_admin_login
     public function authUser(Request $request)
     {
-        $remember = $request->remember == 'on' ? true : false;
-        $name = request('name');
-        $password = request('password');
 
-        while (true) {
-            // attempt to auth user
-            if(!auth()->attempt(['name' => $name, 'password' => $password], $remember)) {
-                return back()->withErrors([
-                    'message' => 'Please check your credentials and try again'
-                ]);
-            }
-
-            $authUser = auth()->user();
-
-            if($authUser->name == $name) {
-                return redirect('/admin/mzk_admin_panel');
-            }
-
-            auth()->logout();
+        if(!$this->loginUserById($request)) {
+            return back()->withErrors([
+                'message' => 'Please check your credentials and try again'
+            ]);
         }
 
         return redirect('/admin/mzk_admin_panel');

@@ -95,7 +95,7 @@ class SubpostsController extends Controller
 		$imageFile = request()->file('photo_url');
 
 		if(request()->hasFile('photo_url') && $imageFile->isValid()) {
-			$uniqid = uniqid($post->id . $subpost->id, true) . "." . $imageFile->getClientOriginalExtension();
+			$uniqid = uniqid($subpost->id, true) . "." . $imageFile->getClientOriginalExtension();
 			$imageFile->move('subpostimages/', $uniqid);
 			$subpost->photo_url = "/subpostimages/" . $uniqid;
 		}
@@ -159,7 +159,7 @@ class SubpostsController extends Controller
 		$imageFile = request()->file('photo_url');
 
 		if(request()->hasFile('photo_url') && $imageFile->isValid()) {
-			$uniqid = uniqid($post->id . $subpost->id, true) . "." . $imageFile->getClientOriginalExtension();
+			$uniqid = uniqid($subpost->id, true) . "." . $imageFile->getClientOriginalExtension();
 			$imageFile->move('subpostimages/', $uniqid);
 			$subpost->photo_url = "/subpostimages/" . $uniqid;
 		}

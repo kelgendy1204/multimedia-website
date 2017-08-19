@@ -89,6 +89,16 @@ class DownloadlinksController extends Controller
 			$downloadlink->downloadservers()->saveMany($downloadservers);
 		}
 
+		$imageFile = request()->file('photo_url');
+
+		if(request()->hasFile('photo_url') && $imageFile->isValid()) {
+			$uniqid = uniqid($downloadlink->id, true) . "." . $imageFile->getClientOriginalExtension();
+			$imageFile->move('downloadimages/', $uniqid);
+			$downloadlink->photo_url = "/downloadimages/" . $uniqid;
+		}
+
+		$downloadlink->save();
+
 		return redirect()->action(
 			'PostsController@edit', ['post' => $post]
 		);
@@ -145,6 +155,16 @@ class DownloadlinksController extends Controller
 
 		$downloadlink->downloadservers()->delete();
 		$downloadlink->downloadservers()->saveMany($downloadservers);
+		$downloadlink->save();
+
+		$imageFile = request()->file('photo_url');
+
+		if(request()->hasFile('photo_url') && $imageFile->isValid()) {
+			$uniqid = uniqid($downloadlink->id, true) . "." . $imageFile->getClientOriginalExtension();
+			$imageFile->move('downloadimages/', $uniqid);
+			$downloadlink->photo_url = "/downloadimages/" . $uniqid;
+		}
+
 		$downloadlink->save();
 
 		return redirect()->action(

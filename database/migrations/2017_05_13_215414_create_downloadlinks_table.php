@@ -16,6 +16,7 @@ class CreateDownloadlinksTable extends Migration
         Schema::create('downloadlinks', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('photo_url')->nullable();
             $table->boolean('visible');
             $table->integer('post_id');
             $table->timestamps();

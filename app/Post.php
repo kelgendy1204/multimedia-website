@@ -65,7 +65,7 @@ class Post extends Model
 
 	public static function get_all_posts($category_name_en, $search, $userid)
 	{
-		$query = static::leftJoin('categories', 'categories.id', '=', 'posts.category_id')->select('posts.*', 'categories.name_en as category_name_en', 'categories.name as category_name')->orderBy('pinned', 'desc')->orderBy('position', 'desc')->orderBy('updated_at', 'desc');
+		$query = static::leftJoin('categories', 'categories.id', '=', 'posts.category_id')->leftJoin('users', 'users.id', 'posts.user_id')->select('posts.*', 'categories.name_en as category_name_en', 'categories.name as category_name', 'users.name as username')->orderBy('pinned', 'desc')->orderBy('position', 'desc')->orderBy('updated_at', 'desc');
 
 		if($category_name_en) {
 			$query->where('categories.name_en', $category_name_en);

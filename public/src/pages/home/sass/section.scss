@@ -1121,11 +1121,22 @@ div.mainpage {
         .downloadlinks {
             padding: 20px 10px 25px;
             width: 80%;
+            max-width: 850px;
             margin: 0 auto;
             min-width: 256px;
             text-align: center;
             color: white;
             font-family: jf;
+            .linkimg-container{
+                width: 100%;
+                margin-top: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                img{
+                    width: 300px;
+                }
+            }
             .link {
                 position: relative;
                 margin: 60px 0 20px;

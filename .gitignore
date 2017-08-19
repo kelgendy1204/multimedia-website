@@ -8,6 +8,7 @@
 /public/playlistimages/
 /public/subpostimages/
 /public/appendixadbans/
+/public/downloadimages/
 /public/dist*
 /storage/*.key
 /vendor

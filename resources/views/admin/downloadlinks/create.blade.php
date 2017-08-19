@@ -44,8 +44,11 @@
 											<div class="col-sm-4">
 												<input name="downloadservername[]" type="text" class="form-control" placeholder="Server name" value="{{$downloadserver->name}}" />
 											</div>
-											<div class="col-sm-8">
+											<div class="col-sm-6">
 												<input name="downloadserverlink[]" type="text" class="form-control" placeholder="Server link" value="{{\Helpers\Urlshorten::getLinkByHash(\Helpers\Urlshorten::getHashFromLink($downloadserver->link))->url}}" />
+											</div>
+											<div class="col-sm-2">
+												<input name="downloadserverposition[]" type="text" class="form-control" placeholder="Server position" value="{{$downloadserver->position}}" />
 											</div>
 										</div>
 									@endforeach
@@ -102,7 +105,17 @@
 		e.preventDefault();
 		var i = $('.server').size() + 1;
 		var servers = $('.servers');
-		var element = '<div class="form-group server"><div class="col-sm-4"><input name="downloadservername[]" type="text" class="form-control" placeholder="Server name"></div><div class="col-sm-8"><input name="downloadserverlink[]" type="text" class="form-control" placeholder="Server link"></div></div>';
+		var element = `<div class="form-group server">
+							<div class="col-sm-4">
+								<input name="downloadservername[]" type="text" class="form-control" placeholder="Server name">
+							</div>
+							<div class="col-sm-6">
+								<input name="downloadserverlink[]" type="text" class="form-control" placeholder="Server link">
+							</div>
+							<div class="col-sm-2">
+								<input name="downloadserverposition[]" type="text" class="form-control" placeholder="Server position" />
+							</div>
+						</div>`;
 
 		servers.append(element);
 	});

@@ -30,7 +30,10 @@ class DownloadlinksController extends Controller
 		$latestsubpost = $post->subposts()->where('visible', '1')->latest()->first();
 		$latestplaylist = $post->playlists()->where('visible', '1')->latest()->first();
 
-		$downloadlinks = $post->downloadlinks()->with('downloadservers')->where('visible', '1')->latest()->get();
+		$downloadlinks = $post->downloadlinks()->with([
+			'downloadservers' => function ($query){
+				$query->orderBy('position');
+			}])->where('visible', '1')->latest()->get();
 
 		$category = Category::find($post->category_id);
 
@@ -75,12 +78,14 @@ class DownloadlinksController extends Controller
 		$downloadservers = [];
 		$downloadservernames = request('downloadservername');
 		$downloadserverlinks = request('downloadserverlink');
+		$downloadserverpositions = request('downloadserverposition');
 
 		if($downloadserverlinks){
 			foreach ($downloadserverlinks as $index => $downloadserverlink) {
 				if($downloadserverlink){
 					$downloadserver = new Downloadserver;
 					$downloadserver->name = $downloadservernames[$index];
+					$downloadserver->position = $downloadserverpositions[$index] ? $downloadserverpositions[$index] : $index;
 					$link = Urlshorten::makeGetShortenUrl($downloadserverlink);
 					$downloadserver->link = "/generatelink/" . $link->hash;
 					$downloadservers[] = $downloadserver;
@@ -113,7 +118,10 @@ class DownloadlinksController extends Controller
 
 		$post = Post::find($post);
 
-		$downloadlink = $post->downloadlinks()->where('id', $downloadlink)->with('downloadservers')->first();
+		$downloadlink = $post->downloadlinks()->where('id', $downloadlink)->with([
+			'downloadservers' => function ($query){
+				$query->orderBy('position');
+			}])->first();
 
 		if($downloadlink){
 			return view('admin.downloadlinks.create', ['post' => $post, 'downloadlink' => $downloadlink]);
@@ -140,12 +148,14 @@ class DownloadlinksController extends Controller
 		$downloadservers = [];
 		$downloadservernames = request('downloadservername');
 		$downloadserverlinks = request('downloadserverlink');
+		$downloadserverpositions = request('downloadserverposition');
 
 		if($downloadserverlinks){
 			foreach ($downloadserverlinks as $index => $downloadserverlink) {
 				if($downloadserverlink){
 					$downloadserver = new Downloadserver;
 					$downloadserver->name = $downloadservernames[$index];
+					$downloadserver->position = $downloadserverpositions[$index] ? $downloadserverpositions[$index] : $index;
 					$link = Urlshorten::makeGetShortenUrl($downloadserverlink);
 					$downloadserver->link = "/generatelink/" . $link->hash;
 					$downloadservers[] = $downloadserver;

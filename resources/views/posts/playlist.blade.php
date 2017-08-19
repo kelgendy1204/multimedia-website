@@ -84,9 +84,11 @@
 							</div>
 							<div class="sm2-playlist-wrapper">
 								<ul class="sm2-playlist-bd">
-									@foreach ($activeplaylist->audios as $audio)
-										<li><a href="{{$audio->link}}"><b>{{$activeplaylist->title}}</b> - {{$audio->name}}</a></li>
-									@endforeach
+									@if (count($activeaudios) > 0)
+										@foreach ($activeaudios as $audio)
+											<li><a href="{{$audio->link}}"><b>{{$activeplaylist->title}}</b> - {{$audio->name}}</a></li>
+										@endforeach
+									@endif
 								</ul>
 							</div>
 							<div class="sm2-extra-controls">

@@ -38,7 +38,7 @@ class SubpostsController extends Controller
 
 		$servers = [];
 		if($subpost){
-			$servers = $subpost->servers()->orderBy('name')->get();
+			$servers = $subpost->servers()->orderBy('position')->get();
 		}
 
 		return view('posts.online',  array_merge([
@@ -79,12 +79,14 @@ class SubpostsController extends Controller
 		$servers = [];
 		$servernames = request('servername');
 		$serverlinks = request('serverlink');
+		$serverpositions = request('serverposition');
 
 		if($serverlinks){
 			foreach ($serverlinks as $index => $serverlink) {
 				if($serverlink){
 					$server = new Server;
 					$server->name = $servernames[$index];
+					$server->position = $serverpositions[$index] ? $serverpositions[$index] : $index;
 					$server->link = $serverlink;
 					$servers[] = $server;
 				}
@@ -115,7 +117,10 @@ class SubpostsController extends Controller
 		}
 
 		$post = Post::find($post);
-		$subpost= $post->subposts()->where('id', $subpostid)->with('servers')->first();
+		$subpost= $post->subposts()->where('id', $subpostid)->with([
+			'servers' => function ($query){
+				$query->orderBy('position');
+			}])->first();
 
 		if($subpost){
 			return view('admin.subposts.create', ['post' => $post, 'subpost' => $subpost]);
@@ -141,12 +146,14 @@ class SubpostsController extends Controller
 		$servers = [];
 		$servernames = request('servername');
 		$serverlinks = request('serverlink');
+		$serverpositions = request('serverposition');
 
 		if($serverlinks){
 			foreach ($serverlinks as $index => $serverlink) {
 				if($serverlink){
 					$server = new Server;
 					$server->name = $servernames[$index];
+					$server->position = $serverpositions[$index] ? $serverpositions[$index] : $index;
 					$server->link = $serverlink;
 					$servers[] = $server;
 				}

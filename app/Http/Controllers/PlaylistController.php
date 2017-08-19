@@ -45,9 +45,9 @@ class PlaylistController extends Controller
 
 		$latestsubpost = $post->subposts()->where('visible', '1')->latest()->first();
 
-		$playlist = $post->playlists()->where('visible', '1')->where('title', $playlisttitle)->latest()->first();
+		$playlist = $post->playlists()->where('visible', '1')->where('title', $playlisttitle)->with('audios')->latest()->first();
 
-		$playlists = $post->playlists()->where('visible', '1')->with('audios')->latest()->get();
+		$playlists = $post->playlists()->where('visible', '1')->latest()->get();
 
 		$category = Category::find($post->category_id);
 
@@ -56,7 +56,7 @@ class PlaylistController extends Controller
 
 		$audios = [];
 		if($playlist){
-			$audios = $playlist->audios()->orderBy('name')->get();
+			$audios = $playlist->audios()->orderBy('position')->get();
 		}
 
 		return view('posts.playlist', array_merge([
@@ -66,7 +66,7 @@ class PlaylistController extends Controller
 			'playlists' => $playlists,
 			'category' => $category,
 			'activeplaylist' => $playlist,
-			'audios' => $audios,
+			'activeaudios' => $audios,
 			'latestsubpost' => $latestsubpost,
 			'randomPosts' => $randomPosts], Metadata::getMetadata()) );
 	}
@@ -97,6 +97,7 @@ class PlaylistController extends Controller
 
 		$audios = [];
 		$audionames = request('audioname');
+		$audiopositions = request('audioposition');
 
 		if($audionames){
 			foreach ($audionames as $index => $audioname) {
@@ -107,12 +108,14 @@ class PlaylistController extends Controller
 					if ($audiolink) {
 						$audio = new Audio;
 						$audio->name = $audionames[$index];
+						$audio->position = $audiopositions[$index] ? $audiopositions[$index] : $index;
 						$audio->link = $audiolink;
 						$audios[] = $audio;
 					} elseif ($audiofile) {
 						if(request()->file('audiofile')[$index] && $this->isValidAudio($audiofile)) {
 							$audio = new Audio;
 							$audio->name = $audionames[$index];
+							$audio->position = $audiopositions[$index] ? $audiopositions[$index] : $index;
 
 							$uniqid = uniqid($playlist->id, true) . "." . $audiofile->getClientOriginalExtension();
 							$audiofile->move('playlistaudios/' . $playlist->title . '/' , $uniqid);
@@ -148,7 +151,10 @@ class PlaylistController extends Controller
 		}
 
 		$post = Post::find($post);
-		$playlist= $post->playlists()->where('id', $playlist)->with('audios')->first();
+		$playlist= $post->playlists()->where('id', $playlist)->with([
+			'audios' => function ($query){
+				$query->orderBy('position');
+			}])->first();
 
 		if($playlist){
 			return view('admin.playlists.create', ['post' => $post, 'playlist' => $playlist]);
@@ -173,6 +179,7 @@ class PlaylistController extends Controller
 
 		$audios = [];
 		$audionames = request('audioname');
+		$audiopositions = request('audioposition');
 
 		if ($audionames){
 			foreach ($audionames as $index => $audioname) {
@@ -183,12 +190,14 @@ class PlaylistController extends Controller
 					if($audiolink) {
 						$audio = new Audio;
 						$audio->name = $audionames[$index];
+						$audio->position = $audiopositions[$index] ? $audiopositions[$index] : $index;
 						$audio->link = $audiolink;
 						$audios[] = $audio;
 					} elseif ($audiofile) {
 						if(request()->file('audiofile')[$index] && $this->isValidAudio($audiofile)) {
 							$audio = new Audio;
 							$audio->name = $audionames[$index];
+							$audio->position = $audiopositions[$index] ? $audiopositions[$index] : $index;
 
 							$uniqid = uniqid($playlist->id, true) . "." . $audiofile->getClientOriginalExtension();
 							$audiofile->move('playlistaudios/' . $playlist->title . '/' , $uniqid);

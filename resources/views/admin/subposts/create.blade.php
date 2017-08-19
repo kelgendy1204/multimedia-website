@@ -44,9 +44,14 @@
 											<div class="col-sm-4">
 												<input name="servername[]" type="text" class="form-control" placeholder="Server name" value="{{$server->name}}" />
 											</div>
-											<div class="col-sm-8">
+											<div class="col-sm-6">
 												<input name="serverlink[]" type="text" class="form-control" placeholder="Server link" value="{{$server->link}}" />
 											</div>
+
+											<div class="col-sm-2">
+												<input name="serverposition[]" type="text" class="form-control" placeholder="server position" value="{{$server->position}}" />
+											</div>
+
 										</div>
 									@endforeach
 								@endif
@@ -102,7 +107,17 @@
 		e.preventDefault();
 		var i = $('.server').size() + 1;
 		var servers = $('.servers');
-		var element = '<div class="form-group server"><div class="col-sm-4"><input name="servername[]" type="text" class="form-control" placeholder="Server name"></div><div class="col-sm-8"><input name="serverlink[]" type="text" class="form-control" placeholder="Server link"></div></div>';
+		var element = `<div class="form-group server">
+							<div class="col-sm-4">
+								<input name="servername[]" type="text" class="form-control" placeholder="Server name">
+							</div>
+							<div class="col-sm-6">
+								<input name="serverlink[]" type="text" class="form-control" placeholder="Server link">
+							</div>
+							<div class="col-sm-2">
+								<input name="serverposition[]" type="text" class="form-control" placeholder="server position" />
+							</div>
+						</div>`;
 
 		servers.append(element);
 	});

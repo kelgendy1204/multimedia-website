@@ -27,7 +27,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/manifest.json">
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-        <link rel="stylesheet" href="/dist_v6/css/home-4268fffd3b.css" />
+        <link rel="stylesheet" href="/dist_v6/css/home-800e7326a4.css" />
 
         @if ($scripts->value)
           {!! $scripts->value !!}

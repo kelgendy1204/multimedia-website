@@ -89,10 +89,12 @@
                     </div>
 
                     @if ($advertisements->get('home_top') && $advertisements->get('home_top')->photo_url && $advertisements->get('home_top')->link)
-                        <a href="{{$advertisements->get('home_top')->link}}" class="home_top" target="_blank">
-                            <div style="background-image: url({{$advertisements->get('home_top')->photo_url}})">
-                            </div>
-                        </a>
+                        <div class="home_top">
+                            <a href="{{$advertisements->get('home_top')->link}}" class="home_top_link" target="_blank">
+                                <div class="imgbg_animated" style="background-image: url({{$advertisements->get('home_top')->photo_url}})">
+                                </div>
+                            </a>
+                        </div>
                     @endif
                 </div>
             </div>
@@ -121,10 +123,12 @@
             </div>
             <div class="pagination-ban elementscontainer">
                 @if ($advertisements->get('home_bottom') && $advertisements->get('home_bottom')->photo_url && $advertisements->get('home_bottom')->link)
-                    <a href="{{$advertisements->get('home_bottom')->link}}" class="home_bottom" target="_blank">
-                        <div style="background-image: url({{$advertisements->get('home_bottom')->photo_url}})">
-                        </div>
-                    </a>
+                    <div class="home_bottom">
+                        <a href="{{$advertisements->get('home_bottom')->link}}" class="home_bottom_link" target="_blank">
+                            <div class="imgbg_animated" style="background-image: url({{$advertisements->get('home_bottom')->photo_url}})">
+                            </div>
+                        </a>
+                    </div>
                 @endif
                 {{ $posts->appends($parameters)->links() }}
             </div>

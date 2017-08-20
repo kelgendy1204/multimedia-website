@@ -375,16 +375,19 @@ div.mainpage {
                 }
             }
 
-            .home_top {
+            .home_top{
+                text-align: center;
                 width: 100%;
+            }
+
+            .home_top_link {
                 display: inline-flex;
                 justify-content: center;
                 align-items: center;
                 margin: 10px;
-                height: 90px;
                 >div{
-                    width: 100%;
-                    height: 100%;
+                    height: 160px;
+                    width: 600px;
                     background-position: center center;
                     background-repeat: no-repeat;
                     background-size: auto 100%;
@@ -482,19 +485,29 @@ div.mainpage {
         }
     }
 
+    .imgbg_animated{
+        transition: 2s linear background-size;
+        &:hover{
+            background-size: auto 110% !important;
+        }
+    }
+
     .pagination-ban{
         width: 100%;
         text-align: center;
-        a.home_bottom{
+        .home_bottom{
+            width: 100%;
+            text-align: center;
+        }
+        .home_bottom_link{
             width: 100%;
             display: inline-flex;
             justify-content: center;
             align-items: center;
             margin: 10px;
-            height: 90px;
             >div{
-                width: 100%;
-                height: 100%;
+                width: 600px;
+                height: 160px;
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-size: auto 100%;
@@ -1281,16 +1294,17 @@ div.mainpage {
     .playlists{
         max-width: 850px;
         width: 90%;
-        height: 280px;
         direction: ltr;
         display: flex;
         justify-content: space-around;
         margin: 10px;
         .playlist-pic{
-            height: 100%;
+            height: 200px;
+            min-height: 200px;
+            width: 150px;
+            min-width: 150px;
             border-radius: 5px;
             margin: 0 0 0 20px;
-            width: 160px;
             @media screen and (max-width: 500px) {
                 display: none;
             }
@@ -1374,6 +1388,7 @@ div.mainpage {
             .lower-playlist{
                 display: flex;
                 height: 100%;
+                min-height: 200px;
                 .sm2-extra-controls{
                     display: none;
                 }

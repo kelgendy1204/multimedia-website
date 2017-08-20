@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Role;
 use App\Category;
+use App\Session;
 
 class AdminController extends Controller
 {
@@ -19,7 +23,7 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('IsEditorAtLeast')->only(['index', 'logout']);
-        $this->middleware('IsSuperAdmin')->only(['addUser', 'storeUser']);
+        $this->middleware('IsSuperAdmin')->only(['addUser', 'storeUser', 'showUsers', 'editUser', 'updateUser', 'deleteUser']);
         $this->middleware('guest')->only(['login', 'authUser']);
     }
 
@@ -29,44 +33,38 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    // get - /admin/mzk_admin_login
-    public function login(Request $request)
-    {
-        return view('admin.adminlogin');
-    }
 
-    // post - /admin/mzk_admin_login
-    public function authUser(Request $request)
+    private function loginUserById($request)
     {
         $remember = $request->remember == 'on' ? true : false;
+        $name = $request->name;
+        $password = $request->password;
+
+        $user = User::where('name', $name)->first();
+
+        if (Hash::check($password, $user->password)) {
+            Auth::loginUsingId($user->id, $remember);
+            return true;
+        }
+        return false;
+    }
+
+    private function loginUserByAttempt($request)
+    {
+        $remember = $request->remember == 'on' ? true : false;
+        $name = $request->name;
+        $password = $request->password;
+
         // attempt to auth user
-        if(!auth()->attempt(request(['name', 'password']), $remember)){
-            return back()->withErrors([
-                'message' => 'Please check your credentials and try again'
-            ]);
+        if(auth()->attempt(['name' => $name, 'password' => $password], $remember)) {
+            return true;
         }
 
-        return redirect('/admin/mzk_admin_panel');
+        return false;
     }
 
-    // get - /admin/mzk_admin_panel
-    public function index(Request $request)
+    private function getAllRoles()
     {
-        return view('admin.adminpanel');
-    }
-
-    // post - /admin/mzk_admin_logout
-    public function logout(Request $request)
-    {
-        auth()->logout();
-
-        return redirect('/');
-    }
-
-    // get - /admin/mzk_admin_adduser
-    public function addUser(Request $request)
-    {
-
         $roles = Role::all();
         $categoriesRoles = Category::all();
 
@@ -85,7 +83,111 @@ class AdminController extends Controller
 
         $roles = Role::all();
 
-        return view('admin.adminadduser', ['roles' => $roles]);
+        return $roles;
+    }
+
+    private function logoutAllUsers($request)
+    {
+        $request->session()->flush();
+        Session::truncate();
+        DB::table('users')->update(['remember_token' => null]);
+    }
+
+    // get - /admin/mzk_admin_login
+    public function login(Request $request)
+    {
+        return view('admin.adminlogin');
+    }
+
+    // post - /admin/mzk_admin_login
+    public function authUser(Request $request)
+    {
+
+        if(!$this->loginUserById($request)) {
+            return back()->withErrors([
+                'message' => 'Please check your credentials and try again'
+            ]);
+        }
+
+        return redirect()->action(
+            'AdminController@index'
+        );
+
+    }
+
+
+    public function showUsers()
+    {
+        $users = User::all();
+        return view('admin.users.index', ['users' => $users]);
+    }
+
+    public function editUser($user)
+    {
+        $roles = $this->getAllRoles();
+        $user = User::find($user);
+        return view('admin.users.create', ['user' => $user, 'roles' => $roles]);
+    }
+
+    public function updateUser($user)
+    {
+        $user = User::find($user);
+        $this->validate(request(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'confirmed',
+        ]);
+
+        $user->name = request()->name;
+        $user->email = request()->email;
+        if(request()->password) {
+            $user->password = bcrypt(request()->password);
+        }
+        $user->save();
+        $user->roles()->detach();
+        $user->roles()->attach(request()->role_ids);
+        return redirect()->action(
+            'AdminController@showUsers'
+        );
+    }
+
+    public function deleteUser($user)
+    {
+        if($user == request()->user()->id){
+            return redirect()->action(
+                'AdminController@showUsers'
+            );
+        }
+
+        $user = User::find($user);
+        $user->roles()->detach();
+        $user->delete();
+        return redirect()->action(
+            'AdminController@showUsers'
+        );
+    }
+
+    // get - /admin/mzk_admin_panel
+    public function index(Request $request)
+    {
+        return view('admin.adminpanel');
+    }
+
+    // post - /admin/mzk_admin_logout
+    public function logout(Request $request)
+    {
+        auth()->logout();
+
+        return redirect()->action(
+            'PostsController@index'
+        );
+    }
+
+    // get - /admin/mzk_admin_adduser
+    public function addUser(Request $request)
+    {
+        $roles = $this->getAllRoles();
+        return view('admin.users.create', ['roles' => $roles]);
     }
 
     // post - /admin/mzk_admin_adduser
@@ -107,7 +209,9 @@ class AdminController extends Controller
         $user->roles()->attach($request->role_ids);
 
         //redirect
-        return redirect('/admin/mzk_admin_panel');
+        return redirect()->action(
+            'AdminController@index'
+        );
     }
 
 }

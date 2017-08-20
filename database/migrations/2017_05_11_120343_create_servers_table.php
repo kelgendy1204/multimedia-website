@@ -17,6 +17,7 @@ class CreateServersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('link');
+            $table->integer('position')->default(0);
             $table->integer('subpost_id');
         });
     }

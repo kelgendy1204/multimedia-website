@@ -7,6 +7,7 @@ use App\Post;
 use App\Playlist;
 use App\Audio;
 use App\Category;
+use App\Advertisement;
 use App\Metadata;
 use \Helpers\CheckUser;
 use File;
@@ -38,31 +39,34 @@ class PlaylistController extends Controller
 	// get : /{postdesc}/مشاهدة مباشرة/{playlisttitle} - watch post online
 	public function show($postdesc, $playlisttitle) {
 		$categories = Category::all();
+		$advertisements = Advertisement::all()->keyBy('name');
 
 		$post = Post::where('description', $postdesc)->with('downloadlinks')->with('playlists')->with('subposts')->latest()->first();
 
 		$latestsubpost = $post->subposts()->where('visible', '1')->latest()->first();
 
-		$playlist = $post->playlists()->where('visible', '1')->where('title', $playlisttitle)->latest()->first();
+		$playlist = $post->playlists()->where('visible', '1')->where('title', $playlisttitle)->with('audios')->latest()->first();
 
-		$playlists = $post->playlists()->where('visible', '1')->with('audios')->latest()->get();
+		$playlists = $post->playlists()->where('visible', '1')->latest()->get();
 
 		$category = Category::find($post->category_id);
+
 
 		$randomPosts = collect(Post::get_random_posts($post->category_id))->shuffle();
 
 		$audios = [];
 		if($playlist){
-			$audios = $playlist->audios()->orderBy('name')->get();
+			$audios = $playlist->audios()->orderBy('position')->get();
 		}
 
 		return view('posts.playlist', array_merge([
 			'categories' => $categories,
+			'advertisements' => $advertisements,
 			'post' => $post,
 			'playlists' => $playlists,
 			'category' => $category,
 			'activeplaylist' => $playlist,
-			'audios' => $audios,
+			'activeaudios' => $audios,
 			'latestsubpost' => $latestsubpost,
 			'randomPosts' => $randomPosts], Metadata::getMetadata()) );
 	}
@@ -93,6 +97,7 @@ class PlaylistController extends Controller
 
 		$audios = [];
 		$audionames = request('audioname');
+		$audiopositions = request('audioposition');
 
 		if($audionames){
 			foreach ($audionames as $index => $audioname) {
@@ -103,12 +108,14 @@ class PlaylistController extends Controller
 					if ($audiolink) {
 						$audio = new Audio;
 						$audio->name = $audionames[$index];
+						$audio->position = $audiopositions[$index] ? $audiopositions[$index] : $index;
 						$audio->link = $audiolink;
 						$audios[] = $audio;
 					} elseif ($audiofile) {
 						if(request()->file('audiofile')[$index] && $this->isValidAudio($audiofile)) {
 							$audio = new Audio;
 							$audio->name = $audionames[$index];
+							$audio->position = $audiopositions[$index] ? $audiopositions[$index] : $index;
 
 							$uniqid = uniqid($playlist->id, true) . "." . $audiofile->getClientOriginalExtension();
 							$audiofile->move('playlistaudios/' . $playlist->title . '/' , $uniqid);
@@ -144,7 +151,10 @@ class PlaylistController extends Controller
 		}
 
 		$post = Post::find($post);
-		$playlist= $post->playlists()->where('id', $playlist)->with('audios')->first();
+		$playlist= $post->playlists()->where('id', $playlist)->with([
+			'audios' => function ($query){
+				$query->orderBy('position');
+			}])->first();
 
 		if($playlist){
 			return view('admin.playlists.create', ['post' => $post, 'playlist' => $playlist]);
@@ -169,6 +179,7 @@ class PlaylistController extends Controller
 
 		$audios = [];
 		$audionames = request('audioname');
+		$audiopositions = request('audioposition');
 
 		if ($audionames){
 			foreach ($audionames as $index => $audioname) {
@@ -179,12 +190,14 @@ class PlaylistController extends Controller
 					if($audiolink) {
 						$audio = new Audio;
 						$audio->name = $audionames[$index];
+						$audio->position = $audiopositions[$index] ? $audiopositions[$index] : $index;
 						$audio->link = $audiolink;
 						$audios[] = $audio;
 					} elseif ($audiofile) {
 						if(request()->file('audiofile')[$index] && $this->isValidAudio($audiofile)) {
 							$audio = new Audio;
 							$audio->name = $audionames[$index];
+							$audio->position = $audiopositions[$index] ? $audiopositions[$index] : $index;
 
 							$uniqid = uniqid($playlist->id, true) . "." . $audiofile->getClientOriginalExtension();
 							$audiofile->move('playlistaudios/' . $playlist->title . '/' , $uniqid);

@@ -43,12 +43,17 @@
 									@foreach ($playlist->audios as $audio)
 
 										<div class="form-group audio">
-											<div class="col-sm-4">
+											<div class="col-sm-2">
 												<input name="audioname[]" type="text" class="form-control" placeholder="Audio name" value="{{$audio->name}}">
 											</div>
 											<div class="col-sm-4">
 												<input name="audiolink[]" type="text" class="form-control" placeholder="Audio link" value="{{$audio->link}}">
 											</div>
+
+											<div class="col-sm-2">
+												<input name="audioposition[]" type="text" class="form-control" placeholder="audio position" value="{{$audio->position}}" />
+											</div>
+
 											<div class="col-sm-1 control-label">
 												<strong> - OR - </strong>
 											</div>
@@ -113,12 +118,17 @@
 		var i = $('.audio').size() + 1;
 		var audios = $('.audios');
 		var element = `<div class="form-group audio">
-							<div class="col-sm-4">
+							<div class="col-sm-2">
 								<input name="audioname[]" type="text" class="form-control" placeholder="Audio name">
 							</div>
 							<div class="col-sm-4">
 								<input name="audiolink[]" type="text" class="form-control" placeholder="Audio link">
 							</div>
+
+							<div class="col-sm-2">
+								<input name="audioposition[]" type="text" class="form-control" placeholder="audio position" />
+							</div>
+
 							<div class="col-sm-1 control-label">
 								<strong> - OR - </strong>
 							</div>

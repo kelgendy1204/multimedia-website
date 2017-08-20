@@ -7,10 +7,10 @@
 @section('content')
 <div class="pagescontainer firstpage">
 	<div class="firstpagecontainer">
-		<div class="home_right side-bans">
-			@if ($advertisements->get('home_right'))
-			<a href="{{$advertisements->get('home_right')->link}}" target="_blank">
-				<div class="image" style="background-image: url({{$advertisements->get('home_right')->photo_url}})">
+		<div class="showpost_right side-bans">
+			@if ($advertisements->get('showpost_right') && $advertisements->get('showpost_right')->photo_url && $advertisements->get('showpost_right')->link)
+			<a href="{{$advertisements->get('showpost_right')->link}}" target="_blank">
+				<div class="image" style="background-image: url({{$advertisements->get('showpost_right')->photo_url}})">
 				</div>
 			</a>
 			@endif
@@ -68,10 +68,10 @@
 				}());
 			</script>
 		</div>
-		<div class="home_left side-bans">
-			@if ($advertisements->get('home_left'))
-			<a href="{{$advertisements->get('home_left')->link}}" target="_blank">
-				<div class="image" style="background-image: url({{$advertisements->get('home_left')->photo_url}})">
+		<div class="showpost_left side-bans">
+			@if ($advertisements->get('showpost_left') && $advertisements->get('showpost_left')->photo_url && $advertisements->get('showpost_left')->link)
+			<a href="{{$advertisements->get('showpost_left')->link}}" target="_blank">
+				<div class="image" style="background-image: url({{$advertisements->get('showpost_left')->photo_url}})">
 				</div>
 			</a>
 			@endif

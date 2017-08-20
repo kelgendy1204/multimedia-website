@@ -36,6 +36,8 @@ const notifier = require('node-notifier');
 const rev = require('gulp-rev');
 const revReplace = require('gulp-rev-replace');
 const revdel = require('gulp-rev-delete-original');
+const replaceAssets = require('gulp-replace-assets');
+const _ = require('underscore');
 
 const mainSrcFolder = './public/src/';
 const mainDestFolder = './public/dist_v6/';
@@ -46,7 +48,7 @@ const notify = (title, message) => {
 	notifier.notify({ title, message });
 };
 
-const pagesArr = ['home', 'tinymce', 'online', 'admin'];
+const pagesArr = ['home', 'tinymce', 'playlist', 'admin'];
 
 (function() {
 
@@ -270,11 +272,16 @@ gulp.task('watch:imagemin', () => {
 	});
 });
 
+gulp.task('reverse-rev', () => {
+	let json = JSON.parse(fs.readFileSync('./rev-manifest.json'));
+	return gulp.src('./resources/views/**/*.blade.php')
+		.pipe(replaceAssets(_.invert(json)))
+		.pipe(gulp.dest('resources/views/'));
+});
 
-gulp.task('rev', function () {
-	fs.unlink('./rev-manifest.json', function () {
+gulp.task('rev', ['reverse-rev'], function () {
 
-	});
+	fs.unlink('./rev-manifest.json', function () {});
 	let stream = merge();
 
 	stream.add(gulp.src(`${mainDestFolder}css/**/*.css`)

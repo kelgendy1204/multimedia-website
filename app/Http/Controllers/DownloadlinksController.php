@@ -8,6 +8,7 @@ use App\Category;
 use App\Downloadlink;
 use App\Downloadserver;
 use App\Metadata;
+use App\Advertisement;
 use \Helpers\Urlshorten;
 use \Helpers\CheckUser;
 
@@ -22,19 +23,31 @@ class DownloadlinksController extends Controller
 	// get : /{postdesc}/تحميل مباشر - show a post links
 	public function show($postdesc) {
 		$categories = Category::all();
+		$advertisements = Advertisement::all()->keyBy('name');
 
 		$post = Post::where('description', $postdesc)->where('visible', '1')->with('downloadlinks')->with('playlists')->with('subposts')->latest()->first();
 
 		$latestsubpost = $post->subposts()->where('visible', '1')->latest()->first();
 		$latestplaylist = $post->playlists()->where('visible', '1')->latest()->first();
 
-		$downloadlinks = $post->downloadlinks()->with('downloadservers')->where('visible', '1')->latest()->get();
+		$downloadlinks = $post->downloadlinks()->with([
+			'downloadservers' => function ($query){
+				$query->orderBy('position');
+			}])->where('visible', '1')->latest()->get();
 
 		$category = Category::find($post->category_id);
 
 		$randomPosts = collect(Post::get_random_posts($post->category_id))->shuffle();
 
-		return view('posts.download', array_merge(['categories' => $categories, 'post' => $post, 'downloadlinks' => $downloadlinks, 'category' => $category, 'randomPosts' => $randomPosts, 'latestsubpost' => $latestsubpost , 'latestplaylist' => $latestplaylist ], Metadata::getMetadata()) );
+		return view('posts.download', array_merge([
+			'categories' => $categories,
+			'post' => $post,
+			'downloadlinks' => $downloadlinks,
+			'category' => $category,
+			'randomPosts' => $randomPosts,
+			'latestsubpost' => $latestsubpost,
+			'advertisements' => $advertisements,
+			'latestplaylist' => $latestplaylist], Metadata::getMetadata()) );
 	}
 
 	// get : admin/posts/{id}/download/create - create download links
@@ -65,12 +78,14 @@ class DownloadlinksController extends Controller
 		$downloadservers = [];
 		$downloadservernames = request('downloadservername');
 		$downloadserverlinks = request('downloadserverlink');
+		$downloadserverpositions = request('downloadserverposition');
 
 		if($downloadserverlinks){
 			foreach ($downloadserverlinks as $index => $downloadserverlink) {
 				if($downloadserverlink){
 					$downloadserver = new Downloadserver;
 					$downloadserver->name = $downloadservernames[$index];
+					$downloadserver->position = $downloadserverpositions[$index] ? $downloadserverpositions[$index] : $index;
 					$link = Urlshorten::makeGetShortenUrl($downloadserverlink);
 					$downloadserver->link = "/generatelink/" . $link->hash;
 					$downloadservers[] = $downloadserver;
@@ -78,6 +93,16 @@ class DownloadlinksController extends Controller
 			}
 			$downloadlink->downloadservers()->saveMany($downloadservers);
 		}
+
+		$imageFile = request()->file('photo_url');
+
+		if(request()->hasFile('photo_url') && $imageFile->isValid()) {
+			$uniqid = uniqid($downloadlink->id, true) . "." . $imageFile->getClientOriginalExtension();
+			$imageFile->move('downloadimages/', $uniqid);
+			$downloadlink->photo_url = "/downloadimages/" . $uniqid;
+		}
+
+		$downloadlink->save();
 
 		return redirect()->action(
 			'PostsController@edit', ['post' => $post]
@@ -93,7 +118,10 @@ class DownloadlinksController extends Controller
 
 		$post = Post::find($post);
 
-		$downloadlink = $post->downloadlinks()->where('id', $downloadlink)->with('downloadservers')->first();
+		$downloadlink = $post->downloadlinks()->where('id', $downloadlink)->with([
+			'downloadservers' => function ($query){
+				$query->orderBy('position');
+			}])->first();
 
 		if($downloadlink){
 			return view('admin.downloadlinks.create', ['post' => $post, 'downloadlink' => $downloadlink]);
@@ -120,12 +148,14 @@ class DownloadlinksController extends Controller
 		$downloadservers = [];
 		$downloadservernames = request('downloadservername');
 		$downloadserverlinks = request('downloadserverlink');
+		$downloadserverpositions = request('downloadserverposition');
 
 		if($downloadserverlinks){
 			foreach ($downloadserverlinks as $index => $downloadserverlink) {
 				if($downloadserverlink){
 					$downloadserver = new Downloadserver;
 					$downloadserver->name = $downloadservernames[$index];
+					$downloadserver->position = $downloadserverpositions[$index] ? $downloadserverpositions[$index] : $index;
 					$link = Urlshorten::makeGetShortenUrl($downloadserverlink);
 					$downloadserver->link = "/generatelink/" . $link->hash;
 					$downloadservers[] = $downloadserver;
@@ -135,6 +165,16 @@ class DownloadlinksController extends Controller
 
 		$downloadlink->downloadservers()->delete();
 		$downloadlink->downloadservers()->saveMany($downloadservers);
+		$downloadlink->save();
+
+		$imageFile = request()->file('photo_url');
+
+		if(request()->hasFile('photo_url') && $imageFile->isValid()) {
+			$uniqid = uniqid($downloadlink->id, true) . "." . $imageFile->getClientOriginalExtension();
+			$imageFile->move('downloadimages/', $uniqid);
+			$downloadlink->photo_url = "/downloadimages/" . $uniqid;
+		}
+
 		$downloadlink->save();
 
 		return redirect()->action(

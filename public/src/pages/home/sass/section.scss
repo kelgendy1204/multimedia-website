@@ -147,7 +147,7 @@ div.mainpage {
                     height: 45px;
                     display: flex;
                     align-items: center;
-                    @media screen and (max-width: 850px) {
+                    @media screen and (max-width: 880px) {
                         display: none;
                     }
                     .pic {
@@ -375,16 +375,19 @@ div.mainpage {
                 }
             }
 
-            .home_top {
+            .home_top{
+                text-align: center;
                 width: 100%;
+            }
+
+            .home_top_link {
                 display: inline-flex;
                 justify-content: center;
                 align-items: center;
                 margin: 10px;
-                height: 90px;
                 >div{
-                    width: 100%;
-                    height: 100%;
+                    height: 160px;
+                    width: 600px;
                     background-position: center center;
                     background-repeat: no-repeat;
                     background-size: auto 100%;
@@ -482,19 +485,29 @@ div.mainpage {
         }
     }
 
+    .imgbg_animated{
+        transition: 2s linear background-size;
+        &:hover{
+            background-size: auto 110% !important;
+        }
+    }
+
     .pagination-ban{
         width: 100%;
         text-align: center;
-        a.home_bottom{
+        .home_bottom{
+            width: 100%;
+            text-align: center;
+        }
+        .home_bottom_link{
             width: 100%;
             display: inline-flex;
             justify-content: center;
             align-items: center;
             margin: 10px;
-            height: 90px;
             >div{
-                width: 100%;
-                height: 100%;
+                width: 600px;
+                height: 160px;
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-size: auto 100%;
@@ -768,6 +781,16 @@ div.mainpage {
             }
         }
     }
+    .internal-pages-container{
+        padding: 0 5px;
+        display: flex;
+        justify-content: space-between;
+        @media screen and (max-width: 1230px) {
+            .side-bans{
+                display: none;
+            }
+        }
+    }
     .pagescontainer {
         display: flex;
         flex-direction: column;
@@ -785,10 +808,11 @@ div.mainpage {
                 }
             }
         }
+
         .firstpagecontainer {
             display: flex;
             align-items: flex-start;
-            justify-content: space-between;
+            justify-content: center;
             overflow: hidden;
             width: 100%;
             @media screen and (max-width: 850px) {
@@ -797,7 +821,7 @@ div.mainpage {
             .postdetailscontainer {
                 height: 100%;
                 display: flex;
-                margin: 10px 0;
+                margin: 10px auto;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
@@ -993,6 +1017,8 @@ div.mainpage {
             flex-direction: column;
             margin-bottom: 25px;
             width: 850px;
+            margin-left: auto;
+            margin-right: auto;
             &.random {
                 @media screen and (max-width: 870px) {
                     display: none;
@@ -1108,10 +1134,22 @@ div.mainpage {
         .downloadlinks {
             padding: 20px 10px 25px;
             width: 80%;
+            max-width: 850px;
+            margin: 0 auto;
             min-width: 256px;
             text-align: center;
             color: white;
             font-family: jf;
+            .linkimg-container{
+                width: 100%;
+                margin-top: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                img{
+                    width: 300px;
+                }
+            }
             .link {
                 position: relative;
                 margin: 60px 0 20px;
@@ -1256,16 +1294,17 @@ div.mainpage {
     .playlists{
         max-width: 850px;
         width: 90%;
-        height: 280px;
         direction: ltr;
         display: flex;
         justify-content: space-around;
         margin: 10px;
         .playlist-pic{
-            height: 100%;
+            height: 200px;
+            min-height: 200px;
+            width: 150px;
+            min-width: 150px;
             border-radius: 5px;
             margin: 0 0 0 20px;
-            width: 160px;
             @media screen and (max-width: 500px) {
                 display: none;
             }
@@ -1349,6 +1388,7 @@ div.mainpage {
             .lower-playlist{
                 display: flex;
                 height: 100%;
+                min-height: 200px;
                 .sm2-extra-controls{
                     display: none;
                 }
@@ -1389,16 +1429,40 @@ body.links{
             .top,.bottom{
                 width: 100%;
                 flex-grow: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                  &.getlink{
                     display: flex;
                     align-items: stretch;
                     >div{
                         width: 50%;
                         margin: 5px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        min-width: 300px;
                      }
                 }
             }
-            a{
+            .img-container{
+                a{
+                    display: inline-block;
+                }
+                &.image-h{
+                    width: 600px;
+                    height: 160px;
+                }
+                &.image-s{
+                    width: 300px;
+                    height: 250px;
+                }
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .linkbtn{
                 display: inline-block;
                 background-color: #248386;
                 padding: 8px 18px;
@@ -1513,6 +1577,7 @@ body.links{
 
 .fb-comments{
     width: 850px;
+    display: inline-block !important;
     @media screen and (max-width: 870px) {
         width: 90%;
     }
@@ -1799,6 +1864,7 @@ body{
     align-items: center;
     margin: 10px;
     min-width: 160px;
+    // background-color: beige;
     width: 160px;
     min-height: 600px;
     height: 600px;

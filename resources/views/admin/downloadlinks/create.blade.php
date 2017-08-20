@@ -15,7 +15,7 @@
 						</div>
 					</div>
 
-					<form method="POST" action="{{isset($downloadlink) ? route('updatedownloadlink', ['postid' => $post->id, 'downloadlinkid' => $downloadlink->id]) :  route('storedownloadlink', ['id' => $post->id]) }}" class="well form-horizontal">
+					<form method="POST" action="{{isset($downloadlink) ? route('updatedownloadlink', ['postid' => $post->id, 'downloadlinkid' => $downloadlink->id]) :  route('storedownloadlink', ['id' => $post->id]) }}" class="well form-horizontal" enctype="multipart/form-data">
 
 					{{ csrf_field() }}
 
@@ -44,8 +44,11 @@
 											<div class="col-sm-4">
 												<input name="downloadservername[]" type="text" class="form-control" placeholder="Server name" value="{{$downloadserver->name}}" />
 											</div>
-											<div class="col-sm-8">
+											<div class="col-sm-6">
 												<input name="downloadserverlink[]" type="text" class="form-control" placeholder="Server link" value="{{\Helpers\Urlshorten::getLinkByHash(\Helpers\Urlshorten::getHashFromLink($downloadserver->link))->url}}" />
+											</div>
+											<div class="col-sm-2">
+												<input name="downloadserverposition[]" type="text" class="form-control" placeholder="Server position" value="{{$downloadserver->position}}" />
 											</div>
 										</div>
 									@endforeach
@@ -68,6 +71,24 @@
 
 						<hr />
 
+						@if (isset($downloadlink))
+							<div class="row form-group">
+								<h1 class="text-center">Links photo</h1>
+							</div>
+							@isset ($downloadlink->photo_url)
+								<div class="row form-group">
+									<div class="col-md-4 col-md-offset-4">
+										<img src="{{$downloadlink->photo_url}}" alt="downloadlink photo" class="img-rounded img-responsive">
+									</div>
+								</div>
+							@endisset
+						@endif
+
+						<div class="form-group row">
+							<label for="photo_url" class="col-xs-12">Upload links photo</label>
+							<input type="file" class="form-control-file col-xs-12" name="photo_url" id="photo_url">
+						</div>
+
 						<div class="form-check text-center">
 							<button type="submit" class="btn btn-primary btn-lg">{{isset($downloadlink) ? "Edit download links" : "Create download links"}}</button>
 						</div>
@@ -84,7 +105,17 @@
 		e.preventDefault();
 		var i = $('.server').size() + 1;
 		var servers = $('.servers');
-		var element = '<div class="form-group server"><div class="col-sm-4"><input name="downloadservername[]" type="text" class="form-control" placeholder="Server name"></div><div class="col-sm-8"><input name="downloadserverlink[]" type="text" class="form-control" placeholder="Server link"></div></div>';
+		var element = `<div class="form-group server">
+							<div class="col-sm-4">
+								<input name="downloadservername[]" type="text" class="form-control" placeholder="Server name">
+							</div>
+							<div class="col-sm-6">
+								<input name="downloadserverlink[]" type="text" class="form-control" placeholder="Server link">
+							</div>
+							<div class="col-sm-2">
+								<input name="downloadserverposition[]" type="text" class="form-control" placeholder="Server position" />
+							</div>
+						</div>`;
 
 		servers.append(element);
 	});

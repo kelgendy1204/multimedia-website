@@ -4,7 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Audio extends Model
+class Session extends Model
 {
-    public $timestamps = false;
+
+
 }

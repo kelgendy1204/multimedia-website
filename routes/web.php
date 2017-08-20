@@ -50,8 +50,12 @@ Route::post('/admin/categories/{category}/edit', 'CategoriesController@update')-
 
 Route::get('/admin/mzk_admin_login', 'AdminController@login');
 Route::post('/admin/mzk_admin_login', 'AdminController@authUser');
-Route::get('/admin/mzk_admin_adduser', 'AdminController@addUser');
-Route::post('/admin/mzk_admin_adduser', 'AdminController@storeUser');
+Route::get('/admin/mzk_admin_adduser', 'AdminController@addUser')->name('adduser');
+Route::post('/admin/mzk_admin_adduser', 'AdminController@storeUser')->name('storeuser');
+Route::get('/admin/mzk_admin_showusers', 'AdminController@showUsers')->name('showusers');
+Route::get('/admin/mzk_admin_edituser/{user}', 'AdminController@editUser')->name('edituser');
+Route::post('/admin/mzk_admin_edituser/{user}', 'AdminController@updateUser')->name('updateuser');
+Route::post('/admin/mzk_admin_deleteuser/{user}', 'AdminController@deleteUser')->name('deleteuser');
 Route::get('/admin/mzk_admin_panel', 'AdminController@index');
 Route::post('/admin/mzk_admin_logout', 'AdminController@logout');
 // ========================================= //
@@ -65,3 +69,9 @@ Route::post('/admin/links', 'LinksController@store');
 
 Route::get('/admin/metadata', 'MetadataController@index')->name('metadata');
 Route::post('/admin/metadata', 'MetadataController@save')->name('editmetadata');
+
+// ================================================ //
+
+Route::get('/admin/Advertisement', 'AdvertisementController@index')->name('adsindex');
+Route::post('/admin/Advertisement', 'AdvertisementController@update')->name('updateads');
+

@@ -8,6 +8,7 @@ use App\Subpost;
 use App\Server;
 use App\Category;
 use App\Metadata;
+use App\Advertisement;
 use \Helpers\CheckUser;
 
 class SubpostsController extends Controller
@@ -21,6 +22,7 @@ class SubpostsController extends Controller
 	// get : /{postdesc}/مشاهدة مباشرة/{subposttitle} - watch post online
 	public function show($postdesc, $subposttitle) {
 		$categories = Category::all();
+		$advertisements = Advertisement::all()->keyBy('name');
 
 		$post = Post::where('description', $postdesc)->with('downloadlinks')->with('playlists')->with('subposts')->latest()->first();
 
@@ -36,7 +38,7 @@ class SubpostsController extends Controller
 
 		$servers = [];
 		if($subpost){
-			$servers = $subpost->servers()->orderBy('name')->get();
+			$servers = $subpost->servers()->orderBy('position')->get();
 		}
 
 		return view('posts.online',  array_merge([
@@ -46,6 +48,7 @@ class SubpostsController extends Controller
 			'activesubpost' => $subpost,
 			'servers' => $servers,
 			'latestplaylist' => $latestplaylist,
+			'advertisements' => $advertisements,
 			'randomPosts' => $randomPosts], Metadata::getMetadata()) );
 	}
 
@@ -76,12 +79,14 @@ class SubpostsController extends Controller
 		$servers = [];
 		$servernames = request('servername');
 		$serverlinks = request('serverlink');
+		$serverpositions = request('serverposition');
 
 		if($serverlinks){
 			foreach ($serverlinks as $index => $serverlink) {
 				if($serverlink){
 					$server = new Server;
 					$server->name = $servernames[$index];
+					$server->position = $serverpositions[$index] ? $serverpositions[$index] : $index;
 					$server->link = $serverlink;
 					$servers[] = $server;
 				}
@@ -92,7 +97,7 @@ class SubpostsController extends Controller
 		$imageFile = request()->file('photo_url');
 
 		if(request()->hasFile('photo_url') && $imageFile->isValid()) {
-			$uniqid = uniqid($post->id . $subpost->id, true) . "." . $imageFile->getClientOriginalExtension();
+			$uniqid = uniqid($subpost->id, true) . "." . $imageFile->getClientOriginalExtension();
 			$imageFile->move('subpostimages/', $uniqid);
 			$subpost->photo_url = "/subpostimages/" . $uniqid;
 		}
@@ -112,7 +117,10 @@ class SubpostsController extends Controller
 		}
 
 		$post = Post::find($post);
-		$subpost= $post->subposts()->where('id', $subpostid)->with('servers')->first();
+		$subpost= $post->subposts()->where('id', $subpostid)->with([
+			'servers' => function ($query){
+				$query->orderBy('position');
+			}])->first();
 
 		if($subpost){
 			return view('admin.subposts.create', ['post' => $post, 'subpost' => $subpost]);
@@ -138,12 +146,14 @@ class SubpostsController extends Controller
 		$servers = [];
 		$servernames = request('servername');
 		$serverlinks = request('serverlink');
+		$serverpositions = request('serverposition');
 
 		if($serverlinks){
 			foreach ($serverlinks as $index => $serverlink) {
 				if($serverlink){
 					$server = new Server;
 					$server->name = $servernames[$index];
+					$server->position = $serverpositions[$index] ? $serverpositions[$index] : $index;
 					$server->link = $serverlink;
 					$servers[] = $server;
 				}
@@ -156,7 +166,7 @@ class SubpostsController extends Controller
 		$imageFile = request()->file('photo_url');
 
 		if(request()->hasFile('photo_url') && $imageFile->isValid()) {
-			$uniqid = uniqid($post->id . $subpost->id, true) . "." . $imageFile->getClientOriginalExtension();
+			$uniqid = uniqid($subpost->id, true) . "." . $imageFile->getClientOriginalExtension();
 			$imageFile->move('subpostimages/', $uniqid);
 			$subpost->photo_url = "/subpostimages/" . $uniqid;
 		}

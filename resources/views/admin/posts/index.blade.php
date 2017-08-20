@@ -18,13 +18,13 @@
     @endif
 
     <div class="row text-center">
-        <form class="form-inline col-sm-6" method="get" action="{{ route('showadminposts') }}">
+        <form class="form-inline col-sm-6 mb" method="get" action="{{ route('showadminposts') }}">
             <div class="form-group">
                 <input type="text" class="form-control" id="search" name="search" placeholder="Search">
             </div>
             <button type="submit" class="btn btn-primary">Search</button>
         </form>
-        <div class="col-sm-6 text-center">
+        <div class="col-sm-6 text-center mb">
             <a class="btn btn-primary" href="{{ route('createpost') }}" role="button">Create Post +</a>
         </div>
     </div>
@@ -42,6 +42,9 @@
                 @endif
                 @if($post->visits)
                     <span class="label label-danger visits">{{$post->visits}}</span>
+                @endif
+                @if ($post->username)
+                    <p class="username">{{$post->username}}</p>
                 @endif
                 <div class="img" style="background-image: url('{{$post->photo_url}}')"></div>
                 <p>{{$post->title}}</p>

@@ -8,8 +8,11 @@
               <div class="panel panel-primary">
                   <div class="panel-heading text-center"><strong>Users</strong></div>
                   <div class="list-group">
-                    <a href="/admin/mzk_admin_adduser" class="list-group-item">
+                    <a href="{{ route('adduser') }}" class="list-group-item">
                       Create User
+                    </a>
+                    <a href="{{ route('showusers') }}" class="list-group-item">
+                      Users List
                     </a>
                   </div>
               </div>
@@ -19,6 +22,9 @@
                   <div class="list-group">
                     <a href="{{ route('metadata') }}" class="list-group-item">
                       Edit data
+                    </a>
+                    <a href="{{ route('adsindex') }}" class="list-group-item">
+                      Edit Advertisement
                     </a>
                   </div>
               </div>

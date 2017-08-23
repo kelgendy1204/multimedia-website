@@ -38,7 +38,7 @@
 
         <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css" />
 
-        <link rel="stylesheet" href="/dist_v6/css/home-800e7326a4.css" />
+        <link rel="stylesheet" href="/dist_v6/css/home-3a62ec1ee2.css" />
 
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>

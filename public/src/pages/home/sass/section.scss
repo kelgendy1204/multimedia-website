@@ -1134,7 +1134,7 @@ div.mainpage {
         .downloadlinks {
             padding: 20px 10px 25px;
             width: 80%;
-            max-width: 850px;
+            // max-width: 850px;
             margin: 0 auto;
             min-width: 256px;
             text-align: center;
@@ -1299,10 +1299,10 @@ div.mainpage {
         justify-content: space-around;
         margin: 10px;
         .playlist-pic{
-            height: 200px;
-            min-height: 200px;
-            width: 150px;
-            min-width: 150px;
+            height: 270px;
+            min-height: 270px;
+            width: 230px;
+            min-width: 230px;
             border-radius: 5px;
             margin: 0 0 0 20px;
             @media screen and (max-width: 500px) {

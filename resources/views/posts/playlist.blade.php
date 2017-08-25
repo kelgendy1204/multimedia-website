@@ -110,7 +110,7 @@
 					</div>
 				</div>
 			</div>
-			<script type="text/javascript" src="/dist_v6/js/playlist-e321fda1aa.js"></script>
+			<script type="text/javascript" src="/dist_v6/js/playlist-9fc62b9738.js"></script>
 
 			<div class="share-title">
 				<h2 class="titlee">{{ (isset($activeplaylist) && (count($playlists) > 1)) ? $activeplaylist->title : ''}} </h2>

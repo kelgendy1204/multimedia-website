@@ -86,7 +86,8 @@
           <script type="text/javascript" src="//go.oclaserver.com/apu.php?zoneid=874590"></script>
         @endif
     </head>
-    <body class="{{ isset($_COOKIE['color']) ? $_COOKIE['color'] : ''}}">
+    {{-- <body class="{{ isset($_COOKIE['color']) ? $_COOKIE['color'] : ''}}"> --}}
+    <body>
         @yield('content')
     </body>
 </html>

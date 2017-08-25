@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use \Helpers\CheckUser;
 
 class IsAdminAtLeast
 {
@@ -15,6 +16,7 @@ class IsAdminAtLeast
      */
     public function handle($request, Closure $next)
     {
+        CheckUser::CheckUserName($request);
         if ($request->user() && ($request->user()->hasRole('admin') || $request->user()->hasRole('super_admin'))) {
             return $next($request);
         }

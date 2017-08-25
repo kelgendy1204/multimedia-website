@@ -24,4 +24,16 @@ class CheckUser
 		return true;
 	}
 
+	public static function CheckUserName($request)
+	{
+		$laravelUser = $request->user();
+		$sessionUserName = $request->session()->get('username');
+		// $cookieUserName = $request->cookie('username');
+
+		if( $laravelUser && ($laravelUser->name != $sessionUserName) ) {
+			auth()->logout();
+		}
+
+	}
+
 }

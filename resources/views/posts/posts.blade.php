@@ -15,7 +15,7 @@
                     </a>
                     <a class="headercontent" href="{{URL::to('/')}}"><div class="pic"><img src="/dist_v6/images/home.svg" alt="homepage"></div><div class="content"><p>الرئيسية</p></div></a>
                     <a class="headercontent" href="http://forums.mazika2day.com"><div class="pic"><img src="/dist_v6/images/montadayat.svg" alt="forum"></div><div class="content"><p>المنتديات</p></div></a>
-                    <a class="headercontent" href="mailto:mado.mazika2day@gmail.com" target="_top"><div class="pic"><img src="/dist_v6/images/home.svg" alt="forum"></div><div class="content"><p>ارسل الينا</p></div></a>
+                    <a class="headercontent" href="mailto:info@mazika2day.com" target="_top"><div class="pic"><img src="/dist_v6/images/contact.svg" alt="forum"></div><div class="content"><p>اتصل بنا</p></div></a>
                 </div>
                 <div class="center">
                     <button class="colorbtn grey" data-color="grey"></button>

@@ -47,7 +47,8 @@
           <script type="text/javascript" src="//go.oclaserver.com/apu.php?zoneid=874590"></script>
         @endif
     </head>
-    <body class="page links {{ isset($_COOKIE['color']) ? $_COOKIE['color'] : ''}}">
+    {{-- <body class="page links {{ isset($_COOKIE['color']) ? $_COOKIE['color'] : ''}}"> --}}
+    <body class="page links">
         <div class="insidepage">
             <header>
                 <div class="logo">

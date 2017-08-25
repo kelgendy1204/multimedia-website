@@ -42,7 +42,8 @@ class AdminController extends Controller
 
         $user = User::where('name', $name)->first();
 
-        if (Hash::check($password, $user->password)) {
+        if ($user && Hash::check($password, $user->password)) {
+            session()->put('username', $name);
             Auth::loginUsingId($user->id, $remember);
             return true;
         }
@@ -176,6 +177,7 @@ class AdminController extends Controller
     // post - /admin/mzk_admin_logout
     public function logout(Request $request)
     {
+        session()->put('username', null);
         auth()->logout();
 
         return redirect()->action(

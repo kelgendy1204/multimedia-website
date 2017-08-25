@@ -53,9 +53,11 @@
 			<div class="downloadlinks">
 				@foreach ($downloadlinks as $downloadlink)
 					@if (count($downloadlink->downloadservers) > 0)
-						<div class="linkimg-container">
-							<img src="{{$downloadlink->photo_url}}" />
-						</div>
+						@if ($downloadlink->photo_url)
+							<div class="linkimg-container">
+								<img src="{{$downloadlink->photo_url}}" />
+							</div>
+						@endif
 						<div class="link">
 							<h3>{{$downloadlink->name}}</h3>
 							<ul>

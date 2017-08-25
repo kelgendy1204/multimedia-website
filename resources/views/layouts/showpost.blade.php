@@ -63,7 +63,8 @@
         @endif
 
     </head>
-    <body class="page {{ isset($_COOKIE['color']) ? $_COOKIE['color'] : ''}}">
+    {{-- <body class="page {{ isset($_COOKIE['color']) ? $_COOKIE['color'] : ''}}"> --}}
+    <body class="page">
         <div class="insidepage">
             <header>
                 @isset ($category)

@@ -15,6 +15,13 @@
 						</div>
 					</div>
 
+					@if (!isset($downloadlink))
+						<div id="linkscontainer" class="form-group">
+							<textarea id="alllinks" placeholder="enter links here" class="form-control mb-15" rows="10"></textarea>
+							<button id="splitlinks" type="button" class="btn btn-primary btn-lg center-block">Create links</button>
+						</div>
+					@endif
+
 					<form method="POST" action="{{isset($downloadlink) ? route('updatedownloadlink', ['postid' => $post->id, 'downloadlinkid' => $downloadlink->id]) :  route('storedownloadlink', ['id' => $post->id]) }}" class="well form-horizontal" enctype="multipart/form-data">
 
 					{{ csrf_field() }}
@@ -36,7 +43,7 @@
 							<h4 for="text-center post-title">Servers</h4>
 						</div>
 
-						<div class="servers">
+						<div class="servers" id="appendlinks">
 							@isset($downloadlink)
 								@if (count($downloadlink->downloadservers))
 									@foreach ($downloadlink->downloadservers as $downloadserver)
@@ -101,10 +108,11 @@
 
 <script type="text/javascript">
 	var addServer = $('#addserver');
+	var servers = $('.servers');
+
 	addServer.on('click', function (e) {
 		e.preventDefault();
 		var i = $('.server').size() + 1;
-		var servers = $('.servers');
 		var element = `<div class="form-group server">
 							<div class="col-sm-4">
 								<input name="downloadservername[]" type="text" class="form-control" placeholder="Server name">
@@ -118,6 +126,33 @@
 						</div>`;
 
 		servers.append(element);
+	});
+
+
+	var textId = 'alllinks',
+		btnId = 'splitlinks';
+		linkscontainerId = 'linkscontainer';
+
+	$(`#${btnId}`).on('click', function () {
+		var links = $(`#${textId}`).val().split(/\r?\n/);
+		links.forEach(function (value, index) {
+			value = value.trim();
+			var nameRegex = /https?:\/\/(\w+)./;
+			var name = nameRegex.exec(value) ? nameRegex.exec(value)[1].trim() : '';
+			servers.append(
+				`<div class="form-group server">
+					<div class="col-sm-4">
+						<input name="downloadservername[]" type="text" class="form-control" placeholder="Server name" value=${name} />
+					</div>
+					<div class="col-sm-6">
+						<input name="downloadserverlink[]" type="text" class="form-control" placeholder="Server link" value=${value} />
+					</div>
+					<div class="col-sm-2">
+						<input name="downloadserverposition[]" type="text" class="form-control" placeholder="Server position" value=${index} />
+					</div>
+				</div>`);
+		});
+		$(`#${linkscontainerId}`).toggle(500);
 	});
 </script>
 

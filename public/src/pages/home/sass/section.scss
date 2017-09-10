@@ -413,7 +413,7 @@ div.mainpage {
                 flex-wrap: wrap;
                 justify-content: space-around;
                 .item {
-                    border-radius: 15px;
+                    border-radius: 15px 0;
                     overflow: hidden;
                     margin: 10px 4px;
                     border: 2px solid #83BF17;
@@ -851,7 +851,7 @@ div.mainpage {
                         width: 50%;
                         min-width: 300px;
                         min-height: 500px;
-                        background-size: cover;
+                        background-size: 100% 100%;
                         background-position: center center;
                         background-repeat: no-repeat;
                         img {

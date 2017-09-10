@@ -15,6 +15,13 @@
 						</div>
 					</div>
 
+					@if (!isset($subpost))
+						<div id="serverscontainer" class="form-group">
+							<textarea id="allservers" placeholder="enter servers here" class="form-control mb-15" rows="10"></textarea>
+							<button id="splitservers" type="button" class="btn btn-primary btn-lg center-block">Create servers</button>
+						</div>
+					@endif
+
 					<form method="POST" action="{{isset($subpost) ? route('editsubpost', [ 'post' => $post->id , 'subpost' => $subpost->id ]) : route('storesubpost', [ 'post' => $post->id ]) }}" enctype="multipart/form-data" class="well form-horizontal">
 
 					{{ csrf_field() }}
@@ -103,10 +110,10 @@
 
 <script type="text/javascript">
 	var addServer = $('#addserver');
+	var servers = $('.servers');
 	addServer.on('click', function (e) {
 		e.preventDefault();
 		var i = $('.server').size() + 1;
-		var servers = $('.servers');
 		var element = `<div class="form-group server">
 							<div class="col-sm-4">
 								<input name="servername[]" type="text" class="form-control" placeholder="Server name">
@@ -120,6 +127,31 @@
 						</div>`;
 
 		servers.append(element);
+	});
+
+
+	var textId = 'allservers',
+		btnId = 'splitservers';
+		serverscontainerId = 'serverscontainer';
+
+	$(`#${btnId}`).on('click', function () {
+		var serversLinks = $(`#${textId}`).val().split(/\r?\n/);
+		serversLinks.forEach(function (value, index) {
+			value = value.trim();
+			servers.append(
+				`<div class="form-group server">
+					<div class="col-sm-4">
+						<input name="servername[]" type="text" class="form-control" placeholder="Server name" value="سيرفر ${index + 1}">
+					</div>
+					<div class="col-sm-6">
+						<input name="serverlink[]" type="text" class="form-control" placeholder="Server link" value=${value} >
+					</div>
+					<div class="col-sm-2">
+						<input name="serverposition[]" type="text" class="form-control" placeholder="server position" value=${index} />
+					</div>
+				</div>`);
+		});
+		$(`#${serverscontainerId}`).toggle(500);
 	});
 </script>
 

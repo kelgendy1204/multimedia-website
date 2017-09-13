@@ -50,6 +50,7 @@ Route::post('/admin/categories/{category}/edit', 'CategoriesController@update')-
 
 Route::get('/admin/mzk_admin_login', 'AdminController@login');
 Route::post('/admin/mzk_admin_login', 'AdminController@authUser');
+Route::post('/admin/mzk_admin_login_api', 'AdminController@checkUserApi');
 Route::get('/admin/mzk_admin_adduser', 'AdminController@addUser')->name('adduser');
 Route::post('/admin/mzk_admin_adduser', 'AdminController@storeUser')->name('storeuser');
 Route::get('/admin/mzk_admin_showusers', 'AdminController@showUsers')->name('showusers');
@@ -58,7 +59,9 @@ Route::post('/admin/mzk_admin_edituser/{user}', 'AdminController@updateUser')->n
 Route::post('/admin/mzk_admin_deleteuser/{user}', 'AdminController@deleteUser')->name('deleteuser');
 Route::get('/admin/mzk_admin_panel', 'AdminController@index');
 Route::post('/admin/mzk_admin_logout', 'AdminController@logout');
+
 // ========================================= //
+
 Route::get('/generatelink/{hash}', 'LinksController@generate');
 Route::get('/getlink/{hash}', 'LinksController@translate');
 

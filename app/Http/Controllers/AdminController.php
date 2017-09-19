@@ -94,6 +94,20 @@ class AdminController extends Controller
         DB::table('users')->update(['remember_token' => null]);
     }
 
+    public function checkUserApi()
+    {
+        sleep(1);
+        $name = request()->name;
+        $password = request()->password;
+        $user = User::where('name', $name)->first();
+        if ($user && Hash::check($password, $user->password)) {
+            return response()->json(['data' => $user->toArray()], 200);
+        }
+        return response()->json([
+            'error' => 'failed auth'
+        ], 404);
+    }
+
     // get - /admin/mzk_admin_login
     public function login(Request $request)
     {

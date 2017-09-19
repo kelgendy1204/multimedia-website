@@ -94,5 +94,6 @@
         @yield('content')
     </div>
     <script type="text/javascript" src="/dist_v6/js/admin.js"></script>
+
 </body>
 </html>

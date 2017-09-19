@@ -96,7 +96,7 @@ class AdminController extends Controller
 
     public function checkUserApi()
     {
-        sleep(1);
+        sleep(3);
         $name = request()->name;
         $password = request()->password;
         $user = User::where('name', $name)->first();
@@ -105,7 +105,8 @@ class AdminController extends Controller
         }
         return response()->json([
             'error' => 'failed auth'
-        ], 404);
+        ], 403);
+        // return abort(403, 'failed auth.');
     }
 
     // get - /admin/mzk_admin_login

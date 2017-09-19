@@ -28,9 +28,9 @@ class CheckUser
 	{
 		$laravelUser = $request->user();
 		$sessionUserName = $request->session()->get('username');
-		// $cookieUserName = $request->cookie('username');
+		$cookieUserName = $request->cookie('username');
 
-		if( $laravelUser && ($laravelUser->name != $sessionUserName) ) {
+		if( $laravelUser && ($laravelUser->name != $cookieUserName) && ($laravelUser->name != $sessionUserName) ) {
 			auth()->logout();
 		}
 

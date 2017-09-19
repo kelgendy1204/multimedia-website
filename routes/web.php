@@ -59,6 +59,7 @@ Route::post('/admin/mzk_admin_edituser/{user}', 'AdminController@updateUser')->n
 Route::post('/admin/mzk_admin_deleteuser/{user}', 'AdminController@deleteUser')->name('deleteuser');
 Route::get('/admin/mzk_admin_panel', 'AdminController@index');
 Route::post('/admin/mzk_admin_logout', 'AdminController@logout');
+Route::get('/admin/mzk_admin_front_logout', 'AdminController@logout');
 
 // ========================================= //
 

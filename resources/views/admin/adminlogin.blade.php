@@ -1,5 +1,11 @@
 @extends('layouts.adminapp')
 
+@section('additional_script')
+    <script type="text/javascript">
+        var isLogin = true;
+    </script>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">

@@ -35,7 +35,7 @@
         ]) !!};
     </script>
     @yield('additional_script')
-    <script type="text/javascript" src="/dist_v6/js/admin-08a245ad00.js"></script>
+    <script type="text/javascript" src="/dist_v6/js/admin-700c47b615.js"></script>
 </head>
 <body>
     <div id="app">

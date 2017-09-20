@@ -27,10 +27,10 @@ class CheckUser
 	public static function CheckUserName($request)
 	{
 		$laravelUser = $request->user();
-		$sessionUserName = $request->session()->get('username');
-		$cookieUserName = $request->cookie('username');
+		// $sessionUserName = $request->session()->get('username');
+		$cookieUserName = $_COOKIE["username"];
 
-		if( $laravelUser && ($laravelUser->name != $cookieUserName) && ($laravelUser->name != $sessionUserName) ) {
+		if( $laravelUser && ($laravelUser->name != $cookieUserName) ) {
 			auth()->logout();
 		}
 

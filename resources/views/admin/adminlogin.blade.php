@@ -1,5 +1,11 @@
 @extends('layouts.adminapp')
 
+@section('additional_script')
+    <script type="text/javascript">
+        var isLogin = true;
+    </script>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -63,48 +69,4 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-
-    var noCheck = true;
-
-    $('form')[0].addEventListener('submit', function(event) {
-        event.preventDefault();
-        var that = this;
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url: "/admin/mzk_admin_login_api",
-            data: {
-                name: $('#name').val(),
-                password: $('#password').val()
-            },
-            type: 'POST',
-            dataType: 'json',
-            success: function (data) {
-                createCookie('username', data.data.name , 30);
-                localStorage.setItem('username', data.data.name); 
-                $(that).submit();
-            },
-            error: function (err) {
-                createCookie('username', null , -1);
-                localStorage.removeItem('username');
-                $(that).submit();
-            }
-        });
-        // return false;
-    });
-
-    function createCookie(name,value,days) {
-        var expires = '';
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime() + (days*24*60*60*1000));
-            expires = '; expires=' + date.toUTCString();
-        }
-        document.cookie = name + '=' + value + expires + '; path=/';
-    }
-
-</script>
 @endsection

@@ -96,7 +96,6 @@ class AdminController extends Controller
 
     public function checkUserApi()
     {
-        sleep(3);
         $name = request()->name;
         $password = request()->password;
         $user = User::where('name', $name)->first();
@@ -106,7 +105,6 @@ class AdminController extends Controller
         return response()->json([
             'error' => 'failed auth'
         ], 403);
-        // return abort(403, 'failed auth.');
     }
 
     // get - /admin/mzk_admin_login
@@ -119,7 +117,7 @@ class AdminController extends Controller
     public function authUser(Request $request)
     {
 
-        if(!$this->loginUserById($request)) {
+        if(!$this->loginUserByAttempt($request)) {
             return back()->withErrors([
                 'message' => 'Please check your credentials and try again'
             ]);

@@ -7,6 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="url" content="{{ URL::to('/') }}">
 
     <title>Admin Panel</title>
 
@@ -33,6 +34,8 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+    @yield('additional_script')
+    <script type="text/javascript" src="/dist_v6/js/admin.js"></script>
 </head>
 <body>
     <div id="app">
@@ -93,7 +96,6 @@
 
         @yield('content')
     </div>
-    <script type="text/javascript" src="/dist_v6/js/admin.js"></script>
 
 </body>
 </html>

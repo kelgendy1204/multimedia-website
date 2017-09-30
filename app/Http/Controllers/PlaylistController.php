@@ -91,7 +91,8 @@ class PlaylistController extends Controller
 
 		$post = Post::find($post);
 		$playlist = new Playlist;
-		$playlist->title = str_replace(" ", "-", request('title'));
+		$playlist->title = request('title');
+		// $playlist->title = str_replace(" ", "-", request('title'));
 		$playlist->visible = request('visible') == "on" ? true : false;
 		$post->playlists()->save($playlist);
 
@@ -174,7 +175,8 @@ class PlaylistController extends Controller
 
 		$post = Post::find($post);
 		$playlist = $post->playlists()->where('id', $playlist)->first();
-		$playlist->title = str_replace(" ", "-", request('title'));
+		$playlist->title = request('title');
+		// $playlist->title = str_replace(" ", "-", request('title'));
 		$playlist->visible = request('visible') == "on" ? true : false;
 
 		$audios = [];

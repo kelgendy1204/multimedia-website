@@ -145,7 +145,8 @@ class PostsController extends Controller
 	public function update(Post $post) {
 		$post->title = request('title');
 		$post->key_words = request('key_words');
-		$post->description = str_replace(" ","-", request('description'));
+		$post->description = request('description');
+		// $post->description = str_replace(" ","-", request('description'));
 		$post->download_page = request('download_page');
 		$post->long_description = request('long_description');
 		$post->meta_description = request('meta_description');
@@ -193,7 +194,8 @@ class PostsController extends Controller
 		$post = new Post;
 		$post->title = request('title');
 		$post->key_words = request('key_words');
-		$post->description = str_replace(" ","-", request('description'));
+		$post->description = request('description');
+		// $post->description = str_replace(" ","-", request('description'));
 		$post->download_page = request('download_page');
 		$post->long_description = request('long_description');
 		$post->meta_description = request('meta_description');

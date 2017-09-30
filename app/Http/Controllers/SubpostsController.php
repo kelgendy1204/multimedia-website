@@ -72,7 +72,8 @@ class SubpostsController extends Controller
 
 		$post = Post::find($post);
 		$subpost = new Subpost;
-		$subpost->title = str_replace(" ","-", request('title'));
+		$subpost->title = request('title');
+		// $subpost->title = str_replace(" ","-", request('title'));
 		$subpost->visible = request('visible') == "on" ? true : false;
 		$post->subposts()->save($subpost);
 
@@ -140,7 +141,8 @@ class SubpostsController extends Controller
 
 		$post = Post::find($post);
 		$subpost = $post->subposts()->where('id', $subpostid)->first();
-		$subpost->title = str_replace(" ","-", request('title'));
+		$subpost->title = request('title');
+		// $subpost->title = str_replace(" ","-", request('title'));
 		$subpost->visible = request('visible') == "on" ? true : false;
 
 		$servers = [];

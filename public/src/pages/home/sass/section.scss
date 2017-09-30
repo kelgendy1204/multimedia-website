@@ -1013,6 +1013,8 @@ div.mainpage {
                 height: 100%;
                 z-index: 2;
                 background-color: #3a3f48;
+                // border: 3px solid white;
+                overflow: hidden;
                 button{
                     width: 30px;
                     height: 30px;
@@ -1029,8 +1031,8 @@ div.mainpage {
                     margin: 10px 20px;
                     font-size: 0.7em;
                     cursor: pointer;
-                    border: 3px solid #3a3f48;
-                    color: #3a3f48;
+                    border: 3px solid white;
+                    color: white;
                     background-color: transparent;
                     &:focus{
                         outline: 0;

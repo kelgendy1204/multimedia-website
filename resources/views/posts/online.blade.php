@@ -31,6 +31,12 @@
 				@endforeach
 			</div>
 			<div class="watch">
+				<div class="your-video">
+					<button class="close-video">X</button>
+					<video autoplay>
+						<source src="/videos/video1.mp4" type="video/mp4" />
+					</video>
+				</div>
 				<iframe width="100%" height="100%" frameborder="0" allowfullscreen src="{{count($servers) ? $servers[0]->link : ""}}"></iframe>
 			</div>
 			<div class="share-title">
@@ -108,6 +114,15 @@
 					window.open("https://www.facebook.com/sharer/sharer.php?u={{Request::fullUrl()}}", "pop", "width=600, height=400, scrollbars=no");
 					return false;
 				};
+
+				$('.close-video').on('click', function () {
+					$('div.your-video').remove();
+				});
+
+				$('video').on('ended', function () {
+					$('div.your-video').remove();
+				});
+
 			}());
 		</script>
 	</div>

@@ -30,12 +30,12 @@ class PostsController extends Controller
 			foreach (Category::all() as $category) {
 
 				$isRoleExist = $filtered_roles->every(function ($role) use ($category) {
-				    return $category['name_en'] == $role->name;
+					return $category['name_en'] == $role->name;
 				});
 
-			    if($isRoleExist) {
+				if($isRoleExist) {
 					$categories->push($category);
-			    }
+				}
 			}
 		} else{
 			$categories = Category::all();
@@ -146,6 +146,7 @@ class PostsController extends Controller
 		$post->title = request('title');
 		$post->key_words = request('key_words');
 		$post->description = request('description');
+		// $post->description = str_replace(" ","-", request('description'));
 		$post->download_page = request('download_page');
 		$post->long_description = request('long_description');
 		$post->meta_description = request('meta_description');
@@ -194,6 +195,7 @@ class PostsController extends Controller
 		$post->title = request('title');
 		$post->key_words = request('key_words');
 		$post->description = request('description');
+		// $post->description = str_replace(" ","-", request('description'));
 		$post->download_page = request('download_page');
 		$post->long_description = request('long_description');
 		$post->meta_description = request('meta_description');

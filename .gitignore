@@ -10,6 +10,7 @@
 /public/appendixadbans/
 /public/downloadimages/
 /public/dist*
+/public/videos/
 /storage/*.key
 /vendor
 /.idea

@@ -96,7 +96,7 @@
 
 		</div>
 
-		<script src="/dist_v6/js/online.js"></script>
+		<script src="/dist_v6/js/online-c99e30e1d9.js"></script>
 	</div>
 	<div class="internalpages_left side-bans">
 		@if ($advertisements->get('internalpages_left') && $advertisements->get('internalpages_left')->photo_url && $advertisements->get('internalpages_left')->link)

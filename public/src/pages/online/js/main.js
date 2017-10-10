@@ -19,26 +19,29 @@ function shareCode(){
 }
 
 function handleMobileVideo() {
+	$('video').attr('controls', true);
 
-	var ONLYONETIME_EXECUTE = null;
+// 	var ONLYONETIME_EXECUTE = null;
 
-	// window.addEventListener('load', function(){ // on page load
+// 	// window.addEventListener('load', function(){ // on page load
 
-	document.body.addEventListener('touchstart', () => {
+// 	document.body.addEventListener('touchstart', () => {
 
-		if (ONLYONETIME_EXECUTE == null) {
-			let video = $('video')[0];
-			if(video) {
-				video.play();
-			}
-			ONLYONETIME_EXECUTE = 0;
-		}
+// 		if (ONLYONETIME_EXECUTE == null) {
+// 			let video = $('video')[0];
+// 			if(video) {
+// 				video.play();
+// 			}
+// 			ONLYONETIME_EXECUTE = 0;
+// 		}
 
-	}, false);
+// 	}, false);
 
-	// }, false);
+// 	// }, false);
 
 }
+
+
 
 function videoCode(){
 	$('.close-video').on('click', removeVideo);

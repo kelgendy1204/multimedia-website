@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class Post extends Model
 {
-	public static $paginate = 54;
+	public static $paginate = 70;
 
 	public function category()
 	{

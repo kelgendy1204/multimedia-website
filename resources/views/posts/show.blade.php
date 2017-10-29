@@ -7,14 +7,26 @@
 @section('content')
 <div class="pagescontainer firstpage">
 	<div class="firstpagecontainer">
+
+
 		<div class="showpost_right side-bans">
-			@if ($advertisements->get('showpost_right') && $advertisements->get('showpost_right')->photo_url && $advertisements->get('showpost_right')->link)
+{{-- 			@if ($advertisements->get('showpost_right') && $advertisements->get('showpost_right')->photo_url && $advertisements->get('showpost_right')->link)
 			<a href="{{$advertisements->get('showpost_right')->link}}" target="_blank">
 				<div class="image" style="background-image: url({{$advertisements->get('showpost_right')->photo_url}})">
 				</div>
 			</a>
-			@endif
+			@endif --}}
+
+			<a href="#" target="_blank">
+				<div class="image" style="background-image: none;">
+					<iframe scrolling="no" frameborder="0" src="//mellowads.com/view/6D24A90B874F" style="overflow:hidden;width:125px;height:125px;"></iframe>
+				</div>
+			</a>
+
+
 		</div>
+
+
 		<div class="postdetailscontainer">
 			<div class="postdetails {{$post->long_description ? "" : "nodesc"}}">
 				@if ($post->long_description)
@@ -69,12 +81,19 @@
 			</script>
 		</div>
 		<div class="showpost_left side-bans">
-			@if ($advertisements->get('showpost_left') && $advertisements->get('showpost_left')->photo_url && $advertisements->get('showpost_left')->link)
+
+{{-- 			@if ($advertisements->get('showpost_left') && $advertisements->get('showpost_left')->photo_url && $advertisements->get('showpost_left')->link)
 			<a href="{{$advertisements->get('showpost_left')->link}}" target="_blank">
 				<div class="image" style="background-image: url({{$advertisements->get('showpost_left')->photo_url}})">
 				</div>
 			</a>
-			@endif
+			@endif --}}
+
+			<a href="#" target="_blank">
+				<div class="image" style="background-image: none;">
+					<iframe scrolling="no" frameborder="0" src="//mellowads.com/view/777376426B85" style="overflow:hidden;width:125px;height:125px;"></iframe>
+				</div>
+			</a>
 		</div>
 	</div>
 </div>

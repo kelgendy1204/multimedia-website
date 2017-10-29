@@ -6,14 +6,27 @@
 
 @section('content')
 <div class="internal-pages-container">
+
+
 	<div class="internalpages_right side-bans">
-		@if ($advertisements->get('internalpages_right') && $advertisements->get('internalpages_right')->photo_url && $advertisements->get('internalpages_right')->link)
-		<a href="{{$advertisements->get('internalpages_right')->link}}" target="_blank">
-			<div class="image" style="background-image: url({{$advertisements->get('internalpages_right')->photo_url}})">
+
+{{-- 		@if ($advertisements->get('internalpages_right') && $advertisements->get('internalpages_right')->photo_url && $advertisements->get('internalpages_right')->link)
+			<a href="{{$advertisements->get('internalpages_right')->link}}" target="_blank">
+				<div class="image" style="background-image: url({{$advertisements->get('internalpages_right')->photo_url}})">
+				</div>
+			</a>
+		@endif --}}
+
+
+		<a href="#" target="_blank">
+			<div class="image" style="background-image: none;">
+				<iframe scrolling="no" frameborder="0" src="//mellowads.com/view/E085DD837BD2" style="overflow:hidden;width:125px;height:125px;"></iframe>
 			</div>
 		</a>
-		@endif
+
 	</div>
+
+
 	<div class="pagescontainer internal-pages">
 		<div id="fb-root"></div>
 		<script>(function(d, s, id) {
@@ -76,12 +89,19 @@
 		<div class="fb-comments" data-href="{{ route('showpost', ['postdesc' => $post->description]) }}" data-width="100%" data-numposts="10" order_by="social"></div>
 	</div>
 	<div class="internalpages_left side-bans">
-		@if ($advertisements->get('internalpages_left') && $advertisements->get('internalpages_left')->photo_url && $advertisements->get('internalpages_left')->link)
+		{{-- 		@if ($advertisements->get('internalpages_left') && $advertisements->get('internalpages_left')->photo_url && $advertisements->get('internalpages_left')->link)
 		<a href="{{$advertisements->get('internalpages_left')->link}}" target="_blank">
 			<div class="image" style="background-image: url({{$advertisements->get('internalpages_left')->photo_url}})">
 			</div>
 		</a>
-		@endif
+		@endif --}}
+
+
+		<a href="#" target="_blank">
+			<div class="image" style="background-image: none;">
+				<iframe scrolling="no" frameborder="0" src="//mellowads.com/view/14DC37504671" style="overflow:hidden;width:125px;height:125px;"></iframe>
+			</div>
+		</a>
 	</div>
 </div>
 @endsection

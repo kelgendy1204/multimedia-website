@@ -16,26 +16,11 @@
 
 		<a href="#" target="_blank">
 			<div class="image" style="background-image: none;">
-				<div id="jubna3194"></div>
-				<script type="text/javascript">
-					(function() {
-					var params =
-					{
-					id: "6a7f8504-28a81cb9-00341c33-1176318a",
-					d: "YWJvdWRjcm0uY29t",
-					cb: ((new Date()).valueOf().toString())
-					};
-					var qs="";
-					for(var key in params){qs+=key+"="+params[key]+"&"}
-					qs=qs.substring(0,qs.length-1);
-					var s = document.createElement("script");
-					s.type= "text/javascript";
-					s.setAttribute("data-cfasyn", "false");
-					s.src = "https://jubna.com/ar/api/widget/3194?" + qs;
-					s.async = true;
-					document.getElementById("jubna3194").appendChild(s);
-					})();
-				</script>
+				<iframe scrolling="no" frameborder="0" src="//mellowads.com/view/E085DD837BD2" style="overflow:hidden;width:125px;height:125px;"></iframe>
+				<iframe scrolling="no" frameborder="0" src="//mellowads.com/view/14DC37504671" style="overflow:hidden;width:125px;height:125px;"></iframe>
+				<iframe scrolling="no" frameborder="0" src="//mellowads.com/view/6D24A90B874F" style="overflow:hidden;width:125px;height:125px;"></iframe>
+				<iframe scrolling="no" frameborder="0" src="//mellowads.com/view/777376426B85" style="overflow:hidden;width:125px;height:125px;"></iframe>
+				<iframe scrolling="no" frameborder="0" src="//mellowads.com/view/02A6C941BE9C" style="overflow:hidden;width:125px;height:125px;"></iframe>
 			</div>
 		</a>
 
@@ -116,6 +101,27 @@
 				</div>
 			@endif
 
+			<div id="jubna3225"></div>
+			<script type="text/javascript">
+				(function() {
+				var params =
+				{
+				id: "6a7f8504-28a81cb9-00341c33-1176318a",
+				d: "YWJvdWRjcm0uY29t",
+				cb: ((new Date()).valueOf().toString())
+				};
+				var qs="";
+				for(var key in params){qs+=key+"="+params[key]+"&"}
+				qs=qs.substring(0,qs.length-1);
+				var s = document.createElement("script");
+				s.type= "text/javascript";
+				s.setAttribute("data-cfasyn", "false");
+				s.src = "https://jubna.com/ar/api/widget/3225?" + qs;
+				s.async = true;
+				document.getElementById("jubna3225").appendChild(s);
+				})();
+			</script>
+
 			@include('partials.randomposts', ['classname' => ''])
 
 			<div class="fb-comments" data-href="{{ route('showpost', ['postdesc' => $post->description]) }}" data-width="100%" data-numposts="10" order_by="social"></div>
@@ -134,26 +140,11 @@
 
 		<a href="#" target="_blank">
 			<div class="image" style="background-image: none;">
-				<div id="jubna3194"></div>
-				<script type="text/javascript">
-					(function() {
-					var params =
-					{
-					id: "6a7f8504-28a81cb9-00341c33-1176318a",
-					d: "YWJvdWRjcm0uY29t",
-					cb: ((new Date()).valueOf().toString())
-					};
-					var qs="";
-					for(var key in params){qs+=key+"="+params[key]+"&"}
-					qs=qs.substring(0,qs.length-1);
-					var s = document.createElement("script");
-					s.type= "text/javascript";
-					s.setAttribute("data-cfasyn", "false");
-					s.src = "https://jubna.com/ar/api/widget/3194?" + qs;
-					s.async = true;
-					document.getElementById("jubna3194").appendChild(s);
-					})();
-				</script>
+				<iframe scrolling="no" frameborder="0" src="//mellowads.com/view/E085DD837BD2" style="overflow:hidden;width:125px;height:125px;"></iframe>
+				<iframe scrolling="no" frameborder="0" src="//mellowads.com/view/14DC37504671" style="overflow:hidden;width:125px;height:125px;"></iframe>
+				<iframe scrolling="no" frameborder="0" src="//mellowads.com/view/6D24A90B874F" style="overflow:hidden;width:125px;height:125px;"></iframe>
+				<iframe scrolling="no" frameborder="0" src="//mellowads.com/view/777376426B85" style="overflow:hidden;width:125px;height:125px;"></iframe>
+				<iframe scrolling="no" frameborder="0" src="//mellowads.com/view/02A6C941BE9C" style="overflow:hidden;width:125px;height:125px;"></iframe>
 			</div>
 		</a>
 

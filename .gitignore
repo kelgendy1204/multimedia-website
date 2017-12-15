@@ -11,6 +11,7 @@
 /public/downloadimages/
 /public/dist*
 /public/videos/
+/public/audio/
 /storage/*.key
 /vendor
 /.idea

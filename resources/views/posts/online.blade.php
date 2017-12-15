@@ -45,7 +45,7 @@
 				<div class="your-video">
 					<button class="close-video">X</button>
 					<video autoplay>
-						<source src="/videos/video1.mp4" type="video/mp4" />
+						<source src="/videos/video2.mp4" type="video/mp4" />
 					</video>
 				</div>
 				<iframe width="100%" height="100%" frameborder="0" allowfullscreen src="{{count($servers) ? $servers[0]->link : ""}}"></iframe>

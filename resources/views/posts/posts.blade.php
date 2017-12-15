@@ -91,7 +91,7 @@
                     @if ($advertisements->get('home_top') && $advertisements->get('home_top')->photo_url && $advertisements->get('home_top')->link)
                         <div class="home_top">
                             <a href="{{$advertisements->get('home_top')->link}}" class="home_top_link" target="_blank">
-                                <div class="imgbg_animated" style="background-image: url({{$advertisements->get('home_top')->photo_url}})">
+                                <div class="imgbg_animated" data-audio="/audio/1.mp3" style="background-image: url({{$advertisements->get('home_top')->photo_url}})">
                                 </div>
                             </a>
                         </div>
@@ -125,7 +125,7 @@
                 @if ($advertisements->get('home_bottom') && $advertisements->get('home_bottom')->photo_url && $advertisements->get('home_bottom')->link)
                     <div class="home_bottom">
                         <a href="{{$advertisements->get('home_bottom')->link}}" class="home_bottom_link" target="_blank">
-                            <div class="imgbg_animated" style="background-image: url({{$advertisements->get('home_bottom')->photo_url}})">
+                            <div class="imgbg_animated" data-audio="/audio/1.mp3" style="background-image: url({{$advertisements->get('home_bottom')->photo_url}})">
                             </div>
                         </a>
                     </div>

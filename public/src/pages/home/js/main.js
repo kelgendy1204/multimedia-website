@@ -11,12 +11,14 @@ function createCookie(name,value,days) {
 function playImgbgAudio() {
 	$('.imgbg_animated').each(function(index, elem) {
 		var getAudioSrc = $(elem).data('audio');
-		var audio = new Audio(getAudioSrc);
-		$(elem).hover(function () {
-			audio.play();
-		}, function () {
-			audio.pause();
-		});
+		if(getAudioSrc){
+			var audio = new Audio(getAudioSrc);
+			$(elem).hover(function () {
+				audio.play();
+			}, function () {
+				audio.pause();
+			});
+		}
 	});
 }
 

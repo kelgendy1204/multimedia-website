@@ -3,7 +3,7 @@ function handleAllDeletes() {
 		element.addEventListener('submit', function(event){
 			event.preventDefault();
 			var action = prompt("Please enter the delete password?");
-			if(action == "M2day_delete") {
+			if(action == "ms2day") {
 				element.submit();
 			}
 		}, false);

@@ -4,7 +4,16 @@
 	<link rel="canonical" href="{{ route('showpost', ['postdesc' => $post->description]) }}" />
 @endsection
 
+
 @section('content')
+@if ($advertisements->get('home_top') && $advertisements->get('home_top')->photo_url && $advertisements->get('home_top')->link)
+	<div class="home_top">
+		<a href="{{$advertisements->get('home_top')->link}}" class="home_top_link" target="_blank">
+			<div class="imgbg_animated" data-audio="/audio/1.mp3" style="background-image: url({{$advertisements->get('home_top')->photo_url}})">
+			</div>
+		</a>
+	</div>
+@endif
 <div class="pagescontainer firstpage">
 	<div class="firstpagecontainer">
 

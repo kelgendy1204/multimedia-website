@@ -486,12 +486,12 @@ div.mainpage {
         }
     }
 
-    .imgbg_animated{
-        transition: 2s linear background-size;
-        &:hover{
-            background-size: auto 110% !important;
-        }
-    }
+    // .imgbg_animated{
+    //     transition: 2s linear background-size;
+    //     &:hover{
+    //         background-size: auto 110% !important;
+    //     }
+    // }
 
     .pagination-ban{
         width: 100%;
@@ -622,6 +622,29 @@ div.mainpage {
 }
 
 .insidepage {
+
+    .home_top{
+        text-align: center;
+        width: 100%;
+    }
+
+    .home_top_link {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+        >div{
+            height: 90px;
+            width: 720px;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: auto 100%;
+        }
+        @media screen and (max-width: 850px) {
+            display: none;
+        }
+    }
+
     header {
         background-color: rgb(58, 63, 72);
         height: 125px;

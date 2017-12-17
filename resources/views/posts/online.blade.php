@@ -5,6 +5,14 @@
 @endsection
 
 @section('content')
+@if ($advertisements->get('home_top') && $advertisements->get('home_top')->photo_url && $advertisements->get('home_top')->link)
+	<div class="home_top">
+		<a href="{{$advertisements->get('home_top')->link}}" class="home_top_link" target="_blank">
+			<div class="imgbg_animated" data-audio="/audio/1.mp3" style="background-image: url({{$advertisements->get('home_top')->photo_url}})">
+			</div>
+		</a>
+	</div>
+@endif
 <div class="internal-pages-container">
 	<div class="internalpages_right side-bans">
 		{{-- 		@if ($advertisements->get('internalpages_right') && $advertisements->get('internalpages_right')->photo_url && $advertisements->get('internalpages_right')->link)
@@ -48,7 +56,7 @@
 						<source src="/videos/video2.mp4" type="video/mp4" />
 					</video>
 				</div>
-				<iframe width="100%" height="100%" frameborder="0" allowfullscreen src="{{count($servers) ? $servers[0]->link : ""}}"></iframe>
+				<iframe id="videoiframe" width="100%" height="100%" frameborder="0" allowfullscreen src="{{count($servers) ? $servers[0]->link : ""}}"></iframe>
 			</div>
 			<div class="share-title">
 				<h2 class="titlee">{{ (isset($activesubpost) && (count($subposts) > 1)) ? $activesubpost->title : ''}} </h2>
@@ -101,7 +109,7 @@
 				</div>
 			@endif
 
-			<div id="jubna3225"></div>
+			<div id="jubna3225" style="width: 850px;"></div>
 			<script type="text/javascript">
 				(function() {
 				var params =

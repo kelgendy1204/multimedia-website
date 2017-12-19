@@ -204,14 +204,6 @@
 			<div class="fb-comments" data-href="{{ route('showpost', ['postdesc' => $post->description]) }}" data-width="100%" data-numposts="10" order_by="social"></div>
 
 		</div>
-		<script>
-			(function () {
-				document.querySelector('.socitem.facebook').onclick = function() {
-					window.open("https://www.facebook.com/sharer/sharer.php?u={{Request::fullUrl()}}", "pop", "width=600, height=400, scrollbars=no");
-					return false;
-				};
-			}());
-		</script>
 	</div>
 	<div class="internalpages_left side-bans">
 		{{-- 		@if ($advertisements->get('internalpages_left') && $advertisements->get('internalpages_left')->photo_url && $advertisements->get('internalpages_left')->link)

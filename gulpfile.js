@@ -48,7 +48,7 @@ const notify = (title, message) => {
 	notifier.notify({ title, message });
 };
 
-const pagesArr = ['home', 'tinymce', 'playlist', 'admin', 'online'];
+const pagesArr = ['home', 'tinymce', 'playlist', 'admin', 'online', 'download'];
 
 (function() {
 

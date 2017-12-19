@@ -1,3 +1,5 @@
+import { playImgbgAudio } from '../../global/js/main';
+
 function serversCode(){
 	var serverLinks = document.querySelectorAll('.servers >a');
 	var iframe = document.querySelector('iframe#videoiframe');
@@ -69,4 +71,5 @@ $(document).ready(function () {
 	serversCode();
 	shareCode();
 	videoCode();
+	playImgbgAudio();
 });

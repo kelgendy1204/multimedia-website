@@ -1,3 +1,5 @@
+import { playImgbgAudio } from '../../global/js/main';
+
 function createCookie(name,value,days) {
 	var expires = '';
 	if (days) {
@@ -6,20 +8,6 @@ function createCookie(name,value,days) {
 		expires = '; expires=' + date.toUTCString();
 	}
 	document.cookie = name + '=' + value + expires + '; path=/';
-}
-
-function playImgbgAudio() {
-	$('.imgbg_animated').each(function(index, elem) {
-		var getAudioSrc = $(elem).data('audio');
-		if(getAudioSrc){
-			var audio = new Audio(getAudioSrc);
-			$(elem).hover(function () {
-				audio.play();
-			}, function () {
-				audio.pause();
-			});
-		}
-	});
 }
 
 function responsiveMenu() {

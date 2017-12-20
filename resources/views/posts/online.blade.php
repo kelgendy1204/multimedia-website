@@ -5,6 +5,14 @@
 @endsection
 
 @section('content')
+@if ($advertisements->get('home_top') && $advertisements->get('home_top')->photo_url && $advertisements->get('home_top')->link)
+	<div class="home_top">
+		<a href="{{$advertisements->get('home_top')->link}}" class="home_top_link" target="_blank">
+			<div class="imgbg_animated" data-audio="/audio/1.mp3" style="background-image: url({{$advertisements->get('home_top')->photo_url}})">
+			</div>
+		</a>
+	</div>
+@endif
 <div class="internal-pages-container">
 	<div class="internalpages_right side-bans">
 		{{-- 		@if ($advertisements->get('internalpages_right') && $advertisements->get('internalpages_right')->photo_url && $advertisements->get('internalpages_right')->link)
@@ -45,10 +53,10 @@
 				<div class="your-video">
 					<button class="close-video">X</button>
 					<video autoplay>
-						<source src="/videos/video1.mp4" type="video/mp4" />
+						<source src="/videos/video2.mp4" type="video/mp4" />
 					</video>
 				</div>
-				<iframe width="100%" height="100%" frameborder="0" allowfullscreen src="{{count($servers) ? $servers[0]->link : ""}}"></iframe>
+				<iframe id="videoiframe" width="100%" height="100%" frameborder="0" allowfullscreen src="{{count($servers) ? $servers[0]->link : ""}}"></iframe>
 			</div>
 			<div class="share-title">
 				<h2 class="titlee">{{ (isset($activesubpost) && (count($subposts) > 1)) ? $activesubpost->title : ''}} </h2>
@@ -101,13 +109,34 @@
 				</div>
 			@endif
 
+			<div id="jubna3225" style="width: 850px;"></div>
+			<script type="text/javascript">
+				(function() {
+				var params =
+				{
+				id: "6a7f8504-28a81cb9-00341c33-1176318a",
+				d: "YWJvdWRjcm0uY29t",
+				cb: ((new Date()).valueOf().toString())
+				};
+				var qs="";
+				for(var key in params){qs+=key+"="+params[key]+"&"}
+				qs=qs.substring(0,qs.length-1);
+				var s = document.createElement("script");
+				s.type= "text/javascript";
+				s.setAttribute("data-cfasyn", "false");
+				s.src = "https://jubna.com/ar/api/widget/3225?" + qs;
+				s.async = true;
+				document.getElementById("jubna3225").appendChild(s);
+				})();
+			</script>
+
 			@include('partials.randomposts', ['classname' => ''])
 
 			<div class="fb-comments" data-href="{{ route('showpost', ['postdesc' => $post->description]) }}" data-width="100%" data-numposts="10" order_by="social"></div>
 
 		</div>
 
-		<script src="/dist_v6/js/online.js"></script>
+		<script src="/dist_v6/js/online-05c22d9a76.js"></script>
 	</div>
 	<div class="internalpages_left side-bans">
 		{{-- 		@if ($advertisements->get('internalpages_left') && $advertisements->get('internalpages_left')->photo_url && $advertisements->get('internalpages_left')->link)

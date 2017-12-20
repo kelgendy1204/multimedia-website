@@ -51,10 +51,12 @@
         <meta property="fb:app_id" content="282317058844945" />
         <meta property="og:url" content="{{ Request::fullUrl() }}" />
         <meta property="og:type" content="website" />
+
         <meta property="og:image" content="{{URL::to('/')}}/dist_v6/images/banner2.jpg" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:image" content="{{URL::to('/')}}/dist_v6/images/banner2.jpg" />
         <meta itemprop="image" content="{{URL::to('/')}}/dist_v6/images/banner2.jpg" />
+
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#ffffff" />
@@ -64,24 +66,25 @@
         <link rel="manifest" href="/manifest.json" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <link rel="canonical" href="{{ Request::fullUrl() }}" />
-        <link rel="stylesheet" href="/dist_v6/css/home.css" />
+
+        <link rel="stylesheet" href="/dist_v6/css/home-1aa6fd11dd.css" />
         <script src="/dist_v6/uncompiled/jquery-3.2.1.min.js"></script>
         <script src="/dist_v6/uncompiled/jquery.sticky.js"></script>
 
         @if ($scripts->value)
           {!! $scripts->value !!}
         @else
-          <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-            ga('create', 'UA-6197253-1', 'auto');
-            ga('send', 'pageview');
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+                ga('create', 'UA-6197253-1', 'auto');
+                ga('send', 'pageview');
 
-            var zwaar_day = new Date();
-            zwaar_day = zwaar_day.getDate();
-            document.write("<script type='text\/javascript' src='" + (location.protocol == 'https:' ? 'https:' : 'http:') + "//code.zwaar.org\/pcode/code-673.js?day=" + zwaar_day + "'><\/script>");
+                var zwaar_day = new Date();
+                zwaar_day = zwaar_day.getDate();
+                document.write("<script type='text\/javascript' src='" + (location.protocol == 'https:' ? 'https:' : 'http:') + "//code.zwaar.org\/pcode/code-673.js?day=" + zwaar_day + "'><\/script>");
           </script>
           <script type="text/javascript" src="//go.oclaserver.com/apu.php?zoneid=874590"></script>
         @endif

@@ -4,7 +4,16 @@
 	<link rel="canonical" href="{{ route('showpost', ['postdesc' => $post->description]) }}" />
 @endsection
 
+
 @section('content')
+@if ($advertisements->get('home_top') && $advertisements->get('home_top')->photo_url && $advertisements->get('home_top')->link)
+	<div class="home_top">
+		<a href="{{$advertisements->get('home_top')->link}}" class="home_top_link" target="_blank">
+			<div class="imgbg_animated" data-audio="/audio/1.mp3" style="background-image: url({{$advertisements->get('home_top')->photo_url}})">
+			</div>
+		</a>
+	</div>
+@endif
 <div class="pagescontainer firstpage">
 	<div class="firstpagecontainer">
 
@@ -62,12 +71,12 @@
 					<div class="right">
 						<a href="{{route('online', ['postdesc' => $post->description, 'subposttitle' => $subpost->title])}}"><img src="/dist_v6/images/second/3.svg" alt="online watch"/></a>
 					</div>
-				@else
-					@if ($playlist)
-						<div class="right">
-							<a href="{{route('playlist', ['postdesc' => $post->description, 'playlisttitle' => $playlist->title])}}"><img src="/dist_v6/images/second/2.svg" alt="Playlist"/></a>
-						</div>
-					@endif
+				@endif
+
+				@if ($playlist)
+					<div class="middle">
+						<a href="{{route('playlist', ['postdesc' => $post->description, 'playlisttitle' => $playlist->title])}}"><img src="/dist_v6/images/second/2.svg" alt="Playlist"/></a>
+					</div>
 				@endif
 
 				@if ($post->download_page || $post->downloadlinks()->count())

@@ -40,7 +40,7 @@ const replaceAssets = require('gulp-replace-assets');
 const _ = require('underscore');
 
 const mainSrcFolder = './public/src/';
-const mainDestFolder = './public/dist_v6/';
+const mainDestFolder = './public/dist/';
 const anyDestFolder = './public/dist*/';
 const mainViewsDistFolder = './resources/views/';
 

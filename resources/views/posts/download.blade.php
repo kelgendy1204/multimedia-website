@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<script type="text/javascript" src="/dist_v6/js/download-8d511b5645.js"></script>
+<script type="text/javascript" src="/dist/js/download-a3ef4e85ba.js"></script>
 @if ($advertisements->get('home_top') && $advertisements->get('home_top')->photo_url && $advertisements->get('home_top')->link)
 	<div class="home_top">
 		<a href="{{$advertisements->get('home_top')->link}}" class="home_top_link" target="_blank">
@@ -56,13 +56,13 @@
 
 			@if (isset($latestsubpost))
 				<div class="otherlink">
-					<a href="{{route('online', ['postdesc' => $post->description, 'subposttitle' => $latestsubpost->title])}}"><img src="/dist_v6/images/second/3.svg" alt="online watch"/></a>
+					<a href="{{route('online', ['postdesc' => $post->description, 'subposttitle' => $latestsubpost->title])}}"><img src="/dist/images/second/3.svg" alt="online watch"/></a>
 				</div>
 			@endif
 
 			@if (isset($latestplaylist))
 				<div class="otherlink">
-					<a href="{{route('playlist', ['postdesc' => $post->description, 'playlisttitle' => $latestplaylist->title])}}"><img src="/dist_v6/images/second/2.svg" alt="Playlist"/></a>
+					<a href="{{route('playlist', ['postdesc' => $post->description, 'playlisttitle' => $latestplaylist->title])}}"><img src="/dist/images/second/2.svg" alt="Playlist"/></a>
 				</div>
 			@endif
 

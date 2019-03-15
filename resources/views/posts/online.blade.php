@@ -72,13 +72,13 @@
 			<div class="otherlinks">
 				@if ($post->downloadlinks()->count())
 					<div class="otherlink">
-						<a href="{{route('download', ['postdesc' => $post->description])}}"><img src="/dist_v6/images/second/4.svg" alt="downloads" /></a>
+						<a href="{{route('download', ['postdesc' => $post->description])}}"><img src="/dist/images/second/4.svg" alt="downloads" /></a>
 					</div>
 				@endif
 
 				@if (isset($latestplaylist))
 					<div class="otherlink">
-						<a href="{{route('playlist', ['postdesc' => $post->description, 'playlisttitle' => $latestplaylist->title])}}"><img src="/dist_v6/images/second/2.svg" alt="Playlist"/></a>
+						<a href="{{route('playlist', ['postdesc' => $post->description, 'playlisttitle' => $latestplaylist->title])}}"><img src="/dist/images/second/2.svg" alt="Playlist"/></a>
 					</div>
 				@endif
 			</div>
@@ -136,7 +136,7 @@
 
 		</div>
 
-		<script src="/dist_v6/js/online-05c22d9a76.js"></script>
+		<script src="/dist/js/online-16e32bead1.js"></script>
 	</div>
 	<div class="internalpages_left side-bans">
 		{{-- 		@if ($advertisements->get('internalpages_left') && $advertisements->get('internalpages_left')->photo_url && $advertisements->get('internalpages_left')->link)

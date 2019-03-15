@@ -2,7 +2,7 @@
 	<div class="title-topic">مواضيع مهمة</div>
 	<div class="border-topic">
 		<div class="btn-paginate previous">
-			<img src="/dist_v6/images/prev.svg" alt="previous" />
+			<img src="/dist/images/prev.svg" alt="previous" />
 		</div>
 
 		<div class="swiper-container">
@@ -18,7 +18,7 @@
 		</div>
 
 		<div class="btn-paginate next">
-			<img src="/dist_v6/images/next.svg" alt="next" />
+			<img src="/dist/images/next.svg" alt="next" />
 		</div>
 	</div>
 </div>

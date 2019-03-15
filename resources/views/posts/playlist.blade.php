@@ -46,8 +46,8 @@
 			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=282317058844945";
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));</script>
-		<script type="text/javascript" src="/dist_v6/uncompiled/soundmanager2-nodebug-jsmin.js"></script>
-		{{-- <script type="text/javascript" src="/dist_v6/uncompiled/soundmanager2.js"></script> --}}
+		<script type="text/javascript" src="/dist/uncompiled/soundmanager2-nodebug-jsmin.js"></script>
+		{{-- <script type="text/javascript" src="/dist/uncompiled/soundmanager2.js"></script> --}}
 
 		<div class="page">
 			<div class="playlists">
@@ -131,7 +131,7 @@
 					</div>
 				</div>
 			</div>
-			<script type="text/javascript" src="/dist_v6/js/playlist-9fc62b9738.js"></script>
+			<script type="text/javascript" src="/dist/js/playlist-9fc62b9738.js"></script>
 
 			<div class="share-title">
 				<h2 class="titlee">{{ (isset($activeplaylist) && (count($playlists) > 1)) ? $activeplaylist->title : ''}} </h2>
@@ -147,13 +147,13 @@
 			<div class="otherlinks">
 				@if ($post->downloadlinks()->count())
 					<div class="otherlink">
-						<a href="{{route('download', ['postdesc' => $post->description])}}"><img src="/dist_v6/images/second/4.svg" alt="downloads" /></a>
+						<a href="{{route('download', ['postdesc' => $post->description])}}"><img src="/dist/images/second/4.svg" alt="downloads" /></a>
 					</div>
 				@endif
 
 				@if (isset($latestsubpost))
 					<div class="otherlink">
-						<a href="{{route('online', ['postdesc' => $post->description, 'subposttitle' => $latestsubpost->title])}}"><img src="/dist_v6/images/second/3.svg" alt="online watch"/></a>
+						<a href="{{route('online', ['postdesc' => $post->description, 'subposttitle' => $latestsubpost->title])}}"><img src="/dist/images/second/3.svg" alt="online watch"/></a>
 					</div>
 				@endif
 			</div>

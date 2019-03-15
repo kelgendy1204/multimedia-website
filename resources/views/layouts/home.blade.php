@@ -52,10 +52,10 @@
         <meta property="og:url" content="{{ Request::fullUrl() }}" />
         <meta property="og:type" content="website" />
 
-        <meta property="og:image" content="{{URL::to('/')}}/dist_v6/images/banner2.jpg" />
+        <meta property="og:image" content="{{URL::to('/')}}/dist/images/banner2.jpg" />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:image" content="{{URL::to('/')}}/dist_v6/images/banner2.jpg" />
-        <meta itemprop="image" content="{{URL::to('/')}}/dist_v6/images/banner2.jpg" />
+        <meta name="twitter:image" content="{{URL::to('/')}}/dist/images/banner2.jpg" />
+        <meta itemprop="image" content="{{URL::to('/')}}/dist/images/banner2.jpg" />
 
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -67,9 +67,9 @@
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <link rel="canonical" href="{{ Request::fullUrl() }}" />
 
-        <link rel="stylesheet" href="/dist_v6/css/home-1aa6fd11dd.css" />
-        <script src="/dist_v6/uncompiled/jquery-3.2.1.min.js"></script>
-        <script src="/dist_v6/uncompiled/jquery.sticky.js"></script>
+        <link rel="stylesheet" href="/dist/css/home-2bdd7a6bce.css" />
+        <script src="/dist/uncompiled/jquery-3.2.1.min.js"></script>
+        <script src="/dist/uncompiled/jquery.sticky.js"></script>
 
         @if ($scripts->value)
           {!! $scripts->value !!}

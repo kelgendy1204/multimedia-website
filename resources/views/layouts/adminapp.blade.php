@@ -21,7 +21,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="/dist_v6/css/admin-2ca9af969f.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/admin-2ca9af969f.css">
 
     <script
       src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
@@ -35,7 +35,7 @@
         ]) !!};
     </script>
     @yield('additional_script')
-    <script type="text/javascript" src="/dist_v6/js/admin-3c6304479f.js"></script>
+    <script type="text/javascript" src="/dist/js/admin-127d56c6f7.js"></script>
 </head>
 <body>
     <div id="app">

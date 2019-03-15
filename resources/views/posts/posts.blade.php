@@ -13,9 +13,9 @@
                             <span></span>
                         </div>
                     </a>
-                    <a class="headercontent" href="{{URL::to('/')}}"><div class="pic"><img src="/dist_v6/images/home.svg" alt="homepage"></div><div class="content"><p>الرئيسية</p></div></a>
-                    <a class="headercontent" href="http://forums.mazika2day.com"><div class="pic"><img src="/dist_v6/images/montadayat.svg" alt="forum"></div><div class="content"><p>المنتديات</p></div></a>
-                    <a class="headercontent" href="mailto:info@mazika2day.com" target="_top"><div class="pic"><img src="/dist_v6/images/contact.svg" alt="forum"></div><div class="content"><p>اتصل بنا</p></div></a>
+                    <a class="headercontent" href="{{URL::to('/')}}"><div class="pic"><img src="/dist/images/home.svg" alt="homepage"></div><div class="content"><p>الرئيسية</p></div></a>
+                    <a class="headercontent" href="http://forums.mazika2day.com"><div class="pic"><img src="/dist/images/montadayat.svg" alt="forum"></div><div class="content"><p>المنتديات</p></div></a>
+                    <a class="headercontent" href="mailto:info@mazika2day.com" target="_top"><div class="pic"><img src="/dist/images/contact.svg" alt="forum"></div><div class="content"><p>اتصل بنا</p></div></a>
                 </div>
                 <div class="center">
                     <button class="colorbtn grey" data-color="grey"></button>
@@ -34,7 +34,7 @@
                         <div class="soc-img facebook"></div>
                     </a>
                     <a class="logo" href="{{URL::to('/')}}">
-                        <img src="/dist_v6/images/logo.svg" alt="logo"/>
+                        <img src="/dist/images/logo.svg" alt="logo"/>
                     </a>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 <ul>
                     <li>
                         <a href="{{route('home')}}">
-                            <div class="category-img" style="background-image: url(/dist_v6/images/home.svg)"></div>
+                            <div class="category-img" style="background-image: url(/dist/images/home.svg)"></div>
                             <p>الرئيسية</p>
                         </a>
                     </li>
@@ -136,11 +136,11 @@
         <footer>
             <div class="elementscontainer">
                 <div class="copy">
-                    <a href="{{URL::to('/')}}" class="pic"><img src="/dist_v6/images/home.svg" alt="homepage"></a><div class="content"><p>جميع الحقوق محفوظة  لدى منتديات مزيكا تو داي</p></div>
+                    <a href="{{URL::to('/')}}" class="pic"><img src="/dist/images/home.svg" alt="homepage"></a><div class="content"><p>جميع الحقوق محفوظة  لدى منتديات مزيكا تو داي</p></div>
                 </div>
             </div>
         </footer>
     </div>
 
-    <script type="text/javascript" src="/dist_v6/js/home-37e90efadd.js"></script>
+    <script type="text/javascript" src="/dist/js/home-38563f54e5.js"></script>
 @endsection

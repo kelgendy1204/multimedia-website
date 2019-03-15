@@ -136,7 +136,7 @@
 
 		</div>
 
-		<script src="/dist/js/online-16e32bead1.js"></script>
+		<script src="/dist/js/online.js"></script>
 	</div>
 	<div class="internalpages_left side-bans">
 		{{-- 		@if ($advertisements->get('internalpages_left') && $advertisements->get('internalpages_left')->photo_url && $advertisements->get('internalpages_left')->link)

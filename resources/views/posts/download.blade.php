@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<script type="text/javascript" src="/dist/js/download-a3ef4e85ba.js"></script>
+<script type="text/javascript" src="/dist/js/download.js"></script>
 @if ($advertisements->get('home_top') && $advertisements->get('home_top')->photo_url && $advertisements->get('home_top')->link)
 	<div class="home_top">
 		<a href="{{$advertisements->get('home_top')->link}}" class="home_top_link" target="_blank">

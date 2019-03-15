@@ -1,6 +1,6 @@
 'use strict';
 
-const fs = require('fs');
+// const fs = require('fs');
 const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
 const browserify = require('browserify');
@@ -33,16 +33,16 @@ const watch = require('gulp-watch');
 const newer = require('gulp-newer');
 const notifier = require('node-notifier');
 // const dotenv = require('dotenv');
-const rev = require('gulp-rev');
-const revReplace = require('gulp-rev-replace');
-const revdel = require('gulp-rev-delete-original');
-const replaceAssets = require('gulp-replace-assets');
-const _ = require('underscore');
+// const rev = require('gulp-rev');
+// const revReplace = require('gulp-rev-replace');
+// const revdel = require('gulp-rev-delete-original');
+// const replaceAssets = require('gulp-replace-assets');
+// const _ = require('underscore');
 
 const mainSrcFolder = './public/src/';
 const mainDestFolder = './public/dist/';
 const anyDestFolder = './public/dist*/';
-const mainViewsDistFolder = './resources/views/';
+// const mainViewsDistFolder = './resources/views/';
 
 const notify = (title, message) => {
 	notifier.notify({ title, message });
@@ -272,37 +272,37 @@ gulp.task('watch:imagemin', () => {
 	});
 });
 
-gulp.task('reverse-rev', () => {
-	let json = JSON.parse(fs.readFileSync('./rev-manifest.json'));
-	return gulp.src('./resources/views/**/*.blade.php')
-		.pipe(replaceAssets(_.invert(json)))
-		.pipe(gulp.dest('resources/views/'));
-});
+// gulp.task('reverse-rev', () => {
+	// let json = JSON.parse(fs.readFileSync('./rev-manifest.json'));
+	// return gulp.src('./resources/views/**/*.blade.php')
+		// .pipe(replaceAssets(_.invert(json)))
+		// .pipe(gulp.dest('resources/views/'));
+// });
 
-gulp.task('rev', ['reverse-rev'], function () {
+// gulp.task('rev', ['reverse-rev'], function () {
 
-	fs.unlink('./rev-manifest.json', function () {});
-	let stream = merge();
+	// fs.unlink('./rev-manifest.json', function () {});
+	// let stream = merge();
 
-	stream.add(gulp.src(`${mainDestFolder}css/**/*.css`)
-		.pipe(rev())
-		.pipe(revdel())
-		.pipe(gulp.dest(`${mainDestFolder}css`))
-		.pipe(rev.manifest('rev-manifest.json', {
-			merge: true,
-			path: '.'
-		}))
-		.pipe(gulp.dest('.')));
+	// stream.add(gulp.src(`${mainDestFolder}css/**/*.css`)
+		// .pipe(rev())
+		// .pipe(revdel())
+		// .pipe(gulp.dest(`${mainDestFolder}css`))
+		// .pipe(rev.manifest('rev-manifest.json', {
+			// merge: true,
+			// path: '.'
+		// }))
+		// .pipe(gulp.dest('.')));
 
-	stream.add(gulp.src([`${mainDestFolder}js/**/*.js`, `!${mainDestFolder}js/animations/*.js`])
-		.pipe(rev())
-		.pipe(revdel())
-		.pipe(gulp.dest(`${mainDestFolder}js`))
-		.pipe(rev.manifest('rev-manifest.json', {
-			merge: true,
-			path: '.'
-		}))
-		.pipe(gulp.dest('.')));
+	// stream.add(gulp.src([`${mainDestFolder}js/**/*.js`, `!${mainDestFolder}js/animations/*.js`])
+		// .pipe(rev())
+		// .pipe(revdel())
+		// .pipe(gulp.dest(`${mainDestFolder}js`))
+		// .pipe(rev.manifest('rev-manifest.json', {
+			// merge: true,
+			// path: '.'
+		// }))
+		// .pipe(gulp.dest('.')));
 
 	// stream.add(gulp.src(`${mainDestFolder}fonts/**/*.*`)
 	// 	.pipe(rev())
@@ -314,42 +314,42 @@ gulp.task('rev', ['reverse-rev'], function () {
 	// 	}))
 	// 	.pipe(gulp.dest('.')));
 
-	return stream;
-});
+	// return stream;
+// });
 
-gulp.task('revreplace', ['revrepphp', 'revrepcss', 'revrepjs']);
+// gulp.task('revreplace', ['revrepphp', 'revrepcss', 'revrepjs']);
 
-gulp.task('cache', gulpSequence('rev', 'revreplace'));
+// gulp.task('cache', gulpSequence('rev', 'revreplace'));
 
-gulp.task('revrepphp', () => {
-	let manifest = gulp.src('rev-manifest.json');
-	return gulp.src(`${mainViewsDistFolder}**/*.php`)
-		.pipe(revReplace({
-			manifest,
-			replaceInExtensions: ['.php']
-		}))
-		.pipe(gulp.dest(`${mainViewsDistFolder}`));
-});
+// gulp.task('revrepphp', () => {
+	// let manifest = gulp.src('rev-manifest.json');
+	// return gulp.src(`${mainViewsDistFolder}**/*.php`)
+		// .pipe(revReplace({
+			// manifest,
+			// replaceInExtensions: ['.php']
+		// }))
+		// .pipe(gulp.dest(`${mainViewsDistFolder}`));
+// });
 
-gulp.task('revrepcss', () => {
-	let manifest = gulp.src('rev-manifest.json');
-	return gulp.src(`${mainDestFolder}css/**/*.css`)
-		.pipe(revReplace({
-			manifest,
-			replaceInExtensions: ['.css']
-		}))
-		.pipe(gulp.dest(`${mainDestFolder}css`));
-});
+// gulp.task('revrepcss', () => {
+	// let manifest = gulp.src('rev-manifest.json');
+	// return gulp.src(`${mainDestFolder}css/**/*.css`)
+		// .pipe(revReplace({
+			// manifest,
+			// replaceInExtensions: ['.css']
+		// }))
+		// .pipe(gulp.dest(`${mainDestFolder}css`));
+// });
 
-gulp.task('revrepjs', () => {
-	let manifest = gulp.src('rev-manifest.json');
-	return gulp.src(`${mainDestFolder}js/**/*.js`)
-		.pipe(revReplace({
-			manifest,
-			replaceInExtensions: ['.js']
-		}))
-		.pipe(gulp.dest(`${mainDestFolder}js`));
-});
+// gulp.task('revrepjs', () => {
+	// let manifest = gulp.src('rev-manifest.json');
+	// return gulp.src(`${mainDestFolder}js/**/*.js`)
+		// .pipe(revReplace({
+			// manifest,
+			// replaceInExtensions: ['.js']
+		// }))
+		// .pipe(gulp.dest(`${mainDestFolder}js`));
+// });
 
 gulp.task('compressjs', function(cb) {
 	pump([
@@ -405,4 +405,6 @@ function swallowError(error) {
 
 // gulp.task('prod', gulpSequence('clean', 'copyUncompiledScripts', 'copyFonts', 'imagemin', 'lint', ['css', 'js'], 'compress', 'copyandminifyviews', 'cache'));
 
-gulp.task('prod', gulpSequence('clean', ['css', 'js'], 'copyUncompiledFiles', 'copyFonts', 'imagemin', 'compress', 'cache'));
+// gulp.task('prod', gulpSequence('clean', ['css', 'js'], 'copyUncompiledFiles', 'copyFonts', 'imagemin', 'compress', 'cache'));
+
+gulp.task('prod', gulpSequence('clean', ['css', 'js'], 'copyUncompiledFiles', 'copyFonts', 'imagemin', 'compress'));

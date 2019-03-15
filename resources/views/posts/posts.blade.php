@@ -142,5 +142,5 @@
         </footer>
     </div>
 
-    <script type="text/javascript" src="/dist/js/home-38563f54e5.js"></script>
+    <script type="text/javascript" src="/dist/js/home.js"></script>
 @endsection

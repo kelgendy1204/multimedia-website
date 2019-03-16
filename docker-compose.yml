@@ -19,6 +19,7 @@ services:
        - ./docker/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - app-network
+    command: bash -c "composer install && php-fpm"
 
   #Nginx Service
   webserver:
@@ -54,6 +55,20 @@ services:
       SERVICE_NAME: mysql
     networks:
       - app-network
+
+  #node Service
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile-node
+    container_name: node
+    user: "node"
+    restart: unless-stopped
+    tty: true
+    working_dir: /home/node/app
+    volumes:
+      - ./:/home/node/app
+    command: bash -c "yarn install && gulp develop"
 
 #Docker Networks
 networks:

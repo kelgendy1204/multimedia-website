@@ -19,7 +19,7 @@ services:
        - ./docker/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - app-network
-    command: bash -c "composer install && php-fpm"
+    command: bash -c "cp -n .env.example .env && composer install && php-fpm"
 
   #Nginx Service
   webserver:

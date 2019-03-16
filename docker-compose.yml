@@ -15,11 +15,29 @@ services:
       SERVICE_TAGS: dev
     working_dir: /var/www
     volumes:
-       - ./:/var/www
-       - ./docker/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./:/var/www
+      - ./docker/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - app-network
     command: bash -c "cp -n .env.example .env && composer install && php-fpm"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db
+      - PMA_PORT=3306
+      - MYSQL_ROOT_PASSWORD=root
+    restart: unless-stopped
+    ports:
+      - 8080:80
+    volumes:
+      - /sessions
+    depends_on:
+      - db
+    networks:
+      - app-network
 
   #Nginx Service
   webserver:

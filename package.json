@@ -43,7 +43,7 @@
     "imagemin-jpegtran": "^5.0.2",
     "imagemin-pngquant": "^5.0.0",
     "imagemin-svgo": "^5.2.1",
-    "node-notifier": "^5.1.2",
+    "node-notifier": "^8.0.1",
     "postcss-cssnext": "^2.10.0",
     "postcss-short": "^4.0.0",
     "pump": "^1.0.2",
